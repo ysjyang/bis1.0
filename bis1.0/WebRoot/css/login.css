@@ -1,0 +1,106 @@
+@CHARSET "UTF-8";
+*{
+    font-family:microsoft yahei;
+	color:#363636;
+}
+body{
+	margin:0px;
+	padding:0px;
+}
+.loginDiv{
+	width:100%;
+	height:100%;
+	background:#469dea;
+	z-index:0;
+}
+.loginContent{
+	width: 100%;
+	height: 640px;
+	position:relative;
+	z-index: 99;
+	display:block;
+	background:url(../img/login_bg.png) no-repeat;
+	background-size:100% 100%;
+}
+.Bg-head{
+	width:100%;
+	height:70px;
+	background:#469dea;
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:9999;
+}
+.Bg-foot{
+	width:100%;
+	height:40px;
+	background:#469dea;
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	z-index:9999;
+}
+.loginBox{
+	position:absolute;
+	left: 55%;
+	top: 150px;
+}
+.logintable{
+	position: absolute;
+	z-index: 1;
+	width: 300px;
+	height: 338px;
+	padding: 0px 10px;
+	background: #fefefe;
+	border: 7px solid #d1e6fa;
+}
+.logintable h2{
+	font-size:18px;
+	font-weight:normal;
+	text-align:center;
+	line-height:60px;
+}
+.logintable ul{
+	width:100%;
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+.logintable ul li{
+	padding:0px 0px 20px 0px;
+}
+.logintable span{
+	width:80px;
+	text-align:right;
+	display:block;
+	float:left;
+	line-height:40px;
+	font-size:14px;
+}
+.logintable input{
+	width:200px;
+	height:40px;
+	line-height:40px;
+	padding:0px 0px 0px 10px;
+	border:1px solid #e5e5e5;
+}
+.logintable button{
+	width: 270px;
+	height: 40px;
+	line-height:40px;
+	display: inline-block;
+	border: none;
+	background: #ffa000;
+	cursor: pointer;
+	margin: 35px 0px 0px 15px;
+	font-size:16px;
+	color:#fff;
+	letter-spacing:8px;
+	word-spacing:8px;
+}
+.loginlabel{
+	width: 300px;
+}
+#loginlabel{
+	color:red;
+}

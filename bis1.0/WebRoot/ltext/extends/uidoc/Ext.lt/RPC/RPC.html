@@ -1,0 +1,224 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.RCP</title>
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../jquery.js"></script>
+<script src="../../../../prototype.js"></script>
+
+<style type = "text/css">
+		.selectclass	
+		{  		
+			color:green;	
+			}	
+</style>
+
+</head>
+
+<body>
+<h1>Ext.lt.RCP</h1>
+<h2>命名空间：Ext.lt.RCP</h2>
+<h2>说明：</h2>
+<p>
+   实现浏览器调用远程服务的方法，调试快捷键'ctrl+shift+r'<br />
+   方法说明：<br />
+	call(server, m, parameters, callbakfn, falsefun)<br />
+	asyncall(server, m, parameters);<br />
+	asynserver(serverid, m, parameters)<br />
+	server(serverid, m, parameters, callbakfn, falsefun)<br />
+	script( serverid, m, parameters, callName)
+</p>
+<h2>方法说明</h2>
+<h3>call(server, m, parameters, callbakfn, falsefun)</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="10%"  bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">server</td>
+      <td bgcolor="#EEEEEE">使用web框架，自动形成的id</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">m</td>
+      <td bgcolor="#EEEEEE">方法名，与服务端方法名必须一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">parameters</td>
+      <td bgcolor="#EEEEEE">参数，多个参数必须使用数组形式，如[param1，param2，……]。由于JS的数据类型比较单一，因此，远程调用时参数值能支持数字、文本、数组、Map。<br/>
+      <font color=red>注意：数组和对象在服务端只能使用ArrayList和HashMap，目前还不能支持使用接口做参数</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">callbakfn(object)</td>
+      <td bgcolor="#EEEEEE">成功调用时回调函数，返回值对象与服务端对象类型一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">falsefun(String)</td>
+      <td bgcolor="#EEEEEE">失败时的回调函数。参数为服务端异常信息。</td>
+    </tr>
+  </table>
+<h3>asyncall(server, m, parameters)</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="10%"  bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">server</td>
+      <td bgcolor="#EEEEEE">使用web框架，自动形成的id</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">m</td>
+      <td bgcolor="#EEEEEE">方法名，与服务端方法名必须一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">parameters</td>
+      <td bgcolor="#EEEEEE">参数，多个参数必须使用数组形式，如[param1，param2，……]。由于JS的数据类型比较单一，因此，远程调用时参数值能支持数字、文本、数组、Map。<br/>
+      <font color=red>注意：数组和对象在服务端只能使用ArrayList和HashMap，目前还不能支持使用接口做参数</font></td>
+    </tr>
+  </table>
+ <h3>asynserver(serverid, m, parameters,exception) 同步远程调用</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="10%"  bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">server</td>
+      <td bgcolor="#EEEEEE">服务ID，在数据库T_PORTALSYSCOMPONENTSERVICE表中注册的ServerID。也可以是Spring中注册的BeanID</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">m</td>
+      <td bgcolor="#EEEEEE">方法名，与服务端方法名必须一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">parameters</td>
+      <td bgcolor="#EEEEEE">参数，多个参数必须使用数组形式，如[param1，param2，……]。由于JS的数据类型比较单一，因此，远程调用时参数值能支持数字、文本、数组、Map。<br/>
+      <font color=red>注意：数组和对象在服务端只能使用ArrayList和HashMap，目前还不能支持使用接口做参数</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">exception</td>
+      <td bgcolor="#EEEEEE">处理服务端异常返回。</td>
+    </tr>
+  </table> 
+  <h3>server(serverid, m, parameters, callbakfn, falsefun)</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="10%"  bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">server</td>
+      <td bgcolor="#EEEEEE">服务ID，在数据库T_PORTALSYSCOMPONENTSERVICE表中注册的ServerID。也可以是Spring中注册的BeanID</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">m</td>
+      <td bgcolor="#EEEEEE">方法名，与服务端方法名必须一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">parameters</td>
+      <td bgcolor="#EEEEEE">参数，多个参数必须使用数组形式，如[param1，param2，……]。由于JS的数据类型比较单一，因此，远程调用时参数值能支持数字、文本、数组、Map。<br/>
+      <font color=red>注意：数组和对象在服务端只能使用ArrayList和HashMap，目前还不能支持使用接口做参数</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">callbakfn(object)</td>
+      <td bgcolor="#EEEEEE">成功调用时回调函数，返回值对象与服务端对象类型一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">falsefun(String)</td>
+      <td bgcolor="#EEEEEE">失败时的回调函数。参数为服务端异常信息。</td>
+    </tr>
+  </table>
+   <h3>script(serverid, m, parameters, callName)(只有这个是不同域即不用ip下调用的)</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="10%"  bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">server</td>
+      <td bgcolor="#EEEEEE">服务ID，在数据库T_PORTALSYSCOMPONENTSERVICE表中注册的ServerID。也可以是Spring中注册的BeanID</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">m</td>
+      <td bgcolor="#EEEEEE">方法名，与服务端方法名必须一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">parameters</td>
+      <td bgcolor="#EEEEEE">参数，多个参数必须使用数组形式，如[param1，param2，……]。由于JS的数据类型比较单一，因此，远程调用时参数值能支持数字、文本、数组、Map。<br/>
+      <font color=red>注意：数组和对象在服务端只能使用ArrayList和HashMap，目前还不能支持使用接口做参数</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">callName</td>
+      <td bgcolor="#EEEEEE">回调函数，返回值对象与服务端对象类型一致</td>
+    </tr>
+
+  </table>
+  <h2>使用说明：</h2>
+<p>使用该功能时需要在页面中引用以下文件</p>
+	&lt;script type="text/javascript" src="/ltext/frameworksupport.js">&lt;/script><br/>
+  &lt;script type="text/javascript" src="/ltext/ltext_core.js">&lt;/script><br/>
+  &lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css"/><br/>
+longtuframework版本1.4以上，代码中包含com.longtu.framework.portal.component.AbstractIfmisComponentService服务。
+var _ROOT_PATH_="http://127.0.0.1:7001/fasp2";服务地址ip
+
+<h2>实例：</h2>
+<h3>call(server, m, parameters, callbakfn, falsefun)测试<font color=red>(不进行测试)</font></h3>
+
+	
+<h3>asyncall(server, m, parameters)测试<font color=red>(不进行测试)</font></h3>
+
+
+<h3>asynserver(serverid, m, parameters)测试</h3>
+请在spring配置文件中添加 &lt;bean id="framework.demo.helloword" class="com.longtu.demo.component.HelloWord">&lt;/bean> 重启服务器<br/>
+平台服务需要继承 com.longtu.framework.portal.component.AbstractIfmisComponentService
+点击下面测试按钮，会弹出信息<br/>
+<button onclick="asynservertest()">asynserver测试</button>
+
+<h3>server(serverid, m, parameters, callbakfn, falsefun)测试</h3>
+请在spring配置文件中添加 &lt;bean id="framework.demo.helloword" class="com.longtu.demo.component.HelloWord">&lt;/bean> 重启服务器<br/>
+平台服务需要继承 com.longtu.framework.portal.component.AbstractIfmisComponentService
+点击下面测试按钮，会弹出信息<br/>
+<button onclick="servertest()">server测试</button>
+
+<h3>script(httpurl, serverid, m, parameters, callName,jsessionid) 测试</h3>
+请在spring配置文件中添加 &lt;bean id="framework.demo.helloword" class="com.longtu.demo.component.HelloWord">&lt;/bean> 重启服务器<br/>
+<font color=red>注意：此处的bean id命必须全部是小写</font><br/>
+平台服务需要继承 com.longtu.framework.portal.component.AbstractIfmisComponentService
+点击下面测试按钮，会弹出信息<br/>
+<button onclick="scripttest()">script测试</button>
+
+<script>
+	//var _ROOT_PATH_="http://127.0.0.1:7001/fasp2";
+	
+	function asynservertest(){
+		var data=Ext.lt.RCP.asynserver('framework.demo.helloword', 'test', "asynserver测试")
+			alert(data);	
+	}
+	
+	function servertest(){
+		Ext.lt.RCP.server('framework.demo.helloword', 'test', "server测试", function(data){
+			alert(data);
+		},function(){
+			alert("失败");
+		});	
+	}
+  function scripttest(){
+  	debugger;
+		Ext.lt.RCP.script(_ROOT_PATH_,'framework.demo.helloword', 'test', "script测试",
+		 function (data){
+			alert(data);
+		});
+		}
+</script>
+
+
+
+  
+</body>
+</html>

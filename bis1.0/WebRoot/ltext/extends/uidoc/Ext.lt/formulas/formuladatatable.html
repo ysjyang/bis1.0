@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.formuladatatable API</title>
+
+<script type="text/javascript" src="../../../../frameworksupport.js" ></script>
+<script type="text/javascript" src="../../../../ltext_core.js" ></script>
+<script type="text/javascript" src="../../../../datatable3.0.js" ></script>
+<script type="text/javascript" src="../../../../formulas.js"></script>
+<script type="text/javascript" src="../../../../editdatatable.js" ></script>
+<script type="text/javascript" src="../../../../formulasdatatable.js" ></script>
+<link type="text/css" rel="stylesheet"	href="../../../../datatabletheme.css" />
+
+<style>
+
+.dttheme_ifmis .l .t {
+	background-color:#ffffce;
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+<p>formuladatatable<br/>
+	<h1>formuladatatable</h1>
+	<h2>命名空间：Ext.lt.formuladatatable</h2>
+<h2>说明：</h2>
+<p>
+公式编辑表格<br/>
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css" /><br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme35.css" /><br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+&lt;script src="/ltext/datatable3.0.js">&lt;/script><br>
+&lt;script src="/ltext/editdatatable.js">&lt;/script><br>
+&lt;script type="text/javascript" src="/ltext/formulas.js"></script>
+&lt;script src="/ltext/formulasdatatable.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var tabpanel=new Ext.lt.TabPanel({
+		rs:recordset,
+		formulascol:[],//列公式
+		formulasrow:[],//行公式
+		formulas:[]//单元格公式
+	});<br/>
+		tabpanel.draw(HTMLElement);<br/>
+</p>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">rs</td>
+      <td bgcolor="#EEEEEE">Recordset</td>
+      <td bgcolor="#EEEEEE">公式结果集</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">formulascol</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">列公式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">formulasrow</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">行公式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">formulas</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">单元格公式</td>
+    </tr>
+   </table>
+   <script>
+var editdatatable_rs=new Ext.lt.recordset({columns:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','formula']
+		,datas:[
+		['0','0','','','','','3010201','111','0','111','0','0','','','','','','','','','',''],
+		['1','0','','','','','3010202','22','0','22','0','0','','','','','','','','','',''],
+		['2','0','','','','','3010203','22','0','22','0','0','','','','','','','','','',''],
+		['3','1','','','','','3010204','33','0','33','0','0','','','','','','','','','',''],
+		['0','0','','','','','3010205','44','0','44','0','0','','','','','','','','','',''],
+		['1','0','','','','','3010206','55','0','55','0','0','','','','','','','','','',''],
+		['2','0','','','','','3010207','66','0','66','0','0','','','','','','','','','',''],
+		['3','1','','','','','3010299','222','0','222','0','0','','','','','','','','','',''],
+		['0','0','','','','','3010301','11','0','11','0','0','','','','','','','','','',''],
+		['1','0','','','','','3010399','22','0','22','0','0','','','','','','','','','',''],
+		['2','0','','','','','3010401','33','0','33','0','0','','','','','','','','','',''],
+		['3','1','','','','','3010402','4','0','4','0','0','','','','','','','','','',''],
+		['3','1','','','','','3010403','55','0','55','0','0','','','','','','','','','',''],
+		['3','1','','','','','3010404','55','0','55','0','0','','','','','','','','','',''],
+		['2','0','','','','','3010499','11','0','11','0','0','','','','','','','','','',''],
+		['3','1','','','','','30105','11','0','11','0','0','','','','','','','','','',''],
+		['0','0','','','','','30106','221','0','221','0','0','','','','','','','','','',''],
+		['1','0','','','','','30199','32','0','32','0','0','','','','','','','','','',''],
+		['2','0','','','','','30200','11','0','11','0','0','','','','','','','','','',''],
+		['3','1','','','','','30202','33','0','33','0','0','','','','','','','','','',''],
+		['3','1','','','','','30203','11','0','11','0','0','','','','','','','','','',''],
+		['0','1','','','','','30204','23','0','23','0','0','','','','','','','','','',''],
+		['0','0','','','','','3020801','123','0','123','0','0','','','','','','','','','',''],
+		['1','1','','','','','3020802','123','0','123','0','0','','','','','','','','','',''],
+		['1','1','','','','','3020803','123','0','123','0','0','','','','','','','','','','']
+		
+		]
+});
+</script>
+<table width="100%" border=1 >
+	<tr>
+	<th colspan=2>合计列以及总计单元格的计算。包括单元格，列公式的优先级
+		</th>
+	</tr>
+	<tr>
+		<td VALIGN=top>
+			<div id="editdatatable" style="width:500px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+	var dt=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"${column('L')}+${column('M')}"}]
+	,formulas:[{c:'H',l:0,formula:"${sum(${cells(null,'H','l>0')})}"}]
+	});
+			
+			
+			
+	col=[dt.columns.seq];
+	col.push({name:'G',alias:'经济科目',datatype:'S',width:110})
+	
+	col.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col.push({name:'I',alias:'财政拨款',datatype:'N',width:110})
+	col.push({name:'J',alias:'预算外资金',datatype:'N',width:110})
+	//col.push({name:'K',alias:'纳入预算管理的政府性基金',datatype:'N',width:110})
+	col.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	
+	
+	dt.drawMultiHead(true);
+	dt.setCols(col);
+	/*********设置样式*************/
+	dt.setClassName('dttheme_ifmis');
+	dt.draw(document.getElementById('editdatatable'));
+			</pre>
+<script>
+
+var dt=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"${column('L')}+${column('M')}"}]
+	,formulas:[{c:'H',l:24,formula:"${sum(${cells(null,'H','l>0')})}"}]
+	});
+	col=[dt.columns.seq,dt.columns.checkbox];
+	col.push({name:'G',alias:'经济科目',datatype:'S',width:110,fn:function(i,j,rs,v){
+		var l=parseInt(rs.A,10);
+		var str='';
+		for(var il=0;il<l;il++){
+			str+='&nbsp;&nbsp;'	
+		}
+		return 	str+v;
+	}})
+	
+	col.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col.push({name:'I',alias:'财政拨款',datatype:'N',width:110})
+	col.push({name:'J',alias:'预算外资金',datatype:'N',width:110})
+	//col.push({name:'K',alias:'纳入预算管理的政府性基金',datatype:'N',width:110})
+	col.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	
+	function rowspan(l,c,d){
+		if(d.G=='3010201'){
+			return "bl t";	
+		}else{
+			return "bl";	
+		}
+	}
+	function esfn(table,el,l,c,d){
+		return d.B=='1';
+	}
+	for(var i=0,l=col.length;i<l;i++){
+		col[i].rowspan=rowspan;
+		col[i].oneditstart=esfn;
+	}
+	
+	dt.drawMultiHead(true);
+	dt.setCols(col);
+	/*********设置样式*************/
+	dt.headsort(false);
+	dt.setAllowClock(false);
+	dt.setClassName('dttheme_ifmis');
+	dt.setMouselight('#CFF6FF');
+	dt.mousedrag(false);
+//	Ext.lt.regKeyEvent('r',function(){dt.showReplacewindow()},false,true);
+	dt.draw(document.getElementById('editdatatable'));
+	setTimeout(function(){
+		dt.resize(800,250);
+	},100);
+	
+</script>
+		</td>
+	</tr>	
+	<tr>
+	<th colspan=2>两列相加
+		</th>
+	</tr>
+	<tr>
+		<td VALIGN=top>
+			<div id="democolandcol" style="width:500px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=democolandcol>
+	var dt=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"${column('L')}+${column('M')}"},//两列相加
+		{c:'J',formula:"${cells(null,'L','v>100&&l==al')}-5"}]//具有过滤条件的两列相加
+	});
+		dt.draw(document.getElementById('democolandcol'));
+			</pre>
+<script>
+
+var dt1=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"${column('L')}+${column('M')}"},
+	{c:'I',formula:"${cells(null,'L','v>100&&l==al')}[0]+${cells(null,'M','v>50&&l==al')}[0]"}]
+	});
+	col1=[dt1.columns.seq];
+	col1.push({name:'G',alias:'经济科目',datatype:'S',width:110})
+	
+	col1.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col1.push({name:'I',alias:'条件两列相加',datatype:'N',width:110})
+	col1.push({name:'J',alias:'预算外资金',datatype:'N',width:110})
+	col1.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col1.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	
+	dt1.drawMultiHead(true);
+	dt1.setCols(col1);
+	dt1.headsort(false);
+	dt1.setAllowClock(false);
+	dt1.setClassName('dttheme_ifmis');
+	dt1.setMouselight('#CFF6FF');
+	dt1.mousedrag(false);
+//	Ext.lt.regKeyEvent('r',function(){dt.showReplacewindow()},false,true);
+	dt1.draw(document.getElementById('democolandcol'));
+	setTimeout(function(){
+		dt1.resize(800,250);
+	},100);
+	
+</script>
+		</td>
+	</tr>
+	
+	<tr>
+	<th colspan=2>if else 的使用  
+		</th>
+	</tr>
+	<tr>
+		<td VALIGN=top>
+			<div id="demoifelse" style="width:500px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=demoifelse>
+	var dt=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+formulascol:[{c:'H',formula:"${ifelse(${column('L')}>10,100,5)}"}]//当输入值大于10返回100，反之返回5
+	});
+		dt.draw(document.getElementById('demoifelse'));
+			</pre>
+<script>
+
+var dt2=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"${ifelse(${column('L')}>10,100,5)}"}]
+	});
+	col2=[dt2.columns.seq];
+	col2.push({name:'G',alias:'经济科目',datatype:'S',width:110})
+	
+	col2.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col2.push({name:'I',alias:'条件两列相加',datatype:'N',width:110})
+	col2.push({name:'J',alias:'预算外资金',datatype:'N',width:110})
+	col2.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col2.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	
+	dt2.drawMultiHead(true);
+	dt2.setCols(col2);
+	dt2.headsort(false);
+	dt2.setAllowClock(false);
+	dt2.setClassName('dttheme_ifmis');
+	dt2.setMouselight('#CFF6FF');
+	dt2.mousedrag(false);
+//	Ext.lt.regKeyEvent('r',function(){dt.showReplacewindow()},false,true);
+	dt2.draw(document.getElementById('demoifelse'));
+	setTimeout(function(){
+		dt2.resize(800,250);
+	},100);
+	
+</script>
+		</td>
+	</tr>
+	<tr>
+	<th colspan=2>如和在cells中使用'号 
+		</th>
+	</tr>
+	<tr>
+		<td VALIGN=top>
+			<div id="demoStrType" style="width:500px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=demoStrType>
+	var dt=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+formulas:[{c:'H',l:0,formula:"${sum(${cells(null,'H','d.G!=\\\'3010201\\\'')})}"}]
+	});
+		dt.draw(document.getElementById('demoStrType'));
+			</pre>
+<script>
+
+var dt3=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulas:[{c:'H',l:0,formula:"${sum(${cells(null,'H','d.G!=\\\'3010201\\\'')})}"}]
+	});
+	col3=[dt3.columns.seq];
+	col3.push({name:'G',alias:'经济科目',datatype:'S',width:110})
+	
+	col3.push({name:'H',alias:'合计',datatype:'N',width:110,edit:true})
+	
+	dt3.drawMultiHead(true);
+	dt3.setCols(col3);
+	dt3.headsort(false);
+	dt3.setAllowClock(false);
+	dt3.setClassName('dttheme_ifmis');
+	dt3.setMouselight('#CFF6FF');
+	dt3.mousedrag(false);
+	dt3.draw(document.getElementById('demoStrType'));
+	setTimeout(function(){
+		dt3.resize(800,250);
+	},100);
+	
+</script>
+		</td>
+	</tr>
+	
+		<tr>
+	<th colspan=2>动态添加或删除数据 
+		</th>
+	</tr>
+	<tr>
+		<td VALIGN=top>
+			<div id="add_del" style="width:500px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=demoStrType>
+	var dt=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"${column('L')}+${column('M')}"}]
+	,formulas:[{c:'H',l:24,formula:"${sum(${cells(null,'H','l>0')})}"}]
+	});
+		dt.draw(document.getElementById('demoStrType'));
+		
+	function addrow(){
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		dt4.endAddData(4,5);
+	}
+	function delrow(){
+		var list=editdatatable_rs2.query({G:"112233"});
+		dt4.startDeleteData(5,list.length);
+		editdatatable_rs2.remove(list);
+	}
+			</pre>
+		<button onclick='addrow()'>添加行</button> <button  onclick='delrow()'>删除行</button>
+<script>
+var editdatatable_rs2=new Ext.lt.recordset({columns:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','formula']
+		,datas:[
+		['0','0','','','','','3010201','111','0','111','0','0','','','','','','','','','',''],
+		['1','0','','','','','3010202','22','0','22','0','0','','','','','','','','','',''],
+		['2','0','','','','','3010203','22','0','22','0','0','','','','','','','','','',''],
+		['3','1','','','','','3010204','33','0','33','0','0','','','','','','','','','',''],
+		['0','0','','','','','3010205','44','0','44','0','0','','','','','','','','','',''],
+		['1','0','','','','','3010206','55','0','55','0','0','','','','','','','','','','']
+		]
+});
+var dt4=new Ext.lt.formulasdatatable({rs:editdatatable_rs2,
+		formulascol:[{c:'H',formula:"${column('L')}+${column('M')}"}]
+	,formulas:[{c:'H',l:5,formula:"${sum(${cells(null,'H','l!=rs.size()-1')})}"}]
+	});
+	col4=[dt4.columns.seq];
+	col4.push({name:'G',alias:'经济科目',datatype:'S',width:110})
+	col4.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col4.push({name:'I',alias:'条件两列相加',datatype:'N',width:110})
+	col4.push({name:'J',alias:'预算外资金',datatype:'N',width:110})
+	col4.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col4.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	
+	dt4.drawMultiHead(true);
+	dt4.setCols(col4);
+	dt4.headsort(false);
+	dt4.setAllowClock(false);
+	dt4.setClassName('dttheme_ifmis');
+	dt4.setMouselight('#CFF6FF');
+	dt4.mousedrag(false);
+	dt4.draw(document.getElementById('add_del'));
+	setTimeout(function(){
+		dt4.resize(800,250);
+	},100);
+	function addrow(){
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		editdatatable_rs2.addData({G:"112233",H:0,I:0,J:0,L:0,M:0},editdatatable_rs2.size()-2);
+		dt4.endAddData(4,5);
+	}
+	function delrow(){
+		var list=editdatatable_rs2.query({G:"112233"});
+		dt4.startDeleteData(5,list.length);
+		editdatatable_rs2.remove(list);
+	}
+</script>
+		</td>
+	</tr>
+		<tr>
+	<th colspan=2>有括号解析bug
+		</th>
+	</tr>
+	<tr>
+		<td VALIGN=top>
+			<div id="demokuohao" style="width:500px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=democolandcol>
+	var dt=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"5+(${column('L')}+${column('M')})/5"}]
+	});
+		dt.draw(document.getElementById('democolandcol'));
+			</pre>
+<script>
+
+var dt5=new Ext.lt.formulasdatatable({rs:editdatatable_rs,
+	formulascol:[{c:'H',formula:"(5+${column('L')})+(${column('M')}/5)"}]
+	});
+	col5=[dt5.columns.seq];
+	col5.push({name:'G',alias:'经济科目',datatype:'S',width:110})
+	
+	col5.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col5.push({name:'I',alias:'条件两列相加',datatype:'N',width:110})
+	col5.push({name:'J',alias:'预算外资金',datatype:'N',width:110})
+	col5.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col5.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	
+	dt5.drawMultiHead(true);
+	dt5.setCols(col5);
+	dt5.headsort(false);
+	dt5.setAllowClock(false);
+	dt5.setClassName('dttheme_ifmis');
+	dt5.setMouselight('#CFF6FF');
+	dt5.mousedrag(false);
+//	Ext.lt.regKeyEvent('r',function(){dt.showReplacewindow()},false,true);
+	dt5.draw(document.getElementById('demokuohao'));
+	setTimeout(function(){
+		dt5.resize(800,250);
+	},100);
+	
+</script>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ext.lt.editdatatable API</title>
+
+<script type="text/javascript" src="../../../../frameworksupport.js" ></script>
+<script type="text/javascript" src="../../../../ltext_core.js" ></script>
+<script type="text/javascript" src="../../../../datatable3.0.js" ></script>
+<script type="text/javascript" src="./editdatatable.js" ></script>
+<script type="text/javascript" src="../../../../calendar/calendar.js" ></script>
+<link type="text/css" rel="stylesheet"	href="../../../../calendar/calendar.css" />
+<link type="text/css" rel="stylesheet"	href="../../../../datatabletheme.css" />
+
+<style>
+
+.dttheme_ifmis .l .t {
+	background-color:#ffffce;
+}
+.dttheme_ifmis .l .edit_select{
+	background-color:#ffffce;
+}
+
+</style>
+
+
+<body>
+<h1>editdatatable</h1>
+<h2>命名空间：Ext.lt.editdatatable</h2>
+<h2>说明：</h2>
+<p>
+editdatatable组件是在Ext.lt.datatable组件的基础上扩展出为编辑状态的表格。
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css" /><br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme35.css" /><br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+&lt;script src="/ltext/datatable3.0.js">&lt;/script><br>
+&lt;script src="/ltext/editdatatable.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var rs=new Ext.lt.recordset(column:[],datas:[]);<br>
+  var table=new Ext.lt.editdatatable(rs);<br/>
+  table.draw(HTMLElement);<br />
+</p>
+<h2>初始化参数说明</h2>
+<p>
+数据集对象Ext.lt.recordset对象实例，必填属性
+</p>
+<h2>属性说明</h2>
+<h3>version</h3>
+<p>组件版本号，3.0或3.5</p>
+<h3>type</h3>
+<p>组件类型，datatable</p>
+
+<h2>方法说明</h2>
+<h3>setCols</h3>
+<p>
+设置表格列对象，数组形式。如果不设置，组件将通过数据集自动创建列设置。datatable中已经默认实现编码、单选、多选列，可以通过columns属性直接使用<br/>
+设置编辑状态是通过edit:true属性控制。
+<pre>
+table.setCols([
+	table.columns.seq,
+	table.columns.checkbox,
+	{name:'code',alias:'用户编码',type:'S'}
+]);
+</pre>
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">id</td>
+      <td bgcolor="#EEEEEE">int</td>
+      <td bgcolor="#EEEEEE">列索引，不设置时系统会通过对象内置序列生成</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">name</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">列名，对应数据集的属性名，区分大小写。系统默认值为 "col"+id</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">alias</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">列别名或显示名称。如果不设置，系统默认使用name属性的值作为别名</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">style</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">列样式单内容，通过该属性控制列显示样式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">display</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">是否显示该列</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">minwidth</td>
+      <td bgcolor="#EEEEEE">int</td>
+      <td bgcolor="#EEEEEE">列最小宽度，用户调整列宽时能设置的最小列宽。组件默认最小是50像素最大300像素</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">width</td>
+      <td bgcolor="#EEEEEE">int</td>
+      <td bgcolor="#EEEEEE">列宽度设置，不得小于minwidth，如果小于minwidth组件会以minwidth为准。width属性值集范围定义如下：<br>
+      <b>大于1</b> 表示实际宽度值<br>
+      <b>0-1之间</b> 按表格整体宽度的百分比自动匹配宽度<br>
+      <b>小于0</b> 按表格整体宽度的相对值设置宽度。如表格整体宽300，列宽设置为-230，列实际宽度为70<br>
+      <b>'auto'</b> 按表格整体宽度自动适应宽度<br>
+      以上设置在用户手工调整宽度后失效，以用户调整宽度为准
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">datatype</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据类型，目前组件支持的数据类型包括：S-字符串 N-数字 D-日期 P-百分比 F-浮点数型 I-整数型。默认为字符串</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">mapper</td>
+      <td bgcolor="#EEEEEE">Object</td>
+      <td bgcolor="#EEEEEE">mapper用于生成对照数据。比如平台业务数据中基础数据项全部使用itemid保存，将id转换name的工作可以通过formart属性进行转换。数据对照表通过mapper属性来设置。mapper的对象结构如下：<br>{default_column:缺省列默认第一列,columns:[n1,n2,……]列名,datas:[[],[]……]对照数据}  只有类型为S时生效</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">format</td>
+      <td bgcolor="#EEEEEE">String/object</td>
+      <td bgcolor="#EEEEEE">输出格式，针对不同的数据类型设置有不同的格式设置方法：<br>
+      	  <b>数值型(N)</b>：{unit:int 计量单位,dotname:int 小数位,qfw:boolean 是否显示}<br />
+          <b>文本型(S)</b>：#n1-#n2<br />
+          <b>日期型(D)</b>：'YYYY年MM月DD日' 输出格式，默认输出格式为'YYYY年MM月DD日'   输入日期格式必须为'YYYYMMDD'<br />
+          输出格式请参见示例
+          <b>百分比型(P)</b>：值为0到1之间的浮点数，输出格式为两位整数一位小数，以百分号结尾
+          <b>浮点数型(F)</b>：可以控制千分位和小数点后位数，不受计量单位控制
+          <b>整数型(I)</b>：可以控制是否显示千分位，输出时强制取整。
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">fn</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">
+      	fn函数是生成表格单元格HTML代码的函数，默认实现如下所示：<br>
+<pre>function(i,j,rs,value){
+	if(value==null || value=='null') value='';
+	return ['&lt;span title="',value,'" >',value,'&lt;/span>'].join('');
+}</pre>
+			  可以覆盖函数内部实现，按需生成所需要的格式和内容。
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">head</td>
+      <td bgcolor="#EEEEEE">Array[String]</td>
+      <td bgcolor="#EEEEEE">
+      	需要生成错层表头时首先需要调用datatable的drawMultiHead设置为true。
+      	表头按列设置，通过表头名称的数组来设置该列上层表头的名称，如果需要纵向合并，可以设置成相同的名字。相邻两列的表头名一致的话，组件自动进行横向合并。例如，直接支付和授权支付上增加一个集中支付的表头：col1={name:'直接支付',head:['集中支付']} col2={name,'授权支付',head:['集中支付']}。详见实例
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">edit</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">
+      	需要设置成编辑列设置为：true。
+      	设置为不可编辑状态为：false。
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">oneditstart</td>
+      <td bgcolor="#EEEEEE">Function</td>
+      <td bgcolor="#EEEEEE">
+      	编辑前操作</br>
+      	当返回值为：false时表示该单元格不可以录入
+      	<pre>function(table,el,l,c,d){ }</pre>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">oneditend</td>
+      <td bgcolor="#EEEEEE">Function</td>
+      <td bgcolor="#EEEEEE">
+      	编辑后操作</br>
+      	<pre>function(table,el,l,c,d){ }</pre>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">getSelectData</td>
+      <td bgcolor="#EEEEEE">Function</td>
+      <td bgcolor="#EEEEEE">
+      	自定义下拉类型编辑数据</br>
+      	需要返回数据为数组,数据内容和col.mapper定义一致。
+      	<pre>function(el,col,d,l,c)){return col.mapper.datas;}</pre>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">_dt</td>
+      <td bgcolor="#EEEEEE">datable</td>
+      <td bgcolor="#EEEEEE">组件生成后，自动追加到列对象上的表格对象引用</td>
+    </tr>
+  </table>
+</p>
+
+<h3>setMoveKey</h3>
+<p>
+设置移动所触发的键<br>
+cfg={'13':"down",'9':'right','37':'left','38':'up','40':'down','39':'right'};
+table.setMoveKey(cfg)
+</p>
+<h3>getOldData</h3>
+<p>
+编辑时获取修改前数据<br>
+table.getOldData()
+</p>
+<h3>getOldValue</h3>
+<p>
+编辑时获取修改前的值<br>
+table.getOldValue()
+</p>
+<table width="100%" border=1 >
+	
+	<tr>
+		<td VALIGN=top>
+			<button onclick='addbtn()'>addbtn</button>
+			<input type='text' id='rid'/>
+			<button onclick='rembtn()'>删除同B字段内容相同数据</button>
+			<button onclick='getAdd()'>获取新增数据</button>
+			<button onclick='getUpdate()'>获取修改数据</button>
+			<button onclick='getRemove()'>获取删除数据</button>
+			<div id="editdatatable" style="width:500px;height:250px;"></div>
+	
+<script>
+	function getAdd(){
+		alert(dt.getAddData().toJSON())
+	}
+	function getUpdate(){
+		alert(dt.getUpdataData().toJSON())
+	}
+	function getRemove(){
+		alert(dt.getRemoveData().toJSON())
+	}
+	
+	
+	function addbtn(){
+		dt.addData({});
+	}
+	function rembtn(){
+		var v=document.getElementById('rid').value;
+		dt.removeData(dt.getRecordset().query({B:v}));
+	}
+var datas=[['20120101','1','','','','','','111','0',null,'0','0','','','','','','','','','','']
+		,['20120102','1','','','','','3010202','22','0','22','0','0','','','','','','','','','','']
+		,['20120103','1','','','','','3010203','22','0','22','0','0','','','','','','','','','','']
+		,['20120104','1','','','','','3010204','33','0','33','0','0','','','','','','','','','','']
+		,['20120105','1','','','','','3010205','44','0','44','0','0','','','','','','','','','','']
+		,['20120106','1','','','','','3010206','55','0','55','0','0','','','','','','','','','','']
+		,['20120107','1','','','','','3010207','66','0','66','0','0','','','','','','','','','','']
+		,['20120108','1','','','','','3010299','222','0','222','0','0','','','','','','','','','','']
+		,['20120109','1','','','','','3010301','11','0','11','0','0','','','','','','','','','','']
+		,['20120111','1','','','','','3010399','22','0','22','0','0','','','','','','','','','','']
+		,['20120112','1','','','','','3010401','33','0','33','0','0','','','','','','','','','','']
+		,['20120113','1','','','','','3010402','4','0','4','0','0','','','','','','','','','','']
+		,['20120201','1','','','','','3010403','55','0','55','0','0','','','','','','','','','','']
+		,['20120301','','','','','','3010404','55','0','55','0','0','','','','','','','','','','']
+		,['20120401','','','','','','3010499','11','0','11','0','0','','','','','','','','','','']
+		,['20120501','','','','','','30105','11','0','11','0','0','','','','','','','','','','']
+		,['20120601','','','','','','30106','221','0','221','0','0','','','','','','','','','','']
+		,['20120701','','','','','','30199','32','0','32','0','0','','','','','','','','','','']
+		,['20120801','','','','','','30200','11','0','11','0','0','','','','','','','','','','']
+		,['20120901','','','','','','30202','33','0','33','0','0','','','','','','','','','','']
+		,['20121001','','','','','','30203','11','0','11','0','0','','','','','','','','','','']
+		,['20121101','','','','','','30204','23','0','23','0','0','','','','','','','','','','']
+		,['20121201','','','','','','3020801','123','0','123','0','0','','','','','','','','','','']
+		,['20121225','','','','','','3020802','123','0','123','0','0','','','','','','','','','','']
+		,['20130101','','','','','','3020803','123','0','123','0','0','','','','','','','','','','']
+		];
+for(var i=0;i<1000;i++){
+	datas.push(['20130101','','','','','','3020803','123','0','123','0','0','','','','','','','','','','']);
+}
+var editdatatable_rs=new Ext.lt.recordset({columns:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V']
+		,datas:datas
+});
+var _mapper_data=[['1010203','专项支出(合计）','0','heji'],['3010201','国家规定津贴补贴','1010203','gjgdjtbt'],['3010202','地方津贴补贴','1010203','dfjtbt'],['3010203','个人取暖补贴','1010203','grqhbt'],['3010204','岗位津贴','1010203'],['3010205','防暑降温补贴','1010203'],['3010206','中小学校长津贴','1010203'],['3010207','地区附加津贴','1010203'],['3010299','其他津贴补贴','1010203'],['3010301','年终一次性奖金和绩效工资','1010203'],['3010399','其他奖金','1010203'],['3010401','医疗保险','1010203'],['3010402','生育保险','1010203'],['3010403','养老保险','1010203'],['3010404','失业保险','1010203'],['3010499','其他社会保障缴费','1010203'],['30105','伙食费','1010203'],['30106','伙食补助费','1010203'],['30199','其他工资福利支出','1010203'],['30200','五项费用','1010203'],['30202','印刷费','1010203'],['30203','咨询费','1010203'],['30204','手续费','1010203'],['3020801','公用取暖费(行政单位)','1010203'],['3020802','公用取暖费(一般事业单位)','1010203'],['3020803','公用取暖费(学校)','1010203']];
+for(var i=0;i<1000;i++){
+	//_mapper_data.push([i+"",i+"",i+""]);
+}
+var dt=new Ext.lt.editdatatable(editdatatable_rs);
+	col=[dt.columns.seq];
+	col.push({name:'G',alias:'经济科目',datatype:'S',width:110,edit:true
+		,getSelectData:function(el,col,d,l,c){
+		return [['1010203','专项支出(合计）','0']];
+	},showSelectValue:function(v,mapper){
+		return mapper[0]+"-"+mapper[1]
+	}
+		
+	,format:'#code-#name',mapper:{columns:['code','name','supcode','pinyin'],datas:_mapper_data}})
+	col.push({name:'A',alias:'日期',datatype:'D',width:110,edit:true})
+	col.push({name:'B',alias:'B',datatype:'B',width:110,edit:true})
+	col.push({name:'C',alias:'C',datatype:'S',width:110,edit:true,oneditstart:function(table,el,l,c,d){
+		if(l==1)	{
+			table.setNowType('input')
+			return;
+		}
+		if(l==2){
+			table.setNowType('date')	
+			return ;
+		}
+		if(l==3){
+			table.nowformat={dotname:2};
+			table.setNowType('number')
+			return ;
+		}
+		if(l==4){
+			table.nowformat={dotname:5};
+			table.setNowType('number')
+			return ;
+		}
+		if(l==5){
+			table.setNowType('select')	
+			return ;
+		}
+		if(l==6){
+			table.nowformat="#code-#name";
+			table.nowcol=['code','name','scode'];
+			table.setNowType('tree')	
+			return ;
+		}
+	},getSelectData:function(el,col,d,l,c){
+		return [['1010203','专项支出(合计）','0']];
+	},showSelectValue:function(v,mapper){
+		return mapper[0]+"-"+mapper[1]
+	}
+	
+	})
+	col.push({name:'D',alias:'D',datatype:'S',width:110,edit:true})
+	col.push({name:'E',alias:'E',datatype:'S',width:110,edit:true})
+	col.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col.push({name:'I',alias:'财政拨款',datatype:'F',width:110,edit:true,numinpformat:{int:5,dec:2}})
+	col.push({name:'J',alias:'预算外资金',datatype:'N',width:110,edit:true})
+	col.push({name:'G',alias:'经济科目',datatype:'S',width:110,edit:true
+		//,getSelectData:function(el,col,d,l,c){
+		//return [['1010203','专项支出(合计）','0'],['3010201','国家规定津贴补贴','1010203'],['3010202','地方津贴补贴','1010203'],['3010203','个人取暖补贴','1010203'],['3010204','岗位津贴','1010203'],['3010205','防暑降温补贴','1010203'],['3010206','中小学校长津贴','1010203'],['3010207','地区附加津贴','1010203'],['3010299','其他津贴补贴','1010203'],['3010301','年终一次性奖金和绩效工资','1010203'],['3010399','其他奖金','1010203'],['3010401','医疗保险','1010203'],['3010402','生育保险','1010203'],['3010403','养老保险','1010203'],['3010404','失业保险','1010203'],['3010499','其他社会保障缴费','1010203'],['30105','伙食费','1010203'],['30106','伙食补助费','1010203'],['30199','其他工资福利支出','1010203'],['30200','五项费用','1010203'],['30202','印刷费','1010203'],['30203','咨询费','1010203'],['30204','手续费','1010203'],['3020801','公用取暖费(行政单位)','1010203'],['3020802','公用取暖费(一般事业单位)','1010203'],['3020803','公用取暖费(学校)','1010203']];
+	//},showSelectValue:function(v,mapper){
+	//	return mapper[0]+"-"+mapper[1]}
+	,format:'#code-#name',mapper:{columns:['code','name','sup1code','pinyin'],datas:_mapper_data}})
+	
+	col.push({name:'K',alias:'纳入预算管理的政府性基金',datatype:'N',width:110,edit:true})
+	col.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	
+	
+	for(var i=0;i<100;i++){
+		//col.push({name:'M'+i,alias:'其他收入'+i,datatype:'N',width:110,edit:false})
+	}
+	
+	function rowspan(l,c,d){
+		if(d.G=='3010201'){
+			return "bl t";	
+		}else{
+			return "bl";	
+		}
+	}
+	
+	for(var i=0,l=col.length;i<l;i++){
+		col[i].rowspan=rowspan;
+	}
+	
+	//dt.drawMultiHead(true);
+	dt.setCols(col);
+	/*********设置样式*************/
+	dt.setClassName('dttheme_ifmis');
+	dt.setMouselight('#CFF6FF');
+	dt.mousedrag(false);
+	dt.setSelectDown(false);
+	dt.mappingfilter(false);
+	
+	dt.setAllowClock(true);
+	
+	dt.draw(document.getElementById('editdatatable'));
+
+	setTimeout(function(){
+		dt.resize(1324,500);
+		dt.setMouselightCell(true);
+	},100);
+	
+</script>
+		</td>
+	</tr>	
+	
+</table>
+</body>
+</html>

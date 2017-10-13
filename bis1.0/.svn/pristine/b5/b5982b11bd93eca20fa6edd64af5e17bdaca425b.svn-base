@@ -1,0 +1,19 @@
+﻿<weblogic-web-app>
+	<context-root>/</context-root>
+
+	<!-- weblogic热部署 -->
+	<container-descriptor>
+		<servlet-reload-check-secs>-1</servlet-reload-check-secs>
+		<single-threaded-servlet-pool-size>
+			20
+		</single-threaded-servlet-pool-size>
+		<session-monitoring-enabled>true</session-monitoring-enabled>
+		<prefer-web-inf-classes>true</prefer-web-inf-classes>
+	</container-descriptor>
+	<session-descriptor>
+		<cookie-name>faspjsessionid</cookie-name>
+	</session-descriptor>
+</weblogic-web-app>
+
+
+

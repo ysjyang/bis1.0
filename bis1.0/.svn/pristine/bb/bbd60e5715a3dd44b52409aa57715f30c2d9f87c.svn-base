@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.formulas API</title>
+
+<script type="text/javascript" src="../../../../frameworksupport.js" ></script>
+<script type="text/javascript" src="../../../../ltext_core.js" ></script>
+<script type="text/javascript" src="../../../../ltext_template.js" ></script>
+<script type="text/javascript" src="../../../../editpanel.js" ></script>
+<script type="text/javascript" src="../../../../datatable3.0.js" ></script>
+<script type="text/javascript" src="../../../../editdatatable.js" ></script>
+<script type="text/javascript" src="../../../../editpanel.js" ></script>
+<script type="text/javascript" src="./data.js"></script>
+<script type="text/javascript" src="./formulas.js"></script>
+<link type="text/css" rel="stylesheet"	href="../../../../datatabletheme.css" />
+
+</head>
+
+
+<h1>cells</h1>
+<h2>命名空间：Ext.lt.formulas.initcells</h2>
+<h2>说明：</h2>
+<p>
+cells组件是为了方便datatable或者recordset对象进行公式计算所提供的单元格获取组件。
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;script src="/ltext/formulas.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var cells=Ext.lt.formulas.initcells();<br>
+  formulas.bind(datatable/recordset)<br/>
+</p>
+
+<h2>属性说明</h2>
+<h3>version</h3>
+<p>组件版本号，1.0</p>
+<h3>type</h3>
+<p>组件类型，cell</p>
+<h4>方法说明</h4>
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">方法名</th>
+      <th width="15%" bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    
+    <tr>
+      <td bgcolor="#CCCCCC">getCell</td>
+      <td bgcolor="#EEEEEE">c,l</td>
+      <td bgcolor="#EEEEEE">
+				通过行标识和列标识获取值
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">getRow</td>
+      <td bgcolor="#EEEEEE">l</td>
+      <td bgcolor="#EEEEEE">
+				获取指定行数据
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">setCells</td>
+      <td bgcolor="#EEEEEE">str,cs,ls,wherefnstr</td>
+      <td bgcolor="#EEEEEE">
+				设置获取单元格规则。str规则标识。
+&nbsp;&nbsp;ls:行内容填写行号，不控制行可以不写，多个行号用‘,’隔开<br/>
+&nbsp;&nbsp;例：  <br/>&nbsp;&nbsp;&nbsp;&nbsp;行： 1,2,3 表示第一，二，三行
+<br/><br/>
+&nbsp;&nbsp;cs:列内容可以填写列号或列的英文名字(名字需要用引号''引起来)，不控制列可以不写，多个列号用‘,’隔开<br/>
+&nbsp;&nbsp;例：  <br/>&nbsp;&nbsp;&nbsp;&nbsp;列： 1,2,3 表示第一，二，三列
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;列： 'itemid','code','name' 表示itemid列，code列，name列
+<br/><br/>
+&nbsp;&nbsp;wherefnstr：文本类型。提供默认参数(rs,c,cname,l,d,v)分别表示全部数据的recordSet对象，当前列号，当前列名字，当前行号，当前行的值，当前单元格的值<br/>
+&nbsp;&nbsp;返回值要求返回boolean类型<br/>
+&nbsp;&nbsp;例：<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;其他条件： v>100&&(rs["name"]=="测试"||cname=="name")&&l>1
+
+      </td>
+    </tr> 
+    <tr>
+      <td bgcolor="#CCCCCC">queryCell</td>
+      <td bgcolor="#EEEEEE">str</td>
+      <td bgcolor="#EEEEEE">
+				通过之前设置的规则标识来获取单元格数据。返回数组类型。
+      </td>
+    </tr> 
+    <tr>
+      <td bgcolor="#CCCCCC">bind</td>
+      <td bgcolor="#EEEEEE">datatable/recordset</td>
+      <td bgcolor="#EEEEEE">
+				绑定数据源
+      </td>
+    </tr> 
+    <tr>
+      <td bgcolor="#CCCCCC">getRecordset</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">
+				获取当前绑定的数据源的结果集
+      </td>
+    </tr> 
+    <tr>
+      <td bgcolor="#CCCCCC">getColNames</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">
+				获取绑定对象列名集合，返回数组
+      </td>
+    </tr>  
+  </table>
+  <br/><br/>
+<a href="./cell.html" TARGET ='_blank'>单元格配置页面</a>
+<script>
+var formulas=new Ext.lt.formulas();
+</script>
+<table width="100%" border=1 >
+	<tr>
+	<th colspan=2>编辑表格绑定</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="editdatatable" style="width:500px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			
+Ext.lt.formulas.createFormulas('sxp','百分比','百分比',function(o){
+	_ficentral=parseFloat(o.ficentral);
+	_fiprovincial=parseFloat(o.fiprovincial);
+	if(_fiprovincial==null||_fiprovincial==0)return 0;
+	return _ficentral/_fiprovincial;
+});
+
+
+var dt=new Ext.lt.editdatatable(editdatatable_rs);
+//formulas.bind(editdatatable_rs);
+formulas.bind(dt);
+Ext.lt.formulas.cells.setCells("ficentral",'ficentral',null,"d.code!='1'");
+function oneditend(table,el,l,c,d){
+	this._endedit(table,el,l,c,d);
+	if(c==1){
+		var a=formulas.execution2str("Ext.lt.formulas.formula.sum(Ext.lt.formulas.cells.queryCell('ficentral'))",c,l);
+		table.getRecordset().getData(0).ficentral=a;
+	}
+	var b=formulas.execution2str("Ext.lt.formulas.formula.sxp(Ext.lt.formulas.cells.getRow(l))",c,l);
+	d.sxp=b;
+	table.reflash();
+}
+			</pre>
+<script>
+var editdatatable_rs=new function(){var N=null,$0="ecmr2040201208";
+	return new Ext.lt.recordset({ver:"1.4",compress:2,columns:["isother","istotal","code","pcode","pfiprovincial","cacounty","ficounty","fiprovincial","identification","pficounty","name","ficentral","levelno","caprovincial","supcode"],datas:[[0,1,"1",$0,0,0,0,0,,0.1111,"合计",0,1,0,"0"],[0,0,"00",$0,0,0,0,0,,0,"无归类",0,2,0,"1"],[0,1,"01",$0,0,0,0,0,,0,"中央专款",0,2,0,"1"],[0,1,"0101",$0,0,0,0,0,,0,"义务教育专项资金",0,3,0,"01"],[0,0,"010101",$0,0,0,0,0,,0,"免费教科书",0,4,0,"0101"],[0,0,"0102",$0,0,0,0,0,,0,"高等教育、职业教育专项资金",0,3,0,"01"],[0,0,"0103",$0,0,0,0,0,,0,"其他教育专项资金",0,3,0,"01"],[0,0,"0104",$0,0,0,0,0,,0,"国债投资预算",0,3,0,"01"],[0,0,"0105",$0,0,0,0,0,,0,"中央预算内基建支出预算",0,3,0,"01"],[0,0,"0106",$0,0,0,0,0,,0,"水库移民扶持资金",0,3,0,"01"],[0,0,"0107",$0,0,0,0,0,,0,"石油价格改革补贴资金",0,3,0,"01"],[0,0,"0108",$0,0,0,0,0,,0,"家电汽车摩托车下乡补贴",0,3,0,"01"],[0,0,"0109",$0,0,0,0,0,,0,"病险水库加固",0,3,0,"01"],[0,0,"0110",$0,0,0,0,0,,0,"节能环保专项资金",0,3,0,"01"],[0,0,"0111",$0,0,0,0,0,,0,"农资综合直补资金",0,3,0,"01"],[0,0,"0112",$0,0,0,0,0,,0,"防汛抗旱专项资金",0,3,0,"01"],[0,0,"0113",$0,0,0,0,0,,0,"财政扶贫资金",0,3,0,"01"],[0,0,"0114",$0,0,0,0,0,,0,"退耕还林补助",0,3,0,"01"],[0,0,"0115",$0,0,0,0,0,,0,"动植物疫情监测及防治资金",0,3,0,"01"],[0,0,"0116",$0,0,0,0,0,,0,"最低生活保障补助",0,3,0,"01"],[0,0,"0117",$0,0,0,0,0,,0,"就业补助",0,3,0,"01"],[0,0,"0118",$0,0,0,0,0,,0,"军队移交政府的离退休人员安置补助",0,3,0,"01"],[0,0,"0119",$0,0,0,0,0,,0,"军队转业干部专项",0,3,0,"01"],[0,0,"0120",$0,0,0,0,0,,0,"公共卫生服务专项",0,3,0,"01"],[0,0,"0121",$0,0,0,0,0,,0,"廉租住房保障专项补助",0,3,0,"01"],[0,0,"0122",$0,0,0,0,0,,0,"自然灾害生活补助",0,3,0,"01"],[0,0,"0123",$0,0,0,0,0,,0,"基本医疗保险补助",0,3,0,"01"],[0,0,"0124",$0,0,0,0,0,,0,"农业综合开发专项资金",0,3,0,"01"],[0,0,"0125",$0,0,0,0,0,,0,"广播电视覆盖工程资金",0,3,0,"01"],[0,0,"0126",$0,0,0,0,0,,0,"支持中小企业发展",0,3,0,"01"],[0,0,"0127",$0,0,0,0,0,,0,"社保基金专项转移支付",0,3,0,"01"],[0,0,"0128",$0,0,0,0,0,,0,"军队移交政府离退休干部管理机构补助",0,3,0,"01"],[0,0,"0129",$0,0,0,0,0,,0,"补助优抚对象经费",0,3,0,"01"],[0,0,"0130",$0,0,0,0,0,,0,"粮食风险基金中央财政补助款",0,3,0,"01"],[0,0,"0131",$0,0,0,0,0,,0,"新型农村社会养老保险专项补助",0,3,0,"01"],[0,0,"0132",$0,0,0,0,0,,0,"高效节能空调推广财政补助资金",0,3,0,"01"],[0,0,"0133",$0,0,0,0,0,,0,"小型农田水利设施建设补助",0,3,0,"01"],[0,0,"0134",$0,0,0,0,0,,0,"医疗救助补助",0,3,0,"01"],[0,0,"0135",$0,0,0,0,0,,0,"新型农村农村合作医疗补助",0,3,0,"01"],[0,0,"0136",$0,0,0,0,0,,0,"高校、高职国家助学金",0,3,0,"01"],[0,0,"0137",$0,0,0,0,0,,0,"农作物粮种补贴",0,3,0,"01"],[0,0,"0138",$0,0,0,0,0,,0,"农机购置补贴",0,3,0,"01"],[0,0,"0199",$0,0,0,0,0,,0,"其他",0,3,0,"01"],[0,0,"02",$0,0,0,0,0,,0,"省级追加",0,2,0,"1"]],ml:[1,1,6,14,1,1,1,1,0,6,34,1,1,1,4]
+})};
+
+Ext.lt.formulas.createFormulas('sxp','百分比','百分比',function(o){
+	_ficentral=parseFloat(o.ficentral);
+	_fiprovincial=parseFloat(o.fiprovincial);
+	if(_fiprovincial==null||_fiprovincial==0)return 0;
+	return _ficentral/_fiprovincial;
+});
+
+
+var dt=new Ext.lt.editdatatable(editdatatable_rs);
+formulas.bind(dt);
+col=[];
+	var showname={};
+	col.push({alias:'资金类别',head:['资金类别'],width:100,datatype:'S',name:'name'});
+	col.push({alias:'中央',head:['财政投资'],width:110,datatype:'N',format:{dotname:2},name:'ficentral'});
+	col.push({alias:'省级',head:['财政投资'],width:110,datatype:'N',format:{dotname:2},name:'fiprovincial'});
+	col.push({alias:'市县拨付比例',datatype:'N',width:110,name:'sxp',format:{dotname:2}});
+
+	var olddata=0;
+	var savedata={};
+	function oneditstart(table,el,l,c,d){
+		if(d.type==0)return;
+		if(d.code=='1')return;
+		olddata=d[table.getCol(c).name];
+		if(olddata==null)olddata=0;	
+		this._startedit(table,el,l,c,d);
+		savedata[l]=d;
+	}
+	Ext.lt.formulas.cells.setCells("ficentral",'ficentral',null,"d.code!='1'");
+	function oneditend(table,el,l,c,d){
+		this._endedit(table,el,l,c,d);
+		if(c==1){
+			var a=formulas.execution2str("Ext.lt.formulas.formula.sum(Ext.lt.formulas.cells.queryCell('ficentral'))",c,l);
+			table.getRecordset().getData(0).ficentral=a;
+		}
+		var b=formulas.execution2str("Ext.lt.formulas.formula.sxp(Ext.lt.formulas.cells.getRow(l))",c,l);
+		d.sxp=b;
+		table.reflash();//_d.supcode
+	}
+	for(var i=1;i<col.length-1;i++){
+			col[i].edit=true;
+			col[i].oneditstart=oneditstart;
+			col[i].oneditend=oneditend;
+	}
+	
+	dt.drawMultiHead(true);
+	dt.setCols(col);
+	/*********设置样式*************/
+	dt.headsort(false);
+	dt.setAllowClock(false);
+	dt.setClassName('dttheme_ifmis');
+	dt.setMouselight('#CFF6FF');
+	dt.mousedrag(false);
+	
+	dt.draw(document.getElementById('editdatatable'));
+	setTimeout(function(){
+		dt.resize(500,250);
+	},100);
+</script>
+		</td>
+	</tr>	
+	
+		<tr>
+	<th colspan=2>部门预算表格测试</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="bumenyusuan" style="width:800px;height:250px;"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			
+			</pre>
+<script>
+var editdatatable_rs=new Ext.lt.recordset({columns:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V']
+		,datas:[['','1010203-出口消费品退消费税','002001-专项支出(合计）','111','否','321-预算单位321','','1477.00','0','1477.00','0','0','0','','','否','','','','','',''],['','','','','','','3010201-国家规定津贴补贴','111','0','111','0','0','','','','','','','','','',''],['','','','','','','3010202-地方津贴补贴','22','0','22','0','0','','','','','','','','','',''],['','','','','','','3010203-个人取暖补贴','22','0','22','0','0','','','','','','','','','',''],['','','','','','','3010204-岗位津贴','33','0','33','0','0','','','','','','','','','',''],['','','','','','','3010205-防暑降温补贴','44','0','44','0','0','','','','','','','','','',''],['','','','','','','3010206-中小学校长津贴','55','0','55','0','0','','','','','','','','','',''],['','','','','','','3010207-地区附加津贴','66','0','66','0','0','','','','','','','','','',''],['','','','','','','3010299-其他津贴补贴','222','0','222','0','0','','','','','','','','','',''],['','','','','','','3010301-年终一次性奖金和绩效工资','11','0','11','0','0','','','','','','','','','',''],['','','','','','','3010399-其他奖金','22','0','22','0','0','','','','','','','','','',''],['','','','','','','3010401-医疗保险','33','0','33','0','0','','','','','','','','','',''],['','','','','','','3010402-生育保险','4','0','4','0','0','','','','','','','','','',''],['','','','','','','3010403-养老保险','55','0','55','0','0','','','','','','','','','',''],['','','','','','','3010404-失业保险','55','0','55','0','0','','','','','','','','','',''],['','','','','','','3010499-其他社会保障缴费','11','0','11','0','0','','','','','','','','','',''],['','','','','','','30105-伙食费','11','0','11','0','0','','','','','','','','','',''],['','','','','','','30106-伙食补助费','221','0','221','0','0','','','','','','','','','',''],['','','','','','','30199-其他工资福利支出','32','0','32','0','0','','','','','','','','','',''],['','','','','','','30200-五项费用','11','0','11','0','0','','','','','','','','','',''],['','','','','','','30202-印刷费','33','0','33','0','0','','','','','','','','','',''],['','','','','','','30203-咨询费','11','0','11','0','0','','','','','','','','','',''],['','','','','','','30204-手续费','23','0','23','0','0','','','','','','','','','',''],['','','','','','','3020801-公用取暖费(行政单位)','123','0','123','0','0','','','','','','','','','',''],['','','','','','','3020802-公用取暖费(一般事业单位)','123','0','123','0','0','','','','','','','','','',''],['','','','','','','3020803-公用取暖费(学校)','123','0','123','0','0','','','','','','','','','','']]
+});
+var bumenyusuandt=new Ext.lt.editdatatable(editdatatable_rs);
+var qf=new Ext.lt.formulas();
+qf.bind(bumenyusuandt)
+col=[bumenyusuandt.columns.seq];
+	var showname={};
+	col.push({name:'A',alias:'项目编号',datatype:'S',width:110})
+	col.push({name:'B',alias:'功能科目',datatype:'S',width:110})
+	col.push({name:'C',alias:'支出项目类别',datatype:'S',width:110})
+	col.push({name:'D',alias:'项目名称',datatype:'S',width:110})
+	col.push({name:'E',alias:'是否政府采购',datatype:'S',width:110})
+	col.push({name:'F',alias:'主管处室',datatype:'S',width:110})
+	col.push({name:'G',alias:'经济科目',datatype:'S',width:110})
+	col.push({name:'H',alias:'总计',datatype:'N',width:110})
+	col.push({name:'I',alias:'财政拨款',datatype:'N',width:110,edit:true})
+	col.push({name:'J',alias:'预算外资金',datatype:'N',width:110,edit:true})
+	col.push({name:'K',alias:'纳入预算管理的政府性基金',datatype:'N',width:110,edit:true})
+	col.push({name:'L',alias:'单位经营收入',datatype:'N',width:110,edit:true})
+	col.push({name:'M',alias:'其他收入',datatype:'N',width:110,edit:true})
+	col.push({name:'N',alias:'备注',datatype:'S',width:110})
+	col.push({name:'O',alias:'项目库对应Id',datatype:'S',width:110})
+	col.push({name:'P',alias:'是否预算直编',datatype:'S',width:110})
+	col.push({name:'Q',alias:'新增测试列',datatype:'S',width:110})
+	col.push({name:'R',alias:'WYH测试',datatype:'S',width:110})
+	col.push({name:'S',alias:'TEST',datatype:'S',width:110})
+	col.push({name:'T',alias:'IYRRYU',datatype:'S',width:110})
+	col.push({name:'U',alias:'TYUUIII',datatype:'S',width:110})
+	col.push({name:'V',alias:'XFTA',datatype:'S',width:110})
+	 
+	var olddata=0;
+	var savedata={};
+	function oneditstart(table,el,l,c,d){
+		if(l==0)return;
+		olddata=d[table.getCol(c).name];
+		if(olddata==null)olddata=0;	
+		this._startedit(table,el,l,c,d);
+	}
+	Ext.lt.formulas.createFormulas('bmysval','部门预算合计','部门预算合计',function(o){
+		var d=o[0];
+		return parseFloat(d[o[1]])-parseFloat(olddata)
+	});
+	
+	function oneditend(table,el,l,c,d){
+		this._endedit(table,el,l,c,d);
+		var cname=table.getCol(c).name;
+		var v=qf.calculation('bmysval',[d,cname]);
+		d.H= parseFloat(d.H)+v;
+		var d0=table.getRecordset().getData(0);
+		d0['H']=v+parseFloat(d0['H']);
+		d0[cname]=v+parseFloat(d0[cname]);
+		table.reflash();//_d.supcode
+	}
+	for(var i=1;i<col.length-1;i++){
+		if(col[i].edit){
+			col[i].oneditstart=oneditstart;
+			col[i].oneditend=oneditend;
+		}
+	}
+	
+	bumenyusuandt.drawMultiHead(true);
+	bumenyusuandt.setCols(col);
+	/*********设置样式*************/
+	bumenyusuandt.headsort(false);
+	bumenyusuandt.setAllowClock(false);
+	bumenyusuandt.setClassName('dttheme_ifmis');
+	bumenyusuandt.setMouselight('#CFF6FF');
+	bumenyusuandt.mousedrag(false);
+	
+	bumenyusuandt.draw(document.getElementById('bumenyusuan'));
+	setTimeout(function(){
+		bumenyusuandt.resize(800,250);
+	},100);
+</script>
+		</td>
+	</tr>	
+	
+</table>
+</body>
+</html>

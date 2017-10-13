@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>queryplandemo</title>
+<script type="text/javascript" src="../../frameworksupport.js"></script>
+<script type="text/javascript" src="../../ltext_core.js"></script>
+<script type="text/javascript" src="../../editpanel.js"></script>
+<script type="text/javascript" src="../../datatable3.0.js"></script>
+<link rel="stylesheet" type="text/css" href="../../datatabletheme.css" />
+<script type="text/javascript" src="../../editquery.js"></script>
+</head>
+  <body>
+   <input type=button value='查询方案' onclick='showQueryplan()'/>
+   <div id="test" ></div>
+  </body>
+</html>
+<script language="javascript" type="text/javascript">
+  function showQueryplan(){
+  	var aa=new Ext.lt.editquery(test,11);
+  	aa.draw(test);
+  }
+  </script>
+

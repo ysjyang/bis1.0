@@ -1,0 +1,128 @@
+/**
+ * @Title: Test1.java
+ * @Copyright (C) 2016 龙图软件
+ * @Description:
+ * @Revision History:
+ * @Revision 1.0 2016-5-11  钟毅
+ */
+
+package gov.mof.fasp2.bis.test;
+
+import gov.mof.fasp2.bis.bustype.IFasp2PayBankService;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.caucho.burlap.client.BurlapProxyFactory;
+
+/**
+ * @ClassName: Test1
+ * @Description: Description of this class
+ * @author <a href="mailto:zhongyi@szlongtu.com">钟毅</a>2016-5-11 钟毅11:10:54
+ */
+
+public class Test1 {
+
+	/**
+	 * @param args
+	 * @throws
+	 */
+	public static void main(String[] args) {
+
+		String url = "http://127.0.0.1:7001/remoting/service/bankservice";
+		BurlapProxyFactory factory = new BurlapProxyFactory();
+		try {
+			// int total = 0;
+			// int currentpage = 5;
+			// int numforpage = 10;
+			// if(currentpage*numforpage>total){
+			// int mnum = total%numforpage;
+			// currentpage = (total-mnum)/numforpage;
+			// if(mnum>0||currentpage==0){
+			// currentpage = currentpage+1;
+			// }
+			// }
+			// System.out.println(currentpage);
+
+			IFasp2PayBankService service = (IFasp2PayBankService) factory
+					.create(IFasp2PayBankService.class, url);
+
+			Map m = service.login("admin", "123456");
+			Map rt = null;
+			System.out.println(m);
+			String verifycode = (String) m.get("verifycode");
+			// rt = service.readVou("1001", "bank", "150100", "2016",
+			// verifycode);
+			// System.out.println(rt);
+			//
+			// m = service.login("admin", "123456");
+			// System.out.println(m);
+			// verifycode = (String)m.get("verifycode");
+			// rt = service.readUnReplySlipVou("1001", "bank", "150100", "2016",
+			// verifycode);
+			// System.out.println(rt);
+			//
+			// m = service.login("admin", "123456");
+			// System.out.println(m);
+			// verifycode = (String)m.get("verifycode");
+			// rt = service.replySlipVou("1001", "bank", "150100", "2016",
+			// verifycode, (List)rt.get("datas"));
+			// System.out.println(rt);
+
+			// List list = new ArrayList();
+			// m = new HashMap();
+			// m.put("guid", "11");
+			// list.add(m);
+			//
+			// m = service.login("admin", "123456");
+			// System.out.println(m);
+			// verifycode = (String)m.get("verifycode");
+			// rt = service.sendVou("1002", "bank", "150000", "2016",
+			// verifycode,list);
+			// System.out.println(rt);
+
+			// m = service.login("admin", "123456");
+			// System.out.println(m);
+			// verifycode = (String)m.get("verifycode");
+			// rt = service.cancelSendVou("1003", "bank", "150100", "2016",
+			// verifycode,(List)rt.get("datas"));
+			// System.out.println(rt);
+
+//			m = service.login("admin", "123456");
+//			System.out.println(m);
+//			verifycode = (String) m.get("verifycode");
+//			List elementcodelist = new ArrayList();
+//			elementcodelist.add("fundtype");
+//			elementcodelist.add("paytype");
+//			elementcodelist.add("setmode");
+//			elementcodelist.add("bgttype");
+//			elementcodelist.add("paykind");
+//			elementcodelist.add("agencyexp");
+//			elementcodelist.add("program");
+//			elementcodelist.add("expfunc");
+//			elementcodelist.add("expeco");
+//			elementcodelist.add("agency");
+//			elementcodelist.add("bank");
+//			elementcodelist.add("bankaccount");
+//			elementcodelist.add("bankaccounttype");
+//			elementcodelist.add("zfgllx");
+//			rt = service.queryElelementVersion("1201", "bankcode", "150000",
+//					"2016", verifycode, elementcodelist);
+//			System.out.println(rt);
+//			//
+//			m = service.login("admin", "123456");
+//			verifycode = (String) m.get("verifycode");
+//			rt = service.queryElelement("1202", "bank", "150000", "2017",
+//					verifycode, "setmode", "0");
+//			//System.out.println(rt);
+//			m = service.login("admin", "123456");
+//			verifycode = (String) m.get("verifycode");
+			//System.out.println(verifycode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}

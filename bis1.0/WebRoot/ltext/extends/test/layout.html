@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<HEAD>
+		<TITLE>Layout1</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gb2312" />
+		<script type="text/javascript">
+			var info_load={};
+			info_load.publics=[];//每个js/css加载时间  {name:string,time:int};
+			info_load.ocxs=[];//每个ojbect(ocx等控件)加载时间  {name:string,time:int};
+			info_load.public=new Date();
+			info_load.all=new Date();
+			var _ROOT_PATH_='http://127.0.0.1:7001';
+		</script>
+		<SCRIPT src="../../frameworksupport.js" type="text/javascript"></SCRIPT>
+		<SCRIPT src="../../ltext_core.js" type="text/javascript"></SCRIPT>
+
+	</HEAD>
+	<BODY style="padding: 0px;margin: 0px;border: 0px; overflow: auto;">
+		<div layout="{h:{fit:150,overflow:'hidden'},w:{fit:true},fold:{bottom:'auto'}}" style="background-color: red;">layout="{h:{fit:150},w:{fit:true}}"<div style="width:500px;height:200px;background-color: #625;"></div></div>
+		<div layout="{h:{fit:-250,min:200},w:{fit:true}}" style="background-color: blue;overflow: auto;">
+			<div layout="{h:{fit:true},w:{fit:150}}" style="width: 150px; background-color: #a3d; float: left;">layout="{h:{fit:true},w:{fit:150}}"</div>
+			<div layout="{h:{fit:-100},w:{fit:-150}}" style="background-color: green;float: left;">layout="{h:{fit:-100},w:{fit:-150}}"</div>layout="{h:{fit:-250,min:200},w:{fit:true}}"
+		</div>
+		<div layout="{h:{fit:'auto'}}" style="background-color: yellow;">layout="{h:{fit:'auto'}}"</div>
+		<div layout="{h:{fit:20}}" style="background-color: #bbb;">layout="{h:{fit:20}}"</div>
+	</BODY>
+</HTML>

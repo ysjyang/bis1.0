@@ -1,0 +1,40 @@
+package gov.mof.fasp2.bis.test;
+
+import gov.mof.fasp2.bis.bustype.IFasp2PayBankService;
+
+import java.util.Map;
+
+import com.caucho.burlap.client.BurlapProxyFactory;
+
+public class XmlTest {
+	public static void main(String[] args) {
+
+		try{  
+			//服务地址
+			java.net.URL url = new java.net.URL("http://127.0.0.1:7001/remoting/service/bankservice"); 
+			BurlapProxyFactory factory = new BurlapProxyFactory();
+			IFasp2PayBankService service = (IFasp2PayBankService) factory
+					.create(IFasp2PayBankService.class, "http://127.0.0.1:7001/remoting/service/bankservice");
+
+			Map m = service.login("admin", "123456");
+			String ver = (String) m.get("verifycode");
+			//请求报文//</map></list></burlap:call>
+			String XMLmessage = "<burlap:call><method>readVou</method><string>1001</string><string>pay</string><string>150000</string><string>2017</string><string>"+ver+"</string></burlap:call>";
+			
+			java.net.URLConnection urlConnection = url.openConnection();  
+            urlConnection.setDoOutput(true);  
+            java.io.OutputStreamWriter out = new java.io.OutputStreamWriter(urlConnection.getOutputStream());  
+            out.write(XMLmessage);  
+            out.flush();  
+            out.close();  
+              
+            java.io.InputStream inputStream = urlConnection.getInputStream();  
+            String encoding = urlConnection.getContentEncoding();  
+            System.out.println(encoding);
+            String body = org.apache.commons.io.IOUtils.toString(inputStream, encoding);  
+            System.out.println(body);  //返回数据报文
+        }catch(Exception e){  
+        }  
+	}
+
+}

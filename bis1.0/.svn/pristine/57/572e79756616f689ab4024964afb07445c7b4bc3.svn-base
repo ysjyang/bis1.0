@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<HEAD>
+		<TITLE>topLayout</TITLE>
+		<META http-equiv=Content-Type content="text/html; charset=gb2312" />
+		<script type="text/javascript">
+			var info_load={};
+			info_load.publics=[];//每个js/css加载时间  {name:string,time:int};
+			info_load.ocxs=[];//每个ojbect(ocx等控件)加载时间  {name:string,time:int};
+			info_load.public=new Date();
+			info_load.all=new Date();
+			var _ROOT_PATH_='http://127.0.0.1:7001';
+		</script>
+		<link rel="stylesheet" type="text/css" href="../style/ext-all.css"/>
+		<SCRIPT src="../frameworksupport.js" type=text/javascript></SCRIPT>
+		<SCRIPT src="../ltext_core.js" type=text/javascript></SCRIPT>
+		<SCRIPT src="../ltext_template.js"></script>
+	</HEAD>
+	<BODY>
+	</BODY>
+	<script>
+	var top=new Ext.Panel({title:'top',html:"这里是表头"});
+	var main={};
+		main.draw=function(div){div.innerHTML="<div layout={h:{fit:-100}} style='background-color: yellow;'>我是中间";}
+		main.resize=function(w,h){}
+</script>
+
+	<script>
+var tempconfig={title:top,main:[{panel:main,show:true}]}
+Ext.lt.template.showIfmisTopTemplate(tempconfig)
+</script>
+
+</HTML>

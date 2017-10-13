@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>财政管理一体化信息系统(IFMIS)</title>
+<script type="text/javascript" src="../../../../frameworksupport.js" ></script>
+<script type="text/javascript" src="../../../../ltext_core.js" ></script>
+<script type="text/javascript" src="../../../../ltext_template.js" ></script>
+<script type="text/javascript" src="../../../../editpanel.js" ></script>
+<script type="text/javascript" src="../../../../datatable3.0.js" ></script>
+<script type="text/javascript" src="../../../../editdatatable.js" ></script>
+<script type="text/javascript" src="../../../../editpanel.js" ></script>
+<script type="text/javascript" src="./data.js"></script>
+<script type="text/javascript" src="./cellconfig.js"></script>
+<link type="text/css" rel="stylesheet"	href="./style.css" />
+<link type="text/css" rel="stylesheet"	href="../../../../datatabletheme.css" />
+<link type="text/css" rel="stylesheet"	href="../../../../datatabletheme35.css" />
+<script>
+	window.status="龙图软件 版权所有" 
+ 	var _ROOT_PATH_='../';
+</script>
+</head>
+<body >
+</body>
+<script type="text/javascript">
+var config0={}
+var index= new Ext.lt.cellconfig(null,config0)
+var tempconfig={main:[{panel:index,show:true}]}
+
+Ext.lt.template.showIfmisOnePageTemplate(tempconfig)
+</script>
+</html>

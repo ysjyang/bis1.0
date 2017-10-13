@@ -1,0 +1,105 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title>shadesdemo</title>
+		<script type="text/javascript" src="../../frameworksupport.js"></script>
+		<script type="text/javascript" src="../../ltext_core.js"></script>
+		<script type="text/javascript" src="../../editpanel.js"></script>
+		<script type="text/javascript" src="../../datatable3.0.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../datatabletheme.css" />
+		<script type="text/javascript" src="../../shades.js"></script>
+<style type="text/css">
+#shades {
+	background: #F5F9FD;
+	margin: 0px 5px;
+	border: #C1E0FF 1px solid;
+	height: 99%
+}
+
+div.menu {
+	width: 100px;
+	font-size: 12px;
+	padding-bottom: 10px;
+	background: #F00;
+	color: #fff;
+}
+div.menu div { 
+	overflow: hidden;
+}
+
+div.menu div.collapsed {
+	border-bottom: #BBDDFF 1px solid;
+	height: 25px;
+}
+div.menu div span {
+	display: block;
+	padding: 3px 0 0 20px;
+	color: #333;
+	line-height: 22px;
+	background: #EDF8FB url() no-repeat 4px;
+	cursor: pointer;
+	font-size: 13px
+}
+
+div.menu div a {
+	line-height: 23px;
+	padding: 0 0 0 20px;
+	background: #ffffff url() no-repeat 5px 7px;
+	display: block;
+	color: #333;
+}
+div.cross{
+	position:relative;
+	top:-116px;
+	left:107px;
+	width: 200px;
+	height:200px;
+	color: #ffffff;
+}
+
+</style>
+	</head>
+	<body>
+		<div id="shades" class="menu">
+			<div class="collapsed">
+				<span>标题一</span>
+				<div>
+					<a href="#" target="main">子菜单一</a>
+					<a href="#" target="main">子菜单二</a>
+				</div>
+			</div>
+			<div class="collapsed">
+				<span>标题二</span>
+				<div>
+					<a href="#" target="main">子菜单三</a>
+					<a href="#" target="main">子菜单四</a>
+				</div>
+			</div>
+			<div class="collapsed">
+				<span>标题三</span>
+				<div>
+					<a href="#" target="main">子菜单五</a>
+					<a href="#" target="main">子菜单六</a>
+				</div>
+			</div>
+			<div class="collapsed">
+				<span>标题四</span>
+				<div>
+					<a href="#" target="main">子菜单七</a>
+					<a href="#" target="main">子菜单八</a>
+					<a href="#" target="main">子菜单九</a>
+				</div>
+			</div>
+		</div>	
+<script type="text/javascript">
+	//横向cross竖向vertical
+	var flag='cross';
+	var shades = new Ext.lt.shades("shades",flag);
+</script>
+	</body>
+</html>
+
+

@@ -1,0 +1,449 @@
+@CHARSET "UTF-8";
+* {
+	font-family: microsoft yahei;
+	color: #363636;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background:#fff;
+}
+.bule_style {
+	margin: 0 auto;
+	padding: 0px;
+	width: 100%;
+}
+/*****************logo和关闭按钮的样式********************/
+.bule_style .sysHead {
+	background: #0364b5;
+	width: 100%;
+	height: 54px;
+}
+.bule_style .sysHead .sys_logo {
+	width: 50%;
+	height: 54px;
+	background: url(../img/system/f_logo.png) no-repeat center left;
+}
+.bule_style .sysHead .sys_logo a {
+	color: #fff;
+	text-decoration: none;
+	padding-left: 90px;
+	line-height: 54px;
+	font-size: 24px;
+}
+.bule_style .sysHead .sys_logo span {
+	color: #fff;
+	line-height: 54px;
+	font-size: 14px;
+	padding-left: 10px;
+}
+/*****************logo和关闭按钮的样式********************/
+
+
+.bule_style .sysMain {
+	margin: 10px;
+	overflow-x: hidden;
+	overflow-y:auto;
+}
+/************************按钮区样式*********************/
+.bule_style .sysMain .sysBtnBox {
+	width: 100%;
+	height: 28px;
+	margin-bottom: 10px;
+}
+.bule_style .sysMain .sysBtnBox ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.bule_style .sysMain .sysBtnBox ul.ULRight , .bule_style .sysMain .sysBtnBox ul.ULRight li{
+	float:left;
+	font-size:12px;
+	margin-right:10px;
+}
+.bule_style .sysMain .sysBtnBox ul.ULLeft li {
+    float:left;
+	padding:0px 10px 0px 0px;
+}
+.bule_style .sysMain .sysBtnBox li button[disabled], .bule_style .sysMain .sysBtnBox li button[disabled]:hover {
+	background: #f2f9ff;
+	border: 1px solid #d9e9f6;
+	color: #d9e9f6;
+}
+.bule_style .sysMain .sysBtnBox li button {
+	background: #f2f9ff;
+	border: 1px solid #d9e9f6;
+	margin-right: 0;
+	line-height: 14px;
+	float: left;
+	padding: 6px 20px;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 14px;
+	font-family: Microsoft YaHei;
+	color: #499bed;
+}
+.bule_style .sysBtnBox li button:hover {
+	float: left;
+	background: #fff;
+	border: 1px solid #d9e9f6;
+	padding: 6px 20px;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 14px;
+	color: #363636;
+}
+.bule_style .sysBtnBox li select{width: 180px; height: 28px;line-height:28px;}
+.bule_style .sysBtnBox li select option{ height:28px; line-height:28px;}
+.bule_style .sysBtnBox li input{width:100px; height:26px;line-height:26px;}
+.bule_style .sysBtnBox li select, .bule_style .sysBtnBox li input {
+	border: 1px solid #ccc;
+	padding: 0px 0px 0px 5px;
+	font-size:12px;
+	
+}
+/************************按钮区样式*********************/
+
+/*包住树区和表格区的样式*/
+.bule_style .sysMain .sys_content {
+	width: 100%;
+	height: auto;
+	display: block;
+	overflow: hidden;
+}
+
+/************************树区样式*********************/
+.bule_style .sysMain .sysTreeBox {
+	width: 200px;
+	float: left;
+	margin-right:10px;
+}
+.bule_style .sysMain .sysTreeBox .sysTreeTitle {
+	width: 198px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid #e5e5e5;
+	border-bottom: 0px none;
+	background: #f2f9ff;
+	position: relative;
+	text-align: center;
+	color: #3c92de;
+	font-size: 14px;
+	font-weight: bold;
+}
+.bule_style .sysMain .sysTree {
+	width: 198px;
+	background:#fff;
+	border: 1px solid #e5e5e5;
+	position: relative;
+	height: 463px;
+}
+.bule_style .sysMain .sysTree .qtree {
+	padding: 10px;
+}
+.bule_style .sysMain .sysTree .qtree .itemopen-nl {
+	background: url(../img/system/ui/tree/rueltree-minus.gif) no-repeat left top;
+}
+.bule_style .sysMain .sysTree .qtree .itemclose-nl {
+	background: url(../img/system/ui/tree/rueltree-plus.gif) no-repeat left top;
+}
+.bule_style .sysMain .sysTree .qtree .itemopen {
+	background: url(../img/system/ui/tree/rueltree-minus.gif) no-repeat left top;
+}
+.bule_style .sysMain .sysTree .qtree .itemclose {
+	background: url(../img/system/ui/tree/rueltree-plus.gif) no-repeat left top;
+}
+.bule_style .sysMain .sysTree .qtree .line-nl, .bule_style .sysMain .sysTree .qtree .line {
+	background: url(../img/system/ui/tree/elbow-line.gif);
+	margin-top: 0px;
+	margin-left: -1px;
+	height: 18px;
+}
+.bule_style .sysMain .sysTree .qtree .itemnomorl {
+	background: url(../img/system/ui/tree/rueltree-elbow.gif) no-repeat left top;
+}
+.bule_style .sysMain .sysTree .qtree .itemnomorl-nl {
+	background: url(../img/system/ui/tree/rueltree-end.gif) no-repeat left top;
+}
+/************************树区样式*********************/
+
+/************************表格样式*********************/
+.bule_style .sysMain .sysTableBox {
+	float: left;
+	width: 1100px;
+	/*margin-left: 10px;*/
+	height: 501px;
+	border: 1px solid #e5e5e5;
+}
+.bule_style .dttheme_inner {
+	padding: 0px;
+	border: 0px none;
+	position: relative;
+	font-size: 14px;
+}
+.bule_style .dttheme_inner .h {
+	overflow: hidden;
+	position: absolute;
+}
+.bule_style .dttheme_inner table {
+	background: #b4dcff;
+	border: 1px solid #95cdff;
+	border-left: 0px none;
+	border-right: 0px none;
+	position: absolute;
+}
+/* 表头内容分隔线*/
+.bule_style .dttheme_inner td {
+	margin: 0px;
+	font-size: 13px;
+	border-right: #95cdff 1px solid;
+	border-bottom: 0px solid #e5e5e5;
+	color: #155187;
+	word-break: keep-all;
+	text-align: center;
+	position: relative;
+	height: 25px;
+	line-height: 25px;
+}
+.bule_style .dttheme_inner td span {
+	word-break: keep-all;
+	border: 0px none;
+}
+.bule_style .dttheme_inner td .c {
+	padding-left: 0;
+	border: 0px none;
+	color: #155187;
+	background: #b4dcff;
+}
+.bule_style .dttheme_inner .l {
+	overflow: hidden;
+	margin-top: 0px;
+	margin-left: 0px;
+	height: 25px;
+	padding-bottom: 1px;
+	border-left: 0px #e5e5e5 solid;
+	cursor: pointer;
+}
+/* 表格内容分隔线*/
+.bule_style .dttheme_inner .l .c {
+	border-top: 0px #e5e5e5 solid;
+	border-left: 0px #e5e5e5 solid;
+	border-right: 1px #e5e5e5 solid;
+	padding-left: 0px;
+	height: 100%;
+	float: left;
+	line-height: 25px;
+	background-color: #fff;
+	font-size: 12px;
+	color:#333;
+}
+.bule_style .dttheme_inner .l .c0 {
+	border-left: 1px #e5e5e5 solid;
+}
+.bule_style .dttheme_inner .l .c input[disabled], .bule_style .dttheme_inner .l .c input[disabled]:hover {
+	background: #fff;
+	border: 0px solid #d9e9f6;
+	color: #d9e9f6;
+}
+.bule_style .dttheme_inner .l .c input {
+	background: #fff;
+	border: 0px solid #d9e9f6;
+	text-decoration:underline;
+	margin-right: 0;
+	line-height: 12px;
+	padding: 3px 10px;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 12px;
+	font-family: Microsoft YaHei;
+	color: #499bed;
+	margin-top: 5px;
+}
+.bule_style .dttheme_inner .l .c input:hover {
+	background: #fff;
+	border: 0px solid #d9e9f6;
+	padding: 3px 10px;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 12px;
+	color: #363636;
+}
+.bule_style .dttheme_inner .l .c input[type="radio"]{
+	background: #fff;
+	border: 0px none;
+	margin: 6px 0px 0px 4px;
+	padding: 0px;
+}
+.bule_style .dttheme_inner .tablecheckbox {
+	margin-top: 3px;
+	border-color: red;
+}
+.bule_style .dttheme_inner .clock .c {
+	background: #d1d1d1;
+}
+.bule_style .dttheme_inner span {
+	padding-left: 0px;
+	padding-right: 0px;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	display: block;
+}
+.bule_style .dttheme_inner span .sw {
+	color: #f00;
+}
+/* 表格内容行线*/
+.bule_style .dttheme_inner .bl {
+	border-bottom: 1px #e5e5e5 solid;
+}
+.bule_style .dttheme_inner .bnl {
+	border-bottom: 1px #fff solid;
+}
+.bule_style .dttheme_inner .clock .bnl {
+	border-bottom: 1px rgb(238, 238, 238) solid;
+}
+.bule_style .dttheme_inner .popupmenu .item {
+	text-align: left;
+	height: 25px;
+	line-height: 25px;
+}
+.bule_style .dttheme_inner .clockrow {
+	margin: 0;
+}
+.bule_style .dttheme_inner .clockrow .c {
+	background-color: blue;
+}
+.bule_style .dttheme_inner .l .m {
+}
+.bule_style .dttheme_inner .edit {
+	margin: 0;
+	height: 30px;
+	line-height: 30px;
+	background: #ffdbb4;
+}
+.bule_style .dttheme_inner span .edit {
+	text-overflow: clip;
+}
+/************************表格样式*********************/
+
+/************************分页样式*********************/
+.bule_style .syspage {
+	width:100%;
+	height: auto;
+	background: #f5f5f5;
+	border: 1px solid #e5e5e5;
+	border-top:0px none;
+	z-index: 999;
+	display:inline-block;
+}
+.bule_style .syspage .pagebox {
+	padding: 10px;
+	font-size: 14px;
+	line-height:16px;
+	float:right;
+}
+.bule_style .syspage input {
+	border: 1px solid #e5e5e5;
+	width: 40px;
+	height:16px;
+	padding-left:5px;
+	margin:0px 5px;
+}
+.bule_style .syspage a.firstBtn , .bule_style .syspage a.firstBtn:hover{
+	background:url(../img/system/firstIcon.png) no-repeat center;
+	border:0px none;
+	width:40px;
+	height:20px;
+	display:block;
+	float:left;
+	margin-right:10px;
+}
+.bule_style .syspage a.endBtn , .bule_style .syspage a.endBtn:hover{
+	background:url(../img/system/lastIcone.png) no-repeat center;
+	border:0px none;
+	width:40px;
+	height:20px;
+	display:block;
+	float:left;
+	margin-right:10px;
+}
+.bule_style .syspage a.firstBtn{
+	background-position:0 0;
+}
+.bule_style .syspage a.firstBtn:hover{
+	background-position:0 -20px;
+}
+.bule_style .syspage a.endBtn{
+	background-position:0 0;
+}
+.bule_style .syspage a.endBtn:hover{
+	background-position:0 -20px;
+}
+.bule_style .syspage a.lastBtn , .bule_style .syspage a.nextBtn{
+	background:url(../img/system/btn_page.png) no-repeat center;
+	border:0px none;
+	width:20px;
+	height:20px;
+	display:block;
+	float:left;
+	margin-right:10px;
+}
+.bule_style .syspage a.lastBtn{
+	background-position:0 0;
+}
+.bule_style .syspage a.lastBtn:hover{
+	background-position:0 -20px;
+}
+.bule_style .syspage a.nextBtn{
+	background-position:-20px 0;
+}
+.bule_style .syspage a.nextBtn:hover{
+	background-position:-20px -20px;
+}
+
+/************************分页样式*********************/
+
+/************************编辑区样式*********************/
+.bule_style .sysEditBox{
+	background:#f5f5f5;
+	border:1px solid #e5e5e5;
+}
+.bule_style .sysEditBox ul{
+	list-style:none;
+	margin:5px 0px 0px 0px;
+	padding:0px;
+}
+.bule_style .sysEditBox ul li{
+	font-size:12px;
+	color:#333;
+	margin-bottom:5px;
+}
+.bule_style .sysEditBox ul li label{
+	width:95px;
+	height:auto;
+	line-height:25px;
+	font-size:12px;
+	display:inline-block;
+	text-align:right;
+}
+.bule_style .sysEditBox ul li input , .bule_style .sysEditBox ul li select{
+	background:#fff;
+	border:1px solid #cbcbcb;
+	text-indent:5px;
+	height:25px;
+	line-height:25px;
+	margin:0px;
+	padding:0px;
+	font-size:12px;
+	color:#333;
+}
+.bule_style .sysEditBox ul li input{
+	margin-right:5px;
+}
+.bule_style .mar10{
+	margin:10px;
+}

@@ -1,0 +1,118 @@
+<style type = "text/css">
+.selectclass
+{
+  	color:green;
+}
+</style>
+<div id="select_area"></div>
+<button id = "btn_show" onclick = "alert(selectobj.getValue())" >CLICK</button>
+<input type="text" id="setValueTest" value="102"/>
+<button onclick="set(setValueTest,select_area)">设置</button>
+
+<script>
+function set(textId,selectDivId)
+	{		
+		selectobj.setValue(setValueTest.value);
+		//selectobj.draw(selectDivId);
+	}
+</script>
+
+<script src="../../ltext_core.js"></script>
+<script>
+var data=[{v:"101",t:"省本级",a:'adf'},{v:"102",t:"预算",a:'23423'},{v:"103",t:"国库",a:"sdfsdfsd"},{v:"104",t:"市级",a:"sfwer3"}]
+
+
+
+Ext.lt.HTML.select=function(config)
+{
+	var _cfg=Ext.lt.apply({id:'selectdemo'+Ext.lt.getNextSeqValue(),nullvalue:true,className:''+'selectclass'},config);
+	var obj={};
+	var _id=_cfg.id; 
+	var rs=_cfg.data;
+	var _class=_cfg.className;
+	var _style =_cfg.style;
+	var _value = _cfg.value;
+	var _nullvalue = _cfg.nullvalue&true;
+	var _nullvaluehtml = '<option value=""></option>';
+	var _valuefield = _cfg.valuefield?_cfg.valuefield:'v';
+	var _textfield = _cfg.textfield?_cfg.textfield:'t';
+	var _selobj = {};
+	
+	obj.draw=function(d){
+		// 生成下拉框HTML代码
+		var str1=['<select id = "',_id,'" class  = "',_class,'" style ="',_style,'" ', '>'];
+		// 判断是否显示控制行
+		if(_nullvalue) str1.push(_nullvaluehtml);
+		for(var i=0;l=rs.length,i<l; i++){
+			str1.push('<option value="' , rs[i][_valuefield], '" >',rs[i][_textfield], '</option>');
+		}
+		str1.push("</select>");
+		d.innerHTML=str1.join('');
+		// 获取下拉框对象		
+		_selobj=d.firstChild;
+		// 设置默认值
+		obj.setValue(_value);
+		// 添加onselected事件处理
+		_selobj.onchange=function(){
+			if(obj.onselected!=null){
+				var data=obj.getData();
+				if(data==null){
+					obj.onselected(null,null,null);
+				}
+				else{
+					obj.onselected(data,data[_valuefield],data[_textfield]);
+				}
+			}
+		}
+	}
+ 
+	obj.getId=function(){
+		return _id;
+	}
+	
+	obj.getValue=function(){
+		  return _selobj.value; 
+	}
+	
+	obj.setValue=function(v){
+		_selobj.value=v
+		return;
+	}
+	
+	obj.getText = function(){
+		var d=obj.getData()
+		return d==null?null:d[_textfield];
+	}
+  
+	obj.getData=function(){
+		var selid=_selobj.selectedIndex;
+		return rs[selid-(_nullvalue?1:0)];
+	}
+	return obj;	
+}
+
+
+
+
+//  对象调用示例
+var selectobj=new Ext.lt.HTML.select(
+{
+id:'selectdemo',
+data:data,
+value:'102',
+nullvalue:false,
+style:'width:500px',
+className:'selectclass'
+
+});
+
+
+selectobj.draw(select_area);
+
+selectobj.onselected=function(data,v,t)
+ {
+	 alert( data+v+t);
+ }
+
+
+</script>

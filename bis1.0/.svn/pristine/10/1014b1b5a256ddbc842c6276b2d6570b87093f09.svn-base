@@ -1,0 +1,88 @@
+package gov.mof.fasp2.bis.test;
+
+import gov.mof.fasp2.bis.bustype.IFasp2PayBankService;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.caucho.burlap.client.BurlapProxyFactory;
+
+public class Test1012 {
+    /**
+     * 授权支付凭证-确认支付
+     * @param args
+     * @throws
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public static void main(String[] args) {
+        String url = "http://127.0.0.1:7001/remoting/service/bankservice";
+        BurlapProxyFactory factory = new BurlapProxyFactory();
+        try {
+            IFasp2PayBankService service = (IFasp2PayBankService) factory.create(IFasp2PayBankService.class, url);
+            
+            Map m = service.login("admin", "123456");
+            String verifycode = (String)m.get("verifycode");
+            List list = new ArrayList();
+            List subList = new ArrayList();
+            //第一条数据
+            Map map = new HashMap();
+            map.put("guid", "30D652E568207DF2E2F38B63533EF484");
+            map.put("billcode", "1150034300036");
+            map.put("paydate", "20170215");
+            map.put("payeebankaccount", "112");
+            map.put("payee", "111");
+            map.put("payeebank", "111");
+            map.put("amt", 8200.18);
+            map.put("bisbankcode", "pay");
+            Map submap = new HashMap();
+            submap.put("guid", "6F4546195DD4A4038A0D54E1813D2119");
+            submap.put("mainguid", "30D652E568207DF2E2F38B63533EF484");
+            submap.put("amt", 8200.10);
+            submap.put("province", "1500");
+            submap.put("year", "2017");
+            subList.add(submap);
+            map.put("sublist", subList);
+            list.add(map);
+            //第二条数据
+            map = new HashMap();
+            subList = new ArrayList();
+            map.put("guid", "52FA48DF65CA3DC1424B36AE5CA2E93C");
+            map.put("billcode", "1150034300026");
+            map.put("paydate", "20170215");
+            map.put("payeebankaccount", "112");
+            map.put("payee", "111");
+            map.put("payeebank", "111");
+            map.put("amt", 751871.01);
+            map.put("bisbankcode", "pay");
+            submap = new HashMap();
+            submap.put("guid", "289E3B5E1859F40131CCAA7B5C8F7E97");
+            submap.put("mainguid", "52FA48DF65CA3DC1424B36AE5CA2E93C");
+            submap.put("amt", 751871.00);
+            submap.put("province", "1500");
+            submap.put("year", "2017");
+            subList.add(submap);
+            map.put("sublist", subList);
+
+            list.add(map);
+//             map = new HashMap();
+//            map.put("guid", "2");
+//            map.put("billcode", "1");
+//            map.put("paydate", "111");
+//            map.put("payeebankaccount", "112");
+//            map.put("payee", "111");
+//            map.put("payeebank", "111");
+//            map.put("amt", 11);
+//            map.put("bisbankcode", "pay");
+//            list.add(map);
+           // System.out.println(list);
+         Map rt1 = service.sendVou("1012","bank","150000","2017",verifycode,list);
+    // Map rt1 = service.cancelSendVou("1013", "bank", "150000","2017",verifycode, list);
+            System.out.println("sendVou:"+rt1);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+}

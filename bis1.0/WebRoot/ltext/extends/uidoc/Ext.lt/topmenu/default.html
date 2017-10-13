@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme35.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../../../datatable3.0.js"></script>
+<script src="../../jquery.js"></script>
+</head>
+
+<body>
+<p>菜单组件<br/>
+	<h1>Topmenu</h1>
+	<h2>命名空间：Ext.lt.Topmenu</h2>
+<h2>说明：</h2>
+<p>
+数据采用树形结构实现，创建对象后会根据结构内容自动设置菜单级次。<br/>
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css" /><br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var m=Ext.lt.Topmenu({
+			data:datas,
+			field:{id:'id',name:'name',code:'code',sid:'pid'}
+			});<br/>
+		m.draw(HTMLElement);<br/>
+</p>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">data</td>
+      <td bgcolor="#EEEEEE">Array/Recordset</td>
+      <td bgcolor="#EEEEEE">数组或recordset对象。list+map结构</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">field</td>
+      <td bgcolor="#EEEEEE">Object</td>
+      <td bgcolor="#EEEEEE">设置生成树的数据集属性名称，默认属性名为 
+      	id:'itemid',name:'name',code:'code',sid:'superitemid'</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">className</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">菜单的基本样式，默认样式是topmenu</td>
+    </tr>
+   <tr>
+      <td bgcolor="#CCCCCC">outformart</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据集输出格式默认为#name方式，需要数据集中存在name属性</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">maxHeight</td>
+      <td bgcolor="#EEEEEE">int</td>
+      <td bgcolor="#EEEEEE">控制菜单显示最大长度。int:表示具体高度，'auto'表示使用body的高度，true表示不限制（默认值）</td>
+    </tr>
+   </table>
+<h2>方法说明</h2>
+<h3>draw</h3>
+<p>
+绘制菜单，并定位到绘制的div上<br/>
+topmenu.draw(div) 
+</p>
+<h3>additem</h3>
+<p>
+添加菜单内容，可以添加一个或多个节点<br/>
+topmenu.additem(menus)
+</p>
+<h3>setDisabled</h3>
+<p>
+设置某个id的节点是否禁用,b=true是禁用，false为启用<br/>
+topmenu.setDisabled(id,b)
+</p>
+<h3>remove</h3>
+<p>
+删除菜单内容，可以删除一个或多个节点<br/>
+topmenu.remove(menus)
+</p>
+<h3>removeById</h3>
+<p>
+根据id删除菜单内容<br/>
+topmenu.removeById(id)
+</p>
+<h3>reflash</h3>
+<p>
+刷新菜单内容。当菜单内容改变后调用该方法刷新菜单内容<br/>
+topmenu.reflash()
+</p>
+<h2>数据集对象说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">id</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据的唯一标识</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">name</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据展示的内容</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">superitemid</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据的父节点唯一标识，根节点的数据请给“0”</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">disabled</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">是否禁用：true为禁用，其他为启用</td>
+    </tr>
+    
+    <tr>
+      <td bgcolor="#CCCCCC">ico</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">节点前面蓝色区域展示菜单图片的路径，可以不写</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">icostyle</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">节点前面蓝色区域展示菜单图片区域的样式，通过设置背景图片可以修改菜单图片，可以不写</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">icoclass</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">节点前面蓝色区域展示菜单图片区域的样式单，通过设置背景图片可以修改菜单图片，可以不写</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">fn</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">数据集输出函数，对复杂的输出逻辑，可以使用输出函数来处理菜单显示的内容。一旦设置输出函数，outformart属性失效</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">show</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">子节点展示函数，对复杂子节点的输出，可以使用该函数来显示内容，一旦设置该函数子节点的内容将不在展示</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">click</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">节点点击函数，通过对节点点击来实现的动作后触发的内容。</td>
+    </tr>
+   </table>
+
+
+<table width="100%" border=1>
+		<tr>
+		<th>topmenu</th>
+	</tr>
+	<tr>
+		<td>
+			
+		<div style="width:1000px;height:20px;background: #cccccc;overflow:hidden">
+			<div id="topmenu" style="width:1000px;background: #cccccc;" ></div>
+</div>
+
+<select><option>11111</option></select>
+	<script>
+		//id:'id',name:'name',code:'code',sid:'sid'
+		var d=[];
+		d.push({id:1,name:'建账',code:'j',sid:0});
+		d.push({id:2,name:'凭单',code:'p',sid:0,click:function(){
+			topmenu.additem({id:25,name:'报表',code:'s',sid:4});
+		}});
+		d.push({id:3,name:'拨款单',code:'b',sid:0,click:function(){
+			topmenu.removeById(5);
+		}});
+		d.push({id:4,name:'账本',code:'z',sid:0,href:"http://www.baidu.com"});
+		d.push({id:5,name:'报表',code:'s',sid:0});
+		d.push({id:6,name:'自定义报表',code:'d',sid:0});
+		d.push({id:7,name:'总账科目库',code:'z',sid:1,disabled:true});
+		d.push({id:8,name:'|',code:'|',sid:1});
+		d.push({id:9,name:'退出',code:'y',sid:1});
+		d.push({id:10,name:'会计执行表',code:'k',sid:5});
+		d.push({id:11,name:'禁用退出',code:'d',sid:5,click:function(){
+			topmenu.setDisabled(9,true);
+		}});
+		d.push({id:12,name:'|',code:'|',sid:5});
+		d.push({id:13,name:'启动退出',code:'q',sid:5,click:function(d){
+		}});
+		d.push({id:14,name:'显示到一级单位',code:'j',sid:10,click:function(){
+			topmenu.reflash();	
+		}});
+		d.push({id:15,name:'显示到基层单位',code:'c',sid:10,href:"http://www.baidu.com",target:'_self'});
+		d.push({id:16,name:'显示到项目',code:'m',sid:10,href:"http://www.baidu.com"});
+		var topmenu=new Ext.lt.topmenu({
+			data:d,
+			values:[14,10,5],
+		//	scroll:true,
+		maxHeight:400,
+			correction:1,
+			field:{id:'id',name:'name',code:'code',sid:'sid'}
+			
+		});
+		topmenu.draw(document.getElementById('topmenu'));
+		//
+	</script>
+	<pre>
+		//id:'id',name:'name',code:'code',sid:'sid'
+		var d=[];
+		d.push({id:1,name:'建账',code:'j',sid:0});
+		d.push({id:2,name:'凭单',code:'p',sid:0,click:function(){
+			topmenu.additem({id:25,name:'报表',code:'s',sid:4});
+		}});
+		d.push({id:3,name:'拨款单',code:'b',sid:0,click:function(){
+			topmenu.removeById(5);
+		}});
+		d.push({id:4,name:'账本',code:'z',sid:0});
+		d.push({id:5,name:'报表',code:'s',sid:0});
+		d.push({id:6,name:'自定义报表',code:'d',sid:0});
+		d.push({id:7,name:'总账科目库',code:'z',sid:1,disabled:true});
+		d.push({id:8,name:'|',code:'|',sid:1});
+		d.push({id:9,name:'退出',code:'y',sid:1});
+		d.push({id:10,name:'会计执行表',code:'k',sid:5});
+		d.push({id:11,name:'禁用退出',code:'d',sid:5,click:function(){
+			topmenu.setDisabled(9,true);
+		}});
+		d.push({id:12,name:'|',code:'|',sid:5});
+		d.push({id:13,name:'启动退出',code:'q',sid:5,click:function(){
+			topmenu.setDisabled(9,false);
+		}});
+		d.push({id:14,name:'显示到一级单位',code:'j',sid:10,click:function(){
+			topmenu.reflash();	
+		}});
+		d.push({id:15,name:'显示到基层单位',code:'c',sid:10,href:"http://www.baidu.com",target:'_self'});
+		d.push({id:16,name:'显示到项目',code:'m',sid:10,href:"http://www.baidu.com"});
+		var topmenu=new Ext.lt.topmenu({
+			data:d,
+			scroll:true,
+			correction:1,
+			field:{id:'id',name:'name',code:'code',sid:'sid'}
+		});
+		topmenu.draw(document.getElementById('topmenu'));
+		//
+	</pre>
+		</td>
+	</tr>
+	
+	<tr>
+		<th>topmenu原始菜单</th>
+	</tr>
+	<tr>
+		<td>
+			
+		<div style="width:1000px;height:20px;background: #cccccc;overflow:hidden">
+			<div id="topmenu1" style="width:100px;background: #cccccc;" ></div>
+</div>
+	<script>
+		//id:'id',name:'name',code:'code',sid:'sid'
+				var d=[
+				{menuid:1, sid:0, name:'预算编审管理', code:'bdg'}, 
+				{menuid:2, sid:0, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:3, sid:0, name:'IT服务管理', code:'itsm'}]; 
+				
+				var topmenu1=new Ext.lt.topmenu({
+					data:d,
+					scroll:false,
+					correction:1,
+					showmenu:'onclick',
+					className:'topmenu1',
+					field:{id:'menuid',sid:'sid',name:'name',code:'code'}
+				});
+				topmenu1.draw(document.getElementById('topmenu1'));
+	</script>
+	<pre>
+				var d=[
+				{menuid:1, sid:0, name:'预算编审管理', code:'bdg'}, 
+				{menuid:2, sid:0, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:3, sid:0, name:'IT服务管理', code:'itsm'}]; 
+				
+				var topmenu1=new Ext.lt.topmenu({
+					data:d,
+					scroll:false,
+					correction:1,
+					showmenu:'onclick',
+					className:'topmenu1',
+					field:{id:'menuid',sid:'sid',name:'name',code:'code'}
+				});
+				topmenu1.draw(document.getElementById('topmenu1'));
+	</pre>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<th>topmenu新菜单蓝</th>
+	</tr>
+	<tr>
+		<td>
+			
+		<div style="width:1000px;height:20px;background: #cccccc;overflow:hidden">
+			<div id="topmenu2" style="width:100px;background: #cccccc;" ></div>
+</div>
+	<script>
+		//id:'id',name:'name',code:'code',sid:'sid'
+				var d=[
+				{menuid:1, sid:0, name:'预算编审管理', code:'bdg'}, 
+				{menuid:2, sid:0, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:3, sid:0, name:'IT服务管理', code:'itsm'},
+				{menuid:4, sid:1, name:'预算编审管理', code:'bdg'}, 
+				{menuid:5, sid:1, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:6, sid:1, name:'IT服务管理', code:'itsm'},
+				{menuid:7, sid:1, name:'预算编审管理', code:'bdg'}, 
+				{menuid:8, sid:1, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:9, sid:1, name:'IT服务管理', code:'itsm'}
+				
+				]; 
+				
+				var topmenu2=new Ext.lt.topmenu({
+					data:d,
+					scroll:false,
+					correction:1,
+					showmenu:'onclick',
+					className:'topmenu2',
+					field:{id:'menuid',sid:'sid',name:'name',code:'code'}
+				});
+				topmenu2.draw(document.getElementById('topmenu2'));
+				//
+	</script>
+	<pre>
+		//id:'id',name:'name',code:'code',sid:'sid'
+				var d=[
+				{menuid:1, sid:0, name:'预算编审管理', code:'bdg'}, 
+				{menuid:2, sid:0, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:3, sid:0, name:'IT服务管理', code:'itsm'},
+				{menuid:4, sid:1, name:'预算编审管理', code:'bdg'}, 
+				{menuid:5, sid:1, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:6, sid:1, name:'IT服务管理', code:'itsm'},
+				{menuid:7, sid:1, name:'预算编审管理', code:'bdg'}, 
+				{menuid:8, sid:4, name:'在线帮助', code:'onlinehelp'}, 
+				{menuid:9, sid:4, name:'IT服务管理', code:'itsm'}]; 
+				
+				var topmenu2=new Ext.lt.topmenu({
+					data:d,
+					scroll:true,
+					correction:1,
+					showmenu:'onclick',
+					className:'topmenu2',
+					field:{id:'menuid',sid:'sid',name:'name',code:'code'}
+				});
+				topmenu2.draw(document.getElementById('topmenu2'));
+	</pre>
+		</td>
+	</tr>
+
+</table>
+</body>
+</html>

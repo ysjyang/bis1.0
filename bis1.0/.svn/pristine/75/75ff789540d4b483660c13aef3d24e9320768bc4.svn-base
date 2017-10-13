@@ -1,0 +1,110 @@
+<html>
+	<head>
+	<title>Ext.lt.collapsed API</title>
+
+		
+		<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+		<script src="../../../../frameworksupport.js"></script>
+		<script src="../../../../ltext_core.js"></script>
+		<script type="text/javascript" src="../../../../collapsed.js"></script>
+
+		<style>
+			.collapsed{
+				overflow: hidden;
+				position :relative;
+			}
+			.collapsed .top{
+				background:red;
+				width:20px;
+				height:20px;
+			}
+			.collapsed .body{
+				background:#ffccee;
+			}
+		</style>
+	</head>
+	<body>
+	<h1>collapsed</h1>
+<h2>命名空间：Ext.lt.collapsed</h2>
+<h2>说明：</h2>
+<p>采用DIV元素扩展方式实现百叶窗功能。</p>
+<p>
+对象API如下<br>
+title：标题<br>
+direction：伸展方向<br>
+className:class<br>
+待扩展。<br>
+</p>
+	<h2>公有属性；</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">tiele</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">百叶窗标题</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">direction</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">百叶窗的伸展方向,包括:top,left,right,bottom.top,向上伸展,left为向左伸展,right为向右伸展,bottom为向下伸展</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">className</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">伸展方向的class</td>
+    </tr>
+  </table>
+	
+	
+<p>
+<h2>公有方法：</h2>
+	<h3>draw()</h3>
+	将百叶窗组件画到指定DIV上
+	<h3>resize()</h3>
+	控制百叶窗div的大小   
+<p>
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>百叶窗效果</th>
+	<td><table width="50%"><tr><td></td><td>
+		<div id="fase1" style="height:200px;width:200px">测试内容1</div>
+		<div id="fase2" style="height:200px;width:200px">测试内容2</div>
+		<div id="fase3" style="height:200px;width:200px">测试内容3</div>
+		<div id="fase4" style="height:200px;width:200px">测试内容4</div>
+	</td></tr></table><td>
+	<pre> 
+	<table width="50%"><tr>
+		<td></td><td>
+		&lt;div id="fase1" style="height:200px;width:200px">测试内容1</div>
+		&lt;div id="fase2" style="height:200px;width:200px">测试内容2</div>
+		&lt;div id="fase3" style="height:200px;width:200px">测试内容3</div>
+		&lt;div id="fase4" style="height:200px;width:200px">测试内容4</div>
+	</td></tr></table>
+		&lt;script type="text/javascript">
+			var c1=new Ext.lt.collapsed({title:'测试1',direction:'top'});
+			c1.draw(document.getElementById('fase1'));
+			var c2=new Ext.lt.collapsed({title:'测试2',direction:'bottom'});
+			c2.draw(document.getElementById('fase2'));
+			var c3=new Ext.lt.collapsed({title:'测试3',direction:'right'});
+			c3.draw(document.getElementById('fase3'));
+			var c4=new Ext.lt.collapsed({title:'测试4',direction:'left'});
+			c4.draw(document.getElementById('fase4'));
+		&lt;/script>
+	<pre></table>
+	</body>
+		<script type="text/javascript">
+			var c1=new Ext.lt.collapsed({title:'测试1',direction:'top'});
+			c1.draw(document.getElementById('fase1'));
+			var c2=new Ext.lt.collapsed({title:'测试2',direction:'bottom'});
+			c2.draw(document.getElementById('fase2'));
+			var c3=new Ext.lt.collapsed({title:'测试3',direction:'right'});
+			c3.draw(document.getElementById('fase3'));
+			var c4=new Ext.lt.collapsed({title:'测试4',direction:'left'});
+			c4.draw(document.getElementById('fase4'));
+		</script>
+</html>

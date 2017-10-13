@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<p>弹出框组件，一般用于提示框<br />
+  组件本身为一个DIV元素，对DIV元素进行了扩展<br />
+  初始化参数为:<br />
+  id:String   组件引用ID，如果没有指定ID，组件会随机生成一个'popwindow'+随机数<br />
+  className:String  组件样式单，默认样式单名为sel</p>
+<p>组件方法：<br />
+  checkEvent() 默认检测事件，如果用户动作在弹出框之外则关闭弹出框<br />
+  show()     弹出框打开后就开始监控鼠标动作，如果发现鼠标在其他组件上进行操作则自动关闭弹出框<br />
+  close()    关闭弹出框方法<br />
+  isShow()     返回弹出框显示状态，true表示窗口显示</p>
+<p>事件：<br />
+  onclose    当窗口执行close方法后产生该事件</p>
+</body>
+</html>

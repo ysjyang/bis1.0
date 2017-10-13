@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.HTML.select</title>
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../jquery.js"></script>
+<script src="../../../../prototype.js"></script>
+
+<style type = "text/css">
+		.selectclass	
+		{  		
+			color:green;	
+			}	
+</style>
+
+</head>
+
+<body>
+<h1>List select</h1>
+<h2>命名空间：Ext.lt.HTML.select</h2>
+<h2>说明：</h2>
+<p>
+   下拉框应用<br />
+  var selectobj=new Ext.lt.HTML.select(<br />
+  selectobj.draw(); 
+  
+</p>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">id</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">下拉框ID</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">data</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">数据集</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">value</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">下拉框显示默认值</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">nullvalue</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">空值是否显示，默认为true</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">style</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">下拉框样式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">className</td>
+      <td bgcolor="#EEEEEE">string</td>
+      <td bgcolor="#EEEEEE">下拉框样式,默认为空</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">valuefield</td>
+      <td bgcolor="#EEEEEE">string</td>
+      <td bgcolor="#EEEEEE">下拉框显示数据对应的参数</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">textfield</td>
+      <td bgcolor="#EEEEEE">string</td>
+      <td bgcolor="#EEEEEE">按钮点击显示数据对应的参数</td>
+    </tr>
+   
+  </table>
+	
+<h2>方法说明</h2>
+<h3>draw</h3>
+<p>
+将下拉框显示到页面中，传入的DIV对象将作为窗口的内容显示<br/>
+selectobj.draw(DivId) 
+</p>
+<h3>getId</h3>
+<p>
+获取下拉框id<br/>
+selectobj.getId() 
+</p>
+<h3>getValue</h3>
+<p>返回下拉框默认值。即value<br/>
+selectobj.getValue() 
+</p>
+<h3>setValue</h3>
+<p>
+设置下拉框默认值<br/>
+selectobj.setValue(value)
+</p>
+<h3>getText</h3>
+<p>
+显示当前下拉框显示内容<br/>
+selectobj.getText()
+</p>
+
+<h2>事件：</h2>
+<h3>onchange</h3>
+<p>
+当选择框内容发生改变时产生,参数为window.event对象。该事件this对象指向select标签<br/>
+selectobj.onchange=function(){}
+</p>
+
+<h3>onselected(data,value,text)</h3>
+<p>
+当选择框内容被选择是产生,参数为数据集对象，选中选项的值，选中选项的文本。<br/>
+selectobj.onselected=function(data,v,t){}
+</p>
+
+<h2>示例：</h2>
+<pre>
+var selectobj1={};
+var selectobj2={};
+var selectobj3={};
+var selectobj4={};
+var selectobj5={};
+var data=[{v:"101",t:"省本级",a:'adf'},{v:"102",t:"预算",a:'23423'},{v:"103",t:"国库",a:"sdfsdfsd"},{v:"104",t:"市级",a:"sfwer3"}] ;
+		<script>
+var selectobj1={};
+var selectobj2={};
+var selectobj3={};
+var selectobj4={};
+var selectobj5={};
+var data=[{v:"101",t:"省本级",a:'adf'},{v:"102",t:"预算",a:'23423'},{v:"103",t:"国库",a:"sdfsdfsd"},{v:"104",t:"市级",a:"sfwer3"}] ;
+		</script> 
+</pre>
+<table width = "100%" border = 1>
+	<tr>
+			<th colspan = 2>getId接口测试</th></tr>
+	<tr>
+		<td>
+			<div style = "width:300px; height:100px;display:block">
+				<div id="select_area1"></div> 
+				<button onclick="alert(selectobj.getId())">getId()</button> 
+				
+			</div>
+		</td>
+		<td>
+			<pre class=democodearea>
+selectobj=new Ext.lt.HTML.select({
+	id:'selectdemo1',
+	data:data,
+	value:'102',			
+	nullvalue:false,
+	style:'width:200px',			
+	className:'selectclass'			
+}); 
+selectobj.draw(select_area1); 
+		
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th colspan = 2>setValue接口测试</th></tr>
+	<tr>
+		<td>
+			<div style = "width:300px; height:100px;display:block">
+				<div id="select_area2"></div> 
+				<input type="text" id="setValueTest" value="104"/>
+				<button onclick="selectobj2.setValue(setValueTest.value)">setValue(InputId.value)</button> 
+			</div>
+		</td>
+		<td>
+			<pre class=democodearea>	
+
+selectobj2=new Ext.lt.HTML.select({
+	id:'selectdemo2',
+	data:data,
+	value:'102',			
+	nullvalue:false,
+	style:'width:200px',			
+	className:'selectclass'			
+}); 
+selectobj2.draw(select_area2);		
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th colspan = 2>getValue接口测试</th></tr>
+	<tr>
+		<td>
+			<div style = "width:300px; height:100px;display:block">
+				<div id="select_area3"></div> 				
+				<button onclick="alert(selectobj3.getValue())">getValue()</button> 				
+			</div>
+		</td>
+		<td>
+			<pre class=democodearea>	
+
+selectobj3=new Ext.lt.HTML.select({
+	id:'selectdemo3',
+	data:data,
+	value:'102',			
+	nullvalue:false,
+	style:'width:200px',		
+	className:'selectclass'			
+}); 
+selectobj3.draw(select_area3);		
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+		
+		<tr>
+			<th colspan = 2>getText接口测试</th>
+		</tr>
+	<tr>
+		<td>
+			<div style = "width:300px; height:100px;display:block">
+				<div id="select_area4"></div> 				
+				<button onclick="alert(selectobj4.getText())">getText()</button> 				
+			</div>
+		</td>
+		<td>
+			<pre class=democodearea>	
+
+selectobj4=new Ext.lt.HTML.select({
+	id:'selectdemo4',
+	data:data,
+	value:'102',			
+	nullvalue:false,
+	style:'width:200px',		
+	className:'selectclass'			
+}); 
+selectobj4.draw(select_area4);		
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+
+
+	<tr>
+			<th colspan = 2>onchange onselected 事件测试</th>
+	<tr>
+		<td>
+			<div style = "width:300px; height:100px;display:block">
+				<div id="select_area5"></div> 				
+				
+			</div>
+		</td>
+		<td>
+			<pre class=democodearea>	
+
+selectobj5=new Ext.lt.HTML.select({
+	id:'selectdemo5',
+	data:data,
+	value:'102',			
+	nullvalue:false,
+	style:'width:200px',		
+	className:'selectclass'			
+}); 
+selectobj5.draw(select_area5);
+selectobj5.onchange=function(en){alert('onchange:'+this.tagName+' '+this.value)}
+selectobj5.onselected=function(data,v,t){alert('onselected:'+Object.toJSON(data)+' '+v+' '+t)}
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	
+</table>
+
+</body>
+</html>

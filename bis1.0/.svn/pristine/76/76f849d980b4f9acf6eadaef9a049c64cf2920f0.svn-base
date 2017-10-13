@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.Window API</title>
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../jquery.js"></script>
+
+</head>
+
+<body>
+<h1>Window</h1>
+<h2>命名空间：Ext.lt.window</h2>
+<h2>说明：</h2>
+<p>
+处理各种弹出窗口、浮动窗口显示
+  var wind=new Ext.lt.window({title:'window'});<br />
+  wind.draw(HTMLElement);<br />
+</p>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">id</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">窗口ID，创建窗口对象后，返回一个扩展为窗口的DIV元素。可以通过id属性设置DIV元素的ID属性。如果不指定ID，组件会自动生成ID规则为 wnd+内部序列号</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">icon</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">窗口图标样式单。只能通过样式单来指定窗口图标，默认图标样式为wnd_icon</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">className</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">窗口主样式单名，可以通过重新定义窗口全部样式，来控制窗口的显示风格。默认样式单名称为 wnd，框架提供win、wind7两种</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">style</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">样式单，可以通过改属性直接控制窗口DIV元素的样式。建议将样式放到样式单文件中</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">title</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">窗口标题，支持HTML，由于窗口标题空间有限，因此，在设置标题时需要注意文本长度</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">autoshow</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">表示窗口是否自动显示，默认为自动显示true。当设置为false时，必须调用show()方法才能显示窗口。该属性适合控制弹出窗口初始为关闭状态</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">close</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">表示窗口是否显示关闭按钮，默认为显示</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">onclose</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">窗口关闭时执行的事件处理函数</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">pop</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">弹出窗口属性，默认为false，设置为true后将创建出浮动的弹出窗口</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">fitmode</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">窗口大小适应方式，可选值为body content，body以窗口设置的大小为准，让内容来适应，窗口会出现滚动条。content内容适应是根据窗口显示内容的大小调整窗口大小。默认为body方式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">w</td>
+      <td bgcolor="#EEEEEE">number</td>
+      <td bgcolor="#EEEEEE">窗口宽度，弹出窗口时生效</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">h</td>
+      <td bgcolor="#EEEEEE">number</td>
+      <td bgcolor="#EEEEEE">窗口高度，弹出窗口时生效</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">mark</td>
+      <td bgcolor="#EEEEEE">boolean</td>
+      <td bgcolor="#EEEEEE">自动遮罩，默认false不遮罩</td>
+    </tr>
+    
+    
+  </table>
+	
+<h2>方法说明</h2>
+<h3>draw</h3>
+<p>
+将窗口画到页面中，传入的DIV对象将作为窗口的内容显示<br/>
+wind.draw(DivElement) 
+</p>
+<h3>close</h3>
+<p>
+关闭窗口函数。实际是将窗口隐藏。触发onclose事件，如果事件处理函数返回false则窗口不会被关闭<br/>
+wind.close() 
+</p>
+<h3>hidden</h3>
+<p>
+隐藏窗口，不触发onclose事件直接隐藏窗口的方法<br/>
+wind.hidden() 
+</p>
+<h3>show</h3>
+<p>
+显示窗口<br/>
+wind.show() 
+</p>
+<h3>resetTitle</h3>
+<p>
+修改窗口标题<br/>
+wind.resetTitle('new title')
+</p>
+
+<h2>示例：</h2>
+<pre>
+
+	<div id="windowtest">windowtest</div>
+
+	var wind=new Ext.lt.window({title:'window',pop:true});
+  wind.draw(windowtest);
+</pre>
+
+
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>窗口样式测试</th>
+	<tr>
+		<td><div id="windowdemo2" style="width:150px;height:100px;display:block">标准样式 win</div><br><div id="windowdemo1" style="width:150px;height:100px;display:block">wind7 样式</div><br></td>
+		<td>
+<pre class=democodearea>
+var wind=new Ext.lt.window({title:'缺省标准窗口',fitmode:'content'});
+wind.draw(windowdemo1)
+
+var wind=new Ext.lt.window({title:'win7样式窗口',className:'wind7',fitmode:'content'});
+wind.draw(windowdemo2)
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+			<th colspan=2>fitmode 测试</th>
+	</td>
+	<tr>
+		<td><div id="fitmodedemo1" style="width:150px;height:100px;display:block">150*100</div><br><div id="fitmodedemo2" style="width:150px;height:100px;display:block">150*100</div><br></td>
+		<td>
+<pre class=democodearea1>
+var wind=new Ext.lt.window({title:'fitmode:body',className:'wind7'});
+wind.draw(fitmodedemo1)
+
+var wind=new Ext.lt.window({title:'fitmode:content',className:'wind7',fitmode:'content'});
+wind.draw(fitmodedemo2)
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+			<th colspan=2>resetTitle 测试</th>
+	</td>
+	<tr>
+		<td><div id="resettitledemo1" style="width:150px;height:100px;display:block">调整表头</div></td>
+		<td>
+<pre class=democodearea>
+var wind=new Ext.lt.window({title:'初始表头',className:'wind7'});
+wind.draw(resettitledemo1)
+
+wind.resetTitle('调整表头');
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+			<th colspan=2>弹出框测试</th>
+	</td>
+	<tr>
+		<td>
+			<div id="popwinddemo1" style="width:400px;height:100px;display:block">弹框1</div>
+			<div id="popwinddemo2" style="width:400px;height:150px;display:block">弹框2</div>
+			<div id="popwinddemo3" style="width:400px;height:150px;display:block">弹框 popwin 样式</div>
+		</td>
+		<td>
+<pre class=democodearea>
+var wind=new Ext.lt.window({title:'弹框1',fitmode:'content',className:'wind7',pop:true});
+wind.draw(popwinddemo1)
+
+var wind=new Ext.lt.window({title:'弹框2',fitmode:'content',pop:true});
+wind.draw(popwinddemo2)
+
+var wind=new Ext.lt.window({title:'popwnd样式',className:'popwnd',fitmode:'content',pop:true});
+wind.draw(popwinddemo3)
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+			<th colspan=2>遮罩弹出框测试,默认隐藏</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="pophiddenwinddemo" style="width:400px;height:100px;display:block">
+			<pre>
+var pophiddenwind=new Ext.lt.window({title:'遮罩弹出-默认隐藏',fitmode:'content',className:'wind7',pop:true,autoshow:false});
+pophiddenwind.draw(pophiddenwinddemo)
+</pre>
+			</div>
+<script>
+var pophiddenwind=new Ext.lt.window({title:'遮罩弹出-默认隐藏',fitmode:'content',className:'wind7',pop:true,autoshow:false,mark:true});
+pophiddenwind.draw(pophiddenwinddemo)
+</script>
+		</td>
+		<td>
+<pre class=democodearea>
+pophiddenwind.show()
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th colspan=2>IE6内容过多时弹框高度控制失效</th>
+	</tr>
+	<tr>
+		<td>
+<div id=ie6longcontent style="width: 500px; height: 300px; overflow:auto">
+<div id="stacklog" >
+ <div id="stacktxt">
+  堆栈信息：gov.mof.fasp.ifmis.bcommon.common.monitor.MonitorBo.checkMainAndDetailSame(MonitorBo.java:203)sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)java.lang.reflect.Method.invoke(Method.java:324)gov.mof.fasp.ifmis.bcommon.common.monitor.SpringAOPInterceptor.afterReturning(SpringAOPInterceptor.java:85)org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:52)org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:170)org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:51)org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:170)org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:623)gov.mof.fasp.ifmis.bcommon.pay.voucher.common.bo.PayVoucherBO$$EnhancerByCGLIB$$8ab65bd9.updateVou(&lt;generated&gt;)sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)java.lang.reflect.Method.invoke(Method.java:324)gov.mof.fasp.wf.work.WfProcess.invokeMethod(WfProcess.java:196)gov.mof.fasp.wf.work.WfProcess.doProcess(WfProcess.java:70)gov.mof.fasp.wf.work.WfBO.doActions2(WfBO.java:2569)gov.mof.fasp.wf.work.WfBPO.doAction2(WfBPO.java:160)gov.mof.fasp.ifmis.card.repayment.bo.RepayBO.saveModVouXM(RepayBO.java:669)gov.mof.fasp.ifmis.card.repayment.bo.RepayBO$$FastClassByCGLIB$$c24bebfa.invoke(&lt;generated&gt;)net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)org.springframework.aop.framework.Cglib2AopProxy$CglibMethodInvocation.invokeJoinpoint(Cglib2AopProxy.java:685)org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:148)org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:170)org.springframework.aop.framework.adapter.ThrowsAdviceInterceptor.invoke(ThrowsAdviceInterceptor.java:118)org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:170)org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:623)gov.mof.fasp.ifmis.card.repayment.bo.RepayBO$$EnhancerByCGLIB$$21d0e59f.saveModVouXM(&lt;generated&gt;)gov.mof.fasp.ifmis.card.repayment.action.RepayAction.accredit_modify_saveAction(RepayAction.java:503)sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)java.lang.reflect.Method.invoke(Method.java:324)org.apache.struts.actions.DispatchAction.dispatchMethod(DispatchAction.java:269)org.apache.struts.actions.DispatchAction.execute(DispatchAction.java:170)org.apache.struts.actions.MappingDispatchAction.execute(MappingDispatchAction.java:166)org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:58)org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:67)org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:51)org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:304)org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:190)org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:283)org.apache.struts.action.ActionServlet.process(ActionServlet.java:1946)org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:441)javax.servlet.http.HttpServlet.service(HttpServlet.java:760)javax.servlet.http.HttpServlet.service(HttpServlet.java:853)weblogic.servlet.internal.ServletStubImpl$ServletInvocationAction.run(ServletStubImpl.java:1077)weblogic.servlet.internal.ServletStubImpl.invokeServlet(ServletStubImpl.java:465)weblogic.servlet.internal.TailFilter.doFilter(TailFilter.java:28)weblogic.servlet.internal.FilterChainImpl.doFilter(FilterChainImpl.java:27)gov.mof.fasp.ifmis.system.ui.UIConfigFilter.doFilter(UIConfigFilter.java:393)gov.mof.fasp.ifmis.system.MonitoFilter.doFilter(MonitoFilter.java:77)gov.mof.fasp.ifmis.common.MonitorServlet.doFilter(MonitorServlet.java:47)weblogic.servlet.internal.FilterChainImpl.doFilter(FilterChainImpl.java:27)org.acegisecurity.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:264)gov.mof.fasp.sec.bpo.UserCleanUpInterceptor.doFilter(UserCleanUpInterceptor.java:43)org.acegisecurity.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:274)org.acegisecurity.providers.anonymous.AnonymousProcessingFilter.doFilter(AnonymousProcessingFilter.java:125)org.acegisecurity.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:274)org.acegisecurity.intercept.web.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:107)org.acegisecurity.intercept.web.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:72)org.acegisecurity.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:274)org.acegisecurity.context.HttpSessionContextIntegrationFilter.doFilter(HttpSessionContextIntegrationFilter.java:191)org.acegisecurity.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:274)org.acegisecurity.util.FilterChainProxy.doFilter(FilterChainProxy.java:148)org.acegisecurity.util.FilterToBeanProxy.doFilter(FilterToBeanProxy.java:90)weblogic.servlet.internal.FilterChainImpl.doFilter(FilterChainImpl.java:27)weblogic.servlet.internal.WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:7053)weblogic.security.acl.internal.AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)weblogic.security.service.SecurityManager.runAs(SecurityManager.java:121)weblogic.servlet.internal.WebAppServletContext.invokeServlet(WebAppServletContext.java:3902)weblogic.servlet.internal.ServletRequestImpl.execute(ServletRequestImpl.java:2773)weblogic.kernel.ExecuteThread.execute(ExecuteThread.java:224)weblogic.kernel.ExecuteThread.run(ExecuteThread.java:183)
+ </div>
+</div>
+</div>
+		</td>
+		<td>
+<pre>
+	var ie6longcontenttest=new Ext.lt.window({title:'堆栈错误信息',fitmode:'body',h:300,w:600,className:'wind7',pop:true,autoshow:false});
+	ie6longcontenttest.draw(stacklog);
+	ie6longcontenttest.show();
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerText)" >测试</button>
+		</td>
+	</tr>
+	
+</table>
+
+
+
+
+</body>
+</html>
+<script>
+var codes=jQuery('.democodearea')
+
+for(var i=0;i<codes.length;i++){
+	//eval(codes[i].innerHTML)	
+}
+
+</script>

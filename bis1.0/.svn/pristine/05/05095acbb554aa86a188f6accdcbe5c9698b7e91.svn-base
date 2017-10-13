@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Elt.lt.HTML.expand</title>
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<script src="../../../../ltext_core.js"></script>
+</head>
+<body>
+<style type="text/css">
+.pos_left1
+{
+position:relative;
+left:100px;
+}
+.pos_left2
+{
+position:relative;
+left:100px;
+
+}
+.pos_left3
+{
+position:relative;
+left:100px;
+
+}
+.pos_left4
+{
+position:relative;
+left:100px;
+
+}
+</style>
+<h2>Elt.lt.HTML.expand</h2>
+<h4>命名空间：Elt.lt.HTML.expand</h4>
+<h4>说明：HTML扩展功能</h4>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;script src="../../../../ltext_core.js">&lt;/script><br>
+&lt;link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr><th width="15%" bgcolor="#00FFFF">参数名</th><th width="15%" bgcolor="#00FFFF">数据类型</th><th bgcolor="#00FFFF">说明</th></tr>
+	  <tr><td bgcolor="#CCCCCC">tipstext</td><td bgcolor="#EEEEEE">text</td><td bgcolor="#EEEEEE">文本框默认值，type必须为'text'</td></tr>
+	  <tr><td bgcolor="#CCCCCC">validchars</td><td bgcolor="#EEEEEE">text</td><td bgcolor="#EEEEEE">文本框只能输入validchars所设定的值</td></tr>
+	  <tr><td bgcolor="#CCCCCC">validreg</td><td bgcolor="#EEEEEE">text</td><td bgcolor="#EEEEEE">通过正则表达式进行匹配是否可以输入</td></tr>
+    <tr><td bgcolor="#CCCCCC">overclass</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标移入样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">overstyle</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标移入样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">clickclass</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标点击样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">clickstyle</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标点击样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">switchclass</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">开关样式,当鼠标点击一次，对象样式换为属性指定内容，再次点击以后样式恢复，优先级低于style</td></tr>
+    <tr><td bgcolor="#CCCCCC">switch</td><td bgcolor="#EEEEEE"></td><td bgcolor="#EEEEEE">当该属性为on时，该元素默认使用打开状态样式，每个switchgroup只能有一个为on</td></tr>
+    <tr><td bgcolor="#CCCCCC">switchgroup</td><td bgcolor="#EEEEEE">string</td><td bgcolor="#EEEEEE">开关组,一组开关中只能有一个开关打开，当打开一个开关后，同一组中的其他开关自动关闭，并触发onclick事件</td></tr>
+  </table>
+<h2>方法说明</h2>
+<h3>Ext.lt.HTML.expand()</h3>
+<p>扩展样式，(打开页面自动加载该方法)属性名 overclass overstyle clickclass clickstyle switchclass switchgroup switch<br/></p>
+<h3>onmousedown</h3>
+<p>显示当前下拉框显示内容<br/></p>
+<h3>getBorderSet(element,sty,attr)</h3>
+<p>获取指定HTML元素的四个边宽度<br/></p>
+<h3>bind()</h3>
+<p>绑定方法 bind，参数为数据对象，绑定后与数据对象中name同名属性的值进行绑定,数据绑定只支持 type为 checkbox hidden password radion text 对text类型将绑定更多行为<br/></p>
+<h3>onKey()</h3>
+<p>扩展键盘事件操作，可通过该方法设置不允许输入值等<br/></p>
+<h3>settext()</h3>
+<p>Ext.lt.HTML.expand()加载后设置改变绑定数据的内容<br/></p>
+<h3>setvalue()</h3>
+<p>Ext.lt.HTML.expand()加载后设置改变绑定数据的值<br/></p>
+<h3>getBindValue()</h3>
+<p>Ext.lt.HTML.expand()加载后获取对象绑定数据<br/></p>
+<h3>getValue()</h3>
+<p>Ext.lt.HTML.expand()加载后获取对象绑定数据<br/></p>
+<table width = "100%" border = 1>
+<tr><th colspan = 2>样式测试</th></tr>
+<tr><td><div class="ccs" style="width:100px;height:30px;display:block;background:pink" overstyle="background:yellow" clickstyle="background:blue"></div>
+<td><pre>&lt;div class="ccs" style="width:100px;height:30px;display:block;background:pink" overstyle="background:yellow" clickstyle="background:blue">&lt;/div></pre></td></tr>
+<tr><th colspan = 2>开关样式测试之swithgroup相同</th></tr>
+<tr><td>
+	  <div switchclass="pos_left1" switchgroup="aa"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left2" switchgroup="aa"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left3" switchgroup="aa"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left4" switchgroup="aa"><button style= "color:red">按钮</button></div></td>
+	</td><td>
+		<pre>pos_left1{position:absolute;left:100px;}
+pos_left2{position:absolute;left:100px;}
+pos_left3{position:absolute;left:100px;}
+pos_left4{position:absolute;left:100px;}
+&lt;div switchclass="pos_left1" switchgroup="aa">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left2" switchgroup="aa">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left3" switchgroup="aa">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left4" switchgroup="aa">&lt;button style= "color:red">按钮&lt;/button>&lt;/div></pre></td></tr>
+<tr><th colspan = 2>开关样式测试之swithgroup不同</th></tr>
+<tr><td><div switchclass="pos_left1" switchgroup="aa"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left2" switchgroup="ab"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left3" switchgroup="ac"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left4" switchgroup="ad"><button style= "color:red">按钮</button></div></td>
+	</td><td>
+<pre>&lt;div switchclass="pos_left1" switchgroup="aa">&lt;button style= "color:red">按钮&lt;&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left2" switchgroup="ab">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left3" switchgroup="ac">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left4" switchgroup="ad">&lt;button style= "color:red">按钮&lt;/button>&lt;/div></pre></td></tr>
+<tr><th colspan = 2>开关样式测试之swith=on设置</th></tr>
+<tr><td><div switchclass="pos_left1" switchgroup="aa" switch='on'><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left2" switchgroup="ab"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left3" switchgroup="ac"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left4" switchgroup="ad"><button style= "color:red">按钮</button></div></td>
+</td><td>
+<pre>&lt;div switchclass="pos_left1" switchgroup="aa" switch='on'>&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left2" switchgroup="ab">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left3" switchgroup="ac">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left4" switchgroup="ad">&lt;button style= "color:red">按钮&lt;/button>&lt;/div></pre></td></tr>
+<tr><th colspan = 2>开关样式测试之有style样式</th></tr>
+<tr><td><div style="width:100px;height:30px;display:block;background:purple" switchclass="pos_left1" switchgroup="aa"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left2" switchgroup="ab"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left3" switchgroup="ac"><button style= "color:red">按钮</button></div>
+		<div switchclass="pos_left4" switchgroup="ad"><button style= "color:red">按钮</button></div></td>
+</td><td>
+<pre>&lt;div style="width:100px;height:30px;display:block;background:purple" switchclass="pos_left1" switchgroup="aa">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left2" switchgroup="ab">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left3" switchgroup="ac">&lt;button style= "color:red">按钮&lt;/button>&lt;/div>
+&lt;div switchclass="pos_left4" switchgroup="ad">&lt;button style= "color:red">按钮&lt;/button>&lt;/div></pre></td></tr>
+<tr><th colspan = 2>tipstext测试</th></tr>
+<td><input id='func3' name='func3' type='text' tipstext="我是默认值"/></td>
+<td><pre>&lt;input id='func3' name='func3' type='text' tipstext="我是默认值"/></pre></td></tr>		
+<tr><th colspan = 2>validchars测试(设置文本框只能输入数字)</th></tr>
+<td><input id='func2' name='func2' type='text' validchars="0123456789"/></td>
+<td><pre>&lt;input id='func2' name='func2' type='text' validchars="0123456789"/>	</pre></td></tr>
+<tr><th colspan = 2>notvalidchars测试(设置文本框不能输入数字)</th></tr>
+<td><input id='func3' name='func3' type='text' notvalidchars="0123456789"/></td>
+<td><pre>&lt;input id='func3' name='func3' type='text' notvalidchars="0123456789"/>	</pre></td></tr>
+<tr><th colspan = 2>validreg测试(设置文本框只能输入数字</th></tr>
+<td><input id='func4' name='func4' type='text' validreg="/\d/"/></td>
+<td><pre>&lt;input id='func4' name='func4' type='text' validreg="/\d/"/></pre></td></tr>
+<tr><th colspan = 2>notvalidreg测试(设置文本框不能能输入数字)</th></tr>
+<td><input id='func5' name='func5' type='text' notvalidreg="/\d/"/></td>
+<td><pre>&lt;input id='func5' name='func5' type='text' notvalidreg="/\d/"/></pre></td></tr>				
+<tr><th colspan = 2>绑定值测试</th></tr>
+<td><input id='func' name='func' type='text'/></td>
+<td><pre>&lt;input id='func' name='func' type='text'/>
+var data={func:'我是绑定值'}
+func.bind(data);                                                                                      <button onclick="inputbind()">绑定测试</button></pre>
+<pre>Ext.lt.HTML.expand(document.body)
+var data={func:'我是绑定值'}
+func.bind(data); 
+func.onafterbind=function(){
+this.settext('改变绑定值')
+}                            								              <button onclick="onfbind()">鼠标离开事件测试</button></pre>		
+</td></tr>
+<tr><th colspan = 2>键盘测试</th></tr>
+	<tr><td><input id='kon' name='kon' type='text' tipstext="键盘输入"/></td>
+	<td><div style = "width:300px; display:block">
+<pre>Ext.lt.HTML.expand(document.body);
+kon.onKey({	 
+'48':function(){alert('我是0对应的ASCII码48')},
+'u65':function(){alert('a')}//以u开头表示键盘抬起时触发
+})                                                                                                    <button onclick = "onk();">键盘测试</button></pre>			
+</td></tr>
+
+<tr><th colspan = 2>金额风格文本框</th></tr>
+	<tr><td><input id='input_action_amt' name='amt_demo' type='text' /></td>
+	<td><div style = "width:300px; display:block">
+		&lt;input id='input_action_amt' name='amt_demo' type='text' kind='amt' qfw='true' dot='2' unit='1' redwordmode='true' negative='true'/>
+<pre>Ext.lt.HTML.expand(document.getElementById('input_action_amt'));
+kon.onKey({	 
+'48':function(){alert('我是0对应的ASCII码48')},
+'u65':function(){alert('a')}//以u开头表示键盘抬起时触发
+})                                                                                                    <button onclick = "onk();">键盘测试</button></pre>			
+</td></tr>
+
+
+</table>
+</body>
+</html>
+<script>
+Ext.lt.HTML.expand(document.body);
+function inputexpand(){
+	Ext.lt.HTML.expand(document.body)
+	//与tipstext重复定义时,tipstext无效
+	var data={func:'我是绑定值'};
+ 	alert(Object.toJSON(data))
+}
+function inputbind(){
+	document.getElementById("func").value = "";
+	Ext.lt.HTML.expand(document.body)
+	var data={func:'我是绑定值'}
+	func.bind(data);
+}
+function onfbind(){
+	Ext.lt.HTML.expand(document.body)
+	var data={func:'我是绑定值'};
+	func.bind(data); 
+	func.onafterbind=function(){
+		this.settext('改变绑定值');
+	}
+}
+function onk(){
+	Ext.lt.HTML.expand(document.body);
+	kon.onKey({
+		'48':function(){alert('我是ASCII码48对应的值:0')},
+		'u65':function(){alert('a')}
+	})
+}
+function dr(){
+	Ext.lt.HTML.drag({
+		element:dragbar,
+		dragel:dragtab,
+		//x:10,
+		//y:0,
+		onend:function(){alert("结束拖拽方法")},
+		//onstart:function(){alert("开始拖拽方法")}
+	})
+}
+function ltmark(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.mark(el,true);
+}
+function ltunmark(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.unmark(el);
+}
+function hall(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.hiddenAll(el.getElementsByTagName('BUTTON'));
+}
+function sall(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.showAll(el.getElementsByTagName('BUTTON'));
+}
+function dcent(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.center(el);
+}
+</script>

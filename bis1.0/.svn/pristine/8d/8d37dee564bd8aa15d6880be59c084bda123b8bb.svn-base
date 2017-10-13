@@ -1,0 +1,380 @@
+/*
+datatable3.0 样式说明
+.主样式名称                 必须定义上下左右4个边的样式，宽度为1，position必须为relative否则界面会乱掉
+.主样式名称 div.h           表头区Div样式，需要保持overflow:visible;属性
+.主样式名称 td              表头单元格样式
+.主样式名称 td div          表头中占位的DIV，可以通过调整它的padding值来修正表头的宽度
+.主样式名称 td font         表头辅助按钮样式，如排序按钮、锁定按钮、宽度调整按钮
+.主样式名称 div.l           数据区行样式，DataTable的格线是采用隐藏Div上、左两条边线实现，在这个div中至少使用margin-top:-1px;，可以通过设置margin-left属性调整整个数据区域与表头的位置
+.主样式名称 div.l div.c     数据区单元格样式。可以通过设置左侧边线宽度或通过 margin-left和边线宽度来调整数据区单元格与表头的位置
+.主样式名称 div.odd         数据区奇数行样式
+.主样式名称 div.clock       数据区左侧锁定区样式
+.主样式名称 div.clock div.c 数据区左侧锁定区单元格样式
+*/
+
+.edit {
+	background: #FFFF00;
+	border-width: 0px;
+	overflow: auto;
+	height: 22px;
+	line-height: 22px;
+	margin-top: -2px;
+	margin-left: -2px;
+	padding-left: -2px;
+	padding-right : 2px;
+	text-overflow : string;
+}
+
+input.N {
+	text-align: right;
+}
+
+.btn_clock {
+	background-image: url(./images/datatable/lock.gif);
+	background-repeat: no-repeat;
+	background-position: top right;
+	height: 100%;
+	filter: alpha(opacity = 10);
+	position: absolute;
+}
+
+.btn_recol {
+	background-repeat: no-repeat;
+	background-position: center;
+	float: left;
+	width: 5px;
+	height: 100%;
+	display: block;
+}
+
+/**排序按钮样式**/
+.btn_up {
+	background-image: url(./images/datatable/asc.gif);
+	background-repeat: no-repeat;
+	background-position: top left;
+	width: 25px;
+	height: 100%;
+	top: 0px;
+	position: absolute;
+}
+
+.btn_down {
+	background-image: url(./images/datatable/desc.gif);
+	background-repeat: no-repeat;
+	background-position: top left;
+	width: 25px;
+	height: 100%;
+	top: 0px;
+	position: absolute;
+}
+
+.btn_none {
+	background-image: url(./images/datatable/none.gif);
+	background-repeat: no-repeat;
+	background-position: top left;
+	width: 25px;
+	height: 100%;
+	top: 0px;
+	position: absolute;
+}
+
+/** 综合查询缺省样式 **/
+.dt_tagdiv {
+	padding: 0px;
+	border-top: 1px #ddd solid;
+	border-left: 1px #ddd solid;
+	border-right: 1px #fff solid;
+	border-bottom: 1px #fff solid;
+	position: relative;
+	overflow: scroll;
+	background-color: #fff;
+}
+
+.dt_tagdiv .h {
+	overflow: visible;
+	position: absolute;
+	padding-left: 1px
+}
+
+.dt_tagdiv td {
+	border-bottom: 1px #DDDDDD solid;
+	border-top: 0px #DDDDDD solid;
+	border-right: 1px #DDDDDD solid;
+	border-left: 1px #FFFFFF solid;
+	text-align: center;
+	background-color: #FFFFFF;
+	height: 29px;
+	font-size: 14px;
+}
+
+.dt_tagdiv .code {
+	border-right: 1px #DDDDDD solid;
+	float: left;
+	width: 100px;
+	overflow: hidden;
+	display: -moz-inline-box;
+	display: inline-block;
+	word-break: break-all;
+}
+
+.dt_tagdiv td span {
+	position: relative;
+	text-align: center;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+dt_tagdiv span {
+	display: block;
+	padding-left: 3px;
+	padding-right: 2px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.dt_tagdiv td font {
+	font-size: 12px;
+	cursor: pointer;
+	color: #fafafa;
+}
+
+.dt_tagdiv .l {
+	overflow: hidden;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.dt_tagdiv .m {
+	float: left;
+}
+
+.dt_tagdiv .l .c {
+	overflow: hidden;
+	height: 25px;
+	border-top: 1px #fff solid;
+	border-left: 1px #fff solid;
+	border-right: 1px #ddd solid;
+	float: left;
+	line-height: 23px;
+	background-color: #fff;
+	font-size: 12px;
+	color: #000;
+}
+
+.dt_tagdiv .bl {
+	border-bottom: 1px #DDDDDD solid;
+}
+
+.dt_tagdiv .bnl {
+	border-bottom: 1px #fff solid;
+}
+
+.dt_tagdiv .l .code {
+	margin-left: -1px;
+}
+
+.dt_tagdiv a:link {
+	color: #003366;
+	text-decoration: none;
+}
+
+.dt_tagdiv a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+.dt_tagdiv a:hover {
+	color: #FF0000;
+	text-decoration: none;
+}
+
+.dt_tagdiv a:active {
+	color: #F5550E;
+	text-decoration: none;
+}
+
+/** 一体化样式 **/
+.dttheme_ifmis {
+	padding: 0px;
+	position: relative;
+	overflow: auto;
+	font-size: 12px;
+}
+
+.dttheme_ifmis .h{
+	overflow:hidden;
+	position:absolute;
+	padding-left:0px;
+}
+
+.dttheme_ifmis td span {
+	word-break: keep-all;
+	position: static;
+}
+
+.dttheme_ifmis .l {
+	overflow: hidden;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+.dttheme_ifmis .clockrow {
+	margin-left:-1px;
+}
+.dttheme_ifmis .clockrow .c {
+	background-color: yellow;
+}
+
+.dttheme_ifmis .l .m {
+
+}
+
+/** 春天主题 **/
+.dttheme_spring {
+	padding: 0px;
+	border: 1px solid #C5CDB8;
+	position: relative;
+	overflow: scroll;
+	font-size: 12px;
+}
+
+.dttheme_spring span {
+	display: block;
+}
+
+.dttheme_spring .code {
+	border-right: 1px #C5CDB8 solid;
+	float: left;
+	display: block;
+	width: 100px;
+	overflow: hidden;
+	word-warp: break-word;
+}
+
+.dttheme_spring .h {
+	overflow: visible;
+	height: 27px;
+	position: absolute;
+	display: inline;
+}
+
+.dttheme_spring td {
+	padding: 0px;
+}
+
+.dttheme_spring td .c {
+	border-right: 1px #C5CDB8 solid;
+	border-top: 1px #FFF solid;
+	word-break: keep-all;
+	height: 27;
+	line-height: 27px;
+	background: #FBFDFF url(./images/datatabletheme/auto11_th.gif) repeat-x
+		left top;
+	color: #000;
+	font-weight: normal;
+	text-align: center;
+}
+
+.dttheme_spring td font {
+	color: #e7ebf7;
+	cursor: hand;
+}
+
+.dttheme_spring .l {
+	overflow: visible;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.dttheme_spring .c {
+	margin-left: 0px;
+	border-left: 1px #FFF solid;
+	border-right: 1px #DFDFDF solid;
+	border-top: 1px #DFDFDF solid;
+	border-bottom: 1px #DFDFDF solid;
+	display: block;
+	overflow: hidden;
+	height: 25px;
+	background: #FBFDFF;
+	color: #333;
+	float: left;
+	line-height: 25px;
+}
+
+.dttheme_spring .odd .c {
+	background: #FFF;
+}
+
+/** 门户内嵌样式 **/
+.dttheme_inner {
+	padding: 0px;
+	border: 1px solid #597EAA;
+	position: relative;
+	overflow: scroll;
+	font-size: 12px;
+}
+
+.dttheme_inner span {
+	display: block;
+}
+
+.dttheme_inner .h {
+	overflow: visible;
+	height: 26px;
+	position: absolute;
+}
+
+.dttheme_inner .h td {
+	padding: 0px;
+}
+
+.dttheme_inner td .c {
+	margin-left: 0px;
+	border-left: 0px #FFF solid;
+	border-right: 1px #597EAA solid;
+	border-top: 0px #597EAA solid;
+	border-bottom: 1px #597EAA solid;
+	word-break: keep-all;
+	height: 25px;
+	line-height: 26px;
+	background-color: #ECF1F5;
+	color: #112E70;
+	text-align: center;
+}
+
+.dttheme_inner td font {
+	color: #e7ebf7;
+}
+
+.dttheme_inner .l {
+	overflow: hidden;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.dttheme_inner .c {
+	margin-left: 0px;
+	border-left: 0px #FFF solid;
+	border-right: 1px #597EAA solid;
+	border-top: 0px #597EAA solid;
+	border-bottom: 1px #597EAA solid;
+	display: block;
+	overflow: hidden;
+	height: 20px;
+	background: #FFF;
+	color: #112E70;
+	float: left;
+	line-height: 20px;
+}
+
+.dttheme_inner .odd .c {
+	background: #FAFAFA;
+}
+
+
+.showrow_num{ position: absolute;z-index:1999999; height:23px; line-height:23px; font-size:12px; color:#003366; visibility: hidden;}
+.showrow_num td{ background:url(./images/datatable/showrow_m.gif) repeat-x left top;}
+.showrow_num td.leftp {background:url(./images/datatable/showrow_l.gif) no-repeat left top; width:5px; font-size:0; line-height:0;}
+.showrow_num td.rightp {background:url(./images/datatable/showrow_r.gif) no-repeat left top; width:5px; font-size:0; line-height:0;}
+.showrow_num p {text-align: left;margin-top: 0px;}

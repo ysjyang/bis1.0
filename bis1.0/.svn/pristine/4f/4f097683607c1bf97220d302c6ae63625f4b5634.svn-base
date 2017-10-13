@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.editpanel API</title>
+
+ 
+
+
+		<script type="text/javascript" src="../../../../frameworksupport.js"></script>
+		<script type="text/javascript" src="../../../../ltext_core.js"></script>
+		<script type="text/javascript" src="../../../../../js/fasp.js"></script>
+		<script type="text/javascript" src="../../../../../js/calendar.js"></script>
+		<script type="text/javascript" src="../../../../../common/ui/ui_editpanel.js"></script> 
+		<link rel="stylesheet" type="text/css" href="../../../../../style/default/ui_style.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../../style/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+
+</head>
+
+<body>
+<p>
+	<h2>文本框组件：</h2>
+	<p>editpanel2提供标准文本框组件类型，支持文本录入。</p>
+	<p></p>
+	<h3>属性</h3>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">属性名</th>
+      <th width="5%" bgcolor="#00FFFF">数据类型</th>
+      <th width="45%" bgcolor="#00FFFF">赋值举例</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">tipstext</td>
+      <td bgcolor="#EEEEEE">字符串</td>
+      <td bgcolor="#EEEEEE">"请录入"</td>
+      <td bgcolor="#EEEEEE">文本框无内容时，提示用户输入的内容</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">maxlength</td>
+      <td bgcolor="#EEEEEE">数字</td>
+      <td bgcolor="#EEEEEE">250</td>
+      <td bgcolor="#EEEEEE">最大输入长度，默认为250</td>
+    </tr>
+  </table>
+</p>
+
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>文本框组件</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform' ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ 
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform");
+		 window.setTimeout(function(){
+		 	  _edpanel.draw(el);  
+	      _edpanel.resize(350)
+	      _edpanel.bind();
+		 	},100)
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 _edpanel.draw(el);  
+	   &nbsp;&nbsp;_edpanel.resize(350);
+	   &nbsp;&nbsp;_edpanel.bind(); 
+	<pre></div>
+			</td>
+	</tr>
+ 
+	
+</table>
+
+<h3>事件</h3>
+<p>支持自定义事件，事件名称类似HTML命名规范。</p>
+	 
+
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>文本框组件</th>
+	<tr>
+	<td  width=500px>
+						  onchange事件<br><br>文本值发生改变触发<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;change:function(param){
+	                       &nbsp;&nbsp; //param为当前组件 param._lastdata为上次的值，param.value为本次的值
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform2' ></div>
+							<input type="button" value="点击注册onchange事件" id="clickme"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ 
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+
+				}]
+			}
+		 var _edpanel2 = new Ext.lt.editpanel2(cfg);
+		 var el2 = document.getElementById("editform2");
+ 		 document.getElementById("clickme").attachEvent("onclick",function(){
+		 	var obj={text5:{
+							change:function(param){
+	                         alert("上次留言："+param._lastdata+",本次留言: "+param.value);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel2.bindEvent(obj);
+		 	})
+		 	 
+		 window.setTimeout(function(){
+		 	  _edpanel2.draw(el2);  
+	      _edpanel2.resize(350)
+	      _edpanel2.bind();
+		 	},100)
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 _edpanel.draw(el);  
+	   &nbsp;&nbsp;_edpanel.resize(350);
+	   &nbsp;&nbsp;_edpanel.bind(); 
+	   &nbsp;&nbsp;		 document.getElementById("clickme").attachEvent("onclick",function(){
+		 	var obj={text5:change:function(param){
+	           alert("上次留言："+param._lastdata+",本次留言: "+param.value);
+	   }}
+		 	_edpanel.synchEditform(object);
+		 	})
+	   
+	<pre></div>
+			</td>
+	</tr>
+	
+	
+ <tr>
+	<td  width=500px>
+						  onblur事件<br><br>文本框失去焦点触发<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;blur:function(param){
+	                       &nbsp;&nbsp; //param为当前组件对象param._lastdata为上次的值，param.value为本次的值
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform3' ></div>
+							<input type="button" value="点击注册onblur事件" id="clickme3"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ 
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+
+				}]
+			}
+		 var _edpanel3 = new Ext.lt.editpanel2(cfg);
+		 var el3 = document.getElementById("editform3");
+ 		 document.getElementById("clickme3").attachEvent("onclick",function(){
+		 	var obj={text5:{
+							blur:function(param){
+	                          alert("当前值: "+param.value);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel3.bindEvent(obj);
+		 	})
+		 	 
+		 window.setTimeout(function(){
+		 	  _edpanel3.draw(el3);  
+	      _edpanel3.resize(350)
+	      _edpanel3.bind();
+		 	},100)
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 _edpanel.draw(el);  
+	   &nbsp;&nbsp;_edpanel.resize(350);
+	   &nbsp;&nbsp;_edpanel.bind(); 
+	   &nbsp;&nbsp;		 document.getElementById("clickme").attachEvent("onclick",function(){
+		 	var obj={text5:blur:function(param){
+	           alert("当前值: "+param);
+	   }}
+		 	_edpanel.synchEditform(object);
+		 	})
+	   
+	<pre></div>
+			</td>
+	</tr>
+	
+	<tr>
+	<td  width=500px>
+						  onclick事件<br><br>文本框点击触发<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;click:function(param){
+	                       &nbsp;&nbsp; //param为当前组件对象 
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform4' ></div>
+							<input type="button" value="点击注册onclick事件" id="clickme4"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ 
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+
+				}]
+			}
+		 var _edpanel4 = new Ext.lt.editpanel2(cfg);
+		 var el4 = document.getElementById("editform4");
+ 		 document.getElementById("clickme4").attachEvent("onclick",function(){
+		 	var obj={text5:{
+							click:function(param){
+	                          alert("当前值: "+param.value);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel4.bindEvent(obj);
+		 	})
+		 	 
+		 window.setTimeout(function(){
+		 	  _edpanel4.draw(el4);  
+	      _edpanel4.resize(350)
+	      _edpanel4.bind();
+		 	},100)
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 _edpanel.draw(el);  
+	   &nbsp;&nbsp;_edpanel.resize(350);
+	   &nbsp;&nbsp;_edpanel.bind(); 
+	   &nbsp;&nbsp;		 document.getElementById("clickme").attachEvent("onclick",function(){
+		 	var obj={text5:click:function(param){
+	                          alert("当前值: "+param.value);
+	                  }}
+		 	_edpanel.synchEditform(object);
+		 	})
+	   
+	<pre></div>
+			</td>
+	</tr>
+	
+	<tr>
+	<td  width=500px>
+						  onpropertychange事件<br><br>文本框值更改触发<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;propertychange:function(param){
+	                       &nbsp;&nbsp; //param为当前组件对象 
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform5' ></div>
+							<input type="button" value="点击注册onpropertychange事件" id="clickme5"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ 
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+
+				}]
+			}
+		 var _edpanel5 = new Ext.lt.editpanel2(cfg);
+		 var el5 = document.getElementById("editform5");
+ 		 document.getElementById("clickme5").attachEvent("onclick",function(){
+		 	var obj5={text5:{
+							propertychange:function(param){
+							debugger;
+	                         // alert("当前值: "+param.value);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel5.bindEvent(obj5);
+		 	})
+		 	 
+		 window.setTimeout(function(){
+		 	  _edpanel5.draw(el5);  
+	      _edpanel5.resize(350)
+	      _edpanel5.bind();
+		 	},100)
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"text5",
+				label:"留言",
+				type:"input",
+				tipstext:'想说点什么，写下来吧',
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 _edpanel.draw(el);  
+	   &nbsp;&nbsp;_edpanel.resize(350);
+	   &nbsp;&nbsp;_edpanel.bind(); 
+	   &nbsp;&nbsp;		 document.getElementById("clickme").attachEvent("onclick",function(){
+		 	var obj={text5:click:function(param){
+	                          alert("当前值: "+param.value);
+	                  }}
+		 	_edpanel.synchEditform(object);
+		 	})
+	   
+	<pre></div>
+			</td>
+	</tr>
+	
+</table>
+
+
+</body>
+</html>

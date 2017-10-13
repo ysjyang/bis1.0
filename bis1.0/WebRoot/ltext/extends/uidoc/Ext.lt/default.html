@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+.STYLE1 {
+	font-size: 16px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<p>方法说明：<br />
+  getNextSeqValue()  返回该页面中的一个唯一索引，数字型最小值1000<br />
+  regKeyEvent(char,fn,ctrl,shift) 注册组合键事件。char表示要监控的字母按键，不区分大小写。ctrl、shift表示是否要同时按住键盘的ctrl键和shift键<br />
+  clone(Object)	 复制以对象<br />
+  createComponent(function(){ return cmpinstance}) 创建组件对象方法，要求返回对象必须实现draw，resize方法<br />
+</p>
+<p>&nbsp;</p>
+<p><span class="STYLE1">regKeyEvent(k,fn,pressctrl,pressshift)</span> <br />
+注册组合键事件。ctrl、shift表示键盘ctrl键和是shift的组合，字母键不区分大小写</p>
+<p>例子：</p>
+<p>Ext.lt.regKeyEvent('v',Ext.lt.showPageTest,true,true);<br />
+Ext.lt.regKeyEvent('eev',Ext.lt.showIE9Test,true,true);</p>
+<p>&nbsp; </p>
+</body>
+</html>

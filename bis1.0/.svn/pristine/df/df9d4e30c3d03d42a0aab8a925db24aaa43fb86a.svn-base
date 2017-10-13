@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<p>Ext.lt.report(Ext.lt.recordset)	数据表格对象，在实例化是需要指定数据集<br />
+  初始化参数对象：<br />
+  id:String  对象引用ID，如果没有，系统会自动产生一个<br />
+  recordset:recordset/Object{default:name,name1:recordset1,name2:recordset2,……} 数据集对象，可以设置一个或多个数据集。设置多个数据集是需要指定名称和默认数据集名称。如果不指定，则默认第一个数据集为默认数据集<br />
+  template:String  报表模板<br />
+  <br />
+  属性：<br />
+  id:对象ID<br />
+  version:String  版本号<br />
+  type=&quot;report&quot;;<br />
+  <br />
+  <br />
+  方法：<br />
+  resize(w,h)<br />
+  draw(HTMLElement)<br />
+  <br />
+  <br />
+  事件：<br />
+  <br />
+  <br />
+  对象</p>
+<p>&nbsp;</p>
+<p></p>
+</body>
+</html>

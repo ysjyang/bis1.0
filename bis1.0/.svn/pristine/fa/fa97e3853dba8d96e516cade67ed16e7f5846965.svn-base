@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>editpaneldemo</title>
+<script type="text/javascript" src="../../frameworksupport.js"></script>
+<script type="text/javascript" src="../../ltext_core.js"></script>
+<script type="text/javascript" src="../../editpanel.js"></script>
+<script type="text/javascript" src="../../datatable3.0.js"></script>
+<link rel="stylesheet" type="text/css" href="../../datatabletheme.css" />
+<script type="text/javascript" src="./editpaneldemo.js"></script>
+</head>
+<body>
+<div id= "queryform">
+	   <ul id='ul'>
+       	 <li width="33.3%" label="用户编码:" labelwidth="30%" type="input" name="code" maxlength="10" isnull="false" clearbtn="true"/>
+		 <li width="33.3%" label="用户名称:" labelwidth="30%" type="select" name="name" dataloader="testselect"/>
+		 <li width="33.3%" label="用户标示:" labelwidth="30%" type="treeselect" name="id" dataloader="testtreeselect"/>
+		 <li width="33.3%" label="数字测试:" labelwidth="30%" type="numberinput" name="number"maxlength="5" />
+       </ul>
+	   <div>  
+	   &nbsp;<button onclick="save(obj)">&nbsp;测试</button>
+	 </div> 
+</div>
+</body>
+</html>
+<script language="javascript" type="text/javascript">
+            var obj={code:'',name:'',id:'',number:''};
+	        var _form = Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+			_form.reset(obj);
+			_form.check(obj);
+			_form.bind(obj);
+</script>
+
+

@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme35.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../../../datatable3.0.js"></script>
+<script src="../../jquery.js"></script>
+</head>
+
+<body>
+<p>弹菜单组件，可用于右击弹出菜单和滑动后弹出菜单等<br/>
+	<h1>popupmenu</h1>
+	<h2>命名空间：Ext.lt.Popupmenu</h2>
+<h2>说明：</h2>
+<p>
+数据采用树形结构实现，创建对象后会根据结构内容自动设置菜单级次。<br/>
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css" /><br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var m=Ext.lt.Popupmenu({
+			data:datas,
+			field:{id:'id',name:'name',code:'code',sid:'pid'}
+			});<br/>
+		m.draw(HTMLElement);<br/>
+</p>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">data</td>
+      <td bgcolor="#EEEEEE">Array/Recordset</td>
+      <td bgcolor="#EEEEEE">数组或recordset对象。list+map结构</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">field</td>
+      <td bgcolor="#EEEEEE">Object</td>
+      <td bgcolor="#EEEEEE">设置生成树的数据集属性名称，默认属性名为 
+      	id:'itemid',name:'name',code:'code',sid:'superitemid'</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">className</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">菜单的基本样式，默认样式是popupmenu</td>
+    </tr>
+   <tr>
+      <td bgcolor="#CCCCCC">outformart</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据集输出格式默认为#name方式，需要数据集中存在name属性</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">maxHeight</td>
+      <td bgcolor="#EEEEEE">int</td>
+      <td bgcolor="#EEEEEE">控制菜单显示最大长度。int:表示具体高度，'auto'表示使用body的高度，true表示不限制（默认值）</td>
+    </tr>
+   </table>
+<h2>方法说明</h2>
+<h3>draw</h3>
+<p>
+绘制菜单，并定位到绘制的div上<br/>
+popupmenu.draw(div) 
+</p>
+<h3>close</h3>
+<p>
+关闭菜单方法<br/>
+popupmenu.close(div) 
+
+<h2>数据集对象说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">id</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据的唯一标识</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">name</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据展示的内容</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">sid</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">数据的父节点唯一标识，根节点的数据请给“0”</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">ico</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">节点前面蓝色区域展示菜单图片的路径，可以不写</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">icostyle</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">节点前面蓝色区域展示菜单图片区域的样式，通过设置背景图片可以修改菜单图片，可以不写</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">icoclass</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">节点前面蓝色区域展示菜单图片区域的样式单，通过设置背景图片可以修改菜单图片，可以不写</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">fn</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">数据集输出函数，对复杂的输出逻辑，可以使用输出函数来处理菜单显示的内容。一旦设置输出函数，outformart属性失效</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">show</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">子节点展示函数，对复杂子节点的输出，可以使用该函数来显示内容，一旦设置该函数子节点的内容将不在展示</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">click</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">节点点击函数，通过对节点点击来实现的动作后触发的内容。</td>
+    </tr>
+   </table>
+
+
+<table width="100%" border=1>
+	<tr>
+			<th>普通效果菜单</th>
+	<tr>
+		<td>
+			<div id="pmenutest" class='popupmenu' style="visibility:hidden" ></div>
+<pre class=democodearea>
+var datas=[];
+		datas.push({id:1,name:'测试1',code:'cs1',pid:0});
+		datas.push({id:2,name:'测试2',code:'cs1',pid:0});
+		datas.push({id:3,name:'测试3',code:'cs1',pid:2});
+		datas.push({id:4,name:'测试4',code:'cs1',pid:2});
+		var m=Ext.lt.Popupmenu({
+			data:datas,
+			field:{id:'id',name:'name',code:'code',sid:'pid'}
+			});
+		var d=document.getElementById('pmenutest');
+		m.draw(d);
+
+	var pos=Ext.lt.HTML.positionedOffset(this,document.body,false);
+				
+		var x=pos.left+50;
+		var y=pos.top-50;
+	
+		d.style.left=x+'px';
+		d.style.top=y+'px';
+		d.style.visibility='visible';
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th>ico相关设置</th>
+	<tr>
+		<td>
+			<div id="pmenutest2" class='popupmenu' style="visibility:hidden" ></div>
+<pre class=democodearea>
+var datas=[];
+		datas.push({id:1,name:'测试11111111111',code:'cs1',pid:0,ico:'../../../../images/datatable/menuasc.gif'});
+		datas.push({id:2,name:'测试2',code:'cs1',pid:0,icostyle:'background:red'});
+		datas.push({id:3,name:'测试3',code:'cs1',pid:2,icoclass:'btn_menufilting35'});
+		datas.push({id:4,name:'测试44444444444',code:'cs1',pid:2});
+		var m=Ext.lt.Popupmenu({
+			data:datas,
+			field:{id:'id',name:'name',code:'code',sid:'pid'}
+			});
+		var d=document.getElementById('pmenutest2');
+		m.draw(d);
+		var pos=Ext.lt.HTML.positionedOffset(this,document.body,false);
+				
+		var x=pos.left+50;
+		var y=pos.top-50;
+	
+		d.style.left=x+'px';
+		d.style.top=y+'px';
+		d.style.visibility='visible';
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th>fn函数和#code-#name</th>
+	<tr>
+		<td>
+			<div id="pmenutest3" class='popupmenu' style="visibility:hidden" ></div>
+<pre class=democodearea>
+var datas=[];
+		datas.push({id:1,name:'测试1',code:'cs1',pid:0});
+		datas.push({id:2,name:'测试2',code:'cs2',pid:0});
+		datas.push({id:3,name:'测试3',code:'cs3',pid:2,fn:function(){
+					return '我们来测试下fn';
+				}});
+		datas.push({id:4,name:'测试4',code:'cs4',pid:2});
+		var m=Ext.lt.Popupmenu({
+			data:datas,
+			outformart:'#code-#name',
+			field:{id:'id',name:'name',code:'code',sid:'pid'}
+			});
+		var d=document.getElementById('pmenutest3');
+		m.draw(d);
+		
+	var pos=Ext.lt.HTML.positionedOffset(this,document.body,false);
+				
+		var x=pos.left+50;
+		var y=pos.top-50;
+	
+		d.style.left=x+'px';
+		d.style.top=y+'px';
+		d.style.visibility='visible';
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th>show()，click(),以及菜单close方法</th>
+	<tr>
+		<td>
+			
+		
+			<div id="pmenutest4" class='popupmenu' style="visibility:hidden" ></div>
+<pre class=democodearea>
+var datas=[];
+		datas.push({id:1,name:'测试1',code:'cs1',pid:0,click:function(){alert('输出一下')}});
+		datas.push({id:2,name:'测试2',code:'cs2',pid:0,show:function(div,_cfg,vid,l){
+				div.innerHTML='<button >点我就关闭</button>';
+				div.firstChild.onclick=function(){
+					alert("提示下");
+					m.close();
+				}
+		}});
+		var m=Ext.lt.Popupmenu({
+			data:datas,
+			field:{id:'id',name:'name',code:'code',sid:'pid'}
+			});
+		var d=document.getElementById('pmenutest4');
+		m.draw(d);
+		
+	var pos=Ext.lt.HTML.positionedOffset(this,document.body,false);
+				
+		var x=pos.left+50;
+		var y=pos.top-50;
+	
+		d.style.left=x+'px';
+		d.style.top=y+'px';
+		d.style.visibility='visible';
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th>分割线</th>
+	<tr>
+		<td>
+			
+		
+			<div id="pmenutest5" class='popupmenu' style="visibility:hidden" ></div>
+<pre class=democodearea>
+var datas=[];
+		datas.push({id:1,name:'测试1',code:'cs1',pid:0});
+		datas.push({id:2,name:'测试2',code:'cs2',pid:0});
+		datas.push({id:3,name:'|',code:'cs2',pid:0});
+		datas.push({id:4,name:'测试4',code:'cs2',pid:0});
+		datas.push({id:5,name:'测试5',code:'cs2',pid:0});
+	
+		var m=Ext.lt.Popupmenu({
+			data:datas,
+			field:{id:'id',name:'name',code:'code',sid:'pid'}
+			});
+		var d=document.getElementById('pmenutest5');
+		m.draw(d);
+		
+	var pos=Ext.lt.HTML.positionedOffset(this,document.body,false);
+				
+		var x=pos.left+50;
+		var y=pos.top-100;
+	
+		d.style.left=x+'px';
+		d.style.top=y+'px';
+		d.style.visibility='visible';
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+			<th>过长出滚动效果</th>
+	<tr>
+		<td>
+			
+		
+			<div id="pmenutest6" class='popupmenu' style="visibility:hidden" ></div>
+<pre class=democodearea>
+var datas=[];
+	
+			for(var i=1;i<30;i++){
+				datas.push({id:i,name:'测l试'+i,code:'cs'+i,pid:0});			
+			}
+			for(var i=50;i<55;i++){
+				datas.push({id:i,name:'测l试'+i,code:'cs'+i,pid:6});			
+			}
+			for(var i=55;i<60;i++){
+				datas.push({id:i,name:'测l试'+i,code:'cs'+i,pid:51});			
+			}
+		var m=Ext.lt.Popupmenu({
+			data:datas,
+			field:{id:'id',name:'name',code:'code',sid:'pid'},
+			maxHeight:280
+			});
+		var d=document.getElementById('pmenutest6');
+		m.draw(d);
+		
+	var pos=Ext.lt.HTML.positionedOffset(this,document.body,false);
+				
+		var x=pos.left+50;
+		var y=pos.top-100;
+	
+		d.style.left=x+'px';
+		d.style.top=y+'px';
+		d.style.visibility='visible';
+</pre>
+	<script>
+		function pmenutest6(){
+			var datas=[];
+		
+			for(var i=1;i<50;i++){
+				datas.push({id:i,name:'测l试'+i,code:'cs'+i,pid:0});			
+			}
+			for(var i=50;i<55;i++){
+				datas.push({id:i,name:'测l试'+i,code:'cs'+i,pid:6});			
+			}
+			for(var i=55;i<60;i++){
+				datas.push({id:i,name:'测l试'+i,code:'cs'+i,pid:51});			
+			}
+			var m=Ext.lt.Popupmenu({
+				data:datas,
+				field:{id:'id',name:'name',code:'code',sid:'pid'},
+				maxHeight:280
+				});
+			var d=document.getElementById('pmenutest6');
+			m.draw(d);
+			
+			var pos=Ext.lt.HTML.positionedOffset(document.getElementById('pmenutest6_btn'),document.body,false);
+					
+			var x=pos.left+50;
+			var y=pos.top-250;
+		
+			d.style.left=x+'px';
+			d.style.top=y+'px';
+			d.style.visibility='visible';
+		}	
+	</script>
+<button onclick="pmenutest6();" id="pmenutest6_btn" >测试</button>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

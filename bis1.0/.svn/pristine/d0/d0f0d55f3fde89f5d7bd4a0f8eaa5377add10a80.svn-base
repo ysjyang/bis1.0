@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<p>Ext.lt.datatable(Ext.lt.recordset)	数据表格对象，在实例化是需要指定数据集<br />
+  属性<br />
+  version=&quot;3.0&quot;;<br />
+  type=&quot;datatable&quot;;<br />
+  方法<br />
+  setDebug(boolean)		设置是否为调试模式，调试模式中会在页面上显示一个调试窗口，显示滚动条、动画等方法的执行过程<br />
+  setCols(Array)		设置列对象 <br />
+  {id:列索引,<br />
+  name:列名,<br />
+  alias:别名,<br />
+  sort:顺序码,<br />
+  datatype:数据类型S(字符串)N(数字)D(日期)P(百分比)I(整数)E(枚举),<br />
+  style:集成样式单内容<br />
+  mapper:{default_column:缺省列默认第一列,columns:[n1,n2,……]列名,datas:[[],[]……]对照数据}  只有类型为S时生效<br />
+  format:格式,<br />
+  数值型：{unit:int 计量单位,dotname:int 小数位,qfw:boolean 是否显示}<br />
+  文本型：#n1-#n2<br />
+  日期型：'YYYY年MM月DD日' 输出格式，默认输出格式为'YYYY年MM月DD日'   输入日期格式必须为'YYYYMMDD'<br />
+  width:列宽度,<br />
+  minwidth:最小宽度默认100,<br />
+  fn(int,int,Object,value):回调函数可以扩展表格行为，参数为行数、列数、数据集值对象、格式化处理后的值，<br />
+  c._bind(datatable):将DataTable绑定到列中 <br />
+  c.init():在DataTable绘制时及绘制后修改列内容时会执行该方法<br />
+  head:[上级表头名称]:将上级表头名称以数组的方式传递进来，用于DataTable组件生成多层表头。表头顺序需要从下往上写。例如，直接支付和授权支付上增加一个集中支付的表头：cn1={name:'直接支付',head:['集中支付']} cn2={name,'授权支付',head:['集中支付']}<br />
+  edit:是否可编辑布尔型。true表示可编辑，默认编辑方式为文本编辑框，如果设置了Mapper属性则默认显示下拉框<br />
+  }<br />
+  <br />
+  getCols()		获取列DataTable列设置<br />
+  getCol(i)   获取指定列设置对象<br />
+  draw(DIV)		向指定区域显示表格，指定的DIV会被增加移除隐藏属性<br />
+  position		重新计算数据表格内部各个区域的大小及位置<br />
+  resize(int-width,int-hieght)		重新执行数据表格的宽度，高度<br />
+  clockColumnSize(int)		锁定列数<br />
+  reflash		刷新数据表格的内容<br />
+  mergeColumn(int)		合并显示的列数<br />
+  setZoom(float)		设置表格内文字显示的比例，大于0<br />
+  headsort(boolean)		是否允许排序功能<br />
+  onEvent(string-eventname,function-eventfunction) 添加监控事件。可以通过该方法控制DataTable的事件处理。如果事件设置成功则返回true，否则返回false<br />
+  setClassName(string) 设置样式单名称<br />
+  setAllowClock(boolean) 允许在列上进行列锁定配置，默认为true<br />
+  setAllHeadWidth(boolean) 允许在列上进行列宽调整，默认为true<br />
+  drawMultiHead(boolean) 是否绘制多层表头，默认为false<br />
+  setLayout()						集成布局管理<br />
+  setMouselight(color)	设置表格高亮颜色，默认空白色。如'#eee' 'red'<br />
+  mousedrag(boolean)  是否支持鼠标拖拽。默认为ture 设置为false时表格不支持鼠标拖拽<br />
+  setFilter()  设置过滤条件，设置格式为{key:string/number/array,…}，设置后DataTable只显示符合条件的数据<br />
+  clearFilter()  	清除数据过滤条件<br />
+  setFnFilter(string,fn)	//对指定方法进行监听目前可对colsort,divscroll进行监听 返回值true/false 不执行后面代码<br />
+  clearFnFilter();		//清除所有的方法监听<br />
+  setMaxData(int)			//最大数据（为多次查询使用）<br />
+  gatMaxData()			//获取最大数据。<br />
+  remove()	删除表格中选中的数据,参数为删除条件，参数为null时删除所有数据。参数对象格式为{key:string/number/array,…}<br />
+  setKeysearch(boolean) 是否开启键盘快速定位功能，默认false<br />
+  setSearchWord(string) 设置搜索关键词<br />
+  clearSearchWord()  清除搜索关键词<br />
+  goto(line) 表格跳转显示到第几行<br />
+</p>
+<p> 事件<br />
+  onclick(datatableobj,srcElement,line number,column number,rs) 鼠标单击事件，参数为：DataTable对象，产生事件的单元格对象，行数，列数。对合并列只传第一列的列数<br />
+  ondblclick(datatableobj,srcElement,line number,column number,rs)  鼠标双击事件，参数同上<br />
+  onmousemove(datatableobj,srcElement,line number,column number,rs)  鼠标双击事件，参数同上<br />
+  onmouseout(datatableobj,srcElement,line number,column number,rs)  鼠标双击事件，参数同上<br />
+  onmouseenter(datatableobj,srcElement,line number,column number,rs)  鼠标双击事件，参数同上<br />
+  onmouseover(datatableobj,srcElement,line number,column number,rs)  鼠标双击事件，参数同上<br />
+  onmouseup(datatableobj,srcElement,line number,column number,rs)  鼠标双击事件，参数同上<br />
+  onmousewheel(datatableobj,srcElement,rs) 鼠标滚轮事件，参数为：DataTable对象，产生事件的单元格对象<br />
+  <br />
+  onheadclick(datatableobj,srcElement,column number,recordset) 鼠标点击事件，参数为：DataTable对象，产生事件的单元格对象，列数，数据集对象<br />
+  <br />
+  消息<br />
+  当用户与datatable组件进行交互时，除了会产生各种处理事件之外，还会产生各种消息。<br />
+  可以使用Ext.lt.message.hook('datatable','消息类型',处理函数)接收datatab消息<br />
+  来源对象名：datatable<br />
+  <br />
+  消息类型,参数对象结构<br />
+  onclick,[datatable对象,消息来源对象,行号,列号,点击的数据集对象]<br />
+  <br />
+  <br />
+  对象<br />
+  columns{	datatable默认实现的列<br />
+  seq:{}	编号列，默认使用RecordSet集合中序号列_locationposition<br />
+  checkbox{	复选框列<br />
+  setColumnName()	设置数据集中代表数据选中的属性名，默认名称为check<br />
+  setCheckValue()	设置代表选中属性的值集，默认为1<br />
+  }<br />
+  }<br />
+  <br />
+</p>
+</body>
+</html>

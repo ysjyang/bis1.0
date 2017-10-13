@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+<bean id="ServiceFactory" class="gov.mof.fasp2.bis.factory.ServiceFactory"/> 
+    
+<!-- 业务类型 登录 取消登录 -->
+<bean id="bis.bustype.login.BustypeLoginBO" class="gov.mof.fasp2.bis.bustype.login.BustypeLoginBO"/> 
+
+<!-- 业务类型 银行接口 -->
+<bean id="bis.bustype.bank.Bustype1001BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1001BO"/>
+<bean id="bis.bustype.bank.Bustype1002BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1002BO"/>
+<bean id="bis.bustype.bank.Bustype1003BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1003BO"/>
+<bean id="bis.bustype.bank.Bustype1004BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1004BO"/>
+<bean id="bis.bustype.bank.Bustype1005BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1005BO"/>
+<bean id="bis.bustype.bank.Bustype1006BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1006BO"/>
+<bean id="bis.bustype.bank.Bustype1007BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1007BO"/>
+<bean id="bis.bustype.bank.Bustype1008BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1008BO"/>
+<bean id="bis.bustype.bank.Bustype1009BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1009BO"/>
+<bean id="bis.bustype.bank.Bustype1010BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1010BO"/>
+<bean id="bis.bustype.bank.Bustype1011BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1011BO"/>
+<bean id="bis.bustype.bank.Bustype1012BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1012BO"/>
+<bean id="bis.bustype.bank.Bustype1013BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1013BO"/>
+<bean id="bis.bustype.bank.Bustype1014BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1014BO"/>
+<bean id="bis.bustype.bank.Bustype1015BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1015BO"/>
+<bean id="bis.bustype.bank.Bustype1016BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1016BO"/>
+<bean id="bis.bustype.bank.Bustype1017BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1017BO"/>
+<bean id="bis.bustype.bank.Bustype1018BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1018BO"/>
+<bean id="bis.bustype.bank.Bustype1019BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1019BO"/>
+<bean id="bis.bustype.bank.Bustype1020BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1020BO"/>
+<bean id="bis.bustype.bank.Bustype1021BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1021BO"/>
+<bean id="bis.bustype.bank.Bustype1022BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1022BO"/>
+<bean id="bis.bustype.bank.Bustype1023BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1023BO"/>
+<bean id="bis.bustype.bank.Bustype1024BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1024BO"/>
+<bean id="bis.bustype.bank.Bustype1025BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1025BO"/>
+<bean id="bis.bustype.bank.Bustype1026BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1026BO"/>
+<bean id="bis.bustype.bank.Bustype1027BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1027BO"/>
+<bean id="bis.bustype.bank.Bustype1101BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1101BO"/>
+<bean id="bis.bustype.bank.Bustype1102BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1102BO"/>
+<bean id="bis.bustype.bank.Bustype1103BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1103BO"/>
+<bean id="bis.bustype.bank.Bustype1104BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1104BO"/>
+<bean id="bis.bustype.bank.Bustype1105BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1105BO"/>
+<bean id="bis.bustype.bank.Bustype1106BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1106BO"/>
+<bean id="bis.bustype.bank.Bustype1107BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1107BO"/>
+<bean id="bis.bustype.bank.Bustype1108BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1108BO"/>
+<bean id="bis.bustype.bank.Bustype1109BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1109BO"/>
+<bean id="bis.bustype.bank.Bustype1110BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1110BO"/>
+<bean id="bis.bustype.bank.Bustype1111BO" class="gov.mof.fasp2.bis.bustype.bank.Bustype1111BO"/>
+
+<!-- pay -->
+<bean id="bis.bustype.bank.Bustype2001BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2001BO"/>
+<bean id="bis.bustype.bank.Bustype2002BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2002BO"/>
+<bean id="bis.bustype.bank.Bustype2003BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2003BO"/>
+<bean id="bis.bustype.bank.Bustype2004BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2004BO"/>
+<bean id="bis.bustype.bank.Bustype2005BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2005BO"/>
+<bean id="bis.bustype.bank.Bustype2006BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2006BO"/>
+<bean id="bis.bustype.bank.Bustype2007BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2007BO"/>
+<bean id="bis.bustype.bank.Bustype2008BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2008BO"/>
+<bean id="bis.bustype.bank.Bustype2009BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2009BO"/>
+<bean id="bis.bustype.bank.Bustype2010BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2010BO"/>
+<bean id="bis.bustype.bank.Bustype2011BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2011BO"/>
+<bean id="bis.bustype.bank.Bustype2012BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2012BO"/>
+<bean id="bis.bustype.bank.Bustype2013BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2013BO"/>
+<bean id="bis.bustype.bank.Bustype2014BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2014BO"/>
+<bean id="bis.bustype.bank.Bustype2015BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2015BO"/>
+<bean id="bis.bustype.bank.Bustype2016BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2016BO"/>
+<bean id="bis.bustype.bank.Bustype2017BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2017BO"/>
+<bean id="bis.bustype.bank.Bustype2018BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2018BO"/>
+
+<bean id="bis.bustype.bank.Bustype2019BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2019BO"/>
+<bean id="bis.bustype.bank.Bustype2020BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2020BO"/>
+<bean id="bis.bustype.bank.Bustype2021BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2021BO"/>
+<bean id="bis.bustype.bank.Bustype2022BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2022BO"/>
+<bean id="bis.bustype.bank.Bustype2023BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2023BO"/>
+<bean id="bis.bustype.bank.Bustype2024BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2024BO"/>
+<bean id="bis.bustype.bank.Bustype2025BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2025BO"/>
+<bean id="bis.bustype.bank.Bustype2026BO" class="gov.mof.fasp2.bis.bustype.pay.Bustype2026BO"/>
+<!-- card -->
+<bean id="bis.bustype.bank.Bustype2101BO" class="gov.mof.fasp2.bis.bustype.card.Bustype2101BO"/>
+<bean id="bis.bustype.bank.Bustype2102BO" class="gov.mof.fasp2.bis.bustype.card.Bustype2102BO"/>
+<bean id="bis.bustype.bank.Bustype2103BO" class="gov.mof.fasp2.bis.bustype.card.Bustype2103BO"/>
+<bean id="bis.bustype.bank.Bustype2104BO" class="gov.mof.fasp2.bis.bustype.card.Bustype2104BO"/>
+<bean id="bis.bustype.bank.Bustype2105BO" class="gov.mof.fasp2.bis.bustype.card.Bustype2105BO"/>
+<bean id="bis.bustype.bank.Bustype2106BO" class="gov.mof.fasp2.bis.bustype.card.Bustype2106BO"/>
+<bean id="bis.bustype.bank.Bustype2107BO" class="gov.mof.fasp2.bis.bustype.card.Bustype2107BO"/>
+<!-- msxt 民生接口 -->
+<bean id="bis.bustype.bank.Bustype1301BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype1301BO"/>
+<bean id="bis.bustype.bank.Bustype1302BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype1302BO"/>
+<bean id="bis.bustype.bank.Bustype1303BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype1303BO"/>
+<bean id="bis.bustype.bank.Bustype1304BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype1304BO"/>
+<bean id="bis.bustype.bank.Bustype1305BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype1305BO"/>
+<bean id="bis.bustype.bank.Bustype1306BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype1306BO"/>
+<bean id="bis.bustype.bank.Bustype2301BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype2301BO"/>
+<bean id="bis.bustype.bank.Bustype2302BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype2302BO"/>
+<bean id="bis.bustype.bank.Bustype2303BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype2303BO"/>
+<bean id="bis.bustype.bank.Bustype2304BO" class="gov.mof.fasp2.bis.bustype.msxt.Bustype2304BO"/>
+
+<!-- 基础数据读取 -->
+<bean id="bis.bustype.element.BustypeElelementBO" class="gov.mof.fasp2.bis.bustype.element.BustypeElelementBO"/>
+
+
+
+</beans>

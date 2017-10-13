@@ -1,0 +1,94 @@
+/*
+ * Ext JS Library 2.2.1
+ * Copyright(c) 2006-2009, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://extjs.com/license
+ */
+
+.x-portal .x-panel-dd-spacer {
+    margin-bottom:10px;
+}
+
+.x-portlet {
+    margin-bottom:10px;
+}
+
+/* Clean up the look of the portlets */
+.x-portlet .x-panel-ml {
+    padding-left:2px;
+}
+.x-portlet .x-panel-mr {
+    padding-right:2px;
+}
+.x-portlet .x-panel-bl {
+    padding-left:2px;
+}
+
+.x-portlet .x-panel-br {
+    padding-right:2px;
+}
+.x-portlet .x-panel-body {
+    background:white;
+}
+.x-portlet .x-panel-mc {
+    padding-top:2px;
+}
+.x-portlet .x-panel-bc .x-panel-footer {
+    padding-bottom:2px;
+}
+.x-portlet .x-panel-nofooter .x-panel-bc {
+    height:2px;
+}
+
+
+/*
+ * Ext JS Library 2.2.1
+ * Copyright(c) 2006-2009, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://extjs.com/license
+ */
+.x-panel-body p {
+    margin:5px;
+}
+    
+.settings {
+    background-image:url( ../shared/icons/fam/folder_wrench.png ) !important;
+}
+.nav {
+    background-image:url( ../shared/icons/fam/folder_go.png ) !important;
+}
+
+
+.db_kuang_menhu{background:#E0EEFF; border:1px solid #ADBDD4; overflow:auto; padding:2px;}
+.db_kuang_inner_menhu{background:#FFF; border:1px solid #ADBDD4; line-height:20px; }
+.db_kuang_inner_menhu a:link{font-size:13px; color:#003399; margin:5px;}
+.db_kuang_inner_menhu a:visited{font-size:13px; color:#003399;margin:5px;}
+.db_kuang_inner_menhu a:hover{font-size:13px; color:#FF0000; text-decoration:underline; margin:5px;}
+.db_kuang_inner_menhu a:active{font-size:13px; margin:10px;}
+
+
+
+.menhu_title2{font-size:20px; font-family:"ºÚÌå"; font-weight:nomal; font-stretch:narrower; color:#16428B;background:url(../images/bg/should_be_done1.gif) no-repeat left center; background-position:10px; margin-top:0px; height:80px; line-height:80px; padding-left:80px; border:1px #ADBDD4 solid; margin-bottom:-1px;}
+.a_area{ border:1px #ADBDD4 solid; margin-bottom:-1px;}
+.a_area a:link{font-size:13px; color:#003399; margin:5px;}
+.a_area a:visited{font-size:13px; color:#003399;margin:5px;}
+.a_area a:hover{font-size:13px; color:#FF0000; text-decoration:underline; margin:5px;}
+.a_area a:active{font-size:13px; margin:10px;}
+
+
+
+.menhu_p{float:left; padding-left:100px; border-bottom:1px #ADBDD4 dashed; padding-bottom:10px; width:80%;}
+.menhu_title{font-size:16px;color:#16428B;padding-top:20px; padding-bottom:5px; font-weight:bold;}
+.menhu_link{color:#555; font-size:13px; line-height: 30px;}
+.menhu_link div{text-align:center;float:left;white-space:nowrap;word-break:keep-all; border:1px #ADBDD4 solid; height:26px; line-height:26px;margin-bottom:5px; margin-right:5px;color: #076DB5;cursor: pointer;}
+.menhu_link .selectDiv{background-color: blue;color: #FFF;}
+
+
+.mark_txt{position:relative;top:-25px;}
+.loadMask {width:300px; height:130px;}
+.loadMask div{ background:red; margin-top:60px; border:0; height:8px;}
+.loadMask .mark{margin-left:-10px;background-image:url("../images/loading.png"); green; margin-top:-21px;}
+
+.login1{border:1px #FFF solid;}

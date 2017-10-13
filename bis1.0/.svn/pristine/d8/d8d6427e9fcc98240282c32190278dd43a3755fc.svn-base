@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="ServiceFactory" class="gov.mof.fasp2.bis.factory.ServiceFactory"/> 
+	    
+	<bean id="bis.common.CommonDAO" class="gov.mof.fasp2.bis.common.CommonDAO" >
+	   <property name="dataSource" ref="dataSource"/>  
+	</bean>
+	
+	<!-- 登录Action -->
+	<bean id="bis.login.LoginAction" class="gov.mof.fasp2.bis.login.LoginAction"/> 
+	<!-- 登录跳转Action -->
+	<bean id="bis.loginCheck.toPageAction" class="gov.mof.fasp2.bis.login.ToPageAction"/> 
+	<!-- 业务类型启用/停用  页面跳转-->
+	<bean id="businessTypeOperate.businessTypeTopageAction" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeTopageAction" />
+	<!-- 批量建表  页面跳转-->
+	<bean id="createTable.currentTableTopageAction" class="gov.mof.fasp2.bis.createTable.CurrentTableTopageAction" />
+	<!-- 日志管理  页面跳转-->
+	<bean id="logManager.logManagerTopageAction" class="gov.mof.fasp2.bis.logManager.LogManagerTopageAction" />
+	<!-- 测试-->
+	<bean id="bis.test.testAction" class="gov.mof.fasp2.bis.test.TestAction" />
+	<!-- 重置-->
+	<bean id="bis.test.resetAction" class="gov.mof.fasp2.bis.test.ResetAction" />
+	<!-- 清表-->
+	<bean id="bis.test.delAction" class="gov.mof.fasp2.bis.test.DelAction" />
+			
+	<!-- 登录验证Action -->
+	<bean id="bis.login.LoginCheckAction" class="gov.mof.fasp2.bis.login.LoginCheckAction">
+		<property name="LoginCheckBO" ref="bis.login.LoginCheckBO"></property> 
+	</bean>
+	<bean id="bis.login.LoginCheckBO" class="gov.mof.fasp2.bis.login.LoginCheckBO">
+		<property name="LoginCheckDao" ref="bis.login.LoginCheckDao"></property>
+	</bean>
+	<bean id="bis.login.LoginCheckDao" class="gov.mof.fasp2.bis.login.LoginCheckDao">
+		<property name="CommonDAO" ref="bis.common.CommonDAO"></property>
+	</bean>
+	
+	<!-- 业务类型 登录 取消登录 -->
+	<bean id="bis.login.bustype.BustypeLoginBO" class="gov.mof.fasp2.bis.bustype.login.BustypeLoginBO"/> 
+	
+	<!-- 跳转到修改密码页面Action -->
+	<bean id="bis.usermanage.changepwd.ChangePwdAction" class="gov.mof.fasp2.bis.usermanage.changepwd.ChangePwdAction"></bean>
+	<!-- 修改密码Action -->
+	<bean id="bis.usermanage.changepwd.ChangePwdSubAction" class="gov.mof.fasp2.bis.usermanage.changepwd.ChangePwdSubAction"></bean>
+	<!-- 重置密码Action -->
+	<bean id="bis.usermanage.changepwd.ResetPwdAction" class="gov.mof.fasp2.bis.usermanage.changepwd.ResetPwdAction"></bean>
+	<!-- 加载用户Action -->
+	<bean id="bis.usermanage.changepwd.ChangePwdViewAction" class="gov.mof.fasp2.bis.usermanage.changepwd.ChangePwdViewAction"></bean>
+	
+	<!-- 刷新 缓存功能 -->
+	<bean id="bis.cache.RefreshCacheAction" class="gov.mof.fasp2.bis.cache.RefreshCacheAction"></bean>
+	
+	
+	<!-- 业务类型启用/停用	树 -->
+	<bean id="businessTypeOperate.BusinessTypeAction" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeAction">
+		<property name="BusinessTypeBO" ref="businessTypeOperate.BusinessTypeBO"></property>
+	</bean>
+	<bean id="businessTypeOperate.BusinessTypeBO" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeBO">
+		<property name="BusinessTypeDAO" ref="businessTypeOperate.BusinessTypeDAO"></property>
+	</bean>
+	<bean id="businessTypeOperate.BusinessTypeDAO" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeDAO">
+		<property name="CommonDAO" ref="bis.common.CommonDAO"></property>
+	</bean>
+	
+	<!-- 业务类型启用/停用	表格 -->
+	<bean id="businessTypeOperate.BusinessTypeTableAction" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeTableAction">
+		<property name="BusinessTypeTableDAO" ref="businessTypeOperate.BusinessTypeDataDAO"></property>
+	</bean>
+	<bean id="businessTypeOperate.BusinessTypeDataDAO" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeDataDAO">
+		<property name="CommonDAO" ref="bis.common.CommonDAO"></property>
+	</bean>
+	
+	<!-- 业务类型启用/停用	保存按钮 -->
+	<bean id="businessTypeOperate.BusinessTypeSaveAction" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeSaveAction">
+		<property name="BusinessTypeSaveDAO" ref="businessTypeOperate.BusinessTypeSaveDAO"></property>
+	</bean>
+	<bean id="businessTypeOperate.BusinessTypeSaveDAO" class="gov.mof.fasp2.bis.businessTypeOperate.BusinessTypeSaveDAO">
+		<property name="CommonDAO" ref="bis.common.CommonDAO"></property>
+	</bean>
+	
+	<!-- 业务类型数据展示页面  -->
+	<bean id="bis.bustypequery.bustypeQueryAction" class="gov.mof.fasp2.bis.bustypequery.BustypeQueryAction">
+		<property name="bustypeQueryBo" ref="bis.bustypequery.bustypeQueryBO"></property>
+	</bean>
+	<bean id="bis.bustypequery.bustypeQueryBO" class="gov.mof.fasp2.bis.bustypequery.BustypeQueryBO">
+		<property name="bustypeQueryDao" ref="bis.bustypequery.bustypeQueryDAO"></property>
+	</bean>
+	<bean id="bis.bustypequery.bustypeQueryDAO" class="gov.mof.fasp2.bis.bustypequery.BustypeQueryDAO">
+		<property name="commonDao" ref="bis.common.CommonDAO"></property>
+	</bean>
+	<!-- 分页操作公用组件 -->
+	<bean id="bis.common.pageAction" class="gov.mof.fasp2.bis.common.PageAction"></bean>
+	<!-- 批量生成业务表     系统现有表 -->
+	<bean id="createTable.CurrentTableAction" class="gov.mof.fasp2.bis.createTable.CurrentTableAction">
+		<property name="CurrentTableDAO" ref="createTable.CurrentTableDAO"></property>
+	</bean>
+	<bean id="createTable.CurrentTableDAO" class="gov.mof.fasp2.bis.createTable.CurrentTableDAO">
+		<property name="CommonDAO" ref="bis.common.CommonDAO"></property>
+	</bean>
+	
+	<!-- 批量生成业务表     获取年代和表空间 -->
+	<bean id="createTable.YearDatasAction" class="gov.mof.fasp2.bis.createTable.YearDatasAction">
+		<property name="CurrentTableDAO" ref="createTable.CurrentTableDAO"></property>
+	</bean>
+	<bean id="createTable.SapceDatasAction" class="gov.mof.fasp2.bis.createTable.SapceDatasAction">
+		<property name="CurrentTableDAO" ref="createTable.CurrentTableDAO"></property>
+	</bean>
+	<!-- 批量生成业务表     批量生成请求-->
+	<bean id="createTable.CreateTableBatchAction" class="gov.mof.fasp2.bis.createTable.CreateTableBatchAction">
+		<property name="CreateTableBatchBO" ref="createTable.CreateTableBatchDAO"></property>
+	</bean>
+	<bean id="createTable.CreateTableBatchDAO" class="gov.mof.fasp2.bis.createTable.CreateTableBatchDAO">
+		<property name="CommonDAO" ref="bis.common.CommonDAO"></property>
+	</bean>
+	<!-- 批量生成业务表     批量生成请求-->
+	<bean id="createTable.DeleteTableBatchAction" class="gov.mof.fasp2.bis.createTable.DeleteTableBatchAction">
+		<property name="CreateTableBatchBO" ref="createTable.CreateTableBatchDAO"></property>
+	</bean>
+	
+	<!-- 日志管理     日志查询-->
+	<bean id="logManager.QueryDataAction" class="gov.mof.fasp2.bis.logManager.QueryDataAction">
+		<property name="QueryDataDAO" ref="logManager.QueryDataDAO"></property>
+	</bean>
+	<bean id="logManager.QueryDataDAO" class="gov.mof.fasp2.bis.logManager.QueryDataDAO">
+		<property name="commonDao" ref="bis.common.CommonDAO"></property>
+	</bean>
+	<!-- 日志管理     日志删除 -->
+	<bean id="logManager.DeleteDataAction" class="gov.mof.fasp2.bis.logManager.DeleteDataAction">
+		<property name="QueryDataDAO" ref="logManager.QueryDataDAO"></property>
+	</bean>
+	<!-- 定时任务管理 -->
+	<bean id="bis.timertaskmgr.timerTaskMgrAction" class="gov.mof.fasp2.bis.timertaskmgr.TimerTaskMgrAction">
+		<property name="timerTaskMgrBO" ref="bis.timertaskmgr.timerTaskMgrBO"></property>
+	</bean>
+		<bean id="bis.timertaskmgr.timerTaskMgrBO" class="gov.mof.fasp2.bis.timertaskmgr.TimerTaskMgrBO">
+		<property name="timerTaskMgrDAO" ref="bis.timertaskmgr.timerTaskMgrDAO"></property>
+	</bean>
+		<bean id="bis.timertaskmgr.timerTaskMgrDAO" class="gov.mof.fasp2.bis.timertaskmgr.TimerTaskMgrDAO">
+		<property name="commonDao" ref="bis.common.CommonDAO"></property>
+	</bean>
+	<!-- 定时任务 编辑定时任务 -->
+	<bean id="bis.timertaskmgr.timerTaskModifyAction" class="gov.mof.fasp2.bis.timertaskmgr.TimerTaskModifyAction">
+		<property name="timerTaskModifyBO" ref="bis.timertaskmgr.timerTaskModifyBO"></property>
+	</bean>
+	
+	<bean id="bis.timertaskmgr.timerTaskModifyBO" class="gov.mof.fasp2.bis.timertaskmgr.TimerTaskModifyBO">
+		<property name="timerTaskModifyDAO" ref="bis.timertaskmgr.timerTaskModifyDAO"></property>
+	</bean>
+	<bean id="bis.timertaskmgr.timerTaskModifyDAO" class="gov.mof.fasp2.bis.timertaskmgr.TimerTaskModifyDAO">
+		<property name="commonDAO" ref="bis.common.CommonDAO"></property>
+	</bean>
+	
+	<!-- hessian查询下载基础数据DAO -->
+	<bean id="bis.elesynchro.HessianEleData" class="gov.mof.fasp2.bis.elesynchro.HessianEleData">
+		<property name="commonDao" ref="bis.common.CommonDAO"></property>
+	</bean>
+		<!-- 数据校验DAO -->
+	<bean id="bis.checkdata.CheckData" class="gov.mof.fasp2.bis.checkdata.CheckData">
+		<property name="commonDao" ref="bis.common.CommonDAO"></property>
+	</bean>
+	
+	<!-- 服务地址配置 -->
+	<bean id="bis.serviceaddress.serviceaddressAction" class="gov.mof.fasp2.bis.serviceaddress.serviceaddressAction">
+		 <property name="serviceAddressBO" ref="bis.serviceaddress.serviceaddressBO"></property> 
+	</bean>	
+	<bean id="bis.serviceaddress.serviceaddressBO" class="gov.mof.fasp2.bis.serviceaddress.ServiceAddressBO">
+		<property name="serviceAddressDAO" ref="bis.serviceaddress.serviceaddressDAO"></property>
+	</bean>
+	<bean id="bis.serviceaddress.serviceaddressDAO" class="gov.mof.fasp2.bis.serviceaddress.ServiceAddressDAO">
+		<property name="commonDao" ref="bis.common.CommonDAO"></property>
+	</bean>	
+	
+</beans>

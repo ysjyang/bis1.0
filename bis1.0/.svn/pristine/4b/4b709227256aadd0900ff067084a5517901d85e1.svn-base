@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.editpanel API</title>
+
+ 
+
+
+		<script type="text/javascript" src="http://localhost:7001/ltext/frameworksupport.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/ltext/ltext_core.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/js/fasp.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/js/calendar.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/common/ui/ui_editpanel.js"></script>
+		 
+		
+		
+		<link rel="stylesheet" type="text/css" href="http://localhost:7001/style/default/ui_style.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost:7001/style/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost:7001/ltext/datatabletheme.css" />
+
+</head>
+
+<body>
+<p>
+	<h1>editpanel2</h1>
+<h2>命名空间：Ext.lt.editpanel2</h2>
+<h2>说明：</h2>
+<p>标准的JS表单对象，通过创建JS对象实现表单区的功能。</p>
+<p>
+	<h2><a name="edittype">支持类型</a></h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">类型标识</th>
+      <th width="15%" bgcolor="#00FFFF">类型说明</th>
+      <th width="45%" bgcolor="#00FFFF">样式</th>
+      <th bgcolor="#00FFFF">API</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">input</td>
+      <td bgcolor="#EEEEEE">文本编辑框</td>
+      <td bgcolor="#EEEEEE"><img src="./images/input.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./input.html" >文本框组件API</a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">ti</td>
+      <td bgcolor="#EEEEEE">文本区间编辑框</td>
+      <td bgcolor="#EEEEEE"><img src="./images/ti.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./inputi.html" >文本框区间组件API</a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">amtinput</td>
+      <td bgcolor="#EEEEEE">数字编辑框</td>
+      <td bgcolor="#EEEEEE"><img src="./images/amt.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./amtinput.html" >数字输入框组件API</a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">_amtinputi</td>
+      <td bgcolor="#EEEEEE">数字区间编辑框</td>
+      <td bgcolor="#EEEEEE"><img src="./images/amti.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./amtinputi.html" >数字输入区间API</a></td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">treeselect</td>
+      <td bgcolor="#EEEEEE">下拉树编辑框</td>
+      <td bgcolor="#EEEEEE"><img src="./images/treeselect.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./treeselect.html" >下拉树编辑框组件API</a></td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">date</td>
+      <td bgcolor="#EEEEEE">日期编辑框</td>
+      <td bgcolor="#EEEEEE"><img src="./images/date.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./date.html" >日期组件API</a></td>
+    </tr>
+            <tr>
+      <td bgcolor="#CCCCCC">di</td>
+      <td bgcolor="#EEEEEE">日期区间编辑框</td>
+      <td bgcolor="#EEEEEE"><img src="./images/di.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./datei.html" >日期区间组件API</a></td>
+    </tr>
+            <tr>
+      <td bgcolor="#CCCCCC">textarea</td>
+      <td bgcolor="#EEEEEE">大文本域</td>
+      <td bgcolor="#EEEEEE"><img src="./images/textarea.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./textarea.html" >大文本域组件API</a></td>
+    </tr>
+           <tr>
+      <td bgcolor="#CCCCCC">自定义组件</td>
+      <td bgcolor="#EEEEEE">自定义组件</td>
+      <td bgcolor="#EEEEEE"><img src="./images/自定义组件1.bmp"/><br><br><img src="./images/自定义组件2.bmp"/><br><br><img src="./images/自定义组件3.bmp"/></td>
+      <td bgcolor="#EEEEEE"><a href="./younameit.html" >自定义组件API</a></td>
+    </tr>
+  </table>
+</p>
+
+
+</p>
+<p>
+	<h2>创建对象：</h2>
+	new Ext.lt.editpanel2(cfg);	配置信息以参数的形式传入
+</p>
+<p>
+	<h2>editpanel2传入参数属性：</h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">属性名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th width="15%" bgcolor="#00FFFF">赋值举例</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">columnsize</td>
+      <td bgcolor="#EEEEEE">数字</td>
+      <td bgcolor="#EEEEEE">3</td>
+      <td bgcolor="#EEEEEE">每行显示组件个数，默认为3，会根据浏览器窗口大小调整</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">hasconfig</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">是否生成配置按钮，默认不生成</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">hasconfigobj</td>
+      <td bgcolor="#EEEEEE">JS对象</td>
+      <td bgcolor="#EEEEEE">
+      	    <p> {
+            title:'配置查询条件',
+            	clickHandle:configConditionButton&nbsp
+            }
+            </p>
+      </td>
+      <td bgcolor="#EEEEEE">定义配置按钮的title与按钮事件，如不生成配置按钮，该属性可不指定</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">configs<font color="red">*</font></td>
+      <td bgcolor="#EEEEEE">js数组</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">包括展示在表单中每一个表单组件的对象，详见表单组件对象属性介绍</td>
+    </tr>
+  </table>
+</p>
+<p>
+	<h2>表单组件对象公有属性：</h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">属性名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型调</th>
+      <th width="15%" bgcolor="#00FFFF"赋值举例索</th>
+      <th bgcolor="#00FFFF">说明</th>
+    <tr>
+      <td bgcolor="#CCCCCC">name</td>
+      <td bgcolor="#EEEEEE">字符串</td>
+      <td bgcolor="#EEEEEE">"remark"</td>
+      <td bgcolor="#EEEEEE">英文标识</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">label</td>
+      <td bgcolor="#EEEEEE">字符串</td>
+      <td bgcolor="#EEEEEE">摘要</td>
+      <td bgcolor="#EEEEEE">中文显示名称</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">isrequired</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">是否必填，默认为false</a></td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">labelwidth</td>
+      <td bgcolor="#EEEEEE">数字</td>
+      <td bgcolor="#EEEEEE">120</td>
+      <td bgcolor="#EEEEEE">指定中文显示名称label宽度，默认120px</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">type</td>
+      <td bgcolor="#EEEEEE">字符串</td>
+      <td bgcolor="#EEEEEE">input(对应文本框)</td>
+      <td bgcolor="#EEEEEE">组件类型,请参考 <a href="#edittype">editpanel2支持的编辑组件类型</a></td>
+    </tr>
+  </table>
+</p>
+
+<p>
+	<h2>editpanel2对外接口：</h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">方法名</th>
+      <th width="15%" bgcolor="#00FFFF">参数</th>
+      <th width="15%" bgcolor="#00FFFF">返回值</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">clear()</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">依次调用各个组件的clear方法，清空表单</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">draw(el)</td>
+      <td bgcolor="#EEEEEE">el:HTML上的DIV或SPAN 块区域（需预设width）</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">符合前端组件规范的draw方法，将组件绘制到el</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">resize(w,h)</td>
+      <td bgcolor="#EEEEEE">w:宽度(像素) h:高度(像素)</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">符合前端组件规范的resize方法，重设editpanel宽高，内部组件布局的计算会在该方法内完成。</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">bind(obj)</td>
+      <td bgcolor="#EEEEEE">JS对象</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">表单区赋值并绑定，初次新建editpanel，需调用_edit.bind()。<br>
+      	&nbsp;e.g.		var object = {<br>
+				&nbsp;&nbsp;exfunc:{<br>
+				&nbsp;&nbsp;&nbsp;	val:'12248',<br>
+				&nbsp;&nbsp;&nbsp;	sval:'002-测试022'<br>
+				&nbsp;},<br>
+				&nbsp;&nbsp;&nbsp;remark:"测试的"<br>
+		    &nbsp;}<br>
+		  &nbsp;&nbsp;var tagObj={<br>
+			       &nbsp;&nbsp;&nbsp;jsonval:object<br>
+		  &nbsp;&nbsp;}<br>
+		 &nbsp;&nbsp;_edpanel.bind(tagObj); //同步表单区的值
+		</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">check()</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">依次调用各个组件的check方法，有且仅当所有组件的check()方法返回true时，该方法返回true</td>
+    </tr>
+  </table>
+</p>
+
+<p>
+	<h2>editpanel2变量：</h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">变量名</th>
+      <th width="15%" bgcolor="#00FFFF">类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">values</td>
+      <td bgcolor="#EEEEEE">JS对象</td>
+      <td bgcolor="#EEEEEE">返回当前表单的值集</td>
+    </tr>
+  </table>
+</p>
+<p>
+	
+	
+	
+	<h2>editpanel2消息：</h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">消息</th>
+      <th width="15%" bgcolor="#00FFFF">传入对象</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">Ext.lt.message.send("update", "updateform", obj);</td>
+      <td bgcolor="#EEEEEE">obj为JS对象</td>
+      <td bgcolor="#EEEEEE">格式：<br>
+      	{src:_edpanel2, //editpanel对象<br>
+      	&nbsp;&nbsp; name:"remark", //单个组件name<br>
+      &nbsp;&nbsp;	 value: document.getElementById("area").value //存储的值<br>
+      	 });修改表单存储的单个组件的值。</td>
+    </tr>
+  </table>
+</p>
+
+<p>
+	
+	
+	
+	<h2>衍生组件</h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">名称</th>
+      <th width="15%" bgcolor="#00FFFF">用途</th>
+      <th bgcolor="#00FFFF">API</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">Ext.lt.ui.editformpanel</td>
+      <td bgcolor="#EEEEEE">基于editpanel2的编辑区</td>
+      <td bgcolor="#EEEEEE"><a href="./editformpanel.html" >编辑区editformpanelAPI</a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">Ext.lt.ui.querypanel</td>
+      <td bgcolor="#EEEEEE">基于editpanel2的查询区</td>
+      <td bgcolor="#EEEEEE"><a href="./querypanel.html" >查询区querypanelAPI</a></td>
+    </tr>
+  </table>
+</p>
+
+</p>
+
+ 
+</p>
+
+
+
+
+</body>
+</html>

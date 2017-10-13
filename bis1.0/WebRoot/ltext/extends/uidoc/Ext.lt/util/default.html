@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme35.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../../../datatable3.0.js"></script>
+<script src="../../jquery.js"></script>
+</head>
+
+<body>
+<p>本地存储，将文本或数值类型值存储到本地，永久存储<br/>
+	<h2>命名空间：Ext.lt.util</h2>
+<h2>说明：</h2>
+<p>
+以（key,value）的形式存储。XP系统存储在C:\Documents and Settings\{当前登录用户名}\UserData文件夹下，以XML文件的形式存储。XML文件的名称是由 linkname+userid进行MD5转码后的编码(引用框架的模板，会自动生成)，如果没有引入框架模板，XML文件的名称为当前访问URL的location.pathname进行MD5转码后的编码<br/>
+1.单个xml文件最大为128KB。
+2.多个文件夹最多存储 210 个文件。
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+Ext.lt.util.setUserData("_test",kon.value);<br/>
+var value =  Ext.lt.util.getUserData("_test");<br/>
+Ext.lt.cache.removeData(key);<br/>
+</p>
+
+<h2>方法说明</h2>
+<h3>setUserData</h3>
+<p>
+本地存储值 数值或文本类型的值<br/>
+</p>
+<h3>getUserData</h3>
+<p>
+取本地存储的值，如果没有，则返回null，否则返回 "string"类型值<br/>
+</p>
+<h3>removeUserData</h3>
+<p>
+	清除该KEY对应的值，只清空文件内部内容，文件本身不删除。<br/>
+</p>
+
+<table width="100%" border=1>
+	<tr>
+			<th>测试 </th><th>&nbsp&nbsp&nbsp</th>
+		</tr>
+	<tr>
+		<td>
+			<div id="pmenutest" class='popupmenu' style="visibility:hidden" ></div>
+<pre class=democodearea>
+ //设值
+function setdata(key){
+	if(kon.value!=""){
+	   Ext.lt.util.setUserData(key,kon.value);
+		kon.value="";
+	}
+}
+ //取值
+function getdata(key){
+ var value =  Ext.lt.util.getUserData(key);
+  if(value!=null&&value!=""){
+  		kon.value = value;
+  }else{
+  	kon.value=""}
+}
+//清除
+function removedata(key){
+ var value =  Ext.lt.util.removeUserData(key);
+ getdata(key);
+}
+</pre>
+</td>
+	<td>
+	<script>
+  //设值
+function setdata(key){
+	if(kon.value!=""){
+	   Ext.lt.util.setUserData(key,kon.value);
+		kon.value="";
+	}
+}
+ //取值
+function getdata(key){
+ var value =  Ext.lt.util.getUserData(key);
+  if(value!=null&&value!=""){
+  		kon.value = value;
+  }else{
+  	kon.value=""}
+}
+//清除
+function removedata(key){
+ var value =  Ext.lt.util.removeUserData(key);
+ getdata(key);
+}
+	</script>
+<div class="editpanel23" >
+<input id='kon' class=inputbox  style="WIDTH: 280px" maxLength=250 type='text' isrecord="false" tipstext2="键盘输入"/>
+</div>
+
+<div id="father"></div>
+<input type="button" value="设值" onclick="setdata('_test1')"/>
+<input type="button" value="取值" onclick="getdata('_test1')"/>
+<input type="button" value="清除" onclick="removedata('_test1')"/>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.editpanel API</title>
+
+ 
+
+
+		<script type="text/javascript" src="http://localhost:7001/ltext/frameworksupport.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/ltext/ltext_core.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/js/fasp.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/js/calendar.js"></script>
+		<script type="text/javascript" src="http://localhost:7001/common/ui/ui_editpanel.js"></script>
+		 
+		
+		
+		<link rel="stylesheet" type="text/css" href="http://localhost:7001/style/default/ui_style.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost:7001/style/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost:7001/ltext/datatabletheme.css" />
+
+</head>
+
+<body>
+<p>
+	<h1>editformpanel</h1>
+<h2>命名空间：Ext.lt.ui.editformpanel</h2>
+<h2>说明：</h2>
+<p>框架封装的基于editpanel2封装的编辑区组件</p>
+
+<p>
+	<h2><a name="edittype">支持类型</a></h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">类型标识</th>
+      <th width="15%" bgcolor="#00FFFF">类型说明</th>
+      <th width="45%" bgcolor="#00FFFF">样式</th>
+      <th bgcolor="#00FFFF">API</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">fileupload</td>
+      <td bgcolor="#EEEEEE">文件上传</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">调用编辑区接口 <a href ='#upload'>upload</a>进行上传</a></td>
+    </tr>
+  </table>
+</p>
+
+<p>
+	<h2><a name="edittype">消息</a></h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">消息</th>
+      <th width="25%" bgcolor="#00FFFF">接收参数</th>
+      <th width="35%" bgcolor="#00FFFF">用途</th>
+      <th bgcolor="#00FFFF">使用举例</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">Ext.lt.message.send("submit", "submiteditform", param);</td>
+      <td bgcolor="#EEEEEE">param:当前编辑区ID，如果没有则不传入</td>
+      <td bgcolor="#EEEEEE">返回当前编辑区表单的值，并通过消息Ext.lt.message.hook("submit", "editformjson")来接收表单值集。</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">Ext.lt.message.send("clean", "cleaneditform");</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">清空编辑区</td>
+      <td bgcolor="#EEEEEE"></a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">Ext.lt.message.send("bind", "syncheditform", param);</td>
+      <td bgcolor="#EEEEEE">param:JS对象</td>
+      <td bgcolor="#EEEEEE">同步编辑区，编辑区设值</td>
+      <td bgcolor="#EEEEEE">		<br>var object = {<br>
+				&nbsp;&nbsp;exfunc:{<br>
+				&nbsp;&nbsp;&nbsp;	val:'12248',<br>
+					&nbsp;&nbsp;&nbsp;sval:'002-测试022'<br>
+				&nbsp;&nbsp;},<br>
+				&nbsp;&nbsp;remark:"测试的"<br>
+		&nbsp;&nbsp;}<br>
+		&nbsp;&nbsp;var tagObj={<br>
+			    &nbsp;&nbsp;&nbsp;editformid:2,<br>
+			    &nbsp;&nbsp;&nbsp;jsonval:object<br>
+		&nbsp;&nbsp;}<br>
+		
+		
+	 	&nbsp;&nbsp;Ext.lt.message.send("bind", "syncheditform", tagObj);
+	 	</td>
+    </tr>
+     <tr>
+      <td bgcolor="#CCCCCC">Ext.lt.message.send("modify", "editreadonly", param1);</td>
+      <td bgcolor="#EEEEEE">param1 : 参数对象<br> {
+      	                  &nbsp;&nbsp; editformid:???, //编辑区ID<br>
+      	                  &nbsp;&nbsp; content:｛  <br>
+      	                  &nbsp;&nbsp;&nbsp;fundtype:true,  //单个组件，传入 布尔值 <br>
+      	                  &nbsp;&nbsp;&nbsp;date:{start:true,end:false},  //区间组件，按｛start:?,end:?｝传入 <br>
+	      	                &nbsp;&nbsp;   ｝<br>
+      	                  &nbsp;&nbsp;}<br></td>
+      <td bgcolor="#EEEEEE">动态设置某个组件不可编辑状态</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+     
+  </table>
+</p>
+
+<p>
+	<h2><a name="edittype">接口</a></h2>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">接口</th>
+      <th width="15%" bgcolor="#00FFFF">参数</th>
+      <th width="15%" bgcolor="#00FFFF">返回值</th>
+      <th width="25%" bgcolor="#00FFFF">用途</th>
+      <th bgcolor="#00FFFF">使用举例</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">setReadonly(obj)</td>
+      <td bgcolor="#EEEEEE">param:需要设置readonly状态的编辑项</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">动态设置编辑项只读</td>
+      <td bgcolor="#EEEEEE">var obj = { <br>
+      	                  &nbsp;&nbsp;&nbsp;fundtype:true,  //单个组件，传入 布尔值 <br>
+      	                  &nbsp;&nbsp;&nbsp;date:{start:true,end:false},  //区间组件，按｛start:?,end:?｝传入 <br>
+	      	                &nbsp;&nbsp;   ｝<br>
+    			_editform.setReadonly(obj);
+    	}</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">haschange</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">true/false</td>
+      <td bgcolor="#EEEEEE">编辑区的值集是否发生改变</td>
+      <td bgcolor="#EEEEEE"></a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">synchEditform</td>
+      <td bgcolor="#EEEEEE">见描述</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">同步编辑区的值（绑定数据）</td>
+      <td bgcolor="#EEEEEE">		<br>var object = {<br>
+				&nbsp;&nbsp;exfunc:{<br>
+				&nbsp;&nbsp;&nbsp;	val:'12248',<br>
+					&nbsp;&nbsp;&nbsp;sval:'002-测试022'<br>
+				&nbsp;&nbsp;},<br>
+				&nbsp;&nbsp;remark:"测试的"<br>
+		&nbsp;&nbsp;}<br>
+		&nbsp;&nbsp;var tagObj={<br>
+			    &nbsp;&nbsp;&nbsp;defval:true,<br>
+			    &nbsp;&nbsp;&nbsp;jsonval:object<br>
+		&nbsp;&nbsp;}<br>
+		
+		
+	 	&nbsp;&nbsp;_editform.synchEditform(tagObj);
+	 	</td>
+    </tr>
+     <tr>
+      <td bgcolor="#CCCCCC">getEditFormValues</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">Object,返回当前编辑区的值集</td>
+      <td bgcolor="#EEEEEE">返回编辑取的值集</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">clear</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">清空编辑区</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">attachEvent</td>
+      <td bgcolor="#EEEEEE">object</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">编辑区注册事件，事件包括onblur onchange  onclick onloaddata</td>
+      <td bgcolor="#EEEEEE">｛fundtype:{
+      	    blur:functionname,
+      	    change:functionname,
+      	    click:functionname,
+      	    loaddata:function
+      	   }｝</td>
+    </tr>
+	    <tr>
+      <td bgcolor="#CCCCCC"><a name="upload"></a>upload</td>
+      <td bgcolor="#EEEEEE">见描述</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">编辑区上传方法,无返回值，</td>
+      <td bgcolor="#EEEEEE">
+		editform.upload(param1,param2,param3);<br>
+        param1:编辑项CODE,<br>
+		param2:上传成功回调函数，回调函数的传入参数为  _obj = {<br>
+		&nbsp;&nbsp;&nbsp;				  code:code,<br>
+		&nbsp;&nbsp;&nbsp;				  value:文件服务器生成的GUID值<br>
+		&nbsp;&nbsp;		  }<br>
+		param3:上传失败回调函数，回调函数的传入参数为 _obj = {<br>
+		&nbsp;&nbsp;&nbsp;				  code:code,<br>
+		&nbsp;&nbsp;&nbsp;				  error:错误信息<br>
+		&nbsp;&nbsp;		  }
+	  </td>
+    </tr>
+  </table>
+</p>
+
+
+<p>
+	<h2><a name="edittype">事件</a></h2>
+	<p>具体编辑项事件</p>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">事件</th>
+      <th width="15%" bgcolor="#00FFFF">参数</th>
+      <th width="15%" bgcolor="#00FFFF">返回值</th>
+      <th width="25%" bgcolor="#00FFFF">用途</th>
+      <th bgcolor="#00FFFF">使用举例</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">onblur</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">文本框失去焦点触发</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">onchange</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">组件值发生改变</td>
+      <td bgcolor="#EEEEEE"></a></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">onclick</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">文本框点击触发</td>
+      <td bgcolor="#EEEEEE"></td>
+	 	</td>
+    </tr>
+     <tr>
+      <td bgcolor="#CCCCCC">loaddata</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">无</td>
+      <td bgcolor="#EEEEEE">加载自定义数据，数据展示时触发</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+     
+  </table>
+</p>
+
+
+</p>
+
+
+
+
+
+</body>
+</html>

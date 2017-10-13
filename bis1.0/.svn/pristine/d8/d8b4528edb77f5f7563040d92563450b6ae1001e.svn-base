@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<h1>布局管理</h1>
+<h2>命名空间：Ext.lt.layout</h2>
+<h2>说明：</h2>
+  布局管理在页面加载时自动创建对象实例，使用时直接使用，不需要创建对象。
+  使用布局管理时需要在HTML元素上增加布局设置layout属性。如：&lt;div layout=&quot;{h:{fit:-65,min:400}}&quot;&gt;&lt;/div&gt;<br />
+  在layout属性中设置HTML元素的宽、高设置，设置信息符合Json格式。最外层布局元素的属性是相对窗口可见区的大小来设置的
+<h2>HTML扩展：</h2>
+  <b>ignorelayout:</b>对该元素内部结构不在进行布局解析。<br />
+  <b>fit:</b>属性用来控制元素宽度或高度。<br />
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th bgcolor="#00FFFF">值</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">true</td>
+      <td bgcolor="#EEEEEE">自动充满真个区域</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">正数</td>
+      <td bgcolor="#EEEEEE">应用该宽度</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">负数</td>
+      <td bgcolor="#EEEEEE">与上级布局元素的属性的差值</td>
+    </tr>
+    <tr>
+      <td width="9%" bgcolor="#CCCCCC">'auto'</td>
+      <td width="91%" bgcolor="#EEEEEE">自动适应宽度，使用上级元素的宽度（高度）减去其他兄弟元素的宽度（高度）。如果平级兄弟元素中有多个fit:auto则只有第一个生效</td>
+    </tr>
+  </table>
+<br />
+  <b>min:</b>表示元素的最小值，当界面高度或宽度小于这个值时，则使用这个值<br />
+<br />
+  <b>overflow:</b>设置溢出属性<br />
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="9%" bgcolor="#00FFFF">值</th>
+      <th width="91%" bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">'hidden'</td>
+      <td bgcolor="#EEEEEE">溢出隐藏</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">'scroll'</td>
+      <td bgcolor="#EEEEEE">显示滚动条</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">'auto'</td>
+      <td bgcolor="#EEEEEE">根据布局内部元素大小自动控制是否显示滚动条</td>
+    </tr>
+  </table>
+<br />
+<h2>布局对象方法</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th bgcolor="#00FFFF">方法名</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">init</td>
+      <td bgcolor="#EEEEEE">初始化页面布局</td>
+    </tr>
+    <tr>
+      <td width="9%" bgcolor="#CCCCCC">doLayout</td>
+      <td width="91%" bgcolor="#EEEEEE">应用布局，当页面大小改变后0.2秒后会自动调用该方法</td>
+    </tr>
+  </table>
+<h2>消息</h2>
+  当页面大小被改变后，布局样式在0.2秒之后开始应用。在完成布局计算后，向页面发送&quot;layout&quot;,&quot;endlayout&quot;消息，其他页面组件可以通过Ext.lt.message.hook(&quot;layout&quot;,&quot;endlayout&quot;,function(){})来获取消息<br />
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="9%" bgcolor="#00FFFF">消息来源</th>
+      <th width="42%" bgcolor="#00FFFF">消息类型</th>
+      <th width="49%" bgcolor="#00FFFF">参数说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#EEEEEE">layout</td>
+      <td bgcolor="#EEEEEE">endlayout</td>
+      <td bgcolor="#EEEEEE">无</td>
+    </tr>
+  </table>
+  <h2>示例：</h2>
+  设置一个div，大小充满这个窗口可见区域 <br />
+&lt;div layout=&quot;{h:{fit:true},w:{fit:true}}&quot;&gt;&lt;/div&gt;<br />
+设置一个div，高度为窗口可见区域大小减去页头高度（100px）<br />
+&lt;div layout=&quot;{h:{fit:-100}}&quot;&gt;&lt;/div&gt;<br />
+设置一个div，宽度为窗口可见区减去左侧菜单宽度150px，并且，宽度不得小于600px<br />
+&lt;div layout=&quot;{w:{fit:-150,min:600}}&quot;&gt;&lt;/div&gt;<br />
+<br />
+<a href="../../../test/layout.html" target="_blank">打开实例页面>>>></a>
+</body>
+</html>

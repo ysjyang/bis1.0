@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.formulas API</title>
+
+<script type="text/javascript" src="../../../../frameworksupport.js" ></script>
+<script type="text/javascript" src="../../../../ltext_core.js" ></script>
+<script type="text/javascript" src="../../../../ltext_template.js" ></script>
+<script type="text/javascript" src="../../../../editpanel.js" ></script>
+<script type="text/javascript" src="../../../../datatable3.0.js" ></script>
+<script type="text/javascript" src="../../../../editdatatable.js" ></script>
+<script type="text/javascript" src="../../../../editpanel.js" ></script>
+<script type="text/javascript" src="./data.js"></script>
+<script type="text/javascript" src="./formulas.js"></script>
+<link type="text/css" rel="stylesheet"	href="../../../../datatabletheme.css" />
+
+</head>
+
+<body>
+<h1>formulas</h1>
+<h2>命名空间：Ext.lt.formulas</h2>
+<h2>说明：</h2>
+<p>
+formulas组件公式计算的组件。
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;script src="/ltext/formulas.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var formulas=new Ext.lt.formulas();<br>
+  formulas.bind(datatable/recordset)<br/>
+  formulas.calculation(fnname,params);<br />
+</p>
+
+<h2>属性说明</h2>
+<h3>version</h3>
+<p>组件版本号，1.0</p>
+<h3>type</h3>
+<p>组件类型，formulas</p>
+
+<h2>方法说明</h2>
+<h3>bind</h3>
+<p>
+绑定计算数据集，可以绑定datatable类型和recordset类型<br/>
+formulas.bind(datatable/recordset)
+</p>
+
+<h3>getColNames</h3>
+<p>
+获取绑定对象列名集合，返回数组<br>
+formulas.getColNames();
+</p>
+<h3>setCell</h3>
+<p>
+设置单元格对象组件。
+默认值为Ext.lt.formulas.cells
+<br>
+setCell(new Ext.lt.formulas.initcells({}));
+</p>
+<h3>getFormulasInfo</h3>
+<p>
+获取公式介绍信息，返回OBJ对象<br>
+对象属性：{方法名:{name:方法中文介绍;promptinfo:方法信息和参数传参介绍},...}<br>
+formulas.getFormulasInfo();
+<h4>系统提供的标准计算公式</h4>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">公式</th>
+      <th width="15%" bgcolor="#00FFFF">名称</th>
+      <th bgcolor="#00FFFF">参数格式</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">sum</td>
+      <td bgcolor="#EEEEEE">合计</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">
+				
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">ave</td>
+      <td bgcolor="#EEEEEE">平均值</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">sum2obj</td>
+      <td bgcolor="#EEEEEE">合计某属性的值</td>
+      <td bgcolor="#EEEEEE">Array,prototypeName</td>
+      <td bgcolor="#EEEEEE">
+				
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">ave2obj</td>
+      <td bgcolor="#EEEEEE">平均值某属性的值</td>
+      <td bgcolor="#EEEEEE">Array,prototypeName</td>
+      <td bgcolor="#EEEEEE">
+      </td>
+    </tr>
+    <!--
+    <tr>
+      <td bgcolor="#CCCCCC">if</td>
+      <td bgcolor="#EEEEEE">判断</td>
+      <td bgcolor="#EEEEEE">boolean,obj,obj</td>
+      <td bgcolor="#EEEEEE">
+				判断满足条件，如果满足返回一个，否则返回另一个(if(test,true_value,false_value))
+      </td>
+    </tr>
+    -->
+    <tr>
+      <td bgcolor="#CCCCCC">indexOf</td>
+      <td bgcolor="#EEEEEE">字符存在于</td>
+      <td bgcolor="#EEEEEE">string,string</td>
+      <td bgcolor="#EEEEEE">
+				返回指定子字符串在此字符串中第一次出现处的索引。如果它不作为一个子字符串出现，则返回 -1。
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">indexOfArray</td>
+      <td bgcolor="#EEEEEE">数组存在对象</td>
+      <td bgcolor="#EEEEEE">Array,obj</td>
+      <td bgcolor="#EEEEEE">
+				返回指定子值在此集合中第一次出现处的索引。如果它不存在，则返回 -1。
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">count</td>
+      <td bgcolor="#EEEEEE">包含个数</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">
+				集合子集的个数
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">max</td>
+      <td bgcolor="#EEEEEE">最大值</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">
+				获取集合的最大值
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">min</td>
+      <td bgcolor="#EEEEEE">最小值</td>
+      <td bgcolor="#EEEEEE">Array</td>
+      <td bgcolor="#EEEEEE">
+				获取集合的最小值
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">round</td>
+      <td bgcolor="#EEEEEE">四舍五入</td>
+      <td bgcolor="#EEEEEE">number,number</td>
+      <td bgcolor="#EEEEEE">
+				第一个参数表示需要四舍五入的值
+				<br>第二个参数：0.01表示四舍五入两位小数，100表示四舍五入到百位
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">isNull</td>
+      <td bgcolor="#EEEEEE">判断是否为空</td>
+      <td bgcolor="#EEEEEE">obj</td>
+      <td bgcolor="#EEEEEE">
+				判断当前值是否为空，是空返回true
+      </td>
+    </tr> 
+  </table>
+</p>
+<h3>calculation</h3>
+<p>
+公式计算，按照formulasInfo所提供的方法名和参数进行计算，返回计算结果<br>
+formulas.calculation(fnname,params[])
+</p>
+<h3>execution2str</h3>
+<p>
+公式计算，根据公式页面配置所生成的公式字符串进行公式计算，返回计算结果。c表示当前列号，l表示当前行号，两个均非必填项<br>
+formulas.execution2str(executionStr,c,l)
+</p>
+<h3>Ext.lt.formulas.createFormulas</h3>
+<p>
+公式扩展接口，通过该方法对公式进行扩展<br>
+Ext.lt.formulas.createFormulas('test','测试','测试',function(){});
+<h4>参数说明</h4>
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <th width="15%" bgcolor="#00FFFF">名称</th>
+    <th width="15%" bgcolor="#00FFFF">类型</th>
+    <th bgcolor="#00FFFF">说明</th>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">计算公式编码</td>
+    <td bgcolor="#EEEEEE">string</td>
+    <td bgcolor="#EEEEEE">计算公式的英文编码，formulas.getFormulasInfo()返回对象的属性名，必填项</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">计算公式名称</td>
+    <td bgcolor="#EEEEEE">string</td>
+    <td bgcolor="#EEEEEE">计算公式的名字,formulas.getFormulasInfo()返回对象的属性名对应对象的name属性，必填项</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">计算公式方法介绍</td>
+    <td bgcolor="#EEEEEE">string</td>
+    <td bgcolor="#EEEEEE">formulas.getFormulasInfo()返回对象的属性名对应对象的promptinfo属性，必填项</td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC">计算公式名称</td>
+    <td bgcolor="#EEEEEE">function</td>
+    <td bgcolor="#EEEEEE">公式调用时计算的方法，参数是formulas.calculation的params[]对象</td>
+  </tr>    
+</table>
+</p>
+
+<a href="./formula2.html" TARGET ='_blank'>公式配置页面</a>
+<script>
+var rsdata=[];
+for(var i=0;i<13000;i++){
+	rsdata.push({name:"测试"+i,v1:i,v2:i*5/3,v3:i*10+1});
+}
+
+var formulas=new Ext.lt.formulas();
+var _random=[];
+	for(var i=0;i<10;i++){
+		_random.push(Math.random());	
+	}
+
+</script>
+<pre>
+	var rsdata=[];
+	for(var i=0;i<13000;i++){
+		rsdata.push({name:"测试"+i,v1:i,v2:i*5/3,v3:i*10+1});
+	}
+	var formulas=new Ext.lt.formulas();
+	var _random=[];
+	for(var i=0;i<10;i++){
+		_random.push(Math.random());	
+	}
+</pre>
+<table width="100%" border=1>
+	<tr>
+		<th colspan=2>添加公式</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			Ext.lt.formulas.createFormulas('test','测试','测试',function(arrs){
+			
+			});
+			alert(formulas.getFormulasInfo().test.name)
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+		<th colspan=2>合计计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("sum",_random)
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+		<th colspan=2>合计计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("sum2obj",[rsdata,'v1'])
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+		<th colspan=2>平均值计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("ave",_random)
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+		<th colspan=2>平均值计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("ave2obj",[rsdata,'v1'])
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+		<th colspan=2>indexOf计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("indexOf",['v1serfcasfssaf','af'])
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+		<th colspan=2>indexOfArray计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("indexOfArray",[rsdata,rsdata[4]])
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+		<th colspan=2>count</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("count",rsdata)
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+		<th colspan=2>max 和 min</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.calculation("max",_random)
+				alert(num);
+			num=formulas.calculation("min",_random)
+				alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+		<th colspan=2>round</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+				var num=formulas.calculation("round",[123.456,2])
+			alert(num);
+				var num=formulas.calculation("round",[9876.54,-2])
+			alert(num);
+				var num=formulas.calculation("round",[123.44001123,0])
+			alert(num);
+				var num=formulas.calculation("round",[123.556,0])
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+		<tr>
+		<th colspan=2>isNull</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+				var num=formulas.calculation("isNull",null)
+			alert(num);
+				var num=formulas.calculation("isNull",132)
+			alert(num);
+
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+	<th colspan=2>自定义公式计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			Ext.lt.formulas.createFormulas('testfn','测试','测试',function(arrs){
+				alert(arrs[0]+"\t"+arrs[1]+"\t"+arrs[2]);
+				return arrs[2];
+			});
+			var num=formulas.calculation("testfn",_random)
+			alert(num);
+
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<th colspan=2>复杂公式计算</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var num=formulas.execution2str("sum2obj([rsdata,'v1'])+sum2obj([rsdata,'v1'])")
+			alert(num);
+			</pre>
+			<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>	
+	<th colspan=2>加载10000个公式性能测试</th>
+	</tr>
+	<tr>
+		<td>
+			<div style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+				var d1=new Date();
+				for(var i=0;i<10000;i++){
+					Ext.lt.formulas.createFormulas('testfn'+i,'测试'+i,'测试'+i,function(arrs){
+						alert(arrs[0]+"\t"+arrs[1]+"\t"+arrs[2]);
+						return arrs[2];
+					});
+				}
+				alert(new Date()-d1)
+			</pre>
+<script>
+function gsxn(){
+	var d1=new Date();
+	for(var i=0;i<10000;i++){
+		Ext.lt.formulas.createFormulas('testfn'+i,'测试'+i,'测试'+i,function(arrs){
+			alert(arrs[0]+"\t"+arrs[1]+"\t"+arrs[2]);
+			return arrs[2];
+		});
+	}
+	alert(new Date()-d1)
+}
+</script>
+			<button onclick="gsxn()" >测试</button>
+		</td>
+	</tr>
+	<tr>
+		<th colspan=2>测试含有冗余公式性能</th>
+	</tr>
+	<tr>
+		<td>
+			<div style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+				var d=new Date();
+				formulas.calculation("sum2obj",[rsdata,'v1']);
+				var de=new Date();
+				
+				for(var i=0;i<10000;i++){
+					Ext.lt.formulas.createFormulas('testfnrx'+i,'测试冗余'+i,'测试冗余'+i,function(arrs){
+						alert(arrs[0]+"\t"+arrs[1]+"\t"+arrs[2]);
+						return arrs[2];
+					});
+				}
+				var d1=new Date();
+				formulas.calculation("sum2obj",[rsdata,'v1']);
+				var d2=new Date();
+				
+				var ld1=de-d;
+				var ld2=d2-d1;
+				
+				alert(ld2-ld1);
+			</pre>
+<script>
+function rygs(){
+				var d=new Date();
+				formulas.calculation("sum2obj",[rsdata,'v1']);
+				var de=new Date();
+				
+			
+				for(var i=0;i<10000;i++){
+					Ext.lt.formulas.createFormulas('testfnrx'+i,'测试冗余'+i,'测试冗余'+i,function(arrs){
+						alert(arrs[0]+"\t"+arrs[1]+"\t"+arrs[2]);
+						return arrs[2];
+					});
+				}
+				var d1=new Date();
+				formulas.calculation("sum2obj",[rsdata,'v1']);
+				var d2=new Date();
+				
+				var ld1=de-d;
+				var ld2=d2-d1;
+				
+				alert(ld2-ld1);
+}
+</script>
+			<button onclick="rygs()" >测试</button>
+		</td>
+	</tr>	
+	<tr>
+	<th colspan=2>公式性能测试</th>
+	</tr>
+	<tr>
+		<td>
+			<div id="tableevent" style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+			var d1=new Date();
+			for(var i=0;i<1;i++){
+				formulas.execution2str("Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])+Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])");
+			}
+			var d2=new Date();
+			for(var i=0;i<900;i++){
+			//	formulas.execution2str("Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])+Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])");
+			}
+			var d3=new Date();
+	
+			for(var i=0;i<9000;i++){
+		//		formulas.execution2str("Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])+Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])");
+			}
+			var d4=new Date();
+			var xn1=d2-d1;
+			var xn1000=d3-d1
+			var xn10000=d4-d1
+		alert("100次"+xn1+"\t1000次"+xn1000+"\t1W次"+xn10000)
+			</pre>
+<script>
+function xncs(){
+		var d1=new Date();
+		for(var i=0;i<1;i++){
+			formulas.execution2str("Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])+Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])");
+		}
+		var d2=new Date();
+		for(var i=0;i<900;i++){
+	//		formulas.execution2str("Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])+Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])");
+		}
+		var d3=new Date();
+
+		for(var i=0;i<9000;i++){
+		//	formulas.execution2str("Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])+Ext.lt.formulas.formula.sum2obj([rsdata,'v1'])");
+		}
+		var d4=new Date();
+		var xn1=d2-d1;
+		var xn1000=d3-d1
+		var xn10000=d4-d1
+		alert("100次"+xn1+"\t1000次"+xn1000+"\t1W次"+xn10000)
+}
+</script>
+			<button onclick="xncs()" >测试</button>
+		</td>
+	</tr>	
+	
+		<th colspan=2>调用100个不同公式性能</th>
+	</tr>
+	<tr>
+		<td>
+			<div style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+				for(var i=0;i<50;i++){
+					Ext.lt.formulas.createFormulas('testfn100'+i,'测试调用'+i,'测试调用'+i,function(arrs){
+						return formulas.calculation("sum2obj",[arrs,'v1']);;
+					});
+				}
+				var d1=new Date();
+				for(var i=0;i<50;i++){
+					formulas.calculation("testfn100"+i,rsdata)
+				}
+				var d2=new Date();
+				
+				alert(d2-d1);
+			</pre>
+<script>
+function fn100(){
+				for(var i=0;i<50;i++){
+					Ext.lt.formulas.createFormulas('testfn100'+i,'测试调用'+i,'测试调用'+i,function(arrs){
+						return formulas.calculation("sum2obj",[arrs,'v1']);;
+					});
+				}
+				var d1=new Date();
+				for(var i=0;i<50;i++){
+					formulas.calculation("testfn100"+i,rsdata)
+				}
+				var d2=new Date();
+				
+				alert(d2-d1);
+}
+</script>
+			<button onclick="fn100()" >测试</button>
+		</td>
+	</tr>	
+	
+
+		<th colspan=2>调用10个不同公式嵌套性能</th>
+	</tr>
+	<tr>
+		<td>
+			<div style="width:500px;height:250px;display:block"></div>
+		</td>
+		<td>
+			<pre class=democodearea>
+				Ext.lt.formulas.createFormulas('testqt','测试嵌套调用','测试嵌套调用',function(arrs){
+					return formulas.calculation("sum",arrs)+formulas.calculation('round',[formulas.calculation("ave",arrs),2])-formulas.calculation("max",arrs)+formulas.calculation("min",arrs)+formulas.calculation("sum",arrs)+formulas.calculation('round',[formulas.calculation("ave",arrs),2])-formulas.calculation("max",arrs)+formulas.calculation("min",arrs)
+				});
+				var d1=new Date();
+				formulas.calculation("testqt",_random)
+				var d2=new Date();
+				
+				alert(d2-d1);
+			</pre>
+<script>
+function testqt(){
+				Ext.lt.formulas.createFormulas('testqt','测试嵌套调用','测试嵌套调用',function(arrs){
+					return formulas.calculation('round',[formulas.calculation("sum",arrs)+formulas.calculation('round',[formulas.calculation("ave",arrs),-2])-formulas.calculation("max",arrs)+formulas.calculation("min",arrs)+formulas.calculation("sum",arrs)+formulas.calculation("ave",arrs)-formulas.calculation("max",arrs)+formulas.calculation("min",arrs),2])
+				});
+				var d1=new Date();
+				var v=formulas.calculation("testqt",_random)
+				var d2=new Date();
+				
+				alert(v+"\t:"+(d2-d1));
+}
+</script>
+			<button onclick="testqt()" >测试</button>
+		</td>
+	</tr>	
+</table>
+</body>
+</html>

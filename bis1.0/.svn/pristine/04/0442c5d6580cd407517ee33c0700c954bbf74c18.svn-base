@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme35.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../../../datatable3.0.js"></script>
+<script src="../../jquery.js"></script>
+</head>
+
+<body>
+<p>
+	<h1>toolbar</h1>
+	<h2>命名空间：Ext.lt.toolbar</h2>
+<h2>说明：</h2>
+<p>
+工具条标签<br/>
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css" /><br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+<br>
+代码如下所示：<br>
+<pre>
+var toolbar=new Ext.lt.toolbar({buttons:[
+	{name:'add',title:'新增',icon:'add',action:function(){alert('新增')},disabled:false},
+	{name:'mod',title:'修改',icon:'mod',action:function(){alert('修改')},disabled:false},
+	{name:'del',title:'删除',icon:'del',action:function(){alert('修改')},disabled:false},
+	'',
+	{name:'disabll',title:'禁用',action:function(){alert('禁用')},disabled:true}
+]});
+toolbar.draw(document.getElementById("toolbartest1"));
+</pre>
+</p>
+<p>
+工具条图标库路径.\ltext\images\toolbar。系统默认按钮样式
+<table border=1>
+<tr>
+<td>实例</td><td>样式单名</td>
+</tr>
+<tr>
+<td><div id="icon_add"></div></td><td>add<script>var toolbar_add=new Ext.lt.toolbar({buttons:[{name:'add',title:'add样式',icon:'add'}]});toolbar_add.draw(document.getElementById('icon_add'))</script></td>
+</tr>
+<tr>
+<td><div id="icon_mod"></div></td><td>mod<script>var toolbar_mod=new Ext.lt.toolbar({buttons:[{name:'mod',title:'mod样式',icon:'mod'}]});toolbar_mod.draw(document.getElementById('icon_mod'))</script></td>
+</tr>
+
+</table>
+</p>
+
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"></td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+   </table>
+   
+<h3>buttons属性说明</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">name</td>
+      <td bgcolor="#EEEEEE">按钮名称</td>
+      <td bgcolor="#EEEEEE">可以通过按钮名称从工具条组件中获取按钮对象</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">title</td>
+      <td bgcolor="#EEEEEE">按钮显示名称</td>
+      <td bgcolor="#EEEEEE">按钮名称默认居右显示</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">icon</td>
+      <td bgcolor="#EEEEEE">图标样式单名</td>
+      <td bgcolor="#EEEEEE">工具条按钮样式单命名规范为：普通样式icon+'_btn'、鼠标悬浮样式icon+'_btn_over'、鼠标点击样式icon+'_btn_click';按钮背景样式普通样式icon+'_bg'、鼠标悬浮样式icon+'_bg_over'、鼠标点击样式icon+'_bg_click'</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">action</td>
+      <td bgcolor="#EEEEEE">点击按钮的执行事件</td>
+      <td bgcolor="#EEEEEE">参数为方法定义或方法名，无参数</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">disabled</td>
+      <td bgcolor="#EEEEEE">ture/false 工具条按钮初始时是否为禁用状态</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">isvisible</td>
+      <td bgcolor="#EEEEEE">ture/false 工具条按钮初始时是否为可见状态</td>
+      <td bgcolor="#EEEEEE"></td>
+    </tr>
+   </table>  
+   
+<h2>方法说明</h2>
+<h3>draw</h3>
+<p>
+绘制工具条并生成到指定的位置<br/>
+toolbar.draw(div) 
+</p>
+<h3>setDisabled</h3>
+<p>
+设置工具条按钮的禁用状态，第一个参数为按钮name属性的数组，第二个参数为true/false设置按钮是否为禁用状态<br/>
+tabpanel.setDisabled([name1,name2,…],true)
+</p>
+
+
+
+
+
+<table width="100%" border=1>
+	<tr>
+		<th colspan=2>普通效果tabpanel</th></tr>
+	<tr>
+		<td width=200px>	<div id="toolbartest1" style='width:500px;height:200px'></div></td>
+		<td>
+<pre class=democodearea>
+var functions={id:'toolbar',buttons:[
+{name:'add',title:'新增',icon:'add',action:function(){alert('新增')},disabled:false},
+{name:'mod',title:'修改',icon:'mod',action:function(){alert('修改')},disabled:false},
+{name:'del',title:'删除',icon:'del',action:function(){alert('修改')},disabled:false},
+'',
+{name:'disp',title:'禁用',action:function(){alert('禁用')},disabled:true},
+[{name:'search',title:'查询',icon:'search',defaultbutton:true},{name:'advsearch',title:'高级查询',icon:'search',disabled:false,action:function(){alert(this.title)}}]
+]}
+
+var toolbar=new Ext.lt.toolbar(functions);
+toolbar.draw(document.getElementById("toolbartest1"));
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	<tr>
+		<th colspan=2>工具条 setDisabled 方法测试</th></tr>
+	<tr>
+		<td width=200px>	<div id="toolbarsetDisabledtest" style='width:500px;height:200px'></div></td>
+		<td>
+<pre class=democodearea>
+var functions={id:'toolbar',buttons:[
+{name:'add',title:'新增',icon:'add',action:function(){alert('新增')},disabled:false},
+{name:'mod',title:'修改',icon:'mod',action:function(){alert('修改')},disabled:false},
+{name:'del',title:'删除',icon:'del',action:function(){alert('修改')},disabled:false},
+'',
+{name:'disp',title:'禁用',action:function(){alert('禁用')},disabled:true}
+]}
+
+var toolbar=new Ext.lt.toolbar(functions);
+toolbar.draw(document.getElementById("toolbarsetDisabledtest"));
+
+alert('修改状态');
+
+toolbar.setDisabled(['add','del'],true);
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+	
+
+
+			
+</table>
+</body>
+</html>

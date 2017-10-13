@@ -1,0 +1,38 @@
+log4j.appender.fileout=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.fileout.DatePattern='.'yyyy-MM-dd
+log4j.appender.fileout.File=fisher.log
+log4j.appender.fileout.layout=org.apache.log4j.PatternLayout
+log4j.appender.fileout.layout.ConversionPattern=%d{yyyy-MM-dd HH\:mm\:ss} %p %t %c %L - %m%n
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d %5p [%t] (%F\:%L) - %n%m%n
+
+# framework accesslog
+log4j.appender.frameworkaccesslog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.frameworkaccesslog.DatePattern='.'yyyy-MM-dd
+log4j.appender.frameworkaccesslog.File=framework_access.log
+log4j.appender.frameworkaccesslog.layout=org.apache.log4j.PatternLayout
+log4j.appender.frameworkaccesslog.layout.ConversionPattern=%d{yyyy-MM-dd HH\:mm\:ss ,SSS} - %m%n
+
+log4j.rootLogger=error, stdout, fileout
+
+
+log4j.logger.org.apache.struct2=error, stdout, fileout
+log4j.additivity.org.apache.struct2=false 
+log4j.logger.org.apache.tiles=error, stdout, fileout
+log4j.additivity.org.apache.tiles=false 
+
+log4j.logger.test=error, stdout, fileout
+log4j.additivity.test=false 
+log4j.logger.gov.mof.fasp=error, stdout, fileout
+log4j.additivity.gov.mof.fasp=false 
+log4j.logger.com.longtu=error, stdout, fileout
+log4j.additivity.com.longtu = false 
+log4j.logger.com.longtu.framework.log.accesslog.AnalyseAccessLogManager=error, frameworkaccesslog
+log4j.additivity.com.longtu.framework.log.accesslog.AnalyseAccessLogManager=false 
+log4j.logger.com.alibaba.dubbo.registry.multicast.MulticastRegistry=error, stdout
+log4j.logger.com.longtu.framework.distributed.filter.MethodAdvisorFilter=error, stdout
+log4j.logger.com.longtu.framework.distributed.protocol.TokenRemoteInvocation=error, stdout 
+log4j.logger.com.longtu.framework.springexp.server.WeblogicLoadAppid=error, stdout 

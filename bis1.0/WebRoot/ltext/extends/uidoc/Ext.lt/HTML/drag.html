@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.HTML.drag API</title>
+<script src="../../../../ltext_core.js"></script>
+</head>
+<body>
+<h2>Elt.lt.HTML.drag</h2>
+<h4>命名空间：Elt.lt.HTML.drag</h4>
+<h4>说明：拖拽 </h4>
+<p>
+使用时需要在页面中引用以下文件<br>&lt;script src="../../../../ltext_core.js">&lt;/script>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+<tr><td bgcolor="#CCCCCC">dragel</td><td bgcolor="#EEEEEE">HTMLElement</td><td bgcolor="#EEEEEE">拖拽对象即被拖拽tableid,不可以为空</td></tr>
+    <tr><td bgcolor="#CCCCCC">element</td><td bgcolor="#EEEEEE">string</td><td bgcolor="#EEEEEE">可以触发拖动的对象即拖动该id对应的对象既可以拖动dragel对应的整个table</td></tr>
+    <tr><td bgcolor="#CCCCCC">holder</td><td bgcolor="#EEEEEE">boolean</td><td bgcolor="#EEEEEE">是否显示占位符</td></tr>
+    <tr><td bgcolor="#CCCCCC">x</td><td bgcolor="#EEEEEE">int</td><td bgcolor="#EEEEEE">鼠标和拖拽对象的X轴相对位置</td></tr>
+    <tr><td bgcolor="#CCCCCC">y</td><td bgcolor="#EEEEEE">int</td><td bgcolor="#EEEEEE">鼠标和拖拽对象的Y轴相对位置</td></tr>
+    <tr><td bgcolor="#CCCCCC">onend</td><td bgcolor="#EEEEEE">function</td><td bgcolor="#EEEEEE">当拖拽结束时执行的方法e</td></tr>
+    <tr><td bgcolor="#CCCCCC">onstart</td><td bgcolor="#EEEEEE">function</td><td bgcolor="#EEEEEE">当拖拽开始时执行的方法</td></tr>
+</table>
+	
+<h2>方法说明</h2>
+<h3>Ext.lt.HTML.drag()</h3>
+<pre>对HTML对象生成拖拽操作，参数为拖拽的配置信息<br/></pre>
+<table width = "100%" border = 1>
+<tr><th colspan = 2>拖拽默认参数测试</th></tr>
+<tr><td>
+	<table id=dragtab1 border=1 style ="background:beige"><tr><td id=dragbar1>拖拽</td></tr><tr><td>我什么都没有设置</td></tr></table></td><td>
+	<pre>&lt;table id=dragtab1 border=1 style ="background:beige">
+&lt;tr>&lt;td id=dragbar1>拖拽&lt;/td>&lt;/tr>
+&lt;tr>&lt;td>我什么都没有设置&lt;/td>&lt;/tr>&lt;/table>
+Ext.lt.HTML.drag({
+element:dragbar,
+})                                                                                  <button onclick="dr1()">拖拽测试</button></pre>
+</td></tr>
+<tr><th colspan = 2>拖拽默认参数测试</th></tr>
+<tr><td>
+	<table id=dragtab4 border=1 style ="background:beige"><tr><td id=dragbar4>拖拽</td></tr><tr><td>我什么都没有设置</td></tr></table></td><td>
+	<pre>&lt;table id=dragtab4 border=1 style ="background:beige">
+&lt;tr>&lt;td id=dragbar4>拖拽&lt;/td>&lt;/tr>
+&lt;tr>&lt;td>我什么都没有设置&lt;/td>&lt;/tr>&lt;/table>
+Ext.lt.HTML.drag({
+element:dragtab4,
+id:dragbar4
+})                                                                                  <button onclick="dr4()">拖拽测试</button></pre>
+</td></tr>
+<tr><th colspan = 2>拖拽测试onend、onstart方法测试</th></tr>
+<tr><td>
+	<table id=dragtab2 border=1 style ="background:beige"><tr><td id=dragbar2>注意拖拽开始和结束的方法</td></tr><tr><td>我什么都没有设置</td></tr></table></td>
+<td><pre>&lt;table id=dragtab2 border=1 style ="background:beige">
+&lt;tr>&lt;td id=dragtab2>注意拖拽开始和结束右侧文本框的值&lt;/td>&lt;/tr>
+&lt;tr>&lt;td>我什么都没有设置&lt;/td>&lt;/tr>&lt;/table>
+Ext.lt.HTML.drag({
+element:dragbar,
+dragel:dragtab,
+onend:function(){document.getElementById("tst").value = "结束";},
+onstart:function(){document.getElementById("tst").value = "开始";}
+})                                                             <input style ="background:gray" id = 'tst',name ='tst',type= 'text' value ='拖拽时注意值的变化'><button onclick="dr2()">拖拽测试</button></pre>
+</td></tr>
+<tr><th colspan = 2>拖拽测试偏离x、y值测试</th></tr>
+<tr><td>
+	<table id=dragtab3 border=1 style ="background:blue"><tr><td id=dragbar3>注意鼠标与拖拽对象的x、y偏离</td></tr><tr><td>我什么都没有设置</td></tr></table></td>
+<td><pre>&lt;table id=dragtab3 border=1 style ="background:beige">
+&lt;tr>&lt;td id=dragtab3>注意鼠标与拖拽对象的x、y偏离&lt;/td>&lt;/tr>
+&lt;tr>&lt;td>我什么都没有设置&lt;/td>&lt;/tr>&lt;/table>
+Ext.lt.HTML.drag({
+element:dragbar,
+dragel:dragtab,
+x:-500,
+y:100,
+})                                                             <button onclick="dr3()">拖拽测试</button></pre>
+</td></tr>
+</table>
+</body>
+</html>
+<script type="text/javascript">
+function dr1(){
+	Ext.lt.HTML.drag({
+		element:dragtab1,
+	})
+}
+function dr2(){
+	Ext.lt.HTML.drag({
+		element:dragtab2,
+		dragel:dragtab2,
+		onend:function(){
+			document.getElementById("tst").value = "结束";
+		},
+		onstart:function(){
+			document.getElementById("tst").value = "开始";
+		}
+	})
+}
+function dr3(){
+	Ext.lt.HTML.drag({
+		element:dragtab3,
+		dragel:dragtab3,
+		x:-500,
+		y:100
+	})
+}
+function dr4(){
+	Ext.lt.HTML.drag({
+		element:dragtab4,
+		id:dragbar4
+	})
+}
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<p>Ext.lt.recordset({seqdata:[],columns:[],datas:[[],[]……]}) 数据集对象，Javascript采用离散算法保存数据，数据游标过大时会影响存取速度。因此采用二维数据提高效率。</p>
+<p> 属性：<br />
+  version=&quot;1.0&quot;;  对象版本号<br />
+  type=&quot;recordset&quot; 对象类型<br />
+  方法<br />
+  size()		返回数据集长度<br />
+  setData(Object/Array)		向数据集中追加数据 当参数为数组类型时会将数组内的元素取出加到到数据集中<br />
+  addData(Object/Array,int)		向数据集中的指定位置追加数据<br />
+  getData(int)		从数据集中获取数据<br />
+  getDataValue(int,String)		获取执行位置对象的属性值<br />
+  setColNames(Array)		设置列名，数组中指定列明<br />
+  getColNames()	 	获取列名的数组<br />
+  each(function(Object),int,int) 	循环数据集，参数为处理函数，开始位置，结束位置<br />
+  bindTable(Ext.lt.datatable)		绑定一个数据表格对象，当数据集的内容修改后，会自动涮洗数据表格对象的内容<br />
+  sort(String)		按照指定属性排序，快速排序法<br />
+  clear()		清除数据集内容<br />
+  delData(fn(rs),int) 从数据集的指定位置开始删除数据，参数为判断删除的函数，返回true的数据将从数据集中删除<br />
+  join(recordset1,int) 将recordset1插入到指定位置<br />
+  toJSON()	导出成JSON格式<br />
+  setFilter()  设置过滤条件，设置格式为{key:string/number/array,…}<br />
+  clearFilter()  	清除数据过滤条件<br />
+  query()		根据过滤条件查询数据集中的数据,返回值为数组，过滤条件格式为{key:string/number/array[number/string],…}<br />
+  select(fn(Object)) 从结果集中选择数据，fn函数为过滤函数，fn函数的参数为遍历的数据。select方法返回，fn函数判断为true的数据，返回对象类型为recordset<br />
+  getMaxColDataLength()	返回记录每一列最大字符数的数组<br />
+  getMaxLength(String)	返回指定列数据中最大字符数</p>
+<p> 事件监听<br />
+  Ext.lt.message.hook(&quot;recordset&quot;,&quot;load&quot;,fn);//  rs,data</p>
+<p></p>
+</body>
+</html>

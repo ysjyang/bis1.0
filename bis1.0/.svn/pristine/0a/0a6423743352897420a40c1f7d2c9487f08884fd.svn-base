@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme35.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../../../datatable3.0.js"></script>
+<script src="../../jquery.js"></script>
+<style>
+.bottom_tablpanel{position:relative;}
+.bottom_tablpanel .top{height:29px;float:left;position:absolute;bottom:0px;}
+.bottom_tablpanel .top .left{width:13px;height:29px;float:left;background:url(../../../../images/tabpanel/leftbutton.gif) no-repeat left top; }
+.bottom_tablpanel .top .right{height:29px;width:13px;float:left;background:url(../../../../images/tabpanel/rightbutton.gif) no-repeat left top; }
+.bottom_tablpanel .top .leftnoscroll{width:13px;height:29px;float:left;background:url(../../../../images/tabpanel/leftbutton2.gif) no-repeat left top; }
+.bottom_tablpanel .top .rightnoscroll{height:29px;width:13px;float:left;background:url(../../../../images/tabpanel/rightbutton2.gif) no-repeat left top; }
+.bottom_tablpanel .top .leftnotscroll{width:13px;height:29px;float:left; background:url(../../../../images/tabpanel/topbg.gif) repeat left top;}
+.bottom_tablpanel .top .rightnotscroll{height:29px;width:13px;float:left;background:url(../../../../images/tabpanel/topbg.gif) repeat left top;}
+.bottom_tablpanel .top .centersorll{
+	overflow:hidden;
+	float:left;
+	position:relative;
+	height:29px;
+	LINE-HEIGHT: 25px;
+	margin-top:0px;
+	background:url(../../../../images/tabpanel/topbg.gif) repeat left top;
+}
+.bottom_tablpanel .top .center{
+	white-space:nowrap; 
+	background:url(../../../../images/tabpanel/topbg.gif) repeat left top;
+	position:absolute;
+}
+.bottom_tablpanel .title{
+	float:left;
+	font-size:12px;
+}
+.bottom_tablpanel .select{
+	float:left;
+	font-size:12px;
+}
+.bottom_tablpanel .select .title_left{
+	background:url(../../../../images/tabpanel/l_bg.gif) no-repeat right top;
+}
+.bottom_tablpanel .select .title_center{
+	background:url(../../../../images/tabpanel/c_bg.gif) repeat left top;
+}
+.bottom_tablpanel .select .title_right{
+	background:url(../../../../images/tabpanel/r_bg.gif) no-repeat left top;
+}
+.bottom_tablpanel .title_left{
+	float:left;
+	width:8px;
+	height:29px;
+	background:url(../../../../images/tabpanel/l_bg2.gif) no-repeat right top;
+}
+.bottom_tablpanel .title_center{
+	float:left;
+	height:29px;
+	background:url(../../../../images/tabpanel/c_bg2.gif) repeat left top;
+	padding-top: 5px;
+	padding-left:5px;
+	padding-right: 5px;
+	white-space:nowrap;
+}
+.bottom_tablpanel .title_right{
+	float:left;
+	width:8px;
+	height:29px;
+	background:url(../../../../images/tabpanel/r_bg2.gif) no-repeat left top;
+}
+.bottom_tablpanel .main{
+	border: 1px solid #8ba3da;
+}
+.bottom_tablpanel .buttons{
+	border: 1px solid #8ba3da;
+	height:28px;
+}
+.bottom_tablpanel .buttons button{
+	height:26px;
+	margin-top:1px;
+	margin-left:2px;
+	margin-right:2px;
+}	
+	
+</style>
+</head>
+
+<body>
+<p>tab页<br/>
+	<h1>tabpanel</h1>
+	<h2>命名空间：Ext.lt.TabPanel</h2>
+<h2>说明：</h2>
+<p>
+多页签可以切换tab页<br/>
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css" /><br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme35.css" /><br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var tabpanel=new Ext.lt.TabPanel({
+		items:[items],
+		className:'tabpanel',
+		activeTab:0
+	});<br/>
+		tabpanel.draw(HTMLElement);<br/>
+</p>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">items</td>
+      <td bgcolor="#EEEEEE">list</td>
+      <td bgcolor="#EEEEEE">子页签对象</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">className</td>
+      <td bgcolor="#EEEEEE">string</td>
+      <td bgcolor="#EEEEEE">tab页样式单，默认样式单：tabpanel</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">activeTab</td>
+      <td bgcolor="#EEEEEE">int</td>
+      <td bgcolor="#EEEEEE">默认选中的页签序号，默认值：0</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">aftershow</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">标签被选中后触发该方法，参数：TabPanel,int(选中的位置)</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">buttons</td>
+      <td bgcolor="#EEEEEE">array</td>
+      <td bgcolor="#EEEEEE">按钮数组</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">buttonAlign</td>
+      <td bgcolor="#EEEEEE">string</td>
+      <td bgcolor="#EEEEEE">按钮的位置，center,left,right</td>
+    </tr>
+   </table>
+<h2>方法说明</h2>
+<h3>draw</h3>
+<p>
+绘制菜单，并定位到绘制的div上<br/>
+tabpanel.draw(div) 
+</p>
+<h3>activate</h3>
+<p>
+设置选中<br/>
+tabpanel.activate(num)
+</p>
+<h3>addItem</h3>
+<p>
+添加一个子页签<br/>
+tabpanel.addItem(item)
+</p>
+<h3>getActiveTab</h3>
+<p>
+获取选择的子页签的位置<br/>
+tabpanel.getActiveTab(){return num}
+</p>
+<h3>getSelectItem</h3>
+<p>
+获取选择的子页签的位置<br/>
+tabpanel.getSelectItem(){return item}
+</p>
+<h3>getItem</h3>
+<p>
+根据子页签位置获取子页签<br/>
+tabpanel.getItem(num){return item}
+</p>		
+<h3>getItems</h3>
+<p>
+获取全部子页签<br/>
+tabpanel.getItems(num){return items}
+</p>
+<h2>子页签对象说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">title</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">标签的标题</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">el</td>
+      <td bgcolor="#EEEEEE">HTMLElement</td>
+      <td bgcolor="#EEEEEE">标签页展示内容的div，会将该div的放到相应的标签上</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">html</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">标签页绘制的div的内容，如果使用el则该内容无效。</td>
+    </tr>
+   </table>
+<h2>button属性说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">text</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">按钮显示的内容</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">handler</td>
+      <td bgcolor="#EEEEEE">function</td>
+      <td bgcolor="#EEEEEE">点击按钮时触发的方法</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">className</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">按钮样式</td>
+    </tr>
+   </table>
+
+<table width="100%" border=1>
+	<tr>
+		<th colspan=2>普通效果tabpanel</th></tr>
+			
+	<tr>
+		<td width=200px>	<div id="ptabpaneltest1" style='width:200px;height:400px'></div></td>
+		<td>
+		
+<pre class=democodearea>
+var datas=[];
+		datas.push({title:'<input type='checkbox'/>测试1',html:'测试1'});
+		datas.push({title:'测试2',html:'测试2'});
+		datas.push({title:'测试3',html:'测试3'});
+		datas.push({title:'测试4',html:'测试4'});
+		datas.push({title:'测试5',html:'测试5'});
+		datas.push({title:'测试6',html:'测试6'});
+		datas.push({title:'测试7',html:'测试7'});
+		datas.push({title:'测试8',html:'测试8'});
+		datas.push({title:'测试9',html:'测试9'});
+		datas.push({title:'测试10',html:'测试10'});
+		datas.push({title:'测试11',html:'测试11'});
+		
+		var m=Ext.lt.TabPanel({
+			items:datas,
+			activeTab:5
+			});
+		var d=document.getElementById('ptabpaneltest1');
+		m.draw(d);
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	
+		<tr>
+		<th colspan=2>tab区在下面tabpanel</th></tr>
+			
+	<tr>
+		<td width=200px>	<div id="ptabpaneltestbottom1" style='width:200px;height:400px'></div></td>
+		<td>
+		
+<pre class=democodearea>
+var datas=[];
+		datas.push({title:'测试1',html:'测试1'});
+		datas.push({title:'测试2',html:'测试2'});
+		datas.push({title:'测试3',html:'测试3'});
+		datas.push({title:'测试4',html:'测试4'});
+		datas.push({title:'测试5',html:'测试5'});
+		datas.push({title:'测试6',html:'测试6'});
+		datas.push({title:'测试7',html:'测试7'});
+		datas.push({title:'测试8',html:'测试8'});
+		datas.push({title:'测试9',html:'测试9'});
+		datas.push({title:'测试10',html:'测试10'});
+		datas.push({title:'测试11',html:'测试11'});
+		
+		var m=Ext.lt.TabPanel({
+			items:datas,
+			activeTab:5,
+			className:'bottom_tablpanel'
+			});
+		var d=document.getElementById('ptabpaneltestbottom1');
+		m.draw(d);
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+		<tr>
+		<th colspan=2>设置选中</th></tr>
+			
+	<tr>
+		<td width=200px > <div id="ptabpaneltest2" style='width:200px;height:400px'></div></td>
+		<td>
+		
+<pre class=democodearea>
+	var datas=[];
+		datas.push({title:'测试1',html:'测试1'});
+		datas.push({title:'测试2',html:'测试2'});
+		datas.push({title:'测试3',html:'测试3'});
+		datas.push({title:'测试4',html:'测试4'});
+		datas.push({title:'测试5',html:'测试5'});
+		datas.push({title:'测试6',html:'测试6'});
+		datas.push({title:'测试7',html:'测试7'});
+		datas.push({title:'测试8',html:'测试8'});
+		datas.push({title:'测试9',html:'测试9'});
+		datas.push({title:'测试10',html:'测试10'});
+		datas.push({title:'测试11',html:'测试11'});
+		
+		var m=Ext.lt.TabPanel({
+			items:datas
+			});
+		var d=document.getElementById('ptabpaneltest2');
+		m.draw(d);
+		m.activate(10);
+
+		</pre>
+		<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+			<tr>
+		<th colspan=2>子类为div类型</th></tr>
+			
+	<tr>
+		<td width=200px > <div id="ptabpaneltest3" style='width:200px;height:400px'></div></td>
+		<td>
+		<div style='BACKGROUND:#333fff' id='ptabpaneltest3_test1'>测试1</div>
+<pre class=democodearea>
+	var datas=[];
+		datas.push({title:'测试1',el:document.getElementById('ptabpaneltest3_test1')});
+		datas.push({title:'测试2',html:'测试2'});
+		datas.push({title:'测试3',html:'测试3'});
+		datas.push({title:'测试4',html:'测试4'});
+		datas.push({title:'测试5',html:'测试5'});
+		datas.push({title:'测试6',html:'测试6'});
+		datas.push({title:'测试7',html:'测试7'});
+		datas.push({title:'测试8',html:'测试8'});
+		datas.push({title:'测试9',html:'测试9'});
+		datas.push({title:'测试10',html:'测试10'});
+		datas.push({title:'测试11',html:'测试11'});
+		
+		var m=Ext.lt.TabPanel({
+			items:datas
+			});
+		var d=document.getElementById('ptabpaneltest3');
+		m.draw(d);
+		</pre>
+		<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+				<tr>
+		<th colspan=2>additem</th></tr>
+			
+	<tr>
+		<td width=200px > <div id="ptabpaneltest4" style='width:200px;height:400px'></div></td>
+		<td>
+		<div style='BACKGROUND:#333fff' id='ptabpaneltest4_test1'>测试1</div>
+<pre class=democodearea>
+	var datas=[];
+		var m=Ext.lt.TabPanel({
+			items:datas
+			});
+		var d=document.getElementById('ptabpaneltest4');
+		m.draw(d);
+		alert('暂停下');
+		m.addItem({title:'测试1',el:document.getElementById('ptabpaneltest4_test1')});
+		</pre>
+		<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+				<tr>
+		<th colspan=2>删除</th></tr>
+			
+	<tr>
+		<td width=200px > <div id="ptabpaneltest5" style='width:200px;height:400px'></div></td>
+		<td>
+<pre class=democodearea>
+	var datas=[];
+		datas.push({title:'测试1',html:'测试1'});
+		datas.push({title:'测试2',html:'测试2'});
+		datas.push({title:'测试3',html:'测试3'});
+		datas.push({title:'测试4',html:'测试4'});
+		datas.push({title:'测试5',html:'测试5'});
+		var m=Ext.lt.TabPanel({
+			items:datas
+			});
+		var d=document.getElementById('ptabpaneltest5');
+		m.draw(d);
+		alert('等待删除')
+		m.removeItem(0);
+		</pre>
+		<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+		<th colspan=2>aftershow</th></tr>
+			
+	<tr>
+		<td width=200px>	<div id="ptabpaneltest6" style='width:200px;height:400px'></div></td>
+		<td>
+		
+<pre class=democodearea>
+var datas=[];
+		datas.push({title:'测试1',html:'测试1'});
+		datas.push({title:'测试2',html:'测试2'});
+		datas.push({title:'测试3',html:'测试3'});
+		datas.push({title:'测试4',html:'测试4'});
+		datas.push({title:'测试5',html:'测试5'});
+		datas.push({title:'测试6',html:'测试6'});
+		datas.push({title:'测试7',html:'测试7'});
+		datas.push({title:'测试8',html:'测试8'});
+		datas.push({title:'测试9',html:'测试9'});
+		datas.push({title:'测试10',html:'测试10'});
+		datas.push({title:'测试11',html:'测试11'});
+		
+		var m=Ext.lt.TabPanel({
+			items:datas,
+			activeTab:5,
+			aftershow:function(tabpanel,item){
+					alert('title:'+item.title);
+				}
+			});
+		var d=document.getElementById('ptabpaneltest6');
+		m.draw(d);
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+		<th colspan=2>按钮</th></tr>
+			
+	<tr>
+		<td width=200px>	<div id="ptabpaneltest7" style='width:200px;height:400px'></div></td>
+		<td>
+		
+<pre class=democodearea>
+var datas=[];
+		datas.push({title:'测试1',html:'测试1'});
+		datas.push({title:'测试2',html:'测试2'});
+		datas.push({title:'测试3',html:'测试3'});
+		datas.push({title:'测试4',html:'测试4'});
+		datas.push({title:'测试5',html:'测试5'});
+		datas.push({title:'测试6',html:'测试6'});
+		datas.push({title:'测试7',html:'测试7'});
+		datas.push({title:'测试8',html:'测试8'});
+		datas.push({title:'测试9',html:'测试9'});
+		datas.push({title:'测试10',html:'测试10'});
+		datas.push({title:'测试11',html:'测试11'});
+		
+		var m=Ext.lt.TabPanel({
+			items:datas,
+			activeTab:5,
+			buttons:[{text:'按钮1',handler:function(){alert('按钮1')}},{text:'按钮2'}]
+			});
+		var d=document.getElementById('ptabpaneltest7');
+		m.draw(d);
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ext.lt.editpanel API</title>
+
+ 
+
+
+		<script type="text/javascript" src="../../../../frameworksupport.js"></script>
+		<script type="text/javascript" src="../../../../ltext_core.js"></script>
+		<script type="text/javascript" src="../../../../../js/fasp.js"></script>
+		<script type="text/javascript" src="../../../../../js/calendar.js"></script>
+		<script type="text/javascript" src="../../../../../common/ui/ui_editpanel.js"></script> 
+		<link rel="stylesheet" type="text/css" href="../../../../../style/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../../../../../style/default/ui_style.css" />
+
+</head>
+
+<body>
+<p>
+	<h2>下拉树编辑框组件：</h2>
+	<p>editpanel2提供下拉树型编辑框组件类型。</p>
+	<p></p>
+	<h3>属性</h3>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">属性名</th>
+      <th width="5%" bgcolor="#00FFFF">数据类型</th>
+      <th width="45%" bgcolor="#00FFFF">赋值举例</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">treetype</td>
+      <td bgcolor="#EEEEEE">枚举值</td>
+      <td bgcolor="#EEEEEE">tree</td>
+      <td bgcolor="#EEEEEE">必须是{"tree","sin_select"}中的值，树的展现形式 树形 或列表</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">isMulti</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">是否多选树</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">clearbtn</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">是否显示清除按钮</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">outformart</td>
+      <td bgcolor="#EEEEEE">字符串</td>
+      <td bgcolor="#EEEEEE">#code-#name</td>
+      <td bgcolor="#EEEEEE">数据展示格式，现只支持此种格式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">field</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">指定数据字段field: { id: 'itemid',  sid: 'superitemid',  isleaf: 'isleaf'  }</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">dataloader</td>
+      <td bgcolor="#EEEEEE">方法</td>
+      <td bgcolor="#EEEEEE">function(){
+      	}</td>
+      <td bgcolor="#EEEEEE">加载数据入口�/td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">loadthedata</td>
+      <td bgcolor="#EEEEEE">方法</td>
+      <td bgcolor="#EEEEEE">function(){
+      	}</td>
+      <td bgcolor="#EEEEEE">用于发送请求返回数据</td>
+    </tr>
+  </table>
+</p>
+ 
+	
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>下拉树</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform' ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+
+		 	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "sin_select",
+                isMulti: false,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { // 从数据池取数据 一直取。
+                   return te;
+         },
+         loadthedata: function(){ //获取 数据 放到 数据池
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 
+		 window.setTimeout(function(){
+		 	 _edpanel.draw(el);  
+	     _edpanel.resize(350);
+	     _edpanel.bind();	     
+	   },100);
+
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+    	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "sin_select",
+                isMulti: false,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	 
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 
+		 window.setTimeout(function(){
+		 	 _edpanel.draw(el);  
+	     _edpanel.resize(350);
+	     _edpanel.bind();	     
+	   },100);    
+	<pre></div>
+			</td>
+	</tr>
+<tr>
+			<th colspan=2>下拉树2</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform2' ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+
+		 	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: false,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { // 从数据池取数据 一直取。
+                   return te;
+         },
+         loadthedata: function(){ //获取 数据 放到 数据池
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel2 = new Ext.lt.editpanel2(cfg);
+		 var el2 = document.getElementById("editform2"); 
+		 
+		 window.setTimeout(function(){
+		 	 _edpanel2.draw(el2);  
+	     _edpanel2.resize(350);
+	     _edpanel2.bind();	     
+	   },100);
+
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+    	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: false,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	 
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 
+		 window.setTimeout(function(){
+		 	 _edpanel.draw(el);  
+	     _edpanel.resize(350);
+	     _edpanel.bind();	     
+	   },100);    
+	<pre></div>
+			</td>
+	</tr>
+<tr>
+			<th colspan=2>下拉树3</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform3' ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+
+		 	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel3 = new Ext.lt.editpanel2(cfg);
+		 var el3 = document.getElementById("editform3"); 
+		 
+		 window.setTimeout(function(){
+		 	 _edpanel3.draw(el3);  
+	     _edpanel3.resize(350);
+	     _edpanel3.bind();	     
+	   },100);
+
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+    	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: false,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	 
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 
+		 window.setTimeout(function(){
+		 	 _edpanel.draw(el);  
+	     _edpanel.resize(350);
+	     _edpanel.bind();	     
+	   },100);    
+	<pre></div>
+			</td>
+	</tr>
+</table>
+
+
+
+<h3>事件</h3>
+<p>支持自定义事件，事件名称类似HTML命名规范。</p>
+	 
+
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>下拉树组件</th>
+	<tr>
+	<td  width=500px>
+						  onchange事件<br><br>下拉树值发生改变触发<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;change:function(param){
+	                       &nbsp;&nbsp; //param为当前组件 param._lastdata为上次的值对象，param._value为本次的值对象
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform_2' ></div>
+							<input type="button" value="点击注册onchange事件" id="clickme_2"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ 
+		 	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_2 = new Ext.lt.editpanel2(cfg);
+		 var el_2 = document.getElementById("editform_2"); 
+		 document.getElementById("clickme_2").onclick=function(){
+		 		 	var obj={fundtype:{
+							change:function(param){
+	                          alert("上次选中节点:"+param._lastdata.text+"--当前选中节点: "+param._value.text);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_2.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_2.draw(el_2);  
+	     _edpanel_2.resize(350);
+	     _edpanel_2.bind();	     
+	   },100);
+
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+			var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_2 = new Ext.lt.editpanel2(cfg);
+		 var el_2 = document.getElementById("editform_2"); 
+		 document.getElementById("clickme_2").onclick=function(){
+		 		 	var obj={fundtype:{
+							change:function(param){
+	                          alert("上次选中节点:"+param._lastdata.text+"--当前选中节点: "+param._value.text);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_2.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_2.draw(el_2);  
+	     _edpanel_2.resize(350);
+	     _edpanel_2.bind();	     
+	   },100);
+	   
+	<pre></div>
+			</td>
+	</tr>
+	
+	
+ <tr>
+	<td  width=500px>
+						  onclose事件<br><br>popwindow关闭触发<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;close:function(param){
+	                       &nbsp;&nbsp; //param为当前组件对象
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform_3' ></div>
+							<input type="button" value="点击注册onclose事件" id="clickme_3"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ 	var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_3 = new Ext.lt.editpanel2(cfg);
+		 var el_3 = document.getElementById("editform_3"); 
+		 document.getElementById("clickme_3").onclick=function(){
+		 		 	var obj={fundtype:{
+							close:function(param){
+	                          
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_3.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_3.draw(el_3);  
+	     _edpanel_3.resize(350);
+	     _edpanel_3.bind();	     
+	   },100);
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_3 = new Ext.lt.editpanel2(cfg);
+		 var el_3 = document.getElementById("editform_3"); 
+		 document.getElementById("clickme_3").onclick=function(){
+		 		 	var obj={fundtype:{
+							close:function(param){
+	                          
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_3.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_3.draw(el_3);  
+	     _edpanel_3.resize(350);
+	     _edpanel_3.bind();	     
+	   },100);
+	   
+	<pre></div>
+			</td>
+	</tr>
+	
+	<tr>
+	<td  width=500px>
+						  loaddata事件<br><br>下拉树自定义值集同步数据方法，传入查询出的值集，需要返回自定义的值集<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;loaddata:function(param){
+	                       &nbsp;&nbsp; //param为当前组件对象 
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform_4' ></div>
+							<input type="button" value="点击注册loaddata事件" id="clickme_4"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_4 = new Ext.lt.editpanel2(cfg);
+		 var el_4 = document.getElementById("editform_4"); 
+		 document.getElementById("clickme_4").onclick=function(){
+		 		 	var obj={fundtype:{
+							loaddata:function(param){
+	                          param.delRow(3);
+						return param;
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_4.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_4.draw(el_4);  
+	     _edpanel_4.resize(350);
+	     _edpanel_4.bind();	     
+	   },100);
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		 var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_4 = new Ext.lt.editpanel2(cfg);
+		 var el_4 = document.getElementById("editform_4"); 
+		 document.getElementById("clickme_4").onclick=function(){
+		 		 	var obj={fundtype:{
+							loaddata:function(param){
+	                          param.delRow(3);
+						return param;
+	                          
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_4.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_4.draw(el_4);  
+	     _edpanel_4.resize(350);
+	     _edpanel_4.bind();	     
+	   },100);
+	   
+	<pre></div>
+			</td>
+	</tr>
+	
+	<tr>
+	<td  width=500px>
+						  onasyncloaddata事件<br><br>下拉树自定义值集异步方法,自行查询后将值赋给data<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;propertychange:function(param){
+	                       &nbsp;&nbsp; param.data=。。。//param为当前组件对象 需对data赋值 
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform_5' ></div>
+							<input type="button" value="点击注册oonasyncloaddata事件" id="clickme_5"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_5 = new Ext.lt.editpanel2(cfg);
+		 var el_5 = document.getElementById("editform_5"); 
+		 document.getElementById("clickme_5").onclick=function(){
+		 		 	var obj={fundtype:{
+							asyncloaddata:function(param){
+	                         window.setTimeout(function(){
+		param.data =  new Ext.lt.recordset({
+	        columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+	        datas: [[0, '101', 1, '0', 0, '101', '税收收入啊啊啊', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+	    });
+	},2000);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_5.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_5.draw(el_5);  
+	     _edpanel_5.resize(350);
+	     _edpanel_5.bind();	     
+	   },100);
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_4 = new Ext.lt.editpanel2(cfg);
+		 var el_4 = document.getElementById("editform_4"); 
+		 document.getElementById("clickme_4").onclick=function(){
+		 		 	var obj={fundtype:{
+							asyncloaddata:function(param){
+	                     window.setTimeout(function(){
+		param.data =  new Ext.lt.recordset({
+	        columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+	        datas: [[0, '101', 1, '0', 0, '101', '税收收入啊啊啊', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+	    });
+	},2000);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_4.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_4.draw(el_4);  
+	     _edpanel_4.resize(350);
+	     _edpanel_4.bind();	     
+	   },100);
+	<pre></div>
+			</td>
+	</tr>
+	<tr>
+	<td  width=500px>
+						  ontreedbclick事件<br><br>树双击事件<br><br>使用举例:
+					 	 	var obj={text5:{
+							&nbsp;&nbsp;treedbclick:function(param){
+	                       &nbsp;&nbsp; param.data=。。。//param为当前组件对象 需对data赋值 
+	                         }
+		 	                }
+		 	           _edpanel2.bindEvent(obj);
+	</td>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform_6' ></div>
+							<input type="button" value="点击注册ontreedbclick事件" id="clickme_6"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+ var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: false,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_6 = new Ext.lt.editpanel2(cfg);
+		 var el_6 = document.getElementById("editform_6"); 
+		 document.getElementById("clickme_6").onclick=function(){
+		 		 	var obj={fundtype:{
+							treedbclick:function(param){
+	     							debugger;
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_6.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_6.draw(el_6);  
+	     _edpanel_6.resize(350);
+	     _edpanel_6.bind();	     
+	   },100);
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		var te = null;
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"treeselect",
+                treetype: "tree",
+                isMulti: true,
+                clearbtn: true,
+                outformart: "#code-#name",
+                field: {
+                    id: 'itemid',
+                    sid: 'superitemid',
+                    isleaf: 'isleaf'
+                },
+				isrequired:true,
+				 dataloader: function() { 
+                   return te;
+         },
+         loadthedata: function(){ 
+                	// loadData(obj.name);
+                	
+          window.setTimeout(function(){
+                		te = new Ext.lt.recordset({
+             columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+             datas: [[0, '101', 1, '0', 0, '101', '税收收入', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+          });
+                		},1000);
+         }
+				}]
+			}
+		 var _edpanel_4 = new Ext.lt.editpanel2(cfg);
+		 var el_4 = document.getElementById("editform_4"); 
+		 document.getElementById("clickme_4").onclick=function(){
+		 		 	var obj={fundtype:{
+							asyncloaddata:function(param){
+	                     window.setTimeout(function(){
+		param.data =  new Ext.lt.recordset({
+	        columns: ['_locationposition', 'code', 'l', 'superitemid', 'isleaf', 'itemid', 'name', 'pinyin', '_sortid'],
+	        datas: [[0, '101', 1, '0', 0, '101', '税收收入啊啊啊', 'sssr', 0], [1, '10101', 2, '101', 0, '10101', '增值税', 'zzs', 1], [2, '1010101', 3, '10101', 0, '1010101', '国内增值税', 'gnzzs', 2], [3, '1010102', 4, '10101', 0, '1010102', '测试数据', 'cssz', 3]]
+	    });
+	},2000);
+	                  }
+		 	        }
+		 	}
+		 	_edpanel_4.bindEvent(obj);
+		 }
+		 window.setTimeout(function(){
+		 	 _edpanel_4.draw(el_4);  
+	     _edpanel_4.resize(350);
+	     _edpanel_4.bind();	     
+	   },100);
+	<pre></div>
+			</td>
+	</tr>
+	
+</table>
+
+
+
+
+</body>
+</html>

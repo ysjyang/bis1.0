@@ -1,0 +1,39 @@
+package gov.mof.fasp2.bis.test;
+
+import gov.mof.fasp2.bis.bustype.IFasp2PayBankService;
+
+import java.util.Map;
+
+import com.caucho.burlap.client.BurlapProxyFactory;
+
+public class XmlTest {
+	public static void main(String[] args) {
+
+		try{  
+			//服务地址
+			java.net.URL url = new java.net.URL("http://127.0.0.1:7001/remoting/service/bankservice"); 
+			BurlapProxyFactory factory = new BurlapProxyFactory();
+			IFasp2PayBankService service = (IFasp2PayBankService) factory
+					.create(IFasp2PayBankService.class, "http://127.0.0.1:7001/remoting/service/bankservice");
+
+			Map m = service.login("admin", "123456");
+			String ver = (String) m.get("verifycode");
+			//请求报文//</map></list></burlap:call>
+			String XMLmessage = "<burlap:call><method>sendVou</method><string>1103</string><string>002</string><string>150000</string><string>2017</string><string>"+ver+"</string><list><map><string>cardno</string><string>6283880802623595</string><string>status</string><string>1</string><string>agencycode</string><string>303001</string><string>agencyname</string><string>内蒙古自治区水利厅</string><string>cardname</string><string>傅志新</string><string>reasoncode</string><string></string><string>reasonname</string><string></string><string>remark</string><string></string></map><map><string>cardno</string><string>6283881175762895</string><string>status</string><string>-1</string><string>agencycode</string><string>206022</string><string>agencyname</string><string>内蒙古电子信息职业技术学院</string><string>cardname</string><string>王景国</string><string>reasoncode</string><string></string><string>reasonname</string><string></string><string>remark</string><string></string></map><map><string>cardno</string><string>6283888880451367</string><string>status</string><string>-1</string><string>agencycode</string><string>1.29004009E8</string><string>agencyname</string><string>霍林郭勒市地方税务局</string><string>cardname</string><string>李智渊</string><string>reasoncode</string><string></string><string>reasonname</string><string></string><string>remark</string><string></string></map></list></burlap:call>";
+			
+			java.net.URLConnection urlConnection = url.openConnection();  
+            urlConnection.setDoOutput(true);  
+            java.io.OutputStreamWriter out = new java.io.OutputStreamWriter(urlConnection.getOutputStream());  
+            out.write(XMLmessage);  
+            out.flush();  
+            out.close();  
+              
+            java.io.InputStream inputStream = urlConnection.getInputStream();  
+            String encoding = urlConnection.getContentEncoding();  
+            String body = org.apache.commons.io.IOUtils.toString(inputStream, encoding);  
+            System.out.println(body);  //返回数据报文
+        }catch(Exception e){  
+        }  
+	}
+
+}

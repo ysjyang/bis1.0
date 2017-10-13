@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>JavaScript 扩展</title>
+<link rel="stylesheet" type="text/css" href="../../../datatabletheme.css" />
+
+<script src="../../../frameworksupport.js"></script>
+
+<script src="../../../ltext_core.js"></script>
+
+
+</head>
+
+<body>
+<h1>JScriptExpand</h1>
+<h2>Array对象</h2>
+
+<h3>clear</h3>
+<p>清空数组内容</p>
+
+<h3>remove(obj)</h3>
+<p>删除数组中指定对象</p>
+
+<h3>insert(obj,i)</h3>
+<p>在数组的指定位置中插入该对象</p>
+
+<h3>sortArray(asc)</h3>
+<p>数组内容排序，asc参数 true升序、false降序，默认升序</p>
+
+<h3>filter(String/Object)</h3>
+<p>筛选函数，可以支持通配符星号、问号</p>
+
+
+<table width = "100%" border = 1>
+<tr><th colspan = 2>filter 基本测试</th></tr>
+<tr>
+	<td id="filterbasictest"></td>
+	<td>
+		<pre>
+var arr=['abc','def','abcdef'];
+var out=[];
+out.push(Object.toJSON(arr.dofilter('def')));
+out.push(Object.toJSON(arr.dofilter('a?c')));
+out.push(Object.toJSON(arr.dofilter('a*c*')));
+out.push(Object.toJSON(arr.dofilter('2')));
+filterbasictest.innerHTML=out.join('<br>');
+		</pre>
+		<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+	</td>
+</tr>
+
+<tr><th colspan = 2>filter 对象属性测试</th></tr>
+<tr>
+	<td id="filterobjecttest"></td>
+	<td>
+		<pre>
+var arr=[{key1:'11',key2:'abc'},{key1:'11',key2:'cde'},{key1:'11',key2:'abcdef'}];
+var out=[];
+out.push(Object.toJSON(arr.dofilter({'key2':'def'})));
+out.push(Object.toJSON(arr.dofilter({'key2':'a?c'})));
+out.push(Object.toJSON(arr.dofilter({'key2':'a*c*'})));
+
+filterobjecttest.innerHTML=out.join('<br>');
+
+		</pre>
+		<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+	</td>
+</tr>
+
+
+
+</table>
+
+
+</body>
+</html>

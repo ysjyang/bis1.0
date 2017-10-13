@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.recordset API</title>
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+<script src="../../../../prototype.js"></script>
+<script src="../../../../ltext_core.js"></script>
+</head>
+<body>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr><th width="15%" bgcolor="#00FFFF">使用方法</th><th width="15%" bgcolor="#00FFFF">参数名</th><th width="15%" bgcolor="#00FFFF">数据类型</th><th bgcolor="#00FFFF">说明</th></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.mark</td><td bgcolor="#CCCCCC">el</td><td bgcolor="#EEEEEE">String</td><td bgcolor="#EEEEEE">遮罩对象</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.mark</td><td bgcolor="#CCCCCC">flag</td><td bgcolor="#EEEEEE">boolean</td><td bgcolor="#EEEEEE">flag=true遮罩成功</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.drag</td><td bgcolor="#CCCCCC">dragel</td><td bgcolor="#EEEEEE">HTMLElement</td><td bgcolor="#EEEEEE">拖拽对象即被拖拽tableid</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.drag</td><td bgcolor="#CCCCCC">element</td><td bgcolor="#EEEEEE">string</td><td bgcolor="#EEEEEE">可以触发拖动的对象即拖动该id对应的对象既可以拖动dragel对应的整个table</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.drag</td><td bgcolor="#CCCCCC">holder</td><td bgcolor="#EEEEEE">boolean</td><td bgcolor="#EEEEEE">是否显示占位负号</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.drag</td><td bgcolor="#CCCCCC">x</td><td bgcolor="#EEEEEE">int</td><td bgcolor="#EEEEEE">鼠标和拖拽对象的X轴相对位置</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.drag</td><td bgcolor="#CCCCCC">y</td><td bgcolor="#EEEEEE">int</td><td bgcolor="#EEEEEE">鼠标和拖拽对象的Y轴相对位置</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.drag</td><td bgcolor="#CCCCCC">onend</td><td bgcolor="#EEEEEE">function</td><td bgcolor="#EEEEEE">当拖拽结束时执行的方法e</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.drag</td><td bgcolor="#CCCCCC">onstart</td><td bgcolor="#EEEEEE">function</td><td bgcolor="#EEEEEE">当拖拽开始时执行的方法</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">tipstext</td><td bgcolor="#EEEEEE">text</td><td bgcolor="#EEEEEE">文本框默认值</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">overclass</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标移出样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">overstyle</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标移出样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">clickclass</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标点击样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">clickstyle</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">鼠标点击样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">switchstyle</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">开关样式,当鼠标点击一次，对象样式换为属性指定内容，再次点击以后样式恢复</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">switchclass</td><td bgcolor="#EEEEEE">style</td><td bgcolor="#EEEEEE">开关样式,当鼠标点击一次，对象样式换为属性指定内容，再次点击以后样式恢复</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">switch</td><td bgcolor="#EEEEEE"></td><td bgcolor="#EEEEEE">当该属性为on时，改元素默认使用打开状态样式</td></tr>
+    <tr><td bgcolor="#CCCCCC">Ext.lt.HTML.expand</td><td bgcolor="#CCCCCC">switchgroup</td><td bgcolor="#EEEEEE">string</td><td bgcolor="#EEEEEE">开关组,一组开关中只能有一个开关打开，当打开一个开关后，同一组中的其他开关自动关闭，并触发onclick事件</td></tr>
+  </table>
+	
+<h2>方法说明</h2>
+<h3>Ext.lt.HTML.mark()</h3>
+<p>采用IFRAME遮罩指定对象，flag 默认为true。当flag为true时遮罩指定对象，flase时恢复(1.屏幕大小被遮罩，不是整个页面2.某个divid有问题，body可以)<br/></p>
+<h3>Ext.lt.HTML.unmark()</h3>
+<p>取消遮罩指定HTML元素<br/></p>
+<h3>Ext.lt.HTML.hiddenAll()</h3>
+<p>隐藏所有不能被遮罩的HTML对象<br/></p>
+<h3>Ext.lt.HTML.showAll() </h3>
+<p>显示所有不能被遮罩的HTML对象<br/></p>
+<h3>Ext.lt.HTML.center()</h3>
+<p>让指定的HTML对象定位到屏幕中间(不好用)<br/></p>
+<h3>Ext.lt.HTML.drag()</h3>
+<p>对HTML对象生成拖拽操作，参数为拖拽的配置信息<br/></p>
+<h3>onmousedown</h3>
+<p>显示当前下拉框显示内容<br/></p>
+<h3>Ext.lt.HTML.expand()</h3>
+<p>扩展样式，(打开页面即加载该方法)属性名 overclass overstyle clickclass clickstyle switchstyle switchclass switchgroup switch<br/></p>
+<h3>positionedOffset(element)</h3>
+<p>返回指定元素在页面中的位置。为方便使用，返回值结构为数组、对象混用模式。返回值基本类型为数组[左边距，上边距]。也可以从返回值对象中获取left、top属性<br/></p>
+<h3>Ext.lt.HTML.getBorderSet</h3>
+<p>获取指定HTML元素的四个边宽度<br/></p>
+<h3>Ext.lt.HTML.getStyle</h3>
+<p>获取对象样式<br/></p>     
+<h3>Ext.lt.HTML.setStyle</h3>
+<p>采用CSS格式设置对象样式。如 setStyle(divid,'width:100%;border:1px red solid')<br/></p>
+<h3>setRuntimeStyle</h3>
+<p>设置指定元素样式<br/></p>
+<h3>clearRuntimeStyle</h3>
+<p>清除指定元素样式<br/></p>
+<h3>getBorderSet(element,sty,attr)</h3>
+<p>获取指定HTML元素的四个边宽度<br/></p>
+<h3>bind()</h3>
+<p>Ext.lt.HTML.expand()加载后使用bind(data)见绑定测试<br/></p>
+<h3>onKey()</h3>
+<p>扩展键盘事件操作<br/></p>
+<h3>settext()</h3>
+<p>Ext.lt.HTML.expand()加载后做改变绑定数据的内容<br/></p>
+<h3>setvalue()</h3>
+<p>Ext.lt.HTML.expand()加载后做改变绑定数据的值<br/></p>
+<h3>getBindValue()</h3>
+<p>Ext.lt.HTML.expand()加载后获取对象绑定数据<br/></p>
+<h3>getValue()</h3>
+<p>Ext.lt.HTML.expand()加载后获取对象绑定数据<br/></p>
+<table width = "100%" border = 1>
+<tr><th colspan = 2>HTML扩展之样式测试</th><tr><td><div id = 'acd' name = 'acd' style ="widht:50px;display:block"><input id='mak' name='mak' type='text' tipstext="请录入"/><button>我是按钮</button></div></td>
+<td><div style = "display:block">
+	<pre>var el  = document.getElementById('mak');
+	Ext.lt.HTML.mark(el,true);                                                                                       <button onclick="ltmark();">遮罩</button>  </pre>
+	<pre>Ext.lt.HTML.unmark(el);                                                                                                  <button onclick="ltunmark();">取消遮罩</button></pre>
+  <pre>Ext.lt.HTML.hiddenAll(el.getElementsByTagName('BUTTON'));                                                                <button onclick="hall();">隐藏不被遮罩的元素</button> </pre>
+  <pre>Ext.lt.HTML.showAll(el.getElementsByTagName('BUTTON'));                                                                  <button onclick="sall()">显示不被遮罩的元素</button> </pre>
+  <pre>Ext.lt.HTML.center(el);                                                                                                  <button onclick="dcent();">居中指定元素</button> </pre>
+  <pre>Ext.lt.HTML.getBorderSet(el,sty,attr);attr：'Left','Right','Top','Bottom' sty：'padding','margin','border'               <button onclick="alert(Ext.lt.HTML.getBorderSet(document.getElementById('mak'),null,null))">获取指定HTML元素的四个边宽度</button> </pre>
+  <pre>Ext.lt.HTML.positionedOffset(el);                                                                                        <button onclick="alert(Ext.lt.HTML.positionedOffset(document.getElementById('mak'),document.getElementById('mak'),true))">获取指定元素坐标</button> </pre>
+  <pre>Ext.lt.HTML.setRuntimeStyle(el,'background:yellow');                                                                     <button onclick="Ext.lt.HTML.setRuntimeStyle(document.getElementById('mak'),'background:yellow')">设置指定元素样式</button> </pre>
+  <pre>Ext.lt.HTML.clearRuntimeStyle(el,'background:yellow');                                                                   <button onclick="Ext.lt.HTML.clearRuntimeStyle(document.getElementById('mak'))">清除指定元素样式</button> </pre></div></td></tr>	
+<tr><td><input id='sty' name='sty' type='text' tipstext="请录入"/></td>
+<td><pre>Ext.lt.HTML.setStyle(sty,'width:100%;border:1px red solid');                                                             <button onclick="Ext.lt.HTML.setStyle(sty,'width:100%;border:1px red solid');">setStyle()样式测试</button></pre></td></tr>
+<tr><td><div class="ccs" style="width:100px;height:30px;display:block;background:pink" overstyle="background:yellow" clickstyle="background:blue"></div>
+<td>
+<pre>width:100px;height:30px;display:block;background:pink 原样式
+overstyle="background:yellow"  鼠标移出样式
+clickstyle="background:blue"   鼠标点击样式</pre></td></tr>
+
+		<style>
+			.switchon{background:red}
+			.switchoff{background:violet;}
+		</style>
+<tr><td>录入小数
+	<input value='1099999.999' id='num'>
+		</td>
+	</td><td>小数位数<input value='0' id='formart'> <button onclick="alert(document.getElementById('num').value.toNumber(document.getElementById('formart').value,true,1))">toNumber</button>
+		</td></tr>
+<tr><td><div style="width:100px;height:30px;display:block;" class="switchoff" switchclass="switchon" switchgroup="aa:clockone" switch='on'>开关组1</div>
+		<div style="width:100px;height:30px;display:block;" class="switchoff" switchclass="switchon">开关组2</div>
+		<div style="width:100px;height:30px;display:block;" class="switchoff" switchclass="switchon" switchgroup="aa:clockone">开关组3</div></td>
+	</td><td>
+		<pre>switchstyle="background:red" switchgroup="aa" switch='on' 开关组1
+		switchstyle="background:red"开关组2
+		switchstyle="background:red" switchgroup="aa"开关组3</pre></td></tr>
+<tr><th colspan = 2>HTML扩展之文本框测试</th></tr>		
+<td><input id='func' name='func' type='text' tipstext="我是默认值"/></td>
+<td><div style = "width:300px; display:block">
+	<pre>Ext.lt.HTML.expand(document.body);                                                                                      <button onclick="Ext.lt.HTML.expand(document.body);">tipstext默认值测试</button></pre>			
+	<pre>var data={func:'我是绑定值'}
+	func.bind(data);                                                                                                        <button onclick="inputbind()">绑定测试</button></pre>
+	<pre>Ext.lt.HTML.expand(document.body)
+	var data={func:'我是绑定值'}
+	func.bind(data); 
+	func.onafterbind=function(){
+		this.settext('改变绑定值')
+	}                            								                                <button onclick="onfbind()">鼠标离开事件测试</button></pre>		
+	</td><tr><td>
+	<table id=dragtab border=1><tr><td id=dragbar>拖拽id=dragbar对象才可以拖动element整体</td></tr><tr><td>我什么都没有设置</td></tr></table></td><td>
+	<pre>Ext.lt.HTML.drag({
+		element:dragbar,
+		dragel:dragtab,
+		element:dragbar,
+		dragel:dragtab,
+		x:10,
+		y:0,
+		onend:function(){alert("结束拖拽方法")},
+		onstart:function(){alert("开始拖拽方法")}	
+	})                                                                                                             <button onclick="dr()">拖拽测试</button></pre></td></tr>
+	<tr><td><input id='kon' name='kon' type='text' tipstext="键盘输入"/></td>
+	<td><div style = "width:300px; display:block">
+	<pre>Ext.lt.HTML.expand(document.body);
+	kon.onKey({	 
+		'48':function(){alert('我是ASCII码48对应的值：0')},
+		'u65':function(){alert('a')}//以u开头表示键盘抬起时触发
+	})                                                                                                                     <button onclick = "onk();">键盘测试</button></pre>			
+	</td></tr>
+	
+	
+	</table>
+
+</body>
+</html>
+<script>
+
+
+
+function inputexpand(){
+	Ext.lt.HTML.expand(document.body)
+	//与tipstext重复定义时,tipstext无效
+	var data={func:'我是绑定值'};
+ 	alert(Object.toJSON(data))
+}
+function inputbind(){
+	Ext.lt.HTML.expand(document.body)
+	var data={func:'我是绑定值'}
+	func.bind(data);
+}
+function onfbind(){
+	Ext.lt.HTML.expand(document.body)
+	var data={func:'我是绑定值'};
+	func.bind(data); 
+	func.onafterbind=function(){
+		this.settext('改变绑定值');
+	}
+}
+function onk(){
+	Ext.lt.HTML.expand(document.body);
+	kon.onKey({
+		'48':function(){alert('我是ASCII码48对应的值:0')},
+		'u65':function(){alert('a')}
+	})
+}
+function dr(){
+	Ext.lt.HTML.drag({
+		element:dragbar,
+		dragel:dragtab,
+		//x:10,
+		//y:0,
+		onend:function(){alert("结束拖拽方法")},
+		//onstart:function(){alert("开始拖拽方法")}
+	})
+}
+function ltmark(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.mark(el,true);
+}
+function ltunmark(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.unmark(el);
+}
+function hall(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.hiddenAll(el.getElementsByTagName('BUTTON'));
+}
+function sall(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.showAll(el.getElementsByTagName('BUTTON'));
+}
+function dcent(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.center(el);
+}
+</script>

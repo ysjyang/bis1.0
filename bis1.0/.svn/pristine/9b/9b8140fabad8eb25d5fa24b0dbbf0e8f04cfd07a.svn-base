@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<p>命名空间：Ext.lt.message<br />
+  页面消息管理器，页面间组件可以通过消息相互通讯。消息机制可以在组件之间保持松耦合状态下的实现各种联动效果。</p>
+<p>属性：<br />
+  assistfn:function()	辅助区内容扩展函数。参数与alert参数相同，返回HTML代码并生成到系统提示框辅助区中<br />
+  <br />
+  方法说明：<br />
+  send(src,type,msg)  发送一个消息，src消息来源  type消息类型  msg消息内容，消息内容可以是数字、日期、字符串、对象，结构有消息发布者规定，并需要提供详细的结构说明，消息使用者根据该说明使用<br />
+  hook(src,type,fn)   拦截一个消息，src消息来源  type消息类型  fn消息处理的回调函数，参数为发送消息的msg参数。在函数中可以修改msg的内容，并且会影响拦截该消息的其他组件。<br />
+  unhook(src,type,fn) 取消消息拦截，src消息来源  type消息类型  fn消息处理的回调函数<br />
+  alert(msg,{title:,assist:,})	替换浏览器缺省提示框，在原有提示框的基础上增加标题控制和辅助区。并提供扩展接口可修改服务区内容</p>
+<p></p>
+</body>
+</html>

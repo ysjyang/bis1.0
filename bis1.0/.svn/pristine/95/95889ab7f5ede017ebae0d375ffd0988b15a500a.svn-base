@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<script type="text/javascript" src="../../../../../ltext/frameworksupport.js"></script>
+<script type="text/javascript" src="../../../../../ltext/ltext_core.js"></script>
+<link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css"/>
+</head>
+
+<body>
+<h1>远程调用终端</h1>
+<h2>命名空间：Ext.lt.RCPConsole</h2>
+<h2>说明：</h2>
+<p>实现浏览器调用远程服务的方法，并且提供一个服务端终端。服务端可以将数据实时推送到客户端来显示。</p> 
+<h2>方法说明</h2>
+<h3>tipsserver(server, m, parameters, callbakfn, falsefun)</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="10%"  bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">server</td>
+      <td bgcolor="#EEEEEE">服务ID，在数据库T_PORTALSYSCOMPONENTSERVICE表中注册的ServerID。也可以是Spring中注册的BeanID</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">m</td>
+      <td bgcolor="#EEEEEE">方法名，与服务端方法名必须一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">parameters</td>
+      <td bgcolor="#EEEEEE">参数，多个参数必须使用数组形式，如[param1，param2，……]。由于JS的数据类型比较单一，因此，远程调用时参数值能支持数字、文本、数组、Map。<br/>
+      <font color=red>注意：数组和对象在服务端只能使用ArrayList和HashMap，目前还不能支持使用接口做参数</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">callbakfn(object)</td>
+      <td bgcolor="#EEEEEE">成功调用时回调函数，返回值对象与服务端对象类型一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">falsefun(String)</td>
+      <td bgcolor="#EEEEEE">失败时的回调函数。参数为服务端异常信息。</td>
+    </tr>
+  </table>
+<h3>processserver(server, m, parameters, callbakfn, falsefun)</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="10%"  bgcolor="#00FFFF">参数</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">server</td>
+      <td bgcolor="#EEEEEE">服务ID，在数据库T_PORTALSYSCOMPONENTSERVICE表中注册的ServerID。也可以是Spring中注册的BeanID</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">m</td>
+      <td bgcolor="#EEEEEE">方法名，与服务端方法名必须一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">parameters</td>
+      <td bgcolor="#EEEEEE">参数，多个参数必须使用数组形式，如[param1，param2，……]。由于JS的数据类型比较单一，因此，远程调用时参数值能支持数字、文本、数组、Map。<br/>
+      <font color=red>注意：数组和对象在服务端只能使用ArrayList和HashMap，目前还不能支持使用接口做参数</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">callbakfn(object)</td>
+      <td bgcolor="#EEEEEE">成功调用时回调函数，返回值对象与服务端对象类型一致</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">falsefun(String)</td>
+      <td bgcolor="#EEEEEE">失败时的回调函数。参数为服务端异常信息。</td>
+    </tr>
+  </table>
+<h2>使用说明：</h2>
+<p>使用该功能时需要在页面中引用以下文件</p>
+	&lt;script type="text/javascript" src="/ltext/frameworksupport.js">&lt;/script><br/>
+  &lt;script type="text/javascript" src="/ltext/ltext_core.js">&lt;/script><br/>
+  &lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css"/><br/>
+longtuframework版本1.4以上，代码中包含com.longtu.framework.portal.termial.RCPConsoleComponentService服务。
+
+<h2>实例：</h2>
+<h3>tipsserver测试</h3>
+请在spring配置文件中添加 &lt;bean id="framework.demo.RPCConsoleDemo" class="com.longtu.demo.component.RPCConsoleDemo">&lt;/bean> 重启服务器<br/>
+一体化服务需要继承 gov.mof.fasp.ifmis.common.bo.AbstractIfmisComponentService
+点击下面测试按钮，文本框内的内容会发送到服务端，每秒向客户端发送一条<br/>
+<textArea  id=tipsservertxt style="width:300px;height:100px">
+	开始执行
+	这是第一个提示
+	这是第二个提示
+	这是最后一个提示
+</textArea >
+<button onclick="tipsservertest()">tipsservertest测试</button>
+<button onclick="processservertest()">processservertest</button>
+<script>
+	var _ROOT_PATH_ = "http://127.0.0.1:7002";
+	function tipsservertest(){
+		var msg=tipsservertxt.value
+		Ext.lt.RCPConsole.tipsserver('com.longtu.demo.component.RPCConsoleDemo','testTips',[msg.split('\n')],
+		function(a){
+			alert(Object.toJSON(a));
+		});
+	}
+	
+	function processservertest(){
+		var msg=tipsservertxt.value
+		Ext.lt.RCPConsole.processserver('com.longtu.demo.component.RPCConsoleDemo','testTips',[msg.split('\n')],
+		function(a){
+			alert(Object.toJSON(a));
+		});
+	}
+</script>
+
+
+
+
+
+
+</body>
+</html>

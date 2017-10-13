@@ -1,0 +1,91 @@
+package gov.mof.fasp2.bis.businessTypeOperate;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import gov.mof.fasp2.bis.common.CommonDAO;
+import gov.mof.fasp2.bis.common.PageQueryDTO;
+
+public class BusinessTypeDataDAO {
+	private CommonDAO commonDAO;
+
+	public CommonDAO getCommonDAO() {
+		return commonDAO;
+	}
+
+	public void setCommonDAO(CommonDAO commonDAO) {
+		this.commonDAO = commonDAO;
+	}
+
+	public PageQueryDTO getTableData(PageQueryDTO dto,String code,String selectBus) {
+		StringBuffer s = new StringBuffer();
+//		s.append("select t.code,t.name, ");
+//		s.append("sum (case when t.year= 2016 and  t.province='"+code+"' then 1 else 0 end) sixteen,");
+//		s.append("sum(case  when t.year= 2017 and  t.province='"+code+"' then 1 else 0 end) seventeen,");
+//		s.append("sum (case  when t.year= 2018 and  t.province='"+code+"' then 1 else 0 end) eighteen,");
+//		s.append("sum (case when t.year= 2019 and  t.province='"+code+"' then 1 else 0 end) nineteen,");
+//		s.append("sum(case  when t.year= 2020 and  t.province='"+code+"' then 1 else 0 end) twenty,");
+//		s.append("sum(case  when t.year= 2021 and  t.province='"+code+"' then 1 else 0 end) twentyone ");
+//		s.append(" ");
+//		s.append(" from ");
+//		s.append("(select t1.code,t1.name,t1.beanid,t2.province,t2.year from BIS_T_BUSTYPE t1 ");
+//		s.append(" ");
+//		s.append(" left join  BIS_T_BUSTYPECONFIG t2 on t1.code=t2.bustype");
+//		s.append(" ");
+//		if(!selectBus.equals("请选择接口类型")){
+//			if(selectBus.equals("集中支付业务")){
+//				s.append(" where t1.code like '10%' or t1.code like '20%'");
+//			}
+//			if(selectBus.equals("公务卡业务")){
+//				s.append(" where t1.code like '11%' or t1.code like '21%'");
+//			}
+//			if(selectBus.equals("基础数据")){
+//				s.append(" where t1.code like '12%' or t1.code like '22%'");
+//			}
+//		}
+//		s.append(") t ");
+//		s.append(" ");
+//		s.append(" group by t.code,t.name order by t.code");
+		s.append("select * from ");
+		s.append("(select t1.code,t1.name,nvl(t2.isuse,0) isuse from BIS_T_BUSTYPE t1");
+		s.append(" left join BIS_T_BUSTYPECONFIG t2");
+		s.append(" on t1.code = t2.bustype");
+		s.append(" and t2.province='"+code+"' )t");
+		if(!selectBus.equals("请选择接口类型")){
+          if(selectBus.equals("集中支付业务")){
+              s.append(" where t.code like '10%' or t.code like '20%'");
+          }
+          if(selectBus.equals("公务卡业务")){
+              s.append(" where t.code like '11%' or t.code like '21%'");
+          }
+          if(selectBus.equals("基础数据")){
+              s.append(" where t.code like '12%' or t.code like '22%'");
+          }
+		}
+		s.append(" order by t.code");
+		dto.setQuerySql(s.toString());
+		System.out.println(s.toString());
+		PageQueryDTO pageQueryDTO  = commonDAO.queryPageForList(dto);
+		List list = pageQueryDTO.getDatas();
+		if(list!= null){
+			for(int i=0;i<list.size();i++){
+				Map m = new HashMap();
+				m = (Map) list.get(i);
+				String substring = String.valueOf(((HashMap) list.get(i)).get("code")).substring(0, 2);
+				if(substring.equals("10")||substring.equals("20")){
+					m.put("type", "集中支付业务");
+				}
+				if(substring.equals("11")||substring.equals("21")){
+					m.put("type", "公务卡业务");
+				}
+				if(substring.equals("12")||substring.equals("22")){
+					m.put("type","基础数据");
+				}
+			}
+		}
+		return pageQueryDTO;
+	}
+
+}

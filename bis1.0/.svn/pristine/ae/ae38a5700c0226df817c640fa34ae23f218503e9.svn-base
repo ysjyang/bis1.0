@@ -1,0 +1,101 @@
+<html>
+ <head>
+ 	<title>javascript 对象属性索引性能测试</title>
+ </head>
+ <body>
+<script>
+var testobj1={},testobj2={},testobj3={},testobj4={},testobj5={};
+var logs=[];
+Object.prototype.get=function(i){return this[i]}
+Object.prototype.set=function(k,v){return this[k]=v}
+
+// 计算顺序写对象属性用时
+function testWriteAttribute(obj,attrlength,n){
+	var tmp,start=new Date();
+	for(var i=0;i<n;i++) obj.set('k'+(i%attrlength),'a'+i)
+	return attrlength+'个属性：'+(new Date()-start);
+}
+
+// 计算顺序读取对象属性用时
+function testReadAttribute(obj,attrlength,n){
+	var tmp,start=new Date();
+	for(var i=0;i<n;i++) tmp=obj.get('k'+(i%attrlength))
+	return attrlength+'个属性：'+(new Date()-start);
+}
+
+// 计算随机读取对象属性用时
+function testRandomReadAttribute(obj,attrlength,n){
+	var tmp,start=new Date();
+	for(var i=0;i<n;i++) Math.floor(Math.random()*100)
+	var t=new Date()-start; // 计算生成随机数使用的时间
+	for(var i=0;i<n;i++) tmp=obj.get('k'+Math.floor(Math.random()*100));
+	return '  '+attrlength+'个属性：'+(new Date()-start-t*2);
+}
+
+// 测试创建指定属性对象耗时
+function testCreateObject(n){
+	var obj={},start=new Date();
+	// 采用程序创建
+	for(var i=0;i<n;i++) obj['k'+i]='a'+i;	
+	logs.push('  构造'+n+'属性对象：'+(new Date()-start));
+	return obj
+}
+
+// 测试创建指定属性对象耗时
+function testJsonCreateObject(n){
+	var obj=['({'],start=new Date();
+	obj.push('k0:"a0"');
+	// 采用程序创建
+	for(var i=1;i<n;i++) obj.push(',k',i,':"a',i,'"');
+	obj.push('})');
+	obj=eval(obj.join(''))
+	logs.push('  构造'+n+'属性对象：'+(new Date()-start));
+	return obj
+}
+
+logs.push('javascript 对象属性索引性能测试');
+
+
+// 构造有大量属性的对象
+var start=new Date();
+testobj1=testCreateObject(100);
+testobj2=testCreateObject(1000);
+testobj3=testCreateObject(10000);
+testobj4=testCreateObject(100000);
+testobj5=testCreateObject(1000000);
+
+
+// 顺序读取属性
+var tmp;
+logs.push('顺序读取测试：');
+logs.push('  '+testReadAttribute(testobj1,100,10000));
+logs.push('  '+testReadAttribute(testobj2,1000,10000));
+logs.push('  '+testReadAttribute(testobj3,10000,10000));
+logs.push('  '+testReadAttribute(testobj4,100000,10000));
+logs.push('  '+testReadAttribute(testobj5,1000000,10000));
+
+
+// 顺序写入属性
+var tmp;
+logs.push('顺序写入测试：');
+logs.push('  '+testWriteAttribute(testobj1,100,10000));
+logs.push('  '+testWriteAttribute(testobj2,1000,10000));
+logs.push('  '+testWriteAttribute(testobj3,10000,10000));
+logs.push('  '+testWriteAttribute(testobj4,100000,10000));
+logs.push('  '+testWriteAttribute(testobj5,1000000,10000));
+
+
+
+logs.push('随机读取读取测试：');
+logs.push(testRandomReadAttribute(testobj1,100,10000));
+logs.push(testRandomReadAttribute(testobj2,1000,10000));
+logs.push(testRandomReadAttribute(testobj3,10000,10000));
+logs.push(testRandomReadAttribute(testobj4,100000,10000));
+logs.push(testRandomReadAttribute(testobj5,1000000,10000));
+
+document.write('<pre>'+logs.join('\r\n')+'</pre>');
+
+</script>
+ 	
+ </body>
+</html>

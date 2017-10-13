@@ -1,0 +1,773 @@
+/**目录
+1、列表（datatable）
+2、树（qtree）
+3、弹出窗口（弹出层）
+4、功能按钮（工具栏）
+5、菜单（右键菜单）
+6、一级菜单（含右键菜单）
+
+
+**/
+/****************************列表样式说明*****************************/
+
+/**
+当前一共有10套列表样式：
+1、综合查询缺省样式：dt_tagdiv
+2、一体化样式：dttheme_ifmis
+3、一体化样式new：dttheme_ifmisnew
+4、北京一体化样式：dttheme_beijing
+5、门户内嵌样式：dttheme_inner
+6、春天主题：dttheme_spring
+7、FASP2.0 ：dttheme_fasp
+8、FMSESC2.0 ： dttheme_fmsesc
+9、综合报表定制样式：dt_reportconfig
+10、一体化部门预算样式：dttheme_budget
+
+总述： 统一生成的各系统列表结构大同小异，所以，下面以一体化样式为例，分析一下各样式的控制区域，及修改和新增样式时候的注意事项，如下：
+（在修改各个样式的时候，除非有特别的需要，否则，切记不要修改position\float\overflow\display这一类样式）
+**/
+
+/** 一体化样式 **/
+
+/**控制datatable外层容器样式，以及内部文字大小**/
+.dttheme_ifmis {
+	padding:0px;/**设置容器内部边距为0（一般不修改）**/
+	border-left:1px solid #8ba3da;/**设置列表外层左边框**/
+	border-top:1px solid #8ba3da;/**设置列表外层上边框**/
+	border-right-width:0px;/**设置列表外层右边框，当前为没有右边框**/
+	border-bottom-width:0px;/**设置列表外层下边框，当前为下有右边框**/
+	position: relative;/**设置容器与外层容器为相对位置（一般不修改）**/
+	overflow:auto;/**设置当容器内部内容的溢出时，自动出现滚动条（一般不修改）**/
+	font-size:12px;/**设置列表内文字字号**/
+}
+
+/**控制datatable固定表头区域样式（表头默认为固定）**/
+.dttheme_ifmis .h{
+	overflow:hidden;/**设置区域内文字溢出隐藏（一般不修改）**/
+	position:absolute;/**设置该区域为绝对定位（一般不修改）**/
+	padding-left:0px;/*设置区域内左边距，可用来调节表头的宽度，一般用来调节表头和下边表格的对齐问题*/
+	border-left: 1px #8ba3da solid;/**设置区域的左边边线及颜色，也是主要用来凑边线的**/
+}
+
+/**控制datatable表头单元格样式，包括背景色、边线、行高等**/
+.dttheme_ifmis td {
+	margin:0px;/**设置表头单元格的外边距为0**/
+	border-left:2px #e7ebf7 solid;/**设置表头单元格左边线样式**/
+	border-right:1px #8ba3da solid;/**设置表头单元格右边线样式**/
+	border-top:0px #e7ebf7 solid;/**设置表头单元格上边线样式**/
+	border-bottom:1px #8ba3da solid;/**设置表头单元格下边线样式**/
+	font-weight:bold;/**设置表头单元格内文字的粗细样式，bold为加粗，nomal为正常不加粗，或者删除这个样式，也是默认不加粗**/
+	word-break: keep-all;/**设置表头单元格内文字是否换行，当前为不换行（表头一般不做换行处理）**/
+	text-align:center;/**设置表头单元格内文字对齐方式，center为居中，left为居左，right为居右，一般为居中**/
+	background-color:#e7ebf7;/**设置表头单元格背景颜色，也可以通过另一个样式background添加为背景图片**/
+	position:relative;/**设置表头单元格为相对定位（一般不修改）**/
+	height:20px;/**设置表头单元格行高**/
+	
+}
+
+/**控制表头单元格内文字不换行**/
+.dttheme_ifmis td span {
+	word-break: keep-all;/**设置表头单元格内文字不换行**/
+}
+
+/**控制表头单元格内左内边距为0 **/
+.dttheme_ifmis td .c {
+	padding-left:0px;/**(一般不修改)**/
+}
+
+/**数据区行样式，DataTable的格线是采用隐藏Div上、左两条边线实现，可以通过设置margin-left属性调整整个数据区域与表头的位置**/
+.dttheme_ifmis .l {
+	overflow:hidden;/**设置数据行为溢出隐藏（一般不修改）**/
+	margin-top:0px;/**设置数据行外边距，可用来调节行上下位置**/
+	margin-left:0px;/**设置数据行外边距，可用来调节行左右位置**/
+	padding-left: 1px;/**设置数据行内边距，可用来调节行左右位置**/
+	height:22px;/**设置数据行行高**/
+	padding-bottom:1px;/**设置数据行内底边距**/
+	border-left: 1px #8ba3da solid;/**设置数据行左边线**/
+}
+
+/**数据区单元格样式**/
+.dttheme_ifmis .l .c {
+	border-top: 0px #fff solid;/**设置数据区单元格上边框**/
+	border-left: 0px #8ba3da solid;/**设置数据区单元格左边框**/
+	border-right: 1px #8ba3da solid;/**设置数据区单元格右边框**/
+	padding-left:2px;/**设置数据区单元格左内边距**/
+	height:100%;/**设置数据区单元格高度**/
+	color:#000;/**设置数据区单元格内文字颜色**/
+	float:left;/**设置数据区单元格为左浮动（一般不修改）*/
+	line-height:20px;/**设置数据区单元格文字行高**/
+	background-color:#fff;/**设置数据区单元格背景色，在这里设置颜色有益于效率的提高，这个样式不可省略**/
+}
+
+/**锁定数据区单元格样式，如背景色**/
+.dttheme_ifmis .clock .c {
+	background:rgb(238, 238, 238);/*#EEE*//**设置被锁定数据区单元格样式，当前为设置背景色为灰色，色值有两种表示方法**/
+}
+
+/**单元格中文字溢出时显示省略号**/
+.dttheme_ifmis span{
+	padding-left:0px;/**设置数据区单元格内左边距**/
+	padding-right:2px;/**设置数据区单元格内右边距**/
+	text-overflow: ellipsis;/**设置数据区单元格内部文字超出单元格时显示省略号，同时控制这一样式的还有两个样式，分别是white-space:nowrap; overflow:hidden;由程序生成直接放在代码内（一般不修改）**/
+	text-decoration: none;/**设置数据区单元格内文字样式，这个样式为没有下划线**/
+	display:block;/**设置数据区单元格为块儿级元素/或者可见（一般不修改）**/
+}
+
+/**控制数据单元格样式，只控制了底边线。当单元格合并的时候，实际上只是把这条底线颜色换掉了，实际还是两个单元格。**/
+.dttheme_ifmis .bl{
+	border-bottom:1px #8ba3da solid;/**（当前样式为未合并时的样式）*/
+}
+
+/**控制未锁定区域数据单元格样式，只控制了底线。当单元格合并的时候，实际上只是把这条底线颜色换为与底色相同的颜色，实际还是两个单元格。**/
+.dttheme_ifmis .bnl{
+	border-bottom:1px #fff solid;/**（当前样式为未锁定数据单元格合并时样式）**/
+}
+
+/**控制锁定区域数据单元格样式，只控制了底线。当单元格合并的时候，实际上只是把这条底线颜色换为与底色相同的颜色，实际还是两个单元格。（当前样式为锁定的数据单元格合并时样式）**/
+.dttheme_ifmis .clock .bnl{
+	border-bottom:1px rgb(238, 238, 238) solid;/**（当前样式为锁定区域数据单元格合并时样式）**/
+}
+
+/**右键弹出菜单样式**/
+.dttheme_ifmis .popupmenu .item{
+	text-align:left;/**右键弹出菜单文字位置，当前为居中：center,居左：left，居右：right**/
+	height:25px;/**右键弹出菜单行高**/
+	line-height:25px;/**右键弹出菜单文字行高**/
+}
+
+/**控制锁定行位置**/
+.dttheme_ifmis .clockrow {
+	margin-left:-1px;/**可通过数值控制锁定行的左右位置**/
+}
+
+/**锁定行背景色**/
+.dttheme_ifmis .clockrow .c {
+	background-color: yellow;
+}
+
+/**控制合并列内样式（未使用）**/
+.dttheme_ifmis .l .m {
+ float:left;
+ margin-left:3px;/**合并到一个单元格中的内容会分隔显示**/
+}
+
+
+/****************************树样式说明*****************************/
+/**树样式比较简单，一旦修改的话，主要是对树节点部分的小图标进行的更换，当前共有两类树：
+1、qtree 可以有下级级次并配有展开或收起小图标的一类
+2、qlist 只有一级树菜单，没有下级菜单的一类
+qlist的组成结构类似qtree并且比qtree更简单
+**/
+
+/** qtree树样式 **/
+
+/**树外层样式，背景颜色**/
+.qtree{background-color:#fff;zoom:1;float:left}
+/**树菜单（除根菜单）通用样式**/
+.qtree .item{font-size:12px;line-height:18px;display:block;cursor:pointer;white-space:nowrap;}
+/**树菜单通用样式**/
+.qtree .qbody{height:18px;}
+/**树的根菜单样式，包含一个根级图标以及文字**/
+.qtree .rootitem{background:url(./images/default/tree/base.gif) no-repeat left top;padding-left:18px;font-size:12px;line-height:22px;display:block;cursor:pointer;white-space:nowrap;}
+/**树的竖向虚线样式（只有虚线）**/
+.qtree .line{background:url(./images/default/tree/rueltree-line.gif);width:18px;height:20px;display:block;float:left;margin-top:-2px;}
+/**树的竖向区域，没有竖线，仅需要占位的样式**/
+.qtree .line-nl{width:18px;height:16px;display:block;float:left;}
+/**未知**/
+.qtree .nl{}
+
+/**------这个区域样式未使用---开始---**/
+/**普通节点菜单样式（有下级并未展开）**/
+.qtree .rootclose{background:url(./images/default/tree/rueltree-plus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点菜单样式（有下级并已展开）**/
+.qtree .rootopen{background:url(./images/default/tree/rueltree-minus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点菜单样式（无下级）**/
+.qtree .rootline{background:url(./images/default/tree/rueltree-elbow.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点最后一个菜单样式（有下级并未展开）**/
+.qtree .rootclose-nl{background:url(./images/default/tree/rueltree-end-plus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点最后一个菜单样式（有下级并已展开）**/
+.qtree .rootopen-nl{background:url(./images/default/tree/rueltree-end-minus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点最后一个菜单样式（无下级）**/
+.qtree .rootline-nl{background:url(./images/default/tree/rueltree-end.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**------这个区域样式未使用---结束---**/
+
+
+/**普通节点菜单样式（有下级并未展开）**/
+.qtree .itemclose{background:url(./images/default/tree/rueltree-plus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点菜单样式（有下级并已展开）**/
+.qtree .itemopen{background:url(./images/default/tree/rueltree-minus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点菜单样式（无下级）**/
+.qtree .itemnomorl{background:url(./images/default/tree/rueltree-elbow.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点最后一个菜单样式（有下级并未展开）**/
+.qtree .itemclose-nl{background:url(./images/default/tree/rueltree-end-plus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点最后一个菜单样式（有下级并已展开）**/
+.qtree .itemopen-nl{background:url(./images/default/tree/rueltree-end-minus.gif) no-repeat left top;width:36px;height:18px;float:left}
+/**普通节点最后一个菜单样式（无下级）**/
+.qtree .itemnomorl-nl{background:url(./images/default/tree/rueltree-end.gif) no-repeat left top;width:36px;height:18px;float:left}
+
+
+/**树菜单文字大小样式（通用）**/
+.qtree font{size:12px}
+/**树菜单文字超链接颜色（通用）**/
+.qtree .link{color:#000;}
+/**树菜单文字超链接颜色，hover事件（通用）**/
+.qtree .overlink{color:#D70312;text-decoration:underline;}
+/**树菜单文字选中颜色（通用）**/
+.qtree .selected .link{background-color:#0A246A;color:#fff;}
+/**树菜单文字选中颜色，hover事件（通用）**/
+.qtree .selected .overlink{background-color:#0A246A;color:#fff;text-decoration:underline;}
+
+
+/*****qlist是指没有树形结构，所有菜单同级显示的"树形"列表，样式和qtree类似。*****/
+.qlist{background-color:#fff;zoom:1;float:left;margin-right:-18px}
+/**qlist的菜单样式**/
+.qlist .item{padding-left:0px;font-size:12px;line-height:18px;display:block;cursor:pointer;white-space:nowrap;}
+.qlist .qbody{height:18px;border-width:0px;}
+.qlist .rootitem{padding-left:0px;font-size:12px;line-height:18px;display:block;cursor:pointer;white-space:nowrap;}
+/**未知**/
+.qlist .nl{}
+/**qlist的菜单字号大小（通用）**/
+.qlist font{size:12px}
+/**qlist的菜单默认样式**/
+.qlist .link{color:#000;}
+/**qlist的菜单鼠标悬浮事件样式**/
+.qlist .overlink{color:#D70312;text-decoration:underline;}
+/**qlist的菜单选中后样式**/
+.qlist .selected .link{background-color:#0A246A;color:#fff;}
+/**qlist的菜单选中后鼠标悬浮事件样式**/
+.qlist .selected .overlink{background-color:#0A246A;color:#fff;text-decoration:underline;}
+/**带查询区树，查询区外层样式，最外层是div**/
+.qsearch{border:#666 1px solid;height:26px;display:block;overflow:hidden}
+/**带查询区树，查询区"查询"按钮样式，当前采用span模拟，可以定义为背景颜色或者背景图片，当前buttonface定义的是浏览器自带按钮颜色**/
+.qsearch .btn{width:60px;height:100%;line-height:24px;border-width:0px;text-Align:center;background-color:buttonface}
+/**带查询区树，查询区"输入框"样式**/
+.qsearch .input{height:100%;border-width:0px;line-height:24px;margin-left:5px;padding:0px}
+
+
+/****************************弹层出窗口样式说明*****************************/
+/** .wnd_ifmis 是弹出层外层样式，这个样式可以被写在代码中以确定弹出层的风格，现有三种风格：
+1、一体化风格【wnd_ifmis】
+2、win7风格（半透明窗口）【wind7】
+3、平台2.0风格【wnd】
+这里以一体化为例，分析各样式的控制区域
+***说明：***
+弹出窗口的整个结构是一个三行三列的table：
+第一行是标题区域，包含了：标题图标、标题、关闭按钮；【.wnd_ifmis .head】
+第二行是窗口的数据显示区域；【.wnd_ifmis .wbody】
+第三行是窗口下方的边线区域；【.wnd_ifmis .foot】
+**/
+.wnd_ifmis{}
+
+/**设置弹出窗口标题区域前方的图标样式**/
+.wnd_ifmis .wnd_icon
+{
+	width:20px;/*图标区域的宽度，可以调节，也可用来调节图标与标题文字间的间距*/
+	background-attachment: scroll;/*背景图的装载属性，一般不修改*/
+	background-repeat:no-repeat;/*背景图的装载属性，一般不修改*/
+	background-position-x: left;/*背景图的装载属性，一般不修改*/
+	background-position-y: bottom;/*背景图的装载属性，一般不修改*/
+	background-size: auto;/*背景图的装载属性，一般不修改*/
+	background-origin: padding-box;/*背景图的装载属性，一般不修改*/
+	background-clip: border-box;/*背景图的装载属性，一般不修改*/
+	background-color: transparent;/*背景图的装载属性，一般不修改*/
+	background-image:url(./images/wnd_ifmis/wnd_icon_ifmis.png);/*背景图标的路径，可修改*/
+}
+
+/*标题区域整行的高度及文字高度，如果标题文字不在垂直居中的位置，可以调节这个高度（通常：两个属性的高度保持一致）*/
+.wnd_ifmis .head
+{
+	height: 20px;
+	line-height: 20px;
+}
+
+/*标题区域，最左侧背景图（标题区为左中右结构）*/
+.wnd_ifmis .head .left
+{
+	width: 15px;
+	height:20px;
+	font-size: 1px;
+	background-image:url(./images/wnd_ifmis/tw_tl_ifmis.png);
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;
+}
+
+/*标题区域，中间部分的背景*/
+.wnd_ifmis .head .bg
+{
+	background-image:url(./images/wnd_ifmis/tw_tbg_ifmis.png);
+	background-attachment: scroll;
+	background-repeat: repeat-x;
+	background-position-x: left;
+	background-position-y: top;
+	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;	
+}
+
+/*标题区域，标题文字的样式*/
+.wnd_ifmis .head .title
+{
+	color:#FFF;
+	font-size: 12px;
+	padding-top:15px;
+}
+
+/*标题区域，最右侧背景图*/
+.wnd_ifmis .head .right
+{
+	width:15px;
+	height:36px;
+	font-size: 1px;
+	background-image:url(./images/wnd_ifmis/tw_tr_ifmis.png);
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: top;
+	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;
+}
+
+/*窗体第二行，主要负责数据显示的区域*/
+.wnd_ifmis .wbody
+{
+	overflow: auto;/*设置数据区域滚动条显示与否及显示方式*/
+	padding:2px;/*设置数据区内边距*/
+	border:#AAAAAA 1px solid;/*设置数据区域边框样式*/
+	display: block;/*设置数据区域是否显示*/
+	position: relative;/*设置数据区域的定位方式为相对定位，另一个值为absolute*/
+	background-color: rgb(255, 255, 255);/*设置数据区域背景色为白色，还有另一种色值表示法为#FFFFFF*/
+}
+
+/*标题区域，关闭按钮区域宽度*/
+.wnd_ifmis .closewidth{width:35px}
+/*标题区域，关闭按钮默认状态*/
+.wnd_ifmis .btn_close{background-image: url("./images/wnd_ifmis/closewin_ifmis.png");background-position-y:top;background-color: transparent;width:35px;height:20px;border:0px;}
+/*标题区域，关闭按钮鼠标悬浮状态（这个状态和默认状态使用了一张图片的不同位置，制作新图片时请参考现有关闭按钮）*/
+.wnd_ifmis .btn_close_over
+{background-image: url("./images/wnd_ifmis/closewin_ifmis.png");background-position-y:-20px;background-color: transparent;width:35px;height:20px;border:0px;}
+
+/*窗体中间区域，分为左中右三部分*/
+/*最左边，这个区域和标题区的左中右一一对应，一般只会对宽度、高度及图片路径进行修改，其他属性可以保持不变*/
+.wnd_ifmis .foot .left_bg
+{
+	width: 15px;
+	font-size: 1px;
+	background-image:url(./images/wnd_ifmis/tw_lbg_ifmis.png);
+	background-attachment: scroll;
+	background-repeat: repeat-y;
+	background-position-x: left;
+	background-position-y: top;
+	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;
+}
+/*最右侧，这个区域和标题区的左中右一一对应，一般只会对宽度、高度及图片路径进行修改，其他属性可以保持不变*/
+.wnd_ifmis .foot .right_bg
+{
+	width: 15px;
+	font-size: 1px;
+	background-image:url(./images/wnd_ifmis/tw_rbg_ifmis.png);
+	background-attachment: scroll;
+	background-repeat: repeat-y;
+	background-position-x: left;
+	background-position-y: top;
+	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;
+}
+
+/*窗体下部区域，分为左中右三部分*/
+/*最左边，这个区域和标题区的左中右一一对应，一般只会对宽度、高度及图片路径进行修改，其他属性可以保持不变*/
+.wnd_ifmis .foot .tw_bl{ background:url(./images/wnd_ifmis/tw_bl_ifmis.png) no-repeat left top; width:15px; height:17px; font-size:1px;	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;
+}
+/*最中间，这个区域和标题区的左中右一一对应，一般只会对宽度、高度及图片路径进行修改，其他属性可以保持不变*/
+.wnd_ifmis .foot .tw_bbg{ background:url(./images/wnd_ifmis/tw_bbg_ifmis.png) repeat-x left top; height:17px; font-size:1px; background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;
+}
+/*最右边，这个区域和标题区的左中右一一对应，一般只会对宽度、高度及图片路径进行修改，其他属性可以保持不变*/
+.wnd_ifmis .foot .tw_br{ background:url(./images/wnd_ifmis/tw_br_ifmis.png) no-repeat right top; width:15px; height:17px; font-size:1px;	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent;
+}
+
+
+/****************************功能按钮区域（工具栏）样式说明*****************************/
+
+/**工具栏外层容器，总体控制这个区域的大小内部字体等**/
+.toolbarcmp{
+margin:0px;/**设置区域相对于其他部分的外边距**/
+padding:0px;/**设置区域相对于内部内容的内边距，调整这个数也字可以让当前区域变大**/
+overflow: hidden;/**设置区域内内容溢出隐藏，容器不会被过多的内部内容撑开（一般不修改）**/
+font-size:13px; /**设置区域内文字大小**/
+line-height:24px;/**设置区域内文字行高，这个属性的修改也可能会使当前容器的大小发生变化**/
+}
+
+/**控制工具栏按钮排列方式**/
+.toolbarcmp li{
+float:left;/**设置区域内每个功能按钮横向显示，这个属性是必须的，除非这个区域的按钮要改为竖向排列，否则不可删除**/
+display:block;/**设置区域内每个功能按钮区域为块儿级元素或者为可见**/
+}
+
+/**控制工具栏按钮的鼠标悬浮状态和普通状态切换不出问题的样式**/
+.toolbarcmp li.bg{
+padding:1px/**设置区域内每个功能按钮区的内边距，设置这个样式主要是为了在鼠标悬浮事件换背景时使按钮不至于出现位置跳动（通用）（一般不修改）**/
+}
+
+/**控制工具栏按钮鼠标悬浮状态的样式**/
+.toolbarcmp li.bg_over{
+padding:0px;/**设置区域内每个功能按钮鼠标悬浮事件出现时内边距为0，而省出来的这个像素将由以下的样式填补**/
+border: #055A77 1px solid;/**设置区域内每个功能按钮鼠标悬浮事件时出现边框**/
+filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#B1C8FB, endcolorstr=#FFFFFF);/**设置区域内每个功能按钮横的鼠标悬浮事件的按钮背景，这里通过滤镜设置了一个渐变背景，gradienttype=0控制渐变的方向，修改的时候，只需要修改两个颜色色值即可**/
+}
+
+/**控制最内部按钮的样式（通用）**/
+.toolbarcmp button.btn{ 
+border:0; /**控制button标签背景为图片时必须有的样式（一般不修改）**/
+height:24px; /**按钮高度**/
+line-height:24px; /**按钮文字行高，一般和按钮高度保持一致**/
+text-align:right; /**按钮文字的位置，当前为居右，还有其他两个值：居左left、居中center，这里必须居右，因为按钮的左边会有一个图标**/
+padding-right:4px;/**按钮文字与右边的内边距**/
+margin-left:3px;/**按钮的左外边距**/
+float:left;/**按钮排列方式（一般不修改）**/
+}
+/**当设置按钮为分组时（即点击当前按钮出现类似的一组按钮），用来装下拉小箭头的区域样式**/
+.toolbarcmp button.groupbtn{
+font-size:8px;/**字号大小**/
+font-family:Webdings;/**系统自带字体样式，可以显示为各种符号，一般是下拉小箭头，如果系统对下拉小箭头有特殊要求可以忽略这个样式，采用最后一个背景图**/
+width:8px;/**设置分组按钮的下拉区域宽度**/
+margin-left:1px;/**设置分组按钮区域左外边距，主要是调节按钮和前边文字的距离**/
+padding:0px;/**设置分组按钮区域内边距**/
+background:url(./images/toolbar/opengroup.gif) no-repeat center center;/**设置分组按钮的下拉图片样式**/
+}
+
+/**一组按钮与另一组按钮之间的分割区域样式**/
+.toolbarcmp .line{
+width:10px;/**分割区域宽度**/
+padding:0px;/**分个区内边距**/
+margin-left:3px;/**分割区左外边距**/
+margin-top:2px;/**分割区上外边距**/
+display:block;/**设置分割区为块儿级元素或者可见**/
+}
+
+/* 工具栏内每个具体的按钮都有不同的图标，机构相同只是图片路径不同，当需要修改时只需要根据路径更换相应图片即可，如果需要新增一个按钮样式，只需复制以下代码，修改图片路径并重新命名样式名称即可（命名规则为：你自己起的名字+"btn"） */
+.add_btn{background:url(./images/toolbar/add.gif) no-repeat center left;padding-left:20px;}
+
+
+/****************************菜单（右键菜单）样式说明*****************************/
+/**右键菜单外层样式**/
+.popupmenu{
+	position: absolute;/**设置为绝对定位，这里必须是这个值，因为这个层显示之后必选悬浮于其他层之上**/
+	z-index:1999999; /**与position:absolute配套使用，数字越大层就越在上层**/
+	font-size:12px; /**设置菜单内文字大小**/
+	border:1px solid #8BA3DA; /**设置菜单外边框样式**/
+	background:#F2F2F2 url(./images/popupmenu/rvbg.gif) repeat-y left top; /**设置整个区域的背景图和背景色**/
+	color:#000; /**设置整个区域内文字颜色**/
+}
+/**单个菜单区域样式（tr），包含两个td，第一个td用来显示图标，第二个td用来显示菜单文字，图标的样式不在此控制**/
+.popupmenu .item{
+	color:#000;/**设置菜单文字颜色（这个属性会覆盖上边的样式）**/
+	line-height:25px;/**设置菜单文字行高**/
+	height:30px;/**设置菜单高度**/
+	text-align:center;/**设置菜单文字水平位置属性，取值有三：left\center\right**/
+	cursor:pointer;/**设置鼠标悬浮于菜单上时呈现"手"形状**/
+}
+/**设置菜单文字区域样式**/
+.popupmenu .itemtd{
+	padding-left:5px;/**设置菜单文字与区域的左内边距**/
+	cursor:pointer;/**设置菜单文字区域鼠标悬浮时，鼠标呈现"手"形状**/
+	padding-right:25px;/**设置菜单文字与区域的右内边距**/
+}
+/**设置当前选中的菜单的文字显示区域背景色**/
+.popupmenu .selected .itemtd{
+	background:#E1EEFF;
+}
+/**当菜单存在分组时，设置每组最后一个菜单的边框样式，以达到视觉分组的目的**/
+.popupmenu .end{
+	border:1px solid #8BA3DA;
+}
+/**当菜单存在分组时，设置用来分组区域（单独区域）的样式**/
+.popupmenu .split{
+	height:1px;/**设置该区域高度**/
+	font-size:0;/**设置该区域文字高度（由于一个容器td/div/p内的文字是由默认大小的，如果不把文字大小设置好的话，容器的大小是不可能控制的）**/
+	line-height:0;/**设置该区域文字的行高**/
+	border-bottom:1px dashed #8BA3DA;/**设置分隔线的样式，这里是设置的是点线**/
+	
+}
+/**控制整个区域内td样式（右键弹出菜单结构是由table构成）**/
+.popupmenu TD{
+	margin:0px;/**设置外边距**/
+	border:0px;/**设置边线**/
+	font-weight:normal;/**设置文字格式**/
+	word-break: keep-all;/**设置文字不换行**/
+	height:auto;/**设置高度为自动**/
+	background-color:transparent;/**设置背景色为透明**/
+}
+/**当右键菜单的个数过多时，菜单可以上下滚动，这个区域有两层div嵌套实现，外层div控制区域大小及位置，内部区域装载数据，并负责显示**/
+/**设置中间菜单区域的外层固定区域（这个区域样式不可改）**/
+.popupmenu .centersorll{
+	overflow:hidden;
+	position:relative;
+}
+/**设置菜单区域的样式，这个区域才是实际的菜单所在区域（这个区域样式不可改）**/
+.popupmenu ._center{
+	white-space:nowrap; 
+	position:absolute;
+}
+/**设置滚动按钮的样式，滚动按钮由上下两部分组成，这两部分分别对接在中间菜单区的上部和下部，分别是向上滚动和向下滚动**/
+.popupmenu .scl{
+	height:6px;	/**高度（可根据需要修改）**/
+	line-height:6px;/**文字行高（可根据需要修改）**/
+	font-size:1px;/**控制文字大小**/
+	overflow:hidden;/**溢出处理方式为溢出隐藏**/
+}
+/**设置滚动按钮的图标样式，一般没有图标**/
+.popupmenu .scrollico{
+	float:left;
+	width:25px;
+	height:6px;
+}
+/**设置滚动按钮统一的样式（向上滚动和向下滚动共用）**/
+.popupmenu .scrollitem{
+	float:left;
+	height:6px;
+}
+/**设置向上滚动的按钮图片（可点击）**/
+.popupmenu .upward .scrollitem{
+	background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% top;
+	background-position:50% -12px;
+}
+/**设置向上滚动的按钮图片（不可点击，置灰状态）**/
+.popupmenu .upwardend .scrollitem{
+	background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% top;
+	background-position:50% -18px;
+}
+/**设置向下滚动的按钮图片（可点击）**/
+.popupmenu .downward .scrollitem{
+  background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% bottom;
+	background-position:50% 0;
+}
+/**设置向下滚动的按钮图片（不可点击，置灰状态）**/
+.popupmenu .downwardend .scrollitem{
+		background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% top;
+	background-position:50% -6px;
+}
+
+
+/****************************一级菜单（内含下拉菜单，下拉菜单样式和上边的右键菜单样式结构相同，只不过名称不同）样式说明*****************************/
+/**
+一级菜单的由三部分组成：
+1、最左侧向右左滚动按钮；
+2、菜单区；
+3、最右侧向右滚动按钮；
+**/
+/**一级菜单的外层样式**/
+.topmenu_tops{
+	margin: 0;/**设置本区域的外边距（一般不修改）**/
+	list-style: none;/**去除列表符号（一般不修改）**/
+	padding: 0;/**设置本区域的内边距（一般不修改）**/
+	height:19px;/**设置本区域高度**/
+	background:url(./images/popupmenu/menu_bg.gif) repeat-x left top;/**设置本区域的背景图**/
+	font-size:12px;/**设置本区域文字大小**/
+	line-height:19px;/**设置本区域文字行高**/
+	white-space:nowrap;/**设置本区域内文字强制不换行（一般不修改）**/
+}
+/**设置区域内li的属性，根据结构：每一个菜单都内嵌在一个div内，而div内嵌在li内，div主要用来装载显示选中菜单后的图片**/
+.topmenu_tops li{
+	list-style-type: none;/**去除每个li的列表符号（一般不修改）**/
+	float :left;/**设置每个li为左侧浮动，以保证菜单横向显示（一般不修改）**/
+	margin-left:5px;/**设置每个li的左外边距，保证菜单与菜单之间有一定的间距**/
+	cursor :pointer;/**设置鼠标悬浮在菜单上方是的鼠标指针形状为手型（一般不修改）**/
+}
+/**设置li内部div样式**/
+.topmenu_tops li div{
+   padding:0 7px;/**设置div内边距为上下0像素，左右各7像素**/
+}
+/**设置当菜单在选中状态下的样式，为了使当前选中的菜单一目了然，所以在菜单下添加了一个背景图片，由于这个图片是边框有圆角，所有是由两部分凑在一起显示的，这样做可以使菜单的长度灵活控制**/
+.topmenu_tops li.selected{
+	list-style-type: none;/**去掉选中li的列表符（一般不修改）**/
+	float :left;/**设置选中li为左浮动（一般不修改）**/
+	background:url(./images/popupmenu/menuright.gif) repeat right center;/**设置选中菜单的右侧背景图，一般会做很长，以适应菜单长度**/
+}
+.topmenu_tops li.selected div{
+	background:url(./images/popupmenu/menuleft.gif) no-repeat left center;/**设置选中菜单的左侧图片，放在最左测和右侧图片拼接起来构成一个按钮图片**/
+}
+/**设置一级菜单左右两边的滚动按钮样式（通用）**/
+.topmenus .scl{
+	width:14px;/**设置区域宽度**/
+	height:20px;/**设置区域高度**/
+	float:left;/**设置区域为左浮动（一般不修改）**/
+	margin-top:-1px;/**设置区域上外边距**/
+}
+/**设置左侧滚动按钮区域样式**/
+.topmenus .left{
+	width:14px;/**覆盖之前通用样式**/
+	height:20px;/**覆盖之前通用样式**/
+	float:left;/**覆盖之前通用样式**/
+	cursor:pointer;/**设置鼠标悬浮事件时鼠标光标形状为手型**/
+	background:url(./images/popupmenu/pre_nomal.gif) no-repeat left top; /**设置向左滚动按钮样式（可点击）**/
+}
+/**当菜单最左侧菜单就是第一个菜单的时候，向左滚动按钮呈现不可点击状态（置灰）**/
+.topmenus .leftend{
+	width:14px;
+	height:20px;
+	float:left;
+	cursor:pointer;
+	background:url(./images/popupmenu/pre_none.gif) no-repeat left top; /**设置向左滚动按钮样式（不可点击）**/
+}
+/**设置右侧滚动按钮区域样式**/
+.topmenus .right{
+	width:14px;/**覆盖之前通用样式**/
+	height:20px;/**覆盖之前通用样式**/
+	float:left;/**覆盖之前通用样式**/
+	cursor:pointer;/**设置鼠标悬浮事件时鼠标光标形状为手型**/
+	background:url(./images/popupmenu/next_nomal.gif) no-repeat left top;  /**设置向右滚动按钮样式（可点击）**/
+}
+/**当菜单最右侧菜单就是最后一个菜单的时候，向右滚动按钮呈现不可点击状态（置灰）**/
+.topmenus .rightend{
+	width:14px;
+	height:20px;
+	float:left;
+	cursor:pointer;
+	background:url(./images/popupmenu/next_none.gif) no-repeat left top;  /**设置向右滚动按钮样式（不可点击）**/
+}
+ /**可滚动的菜单也是由两部分实现的，外层负责固定宽度及位置，内层负责显示菜单**/
+ /**设置中间部分菜单外层样式**/
+.topmenus .centersorll{
+	overflow:hidden; /**设置为溢出隐藏（一般不修改）**/
+	float:left;/**设置为左浮动（一般不修改）**/
+	position:relative;/**设置为绝对定位（一般不修改）**/
+	height:20px;/**设置高度**/
+	LINE-HEIGHT: 20px;/**设置文字行高**/
+	margin-top:0px;/**设置上外边距**/
+	background:url(./images/popupmenu/menu_bg.gif) repeat-x left top;/**设置菜单背景样式**/
+}
+ /**设置中间部分菜单内层样式**/
+.topmenus ._center{
+	white-space:nowrap; /**设置文字不换行（一般不修改）**/
+	position:absolute;/**设置为绝对位置（一般不修改）**/
+}
+
+/**以下样式为二级的下拉样式，结构与右键下拉菜单相同，请参考右键菜单样式**/
+.topmenu{
+	position: absolute;
+	z-index:1999999; 
+	font-size:12px; 
+	border:1px solid #9B9899;
+	background:#FFF url(./images/popupmenu/xlistbg.gif) repeat-y left top; 
+	color:#000;
+	
+}
+
+.topmenu .item{
+	color:#000;
+	line-height:25px;
+	height:30px;
+	text-align:center;
+}
+.topmenu .itemtd{
+	padding-left:5px;
+	padding-right:25px;
+	background:#F2F2F2;
+}
+.topmenu .selected .itemtd{
+	/*background:#E1EEFF;*/
+	background:url(./images/popupmenu/itemover.gif) no-repeat left center
+}
+/**当当前的菜单还有下级菜单时的样式，会在菜单的右侧显示一个小按钮（普通状态）**/
+.topmenu .notleaf{ background:#F2F2F2 url(images/popupmenu/havesub.gif) no-repeat right center;}
+
+
+
+.topmenu .selected{
+	color:#000;
+	line-height:25px;
+	height:30px;
+	text-align:center;
+	background:url(images/popupmenu/itemover_left.gif) no-repeat left center;
+	cursor :pointer;
+}
+.topmenu .selected .itemtd{
+	/*background:#E1EEFF;*/
+	background:url(./images/popupmenu/itemover_right.gif) no-repeat right center
+}
+/**当当前的菜单还有下级菜单时的样式，会在菜单的右侧显示一个小按钮（鼠标悬浮状态）**/
+.topmenu .selected .notleaf { background:url(./images/popupmenu/itemoverhavesub_right.gif) no-repeat right center}
+
+
+.topmenu .end{
+	border:1px solid #8BA3DA;
+}
+.topmenu .split{
+	height:2px;
+	font-size:0;
+	line-height:0;
+	/*border-bottom:1px dashed #8BA3DA;*/
+	background:url(./images/popupmenu/xlg.gif) repeat-x left bottom;
+}
+.topmenu TD{
+	margin:0px;
+	border:0px;
+	font-weight:normal;
+	word-break: keep-all;
+	height:auto;
+	background-color:transparent;
+	text-align:left;
+}
+
+.topmenu .centersorll{
+	overflow:hidden;
+	position:relative;
+	height:19px;
+}
+.topmenu ._center{
+	white-space:nowrap; 
+	position:absolute;
+}
+.topmenu .scl{
+	height:6px;	
+	line-height:6px;
+	font-size:1px;
+	overflow:hidden;
+}
+.topmenu .scrollico{
+	float:left;
+	width:25px;
+	height:6px;
+}
+.topmenu .scrollitem{
+	float:left;
+	height:6px;
+}
+.topmenu .upward .scrollitem{
+	background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% top;
+	background-position:50% -12px;
+}
+.topmenu .upwardend .scrollitem{
+	background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% top;
+	background-position:50% -18px;
+}
+.topmenu .downward .scrollitem{
+  background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% bottom;
+	background-position:50% 0;
+}
+topmenu .downwardend .scrollitem{
+		background:#FFF url(./images/popupmenu/showmore.gif) no-repeat 50% top;
+	background-position:50% -6px;
+}

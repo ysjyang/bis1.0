@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+    font-family:microsoft yahei;
+	color:#363636;
+}
+body{
+	margin:0px;
+	padding:0px;
+}
+.system_logo{
+	width:100%;
+	height:60px;
+	background:url(../img/system/logo.jpg) no-repeat center left #065ea8;
+	margin:0px;
+	padding:0px;
+	position:fixed;
+	top:0px;
+	left:0px;
+	background-size:100% 100%;
+}
+.system_main{
+	width:1000px;
+	height:auto;
+	margin:60px auto 10px auto;
+}
+.system_menu{
+	width:1000px;
+	height:auto;
+	padding-top:10px;
+}
+.system_title{
+	height:40px;
+	line-height:40px;
+	color:#363636;
+	background:#fff;
+	border:1px solid #e5e5e5;
+	border-bottom:0px none;
+	text-indent:10px;
+	font-size:16px;
+}
+.systemIcon{
+	width:40px;
+	height:40px;
+	background:url(../img/system/f_ico02.png) #eee no-repeat center;
+	border-right:1px solid #e5e5e5;
+	display:block;
+	float:left;
+}
+.system_body{
+	border:1px solid #e5e5e5;
+	overflow:hidden;
+	background:#fff;
+}
+.syste_menuitem{
+	display:inline-block;
+	word-wrap:break-word;
+	word-break:break-all;
+}
+.system_body .syste_menuitem a{
+	font-size:14px;
+	line-height:14px;
+	text-decoration:none;
+	padding:15px 10px;
+	color:#0364b5;
+	float:left;
+	font-weight:bold;
+}
+.system_body .syste_menuitem a:hover{
+	color:#0364b5;
+	text-decoration:underline;
+}
+.system_body .syste_menuitem ul{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+.system_body .syste_menuitem ul li{
+	float:left;
+}
+.system_body .syste_menuitem ul li a{
+	font-size:12px;
+	line-height:14px;
+	text-decoration:none;
+	padding:15px 10px;
+	color:#363636;
+	font-weight:normal;
+}

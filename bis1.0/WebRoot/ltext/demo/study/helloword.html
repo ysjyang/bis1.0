@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>framework demo hellow</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:7002/ltext/datatabletheme.css" />
+<script>
+var _ROOT_PATH_="http://localhost:7002"
+</script>
+<script src="http://localhost:7002/ltext/jquery.js"></script>
+<script src="http://localhost:7002/ltext/frameworksupport.js"></script>
+<script src="http://localhost:7002/ltext/ltext_core.js"></script>
+<script src="http://localhost:7002/ltext/demo/study/template.js"></script>
+<script>
+Ext.lt.ltextpath="http://localhost:7002/ltext"
+</script>
+<style>
+*{margin:0px;padding:0px}
+</style>
+</head>
+
+<body>
+</body>
+</html>
+
+<script>if(typeof(info_load)=='undefined'){info_load={};} info_load.componentjs=new Date();info_load.components=[];info_load.componentjss=[];</script>
+<script>var d_start=new Date();</script>
+<script type="text/javascript" src="http://localhost:7002/ltext/demo/study/hellow.js?1353565820370"></script>
+<script>info_load.componentjss.push({name:"/ltext/demo/study/hellow.js",time:new Date()-d_start})</script>
+<script>
+ info_load.componentjs=new Date()-info_load.componentjs;
+ info_load.component=new Date();
+var d_start=new Date();
+var config0={"msg":"Hello Word1  i:19 j:0"}
+var framework_hellowcmp0= new Ext.lt.study.component.hellow('/framework/study/hellow/framework_demo_helloword_0',config0)
+info_load.components.push({name:"framework_hellowcmp0",time:new Date()-d_start})
+info_load.component=new Date()-info_load.component;
+</script>
+<script>
+info_load.template=new Date();
+var tempconfig={obj:framework_hellowcmp0} 
+Ext.lt.study.template.showFrameworkDemoTemplate(tempconfig)
+info_load.template=new Date()-info_load.template;
+</script>
+

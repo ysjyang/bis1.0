@@ -1,0 +1,702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.editpanel API</title>
+
+
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../../../../style/calendar.css" />
+<script src="../../../../frameworksupport.js"></script>
+<script src="../../../../ltext_core.js"></script>
+<script src="../../../../editpanel.js"></script>
+<script src="../../../../../js/calendar.js"></script>
+<script src="../../jquery.js"></script>
+</head>
+
+<body>
+<h1>editpanel</h1>
+<h2>命名空间：Ext.lt.editpanel</h2>
+<h2>说明：</h2>
+<p>采用HTML元素初始化表单时建议采用UL LI标签。其中UL标签代表整个表单区域，LI代表其中的每一个编辑选项，通过UL、LI标签的属性设置表单外观和行为</p>
+<p>
+标准编辑框扩展,扩展后对象API如下<br>
+支持的编辑框类型（type属性）：<br>
+input：文本编辑框<br>
+amtinput：金额编辑框<br>
+numberinput：数字编辑框<br>
+select：多选列表文本框<br>
+treeselect：多选树型文本框<br>
+label：文字标签<br>
+button：按钮<br>
+date：日期型文本框<br>
+textarea: 文本域<br>
+dateregion：时间区域<br>
+</p>
+<p>
+	<h2>参数：</h2>
+	initFormPanel(element,ds)	需要扩展成编辑框的HTML元素，数据集
+</p>
+<p>
+	<h2>集合：</h2>
+	elements	包含所有编辑区元素对象的引用，采用Array/Object方式存储所有编辑区子对象引用。
+</p>
+<p>
+	<h2>公有属性；</h2>
+</p>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">type</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">编辑元素的类型</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">name</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">编辑元素的名称，也是编辑区对象elements集合中指向编辑元素的属性名称</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">label</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">编辑区前面文字部分，支持HTML格式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">labelwidth</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">编辑区前面文字提示部分的宽度，支持像素，百分比方式设置。默认120像素</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">width</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">编辑区整体宽度，可以使用像素、百分比方式设置。默认33.3%，编辑区内容分3列显示</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">maxlength</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">最大录入文字数，对input，amtinput，text等可录入类型起作用</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">clearbtn</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">可选值yes、no，默认no 显示清除按钮，可以通过清除按钮删除编辑框中显示的内容</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">isnull</td>
+      <td bgcolor="#EEEEEE"></td>
+      <td bgcolor="#EEEEEE">是否可空，可选值true。当设置为true时在label后面追加红色星号，在check方法中验证用户必须录入信息或选择信息</td>
+    </tr>
+  </table>
+	
+	
+<p>
+<h2>公有方法：</h2>
+	<h3>reset()	</h3>
+	重置方法，将编辑元素内容与绑定值对象的属性值恢复到初始状态。注：这里是恢复到初始状态，不是清空属性
+	<h3>check()	</h3>
+	检查编辑元素内录入的值是否符合系统要求，符合返回true，不符合返回false。该方法为编辑元素强制要求实现的方法。验证逻辑有各个编辑元素自己实现。
+	<h3>bind(object)	</h3>
+	绑定数据对象属性与编辑元素name属性相同的属性值，如果参数为空，则自动创建一个新对象
+</p>
+
+<p>
+<h2>方法：</h2>
+	<h3>getData()	</h3>	
+	获取编辑区绑定的值对象，如果初始化时值对象为Null，编辑区会重新创建一个值对象
+	<h3>on({eventname:function(ds,param),…})	</h3>
+	绑定事件，参数为对象，key是事件名，值为事件处理函数。事件处理函数包含两个参数，第一个为编辑区绑定的数据集，第二个是出发事件的对象传送的参数
+	<h3>fireEvent(eventname,param)	</h3>	
+	出发指定的事件，参数为事件名和传递的参数。
+	<h3>reset()		</h3>
+	重置编辑区的内容
+	<h3>check()		</h3>
+	校验编辑区的内容，返回值为boolean。true表示全部校验通过
+	<h3>submit(callback:function(returnvalue))	</h3>	
+	向初始化参数中action属性中设置的地址提交编辑区内容，在远程调用前会执行submit事件，远程调用成功后回执行aftersubmit事件
+	<h3>bind(object)	</h3>
+	向编辑区绑定数据集对象，可以为null。如果参数为null时则构造一个新的值对象
+	<h3>isChange()	</h3>
+	返回值为boolean。该方法会检查编辑区绑定的值对象的属性是否被改变过，如果有改变则返回true，没有则返回false
+</p>
+
+<p>
+<h2>编辑元素对象</h2>
+    编辑区对象包括label、input、select等常用输入对象。
+</p>   
+<pre> 
+var selectdata=new Ext.lt.recordset({columns:['v','t','p'],datas:[['%','全部'],['01',1],['02',2],['03',3],['04',4],['05',5],['06',6],['07',7],['08',8],['09',9],['10',10],['11',11],['12',12]]});
+var treeselect=new Ext.lt.recordset({columns:['v','t','p'],datas:[['%','全部'],['01',1],['02',2],['03',3],['04',4],['05',5],['06',6],['07',7],['08',8],['09',9],['10',10],['11',11],['12',12]]});
+</pre> 
+<script> 
+var selectdata=new Ext.lt.recordset({columns:['v','t','p'],datas:[['%','全部'],['01',1],['02',2],['03',3],['04',4],['05',5],['06',6],['07',7],['08',8],['09',9],['10',10],['11',11],['12',12]]});
+var treeselect=new Ext.lt.recordset({columns:['v','t','p'],datas:[['%','全部'],['01',1],['02',2],['03',3],['04',4],['05',5],['06',6],['07',7],['08',8],['09',9],['10',10],['11',11],['12',12]]});
+</script> 
+
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>创建编辑区</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="chuangjianeditpanel" style="width:600px;">
+									<li  width="50%" label="input" type="input" name="input" />
+									<li  width="50%" label="numberinput" type="numberinput"  name="numberinput" />
+									<li  width="50%" label="select" type="select"  name="select" dataloader="selectdata"/>
+									<li  width="50%" label="treeselect" type="treeselect"  name="treeselect" dataloader="treeselect"/>
+									<li  width="50%" label="date" type="date"  name="date" />
+									<li  width="50%" label="dateregion" type="dateregion"  name="dateregion" />
+									<li  width="100%" label="textarea" type="textarea"  name="textarea" />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var chuangjianeditpanel=Ext.lt.editpanel.initFormPanel(document.getElementById('chuangjianeditpanel'));
+			
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li  width="50%" lable="input" type="input" name="input" />
+			&lt;li  width="50%" lable="numberinput" type="numberinput"  name="numberinput" />
+			&lt;li  width="50%" lable="select" type="select"  name="select" dataloader="selectdata"/>
+			&lt;li  width="50%" label="treeselect" type="treeselect"  name="treeselect" dataloader="treeselect"/>
+			&lt;li  width="50%" lable="date" type="date"  name="date" />
+			&lt;li  width="50%" lable="dateregion" type="dateregion"  name="dateregion" />
+			&lt;li  width="100%" lable="textarea" type="textarea"  name="textarea" />
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>绑定数据</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="bindeditpanel" style="width:600px;">
+									<li  width="50%" label="input" type="input" name="input" />
+									<li  width="50%" label="numberinput" type="numberinput"  name="numberinput" />
+									<li  width="50%" label="select" type="select"  name="select" dataloader="selectdata"/>
+									<li  width="50%" label="treeselect" type="treeselect"  name="treeselect" dataloader="treeselect"/>
+									<li  width="50%" label="date" type="date"  name="date" />
+									<li  width="50%" label="dateregion" type="dateregion"  name="dateregion" />
+									<li  width="100%" label="textarea" type="textarea"  name="textarea" />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var bindeditpanel=Ext.lt.editpanel.initFormPanel(document.getElementById('bindeditpanel'));
+			bindeditpanel.bind({input:'测试',numberinput:44,select:'01',treeselect:'01',date:new Date(),textarea:"12313132"});
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li  width="50%" lable="input" type="input" name="input" />
+			&lt;li  width="50%" lable="numberinput" type="numberinput"  name="numberinput" />
+			&lt;li  width="50%" lable="select" type="select"  name="select" dataloader="selectdata"/>
+			&lt;li  width="50%" label="treeselect" type="treeselect"  name="treeselect" dataloader="treeselect"/>
+			&lt;li  width="50%" lable="date" type="date"  name="date" />
+			&lt;li  width="50%" lable="dateregion" type="dateregion"  name="dateregion" />
+			&lt;li  width="100%" lable="textarea" type="textarea"  name="textarea" />
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+			form.bind({input:'测试',numberinput:44,select:'01',treeselect:'01',date:new Date(),textarea:"12313132"});
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>columnsize</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block" >
+								<ul  id="columnsize" style="width:600px;" columnsize='2' >
+									<li label="input" type="input" name="input" />
+									<li label="numberinput" type="numberinput"  name="numberinput" />
+									<li label="select" type="select"  name="select" dataloader="selectdata"/>
+									<li label="treeselect" type="treeselect"  name="treeselect" dataloader="treeselect"/>
+									<li label="date" type="date"  name="date" />
+									<li label="textarea" type="textarea"  name="textarea" />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var columnsize=Ext.lt.editpanel.initFormPanel(document.getElementById('columnsize'));
+	</script>
+	<pre> 
+		&lt;ul id="ul" columnsize='2' >
+			&lt;li   lable="input" type="input" name="input" />
+			&lt;li   lable="numberinput" type="numberinput"  name="numberinput" />
+			&lt;li   lable="select" type="select"  name="select" dataloader="selectdata"/>
+			&lt;li   lable="treeselect" type="treeselect"  name="treeselect" dataloader="treeselect"/>
+			&lt;li   lable="date" type="date"  name="date" />
+			&lt;li   lable="textarea" type="textarea"  name="textarea" />
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+			form.bind({input:'测试',numberinput:44,select:'01',treeselect:'01',date:new Date(),textarea:"12313132"});
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	
+	<tr>
+			<th colspan=2>dateregion</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="dateregion" style="width:600px;">
+									<li  width="100%" label="dateregion" type="dateregion"  name="dateregion" />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var dateregion=Ext.lt.editpanel.initFormPanel(document.getElementById('dateregion'));
+			bindeditpanel.bind({start_dateregion:new Date(2000),end_dateregion:new Date()});
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li  width="50%" lable="dateregion" type="dateregion"  name="dateregion" />
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+			form.bind({start_dateregion:new Date(),end_dateregion:new Date(2000)});
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>点击事件</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="click" style="width:600px;">
+								<li label="input" width="100%" type="input" name="input" onclick="alert(1)"/>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var click=Ext.lt.editpanel.initFormPanel(document.getElementById('click'));
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li  label="input" width="100%" type="input" name="input" onclick="alert(1)"/>
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>lablewidth和maxlength</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="labelwidth" style="width:600px;">
+								<li label="input" labelwidth=60 maxlength=6 isnull=false width="100%" type="input" name="input"/>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var lablewidth=Ext.lt.editpanel.initFormPanel(document.getElementById('labelwidth'));
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li  label="input" labelwidth=60 maxlength=6 isnull=false width="100%" type="input" name="input"/>
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	
+	<tr>
+			<th colspan=2>number类型的内容</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="number" style="width:600px;">
+								<li label="numberinput"  maxlength=15 isnull=false width="100%" type="numberinput" name="numberinput"
+										qfw=true	dot=4	redwordmode=true
+									/>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var number=Ext.lt.editpanel.initFormPanel(document.getElementById('number'));
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li label="numberinput"  maxlength=15 isnull=false width="100%" type="numberinput" name="numberinput"
+										qfw=true	dot=4	redwordmode=true/>
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>清理按钮</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="_slect" style="width:600px;">
+								<li label="select"   width="100%" type="select" name="select"  dataloader="selectdata"  clearbtn=true />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var _slect=Ext.lt.editpanel.initFormPanel(document.getElementById('_slect'));
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li label="select"   width="100%" type="select" name="select"  dataloader="selectdata"  clearbtn=true />
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>tipstext属性</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="tipstext" style="width:600px;">
+								<li label="input" width="100%" type="input" name="input" tipstext="缺省提示性文字" defaulttext="缺省提示性文字" />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var click=Ext.lt.editpanel.initFormPanel(document.getElementById('tipstext'));
+	</script>
+	<pre> 
+		&lt;ul id="ul">
+			&lt;li  label="input" width="100%" type="input" name="input" tipstext="缺省提示性文字" defaulttext="缺省提示性文字" />
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('ul'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>select的相关绑定</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+								<select id="aaa" name='aaa'
+									 onchange="alert('onchange')" 
+									 onblur="alert('onblur')"  
+									 onfocus="alert('onfocus')" 
+									 onchange="alert('onchange')"
+									 onclick="alert('onclick')"
+									  >
+								  <option value ="1">普通Select标签1</option>
+								  <option value ="2">普通Select标签2</option>
+								  <option value ="3">普通Select标签3</option>
+								  <option value ="4">普通Select标签4</option>
+								</select>
+								<button onclick="hh();"/>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			//Ext.lt.editpanel.select();
+			function hh(){
+				var events={'onclick':null,'ondbclick':null,'onblur':null,'onchange':null,'onfocus':null};
+				var el=document.getElementById('aaa');
+				
+				for(var e in events){
+					events[e]=el[e];
+				}
+				
+				
+				var div=document.createElement('span');
+				el.parentNode.insertBefore(div,el);
+				
+				var hinp=document.createElement('input');
+				hinp.type='hidden';
+				hinp.name=el.name;
+				hinp.value=el.value;
+				
+				var _name='select_'+Ext.lt.getNextSeqValue();
+				
+				div.appendChild(el);
+				var _sel=new Ext.lt.editpanel.select({name:_name});
+				_sel.draw(div);
+				
+				div.appendChild(hinp);
+				
+				var o={};
+				var _select=div.children[1];
+				
+				o[_name]=hinp.value
+				_sel.bind(o);
+				//绑定事件
+				for(var e in events){
+					if(e!='onchange'&&e!='onblur')
+					_select.attachEvent(e,function(){
+						if(typeof(events[e])=='function'){
+							events[e]();
+						}else if(typeof(events[e])=='string'){
+							eval(events[e])
+						}
+					});
+				}
+				_select.attachEvent('onblur',function(){
+					setTimeout(function(){
+						hinp.value=o[_name];
+						if(events['onchange']!=null){
+							var change=events['onchange']
+							if(typeof(change)=='function'){
+								change();
+							}else if(typeof(change)=='string'){
+								eval(change)
+							}
+						}
+					},100);
+				})
+			}
+			
+	</script>
+	<pre> 
+		
+		&lt;ul id="ul">
+			&lt;li  label="input" width="100%" type="input" name="input" tipstext="缺省提示性文字" defaulttext="缺省提示性文字" />
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('tipstext'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	
+	<tr>
+			<th colspan=2>treeselect的两种选择模式</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul id="treeselect11">
+									<li  width="50%" label="treeselect" type="treeselect"  name="treeselect"  dataloader="treeselect" />
+									<li  width="50%" label="treeselect" type="treeselect"  name="treeselectn" selectmode="n" dataloader="treeselect" />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var click=Ext.lt.editpanel.initFormPanel(document.getElementById('treeselect11'));
+	</script>
+	<pre> 
+		&lt;ul id="treeselect">
+			&lt;li  width="50%" label="treeselect" type="treeselect"  name="treeselect"  dataloader="treeselect"/>
+			&lt;li  width="50%" label="treeselect" type="treeselect"  name="treeselectn" selectmode="n" dataloader="treeselect"/>
+		&lt;/ul>
+		&lt;script>
+			var form=Ext.lt.editpanel.initFormPanel(document.getElementById('treeselect'));
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	<tr>
+			<th colspan=2>button的相关用法</th>
+	<tr>
+			<td>
+				<table>
+					<tr>
+						<td width=700px>
+							<div style="width:700px;display:block">
+								<ul  id="button" style="width:600px;">
+									<li  width="50%"  type="input" name="input" />
+									<li  width="50%"  type="numberinput"  name="numberinput" />
+									<li  width="50%"  type="select"  name="select" dataloader="selectdata"/>
+									<li  width="50%"  type="treeselect"  name="treeselect" dataloader="treeselect"/>
+									<li  width="50%"  type="date"  name="date" />
+									<li  width="50%"  type="dateregion"  name="dateregion" />
+									<li  width="100%"  type="textarea"  name="textarea" />
+									<li  label="submit" width="20%" type="button" name="submit" onclick="save(obj)" />
+									<li  label="reset" width="20%" type="button" name="reset" onclick="reset(obj)" />
+									<li  label="check" width="20%" type="button" name="check" onclick="check(obj)" />
+									<li  label="change" width="20%" type="button" name="change" onclick="change(obj)" />
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+	<script>
+			var click=Ext.lt.editpanel.initFormPanel(document.getElementById('button'));
+			var obj={input:'',numberinput:'',select:'',treeselect:'',date:'',dateregion:'',Textarea:''};
+			
+			click.bind(obj);
+			function save(obj){
+				var result = click.getData();
+				alert(result.input+result.numberinput+result.select+result.treeselect+result.date+result.dateregion+result.textarea);
+			}
+			function reset(obj){
+				click.reset();
+			}
+			function check(obj){
+				click.check();
+			}
+			function change(obj){
+				if(click.isChange()){
+					alert('编辑区值发生改变');
+				}else{
+					alert('编辑区值未发生改变');
+				}
+			}
+	</script>
+	<pre> 
+		&lt;ul  id="button" style="width:600px;">
+			&lt;li  width="50%" lable="input" type="input" name="input" />
+			&lt;li  width="50%" lable="numberinput" type="numberinput"  name="numberinput" />
+			&lt;li  width="50%" lable="select" type="select"  name="select" dataloader="selectdata"/>
+			&lt;li  width="50%" label="treeselect" type="treeselect"  name="treeselect" dataloader="treeselect"/>
+			&lt;li  width="50%" lable="date" type="date"  name="date" />
+			&lt;li  width="50%" lable="dateregion" type="dateregion"  name="dateregion" />
+			&lt;li  width="100%" lable="textarea" type="textarea"  name="textarea" />
+			&lt;li  label="submit" width="20%" type="button" name="submit" onclick="save(obj)" />
+			&lt;li  label="reset" width="20%" type="button" name="submit" onclick="reset(obj)" />
+			&lt;li  label="check" width="20%" type="button" name="check" onclick="check(obj)" />
+			&lt;li  label="change" width="20%" type="button" name="change" onclick="change(obj)" />
+		&lt;/ul>
+		&lt;script>
+			var click=Ext.lt.editpanel.initFormPanel(document.getElementById('button'));
+			var obj={input:'',numberinput:'',select:'',treeselect:'',date:'',dateregion:'',Textarea:''};
+			
+			click.bind(obj);
+			function save(obj){
+				var result = click.getData();
+				alert(result.input+result.numberinput+result.select+result.treeselect+result.date+result.dateregion+result.textarea);
+			}
+			function reset(obj){
+				click.reset();
+			}
+			function check(obj){
+				click.check();
+			}
+			function change(obj){
+				if(click.isChange()){
+					alert('编辑区值发生改变');
+				}else{
+					alert('编辑区值未发生改变');
+				}
+			}
+		&lt;/script>
+	<pre>
+			</td>
+	</tr>
+	
+	
+	select的相关绑定 创建单独的select组件之后绘制到制定div上面这个div里面有个select对象。将这个select自动替换成select的组件
+	
+	 相关用法
+getData() 
+获取编辑区绑定的值对象，如果初始化时值对象为Null，编辑区会重新创建一个值对象 
+on({eventname:function(ds,param),…}) 
+绑定事件，参数为对象，key是事件名，值为事件处理函数。事件处理函数包含两个参数，第一个为编辑区绑定的数据集，第二个是出发事件的对象传送的参数 
+fireEvent(eventname,param) 
+触发指定的事件，参数为事件名和传递的参数。 
+reset() 
+重置编辑区的内容 
+check() 
+校验编辑区的内容，返回值为boolean。true表示全部校验通过 
+submit(callback:function(returnvalue)) 
+向初始化参数中action属性中设置的地址提交编辑区内容，在远程调用前会执行submit事件，远程调用成功后回执行aftersubmit事件 
+bind(object) 
+向编辑区绑定数据集对象，可以为null。如果参数为null时则构造一个新的值对象 
+isChange() 
+返回值为boolean。该方法会检查编辑区绑定的值对象的属性是否被改变过，如果有改变则返回true，没有则返回false 
+	
+</table>
+
+
+
+
+</body>
+</html>

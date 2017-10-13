@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+<link rel="stylesheet" type="text/css" href="../../../../datatabletheme35.css" />
+<link rel="stylesheet" type="text/css" href="../../uidoc.css" />
+
+<script src="../../../../ltext_core.js"></script>
+<script src="../../../../datatable3.0.js"></script>
+<script src="../../jquery.js"></script>
+</head>
+
+<body>
+<p>颜色选择器<br/>
+	<h1>color</h1>
+	<h2>命名空间：Ext.lt.color</h2>
+<h2>说明：</h2>
+<p>
+颜色选择器，通过创建组件来生成颜色选择器<br/>
+</p>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;link rel="stylesheet" type="text/css" href="/ltext/datatabletheme.css" /><br>
+&lt;script src="/ltext/ltext_core.js">&lt;/script><br>
+	<br>
+代码如下所示：<br>
+	var m=Ext.lt.color({
+			lable:'颜色选择器',
+			value:'style.color'
+			});<br/>
+		m.draw(HTMLElement);<br/>
+</p>
+<h2>初始化参数说明</h2>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">参数名</th>
+      <th width="15%" bgcolor="#00FFFF">数据类型</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">lable</td>
+      <td bgcolor="#EEEEEE">string</td>
+      <td bgcolor="#EEEEEE">lab的内容</td>
+    </tr>
+     <tr>
+      <td bgcolor="#CCCCCC">value</td>
+      <td bgcolor="#EEEEEE">String</td>
+      <td bgcolor="#EEEEEE">默认选择的颜色</td>
+    </tr>  
+   </table>
+<h2>方法说明</h2>
+<h3>draw</h3>
+<p>
+绘制颜色选择器，并定位到绘制的div上<br/>
+color.draw(div) 
+</p>
+<h3>getValue</h3>
+<p>
+获取选择的颜色<br/>
+color.getValue() 
+</p>
+<h3>setValue</h3>
+<p>
+设置选择的颜色<br/>
+color.setValue(style.color) 
+</p>
+
+<table width="100%" border=1>
+	<tr>
+			<th>普通效果颜色选择</th>
+	<tr>
+		<td>
+			<div id="pcolortest"></div>
+<pre class=democodearea>
+
+		var m=Ext.lt.color({
+			lable:'颜色选择器',
+			value:'#00ff00'
+			});
+		var d=document.getElementById('pcolortest');
+		m.draw(d);
+
+
+</pre>
+<button onclick="eval(this.parentElement.getElementsByTagName('pre').item(0).innerHTML)" >测试</button>
+		</td>
+	</tr>
+	<tr>
+			<th>设置颜色</th>
+	<tr>
+		<td>
+			<div id="pcolortest2"></div>
+<pre class=democodearea>
+
+		var m=Ext.lt.color({
+			lable:'颜色选择器',
+			value:'#00ff00'
+			});
+		var d=document.getElementById('pcolortest');
+		m.draw(d);
+		function setColor(){
+			m.setValue("#ff00ff");
+		}
+
+</pre>
+<SCRIPT LANGUAGE="JavaScript">
+		var m2=Ext.lt.color({
+			lable:'颜色选择器',
+			value:'#00ff00'
+			});
+		var d=document.getElementById('pcolortest2');
+		m2.draw(d);
+	</SCRIPT>
+
+<button onclick="m2.setValue('#ff00ff')" >测试</button>
+		</td>
+	</tr>
+		<tr>
+			<th>获取颜色</th>
+	<tr>
+		<td>
+			<div id="pcolortest3"></div>
+<pre class=democodearea>
+
+		var m=Ext.lt.color({
+			lable:'颜色选择器',
+			value:'#00ff00'
+			});
+		var d=document.getElementById('pcolortest');
+		m.draw(d);
+		function setColor(){
+			alert(m.getValue());
+		}
+
+</pre>
+<SCRIPT LANGUAGE="JavaScript">
+		var m3=Ext.lt.color({
+			lable:'颜色选择器',
+			value:'#00ff00'
+			});
+		var d=document.getElementById('pcolortest3');
+		m3.draw(d);
+	</SCRIPT>
+
+<button onclick="alert(m3.getValue())" >测试</button>
+		</td>
+	</tr>	
+</table>
+</body>
+</html>

@@ -1,0 +1,1364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Ext.lt.editpanel API</title>
+
+ 
+
+
+		<script type="text/javascript" src="../../../../frameworksupport.js"></script>
+		<script type="text/javascript" src="../../../../ltext_core.js"></script>
+		<script type="text/javascript" src="../../../../../js/fasp.js"></script>
+		<script type="text/javascript" src="../../../../../js/poptree.js"></script>
+		<script type="text/javascript" src="../../../../../js/calendar.js"></script>
+		<script type="text/javascript" src="../../../../../common/ui/ui_editpanel.js"></script> 
+		<link rel="stylesheet" type="text/css" href="../../../../../style/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../../style/default/buscommon_ui_style.css" />
+
+</head>
+
+<body>
+<p>
+	<h2>自定义组件：</h2>
+	<p>editpanel2提供自定义组件类型，可自定义组件功能。如checkbox，radio,文件上传组件，flash,树及其他第三方组件等等</p>
+	
+	<h3>布局</h3>
+	<p>布局分为左侧label区域，右侧操作区域，为了保证布局统一，自定义组件应实现此种布局</p>
+	<div><img src ='./images/younameit.jpg'></div>
+	<p></p>
+	<h3>属性</h3>
+ <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">属性名</th>
+      <th width="5%" bgcolor="#00FFFF">描述</th>
+      <th width="45%" bgcolor="#00FFFF">举例</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">events</td>
+      <td bgcolor="#EEEEEE">事件</td>
+      <td bgcolor="#EEEEEE">
+      		cfg.events = ['change','blur','click','propertychange'];
+      	</td>
+      <td bgcolor="#EEEEEE">定义当前组件可以触发的事件，默认为'change','blur','click','propertychange'，各组件可覆盖</td>
+    </tr>
+		    <tr>
+      <td bgcolor="#CCCCCC">labelwidth</td>
+      <td bgcolor="#EEEEEE">label区域宽度</td>
+      <td bgcolor="#EEEEEE">
+      		 
+      	</td>
+      <td bgcolor="#EEEEEE">默认按照当前editpanel2中最长文字的宽度，如完全自定义自定义组件内容，可根据该宽度布局</td>
+    </tr>
+	    <tr>
+      <td bgcolor="#CCCCCC">inputwidth</td>
+      <td bgcolor="#EEEEEE">操作区域推荐编辑宽度</td>
+      <td bgcolor="#EEEEEE">
+      	cfg.resize=fucntioin(w,h){
+		 _input.style.width = cfg.inputwidth;
+		}
+      	</td>
+      <td bgcolor="#EEEEEE">editpanel2根据计算给出操作区域的编辑框元素的推荐宽度</td>
+    </tr>
+
+	</table>
+	<h3>接口</h3>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">方法名</th>
+      <th width="5%" bgcolor="#00FFFF">关系</th>
+      <th width="45%" bgcolor="#00FFFF">举例</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">tostring</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+      		&nbsp;&nbsp;  cfg.tostring=function(){<br>
+		        &nbsp;&nbsp;&nbsp;&nbsp;  return '&lt;div>男&lt;input type="radio" id="sex1" name="sex" value="male"/><br>
+		        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;       女&lt;input type="radio" id="sex2"  name="sex"/>&lt;/div>'<br>
+	  &nbsp;&nbsp; }
+      	</td>
+      <td bgcolor="#EEEEEE">定义操作区域内容，如实现该接口，则editpanel2会自动实现label区域。返回自定义显示html元素</td>
+    </tr>
+     <tr>
+		    <tr>
+      <td bgcolor="#CCCCCC">draw</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+      		&nbsp;&nbsp;  cfg.draw=function(el){<br>
+		         //el为传入 整个div对象
+	  &nbsp;&nbsp; }
+      	</td>
+      <td bgcolor="#EEEEEE">定义整个自定义组件显示内容。该接口与tostring接口必须实现一个</td>
+    </tr>
+			    <tr>
+      <td bgcolor="#CCCCCC">init</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+      		&nbsp;&nbsp;  cfg.init=function(el){<br>
+		         //el为传入 div对象
+	  &nbsp;&nbsp; }
+      	</td>
+      <td bgcolor="#EEEEEE">画完回调事件，该方法在draw后调用</td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">resize</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+      		 	  &nbsp;&nbsp;  cfg.resize=function(w,h){<br>
+		         &nbsp;&nbsp;  &nbsp;&nbsp;   document.getElementById("sex1").parentNode.style.width = w+"px";<br>
+		         &nbsp;&nbsp;   return w;<br>
+	   &nbsp;&nbsp;}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。传入w,h为外部div定义的宽度，可根据外部div定义的宽度调整组件内部组件布局。默认editpanel2会给出建议label宽度 cfg.labelwidth，及input宽度cfg.inputwidth</td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">clear</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+      		 	  	 &nbsp;&nbsp;   cfg.clear=function(){<br>
+		  						&nbsp;&nbsp;  &nbsp;&nbsp;  	document.getElementById("area").value="";<br>
+	  					&nbsp;&nbsp;  		}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。清空方法。清空方法内部应实现同步表单区值 逻辑。</td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">setdisabled</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+      		 	  	 &nbsp;&nbsp;   cfg.setdisabled=function(){<br>
+		  						&nbsp;&nbsp;  &nbsp;&nbsp;  	<br>
+	  					&nbsp;&nbsp;  		}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。动态修改只读。
+     </td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">bind</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+	 			 &nbsp;&nbsp;cfg.bind=function(ds){<br>
+		 			&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("sex2").checked = ds[cfg.name];<br>
+	  		 &nbsp;&nbsp;}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。组件赋值方法。 传入值集对象</td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">check</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+	 			 &nbsp;&nbsp;cfg.check=function(){<br>
+		 			&nbsp;&nbsp;&nbsp;&nbsp; return true;<br>
+	  		 &nbsp;&nbsp;}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。组件校验非空方法实现。</td>
+    </tr>
+	        <tr>
+      <td bgcolor="#CCCCCC">focus</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+	 			 &nbsp;&nbsp;cfg.focus=function(){<br>
+		 			&nbsp;&nbsp;&nbsp;&nbsp; _input.focus();<br>
+	  		 &nbsp;&nbsp;}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。组件聚焦事件。</td>
+    </tr>
+		        <tr>
+      <td bgcolor="#CCCCCC">ischange</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+	 			 &nbsp;&nbsp;cfg.ischange=function(){<br>
+		 			&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+	  		 &nbsp;&nbsp;}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。初次绑定值后是否发生变化。</td>
+    </tr>
+			        <tr>
+      <td bgcolor="#CCCCCC">reset</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+	 			 &nbsp;&nbsp;cfg.reset=function(){<br>
+		 			&nbsp;&nbsp;&nbsp;&nbsp; ;<br>
+	  		 &nbsp;&nbsp;}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。重置内容。</td>
+    </tr>
+				        <tr>
+      <td bgcolor="#CCCCCC">getvalue</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+	 			 &nbsp;&nbsp;cfg.getvalue=function(obj){<br>
+		 			&nbsp;&nbsp;&nbsp;&nbsp; return "11";<br>
+	  		 &nbsp;&nbsp;}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。取值接口。如果是单一值集直接返回，如果是多个值，如区间，则修改传入值集对象 如：		cfg.getvalue=function(obj){
+			obj["start_"+_cfg.name] = _bnvalue_start;
+			obj["end_"+_cfg.name] = _bnvalue_end;
+		}</td>
+    </tr>
+					        <tr>
+      <td bgcolor="#CCCCCC">getvalue4all</td>
+      <td bgcolor="#EEEEEE">实现</td>
+      <td bgcolor="#EEEEEE">
+			cfg.getvalue4all=function(){
+				if(_bnvalue){return {text:_bnvalue,value:_bnvalue};}
+				return null;
+			}
+      	</td>
+      <td bgcolor="#EEEEEE">必须实现。取完整值接口。 以 {text:_bnvalue,value:_bnvalue}对象格式返回。</td>
+    </tr>
+						        <tr>
+      <td bgcolor="#CCCCCC">bindEvent</td>
+      <td bgcolor="#EEEEEE">可覆盖</td>
+      <td bgcolor="#EEEEEE">
+					//重写绑定事件方法
+		cfg.bindEvent=function(eva){
+			for(var i in cfg.events){
+				var fn = cfg.events[i];
+				if(eva[fn]!=null){
+					if(eva["asyncloaddata"])_lookuptype=3;
+					if(eva["loaddata"])_lookuptype=2;
+					cfg.events['on'+fn]=eva[fn];
+				}
+			}
+		}
+      	</td>
+      <td bgcolor="#EEEEEE">如需要可以重写。参考ui_editpanel.js中树型组件重写绑定事件方法</td>
+    </tr>
+						        <tr>
+      <td bgcolor="#CCCCCC">fireEvent</td>
+      <td bgcolor="#EEEEEE">可覆盖td>
+      <td bgcolor="#EEEEEE">
+			ins.fireEvent("onclick",cfg);
+      	</td>
+      <td bgcolor="#EEEEEE">如需要可以重写。第一个参数为事件名称(参考事件属性)，第二个参数为传入对象</td>
+    </tr>
+        <tr>
+      <td bgcolor="#CCCCCC">createComponet</td>
+      <td bgcolor="#EEEEEE">调用</td>
+      <td bgcolor="#EEEEEE">
+	 			 &nbsp;&nbsp;&nbsp;&nbsp;cfg.createComponet(this);
+      	</td>
+      <td bgcolor="#EEEEEE">必须调用。创建组件方法。cfg.createComponet(this);</td>
+    </tr>
+  </table>
+</p>
+ 
+
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>自定义组件1</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:200px;height:300px' id='editform' ></div>
+							<input type="button" value="取值" onclick="if(_edpanel.check()){alert(Object.toJSON(_edpanel.getvalue()));}"/>
+							<input type="button" value="赋值" onclick="_edpanel.bind({sex:'female'})"/>
+							<input type="button" value="清空" onclick="_edpanel.clear()"/>
+							
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+		Ext.lt.demo_sex=function(cfg){
+	  cfg.tostring=function(){
+		  return '<div >男<input type="radio" id="sex1" name="sex" value="male"/>女<input type="radio" id="sex2"  value="female" name="sex"/></div>'
+	  }
+	  var chekarr;
+	  var divobj;
+	  var btnvalue;
+	  cfg.init=function(el){ 
+		divobj = el.lastChild.firstChild;
+		chekarr = divobj.getElementsByTagName("input");
+		Ext.lt.bindEvent(divobj,"onclick",function(){
+			var obj = event.srcElement;
+			if(obj.type=="radio"){
+			cfg.value = obj.value;
+				 if(cfg.ischange()){
+				   cfg._lastvalue = cfg.value;
+				}
+			}
+		})
+	  }
+	  cfg.resize=function(w,h){
+	   divobj.style.width=cfg.inputwidth+'px';
+	  }
+	  cfg.clear=function(){
+		chekarr.sex1.checked = false;
+		chekarr.sex2.checked = false;
+		cfg.value=null;
+		cfg._lastvalue=null;	
+	  }
+	  cfg.ischange=function(){
+	    if(cfg.value!=cfg._lastvalue){
+		 return true;
+		}
+		return false;
+	  }
+	  cfg.bind=function(ds){
+	  if(ds!=null&&ds[cfg.name]!=null) {
+	  if(chekarr[0].value==ds[cfg.name])chekarr[0].checked = true;
+	  if(chekarr[1].value==ds[cfg.name])chekarr[1].checked = true;
+		  cfg.value = ds[cfg.name];
+		  cfg._lastvalue = null;
+	  }
+	  }
+	  cfg.check=function(){
+		  if(cfg.isrequired&&cfg.value==null){
+		   cfg.formpanel.showvalidate(false,cfg.name,'warning',cfg.label+'是必填项，请选择!');
+		   return false;
+		  }
+		  return true;
+	  }
+	  cfg.focus=function(){
+	  chekarr.sex1.focus();
+	  }
+	  cfg.getvalue=function(){
+	   return cfg.value;
+	  }
+	  cfg.getvalue4all=function(){
+	  var obj = null;
+	  if(cfg.value){
+	   obj = {text:cfg.value,value:cfg.value};
+	  }
+	   return obj;
+	  }
+	  cfg.setdisabled=function(status){
+	  if(typeof(status)=="boolean"){
+		chekarr.sex1.disabled = status;
+		chekarr.sex2.disabled = status;
+	  }else if(typeof(status)=="object"){
+	  
+		chekarr.sex1.disabled = status.start;
+		chekarr.sex2.disabled = status.end;	  
+	  }
+	    
+	  }
+	  cfg.createComponet(this);
+}
+		
+		var cfg = {
+			columnsize:3,
+			configs:[{
+				name:"sex",
+				label:"性别",
+				type:"Ext.lt.demo_sex",
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 	  _edpanel.draw(document.getElementById("editform"));  
+			  _edpanel.resize(300); 
+				
+		//_edpanel.modify({sex:true},'disabled');
+		//if(_edpanel.check()){
+		// alert(Object.toJSON(_edpanel.getvalue()))
+		//}
+	 
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+			Ext.lt.demo_sex=function(cfg){
+	  cfg.tostring=function(){
+		 return "&lt;div id ='sex1'&gt;男&lt;input type='radio' id='sex1' name='sex' value='male'/&gt;女&lt;input type='radio' id='sex2'  name='sex'/&gt;&lt;/div&gt;"
+	  }
+	  var chekarr;var divobj;
+	  cfg.init=function(el){ 
+		divobj = el.lastChild.firstChild;
+		chekarr = divobj.getElementsByTagName("input");
+		Ext.lt.bindEvent(divobj,"onclick",function(){
+			var obj = event.srcElement;
+			if(obj.type=="radio"){
+			cfg.value = obj.value;
+				 if(cfg.ischange()){
+				   cfg._lastvalue = cfg.value;
+				}
+			}
+		})
+	  }
+	  cfg.resize=function(w,h){
+	   divobj.style.width=cfg.inputwidth+'px';
+	  }
+	  cfg.clear=function(){
+		chekarr.sex1.checked = false;
+		chekarr.sex2.checked = false;
+		cfg.value=null;
+		cfg._lastvalue=null;	
+	  }
+	  cfg.ischange=function(){
+	    if(cfg.value!=cfg._lastvalue){
+		 return true;
+		}
+		return false;
+	  }
+	  cfg.bind=function(ds){
+	  if(ds!=null&&ds[cfg.name]!=null) {
+	  if(chekarr[0].value==ds[cfg.name])chekarr[0].checked = true;
+	  if(chekarr[1].value==ds[cfg.name])chekarr[1].checked = true;
+		  cfg.value = ds[cfg.name];
+		  cfg._lastvalue = null;
+	  }
+	  }
+	  cfg.check=function(){
+		  if(cfg.isrequired&&cfg.value==null){
+		   cfg.formpanel.showvalidate(false,cfg.name,'warning',cfg.label+'是必填项，请选择!');
+		   return false;
+		  }
+		  return true;
+	  }
+	  cfg.focus=function(){
+	  chekarr.sex1.focus();
+	  }
+	  cfg.getvalue=function(){
+	   return cfg.value;
+	  }
+	  cfg.getvalue4all=function(){
+	  var obj = null;
+	  if(cfg.value){
+	   obj = {text:cfg.value,value:cfg.value};
+	  }
+	   return obj;
+	  }
+	  cfg.setdisabled=function(status){
+	  if(typeof(status)=="boolean"){
+		chekarr.sex1.disabled = status;
+		chekarr.sex2.disabled = status;
+	  }else if(typeof(status)=="object"){
+	  
+		chekarr.sex1.disabled = status.start;
+		chekarr.sex2.disabled = status.end;	  
+	  }
+	    
+	  }
+	  cfg.createComponet(this);
+}
+		
+		var cfg = {
+			columnsize:3,
+			configs:[{
+				name:"sex",
+				label:"性别",
+				type:"Ext.lt.demo_sex",
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 	  _edpanel.draw(document.getElementById("editform"));  
+			  _edpanel.resize(300); 
+	 
+	<pre></div>
+			</td>
+	</tr>
+<tr>
+			<th colspan=2>自定义组件2</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:200px;height:300px' id='editform2'   ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+	Ext.lt.demno_remark=function(cfg){
+	  cfg.tostring=function(){
+	    return "<div style='float:left'><textarea class='inputbox' onblur='submitvalue()' name='remark' id='area'></textarea>" +
+		   		"<input type='button' id='btn' onclick=test() title='单击显示当前表单值' value='提交'/><input type='button' onclick='test2()' value='清空'/></div>" 
+	
+	  }
+	  cfg.resize=function(w,h){
+		 document.getElementById("area").parentNode.style.width = cfg.inputwidth+'px';
+		 document.getElementById("area").parentNode.style.height = (h)+'px';
+		 document.getElementById("area").style.width=cfg.inputwidth+'px';
+		 document.getElementById("area").style.height=(h-30)+'px';
+	  }
+	  cfg.focus=function(){
+	  }
+	  cfg.setdisabled=function(){
+	  }
+	  cfg.clear=function(){
+	  }
+	  cfg.bind=function(ds){
+		   
+	  }
+	  cfg.setdisabled = function(status){
+	  }
+	  	  cfg.getvalue=function(){
+	  }
+	  cfg.getvalue4all=function(){
+	  }
+	  cfg.check=function(){
+		  if(document.getElementById("area").value.trim()==""){
+			  alert("自定义组件为必填项，请填写");
+			  return false;
+		  }
+		  return true;
+	  }
+	  cfg.createComponet(this);
+}
+		
+		var cfg = {
+			configs:[{
+			columnsize:1,
+			rowsize:4,
+				name:"remark",
+				label:"摘要",
+				type:"Ext.lt.demno_remark",
+				isrequired:true
+				}]
+			}
+		 var _edpanel2 = new Ext.lt.editpanel2(cfg);
+	  	  _edpanel2.draw(document.getElementById("editform2"));  
+	      _edpanel2.resize(300);
+ 
+		 function submitvalue(){
+		 	   
+		 	}
+		 function test(){
+		 	if(!_edpanel2.check()){
+		 	  return false;
+		 	}
+		     alert( Object.toJSON(_edpanel2.values));
+		 }
+		 function test2(){
+		     _edpanel2.clear();
+		 }
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		Ext.lt.demno_remark=function(cfg){
+	  cfg.tostring=function(){
+	    return "&lt;div style='float:left'&gt;&lt;textarea class='inputbox' onblur='submitvalue()' name='remark' id='area'&gt;&lt;/textarea&gt;" +
+		   		"&lt;input type='button' id='btn' onclick=test() title='单击显示当前表单值' value='提交'/&gt;&lt;input type='button' onclick='test2()' value='清空'/&gt;&lt;/div&gt;" 
+	
+	  }
+	  cfg.resize=function(w,h){
+		 document.getElementById("area").parentNode.style.width = cfg.inputwidth+'px';
+		 document.getElementById("area").parentNode.style.height = (h)+'px';
+		 document.getElementById("area").style.width=cfg.inputwidth+'px';
+		 document.getElementById("area").style.height=(h-30)+'px';
+	  }
+	  cfg.focus=function(){
+	  }
+	  cfg.setdisabled=function(){
+	  }
+	  cfg.clear=function(){
+	  }
+	  cfg.bind=function(ds){
+		   
+	  }
+	  	  cfg.getvalue=function(){
+	  }
+	  cfg.getvalue4all=function(){
+	  }
+	  cfg.setdisabled = function(status){
+	  }
+	  cfg.check=function(){
+		  if(document.getElementById("area").value.trim()==""){
+			  alert("自定义组件为必填项，请填写");
+			  return false;
+		  }
+		  return true;
+	  }
+	  cfg.createComponet(this);
+}
+		
+		var cfg = {
+			configs:[{
+			columnsize:1,
+			rowsize:4,
+				name:"remark",
+				label:"摘要",
+				type:"Ext.lt.demno_remark",
+				isrequired:true
+				}]
+			}
+		 var _edpanel2 = new Ext.lt.editpanel2(cfg);
+	  	  _edpanel2.draw(document.getElementById("editform2"));  
+	      _edpanel2.resize(300);
+
+	<pre></div>
+			</td>
+	</tr>
+<tr>
+			<th colspan=2>自定义组件3</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:200px;height:300px' id='editform3'   ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+		Ext.lt.demo_uploadfile=function(cfg){
+	   cfg.columnsize = 1;
+	  cfg.tostring=function(){
+	    return "<div id='file'><form><input id='upload' type='file' ></form></div>" 
+	  }
+	  cfg.resize=function(w,h){
+ 		  document.getElementById("file").style.width = (w-cfg.labelwidth)+"px";
+		  document.getElementById("upload").style.width = (cfg.inputwidth)+'px';
+ 		  document.getElementById("file").style.height = h+"px";
+		   
+	  }
+	  cfg.clear=function(){
+		 
+	  }
+	  	  cfg.getvalue=function(){
+	  }
+	  cfg.getvalue4all=function(){
+	  }
+	  cfg.focus=function(){
+	  }
+ 
+	    cfg.setdisabled = function(status){
+	  }
+	  cfg.bind=function(ds){
+		 // document.getElementById("area").value = ds;
+	  }
+	   cfg.check=function(){
+		  return true;
+	  }
+	  cfg.createComponet(this);
+}
+				var cfg = {
+			columnsize:3,
+			configs:[{
+				name:"uploadfile",
+				label:"头像",
+				type:"Ext.lt.demo_uploadfile",
+				isrequired:true
+				}]
+			}
+		 var _edpanel3 = new Ext.lt.editpanel2(cfg);
+		 _edpanel3.draw(document.getElementById("editform3"));  
+	     _edpanel3.resize(300)
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		 		Ext.lt.demo_uploadfile=function(cfg){
+	   cfg.columnsize = 1;
+	  cfg.tostring=function(){
+	    return "&lt;div id='file'&gt;&lt;form&gt;&lt;input id='upload' type='file' &gt;&lt;/form&gt;&lt;/div&gt;" 
+	  }
+	  cfg.resize=function(w,h){
+	   
+	   
+ 		  document.getElementById("file").style.width = document.getElementById("file").parentNode.offsetWidth+"px";
+		  document.getElementById("upload").style.width = document.getElementById("file").parentNode.offsetWidth+'px';
+ 		  document.getElementById("file").style.height = h+"px";
+		   
+	  }
+	  cfg.clear=function(){
+		 
+	  }
+	  cfg.focus=function(){
+	  }
+
+	    cfg.setdisabled = function(status){
+	  }
+	  	  cfg.getvalue=function(){
+	  }
+	  cfg.getvalue4all=function(){
+	  }
+	  cfg.bind=function(ds){
+		 // document.getElementById("area").value = ds;
+	  }
+	   cfg.check=function(){
+		  return true;
+	  }
+	  cfg.createComponet(this);
+}
+				var cfg = {
+			columnsize:3,
+			configs:[{
+				name:"uploadfile",
+				label:"头像",
+				type:"Ext.lt.demo_uploadfile",
+				isrequired:true
+				}]
+			}
+		 var _edpanel3 = new Ext.lt.editpanel2(cfg);
+		 _edpanel3.draw(document.getElementById("editform3"));  
+	     _edpanel3.resize(300)
+	<pre></div>
+			</td>
+	</tr>
+	<!--<tr>
+			<th colspan=2>自定义组件4</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:200px;height:300px' id='editform4'   ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+		Ext.lt.demo_strongpassword=function(cfg){
+	   cfg.columnsize = 1;
+	   cfg.rowsize = 2;
+	   var pobj;
+	   var cobj;
+	  cfg.draw=function(el){
+	     if(el==null)return;	     
+		 el.innerHTML="<div class='password'><lable style='width:120px;'>密码</label><input type='password'/></div><div class='confirmpassword'><lable style='width:120px;'>确认密码</label><input type='password'/></div/>"
+	  }
+	  cfg.init=function(el){
+	     pobj=el.firstChild;
+		 cobj=el.lastChild;
+	  }
+	  cfg.resize=function(w,h){
+ 		    
+	  }
+	  cfg.clear=function(){
+		 
+	  }
+	  	  cfg.getvalue=function(){
+	  }
+	  cfg.getvalue4all=function(){
+	  }
+	  cfg.focus=function(){
+	  }
+ 
+	    cfg.setdisabled = function(status){
+	  }
+	  cfg.bind=function(ds){
+		 // document.getElementById("area").value = ds;
+	  }
+	   cfg.check=function(){
+		  return true;
+	  }
+	  cfg.createComponet(this);
+}
+				var cfg = {
+			columnsize:3,
+			configs:[{
+				name:"uploadfile",
+				label:"密码",
+				type:"Ext.lt.demo_strongpassword",
+				isrequired:true
+				}]
+			}
+		 var _edpanel4 = new Ext.lt.editpanel2(cfg);
+		 _edpanel4.draw(document.getElementById("editform4"));  
+	     _edpanel4.resize(300)
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		 	 
+	<pre></div>
+			</td>
+	</tr>-->
+	<tr>
+			<th colspan=2>自定义组件5</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:200px;height:300px' id='editform5'   ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+		 Ext.lt.demo_poptree= function(cfg){
+		 var _morebtn='<button class="btn_pop" type="button"  overclass="btn_pop_over" clickclass="btn_pop_click"></button>';
+		 var _clearbtn='<button class="btn_clear" type="button"  overclass="btn_clear_over" clickclass="btn_clear_click"></button>';
+		var _cfg=Ext.lt.apply({treetype:'select',isMulti:false,outformart:"#code-#name",linkchild:true,linkparent:true,field:{id:'itemid',code:'code',name:'name',sid:'superitemid',isleaf:'isleaf'},filter:['code','name','pinyin']},cfg);
+		var _datas=null;
+		var _input=null;
+		var _btn_ctrl=null;
+		var _btn_clear=null;
+		var _pop= null;
+		var _btn=null;
+		var _id = 'ts_'+Ext.lt.getNextSeqValue();
+		var _tagel = _cfg.tagel;
+		var _treedialog = {}; 
+		var _dialog = null;
+ 
+	 	var _bnvalue=null;
+	 	var _dsbak=null;  // 数据备份
+	 	var value = null; //树组件
+	 	var _selNode = null; //确定有的选中值
+	 	var _form=cfg.formpanel;
+
+		//组件初始化
+		function init(){
+				 var popconfig = {multi:_cfg.isMulti,bottomcontrl:_cfg.bottomcontrl,istree:_cfg.treetype=="select"?true:false,linkchild:_cfg.linkchild,linkparent:_cfg.linkparent,field:_cfg.field,format:_cfg.outformart,filter:_cfg.fitler,
+							w:_cfg.width==null?320:_cfg.width,
+					    	h:_cfg.height==null?400:_cfg.height,
+					    	title:'请选择'+_cfg.label,
+					    	colcode:_cfg.label,
+					    	on:{close:sysnData},
+							loaddata:function(param){
+								_treedialog = param ;
+						}};
+						
+						function sysnData(param){
+							var texts=[];var values=[]
+							for(var i=0;i<param.size();i++){
+								texts.push(_dialog.outtext(param[i]));
+								values.push(_dialog.outvalue(param[i]));
+							}
+							_selNode.text = texts.join(",");
+							_selNode.value = values.join(",");
+							Ext.lt.fireEvent(_input,"onblur");
+							_datas = null;
+							_input.focus();
+						}
+						_dialog = new Ext.lt.ModalDialogTree(popconfig);
+		}
+		init();
+		
+		
+		cfg.getvalue = function(obj){
+			if(_bnvalue){
+				return _bnvalue.value;
+			}
+			return null;
+		}
+		
+		cfg.getvalue4all = function(obj){
+				return _bnvalue;
+		}
+		
+		function setvalue(v,t){
+			if(t){
+				_bnvalue={value:v,text:t};
+			}else{
+				_bnvalue= v;
+			}
+		}
+		//生成Label,使用label标签
+		function _buildLabel(cfg,contextfn){
+			var _html=[];
+			_html.push('<div class="treeselect">');
+			if(cfg.label!=null && cfg.label!=''){
+				if(cfg.labelwidth==0){
+					_html.push('<label class="lab">',cfg.label);
+				}
+				else{
+					_html.push('<label class="lab" style="width:',cfg.labelwidth,'px;">',cfg.label);
+				}
+				// 判断是否为必填项
+				if(cfg.isrequired) _html.push('<font color=red>*</font>');
+				_html.push('</label>');
+			}
+			// 生成内部HTML
+			_html.push(contextfn(),'</div>');
+			return _html.join('');
+		}
+		
+		//创建基本页面基本HTML
+		cfg.tostring = function(){
+			return _buildLabel(cfg,function(){
+				var _html=['<input name="',_cfg.name,'" id="'+_id+'" type="text"  maxLength=',_cfg.maxlength,' mutldata="1" class="inputbox"','/>'];
+				 _html.push(_morebtn);
+				 _html.push(_clearbtn);
+				return _html.join('');
+			});
+		}
+	 
+		  
+		cfg.reset = function(){
+			
+		}
+		
+		// 只读设置
+		cfg.setdisabled=function(status){
+			_input.disabled  = status;
+			var b2= _input.nextSibling;
+			b2.disabled = status;
+			if(b2.nextSibling)b2.nextSibling.disabled = status;
+		}
+		
+		cfg.focus =function(){
+			_input.focus();
+		   Ext.lt.fireEvent(_input,"onclick");
+		}
+		cfg.check = function(){
+			if(_cfg.isrequired&&(_input.value==null||_input.value=="")){
+				this.formpanel.showvalidate(false,cfg.name,'warning',_cfg.label+'是必填项，请填写！');
+				return false;
+			}
+			return true;
+		}
+		cfg.clear = function(){
+			_input.settext();
+				_selNode.text = "";
+				_selNode.value = ""; //当前选中节点 清空
+				 setvalue(null);
+				Ext.lt.fireEvent(_input,'onblur'); //modified
+			this._lastdata.text = "";
+			this._lastdata.value = "";
+			values=[];
+			texts=[];
+		}
+ 
+		cfg.draw = function(el){
+			var ins = this;
+			if(el!=null) _tagel=el;
+			Ext.lt.HTML.expand(_tagel);
+			_tagel.setInnerHTML(this.tostring());
+			
+			_input=_tagel.getElementsByTagName('INPUT').item(0);
+			_btn_ctrl=_input.nextSibling;
+			 _btn_clear=_btn_ctrl.nextSibling;
+			if(_btn_clear!=null){
+	 			_btn_clear.onclick=function(){
+	 				cfg.clear();
+				}
+			}
+			
+			_btn_ctrl.onclick=function(){
+					showPopTree();
+					initTreedata();
+				
+			}
+			Ext.lt.bindEvent(_input,'onblur',function(){
+				sysnvalue();
+			});
+			var _d1=null; 
+			function initTreedata(){
+				_datas = null; //重新获取数据
+			   _treedialog.data =  	 [{'itemid':1,'code':1,'superitemid':0,'name':'擎天柱'},
+						             {'itemid':101,'code':101,'superitemid':1,'name':'大黄蜂'},
+						             {'itemid':102,'code':102,'superitemid':1,'name':'补天士'},
+						             {'itemid':10101,'code':10101,'superitemid':101,'name':'大黄蜂之子'},
+						             {'itemid':2,'code':2,'superitemid':0,'name':'威震天'},
+						             {'itemid':201,'code':201,'superitemid':2,'name':'震荡波'}];;
+			}
+ 
+			//展示弹出树
+			function showPopTree(){
+				_dialog.draw();
+			}
+		    
+		    var values,texts; //editpanel的onchange事件里调clear方法会造成 lastdata不清空，所以变量外移
+			function sysnvalue(){  //原先的onafterbind
+				values=[];
+				texts=[];
+				var sels = null;
+					sels = _selNode;
+					if(sels!=null){
+						var textarry = sels.text.split(',');
+						for(var i=0,j=textarry.length;i<j;i++){
+							texts.push(textarry[i]);
+							
+						}
+						var valarry = sels.value.split(',');
+						for(var i=0,j=valarry.length;i<j;i++){
+							values.push(valarry[i]);
+						}
+					}
+					_input.settext(texts.join());
+					ins._value = {value:values.join(),text:texts.join()};
+					if(ins.ischange()){
+						if(_dialog){
+							_dialog.setdefaultvalue(values);
+						}
+						if(values.join()==""){
+							setvalue(null);
+						}else{
+							setvalue(values.join(),texts.join())
+						}
+						ins.fireEvent("onchange",ins);
+						ins._lastdata.text = texts.join();
+						ins._lastdata.value = values.join();
+					}
+				}
+			this._layout();
+		}
+		
+		// 值发生改变
+		cfg.ischange=function(){
+ 	    	var val = _input.value;
+	    	if(val==this._lastdata.text){
+	    		return false;
+	    	}
+	    	return true;
+	    }
+		
+		//计算HTML元素布局及位置.控制最小宽度，根据tagel计算大小.
+		cfg._layout = function(w,h){
+			 if(cfg.inputwidth) _input.style.width=(cfg.inputwidth)+'px';
+		}
+		cfg.resize = function(w,h){
+			if(_pop&&_pop.isShow())_pop.close();
+			this._layout(w,h);
+		}
+
+		cfg.bind=function(ds){
+			_input.settext();
+			
+			if(ds[_cfg.name]==null||ds[_cfg.name]=="") ds[_cfg.name]={value:'',text:''};
+			_dsbak = Ext.lt.cloneobj(ds[_cfg.name]);//每次绑定数据更新备份数据	
+			_input.settext(_dsbak.text);
+			
+			this._lastdata = {text:null,value:null};//Ext.lt.cloneobj(ds[_cfg.name]);
+			_selNode =[]; //有默认值 需要有默认显示  itemid
+
+			var val_arry = [];
+			if(_dsbak.value.toString().trim()!="")val_arry=_dsbak.value.toString().split(',');
+			var sval_arry = [];
+			if(_dsbak.value.toString().trim()!="")sval_arry=_dsbak.text.toString().split(',');
+			
+			_selNode.text = _dsbak.text.toString();
+			_selNode.value = _dsbak.value.toString();
+			
+			for(var i=0;i<val_arry.length;i++){
+				var tmpobj = {
+						itemid:val_arry[i],
+						value:sval_arry[i]
+				}
+				_selNode.push(tmpobj);
+			}
+			Ext.lt.fireEvent(_input,'onblur');// modified
+			if(_selNode.length>0){
+				var defs=[];
+				for(var i=0,j=_selNode.length;i<j;i++){
+					if(_selNode[i].value){
+						defs.push(_selNode[i].value);
+					}else{
+						defs.push(_selNode[i].code+"-"+_selNode[i].name);
+					}
+				}
+				_input.settext(defs.join(","));
+			}
+		};
+		 //判断对象是否为空对象
+	function isEmpty(obj){
+		if(obj==null)return true;
+		for(var i in obj){
+			if(obj[i])return false;
+		}
+		return true;
+	}
+		cfg.createComponet(this);
+	}
+				var cfg = {
+				configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"Ext.lt.demo_poptree",
+				isrequired:true,
+				isMulti:true
+				}]
+			}
+		 var _edpanel5 = new Ext.lt.editpanel2(cfg);
+		 _edpanel5.draw(document.getElementById("editform5"));  
+	     _edpanel5.resize(300)
+	     _edpanel5.bind();
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		Ext.lt.demo_poptree= function(cfg){
+		 var _morebtn='&ltbutton class="btn_pop" type="button"  overclass="btn_pop_over" clickclass="btn_pop_click"&gt&lt/button&gt';
+		 var _clearbtn='&ltbutton class="btn_clear" type="button"  overclass="btn_clear_over" clickclass="btn_clear_click"&gt&lt/button&gt';
+		var _cfg=Ext.lt.apply({treetype:'select',isMulti:false,outformart:"#code-#name",linkchild:true,linkparent:true,field:{id:'itemid',code:'code',name:'name',sid:'superitemid',isleaf:'isleaf'},filter:['code','name','pinyin']},cfg);
+		var _datas=null;
+		var _input=null;
+		var _btn_ctrl=null;
+		var _btn_clear=null;
+		var _pop= null;
+		var _btn=null;
+		var _id = 'ts_'+Ext.lt.getNextSeqValue();
+		var _tagel = _cfg.tagel;
+		var _treedialog = {}; 
+		var _dialog = null;
+ 
+	 	var _bnvalue=null;
+	 	var _dsbak=null;  // 数据备份
+	 	var value = null; //树组件
+	 	var _selNode = null; //确定有的选中值
+	 	var _form=cfg.formpanel;
+
+		//组件初始化
+		function init(){
+				 var popconfig = {multi:_cfg.isMulti,bottomcontrl:_cfg.bottomcontrl,istree:_cfg.treetype=="select"?true:false,linkchild:_cfg.linkchild,linkparent:_cfg.linkparent,field:_cfg.field,format:_cfg.outformart,filter:_cfg.fitler,
+							w:_cfg.width==null?320:_cfg.width,
+					    	h:_cfg.height==null?400:_cfg.height,
+					    	title:'请选择'+_cfg.label,
+					    	colcode:_cfg.label,
+					    	on:{close:sysnData},
+							loaddata:function(param){
+								_treedialog = param ;
+						}};
+						
+						function sysnData(param){
+							var texts=[];var values=[]
+							for(var i=0;i<param.size();i++){
+								texts.push(_dialog.outtext(param[i]));
+								values.push(_dialog.outvalue(param[i]));
+							}
+							_selNode.text = texts.join(",");
+							_selNode.value = values.join(",");
+							Ext.lt.fireEvent(_input,"onblur");
+							_datas = null;
+							_input.focus();
+						}
+						_dialog = new Ext.lt.ModalDialogTree(popconfig);
+		}
+		init();
+		
+		
+		cfg.getvalue = function(obj){
+			if(_bnvalue){
+				return _bnvalue.value;
+			}
+			return null;
+		}
+		
+		cfg.getvalue4all = function(obj){
+				return _bnvalue;
+		}
+		
+		function setvalue(v,t){
+			if(t){
+				_bnvalue={value:v,text:t};
+			}else{
+				_bnvalue= v;
+			}
+		}
+		//生成Label,使用label标签
+		function _buildLabel(cfg,contextfn){
+			var _html=[];
+			_html.push('&ltdiv class="treeselect"&gt');
+			if(cfg.label!=null && cfg.label!=''){
+				if(cfg.labelwidth==0){
+					_html.push('&ltlabel class="lab"&gt',cfg.label);
+				}
+				else{
+					_html.push('&ltlabel class="lab" style="width:',cfg.labelwidth,'px;"&gt',cfg.label);
+				}
+				// 判断是否为必填项
+				if(cfg.isrequired) _html.push('&ltfont color=red&gt*&lt/font&gt');
+				_html.push('&lt/label&gt');
+			}
+			// 生成内部HTML
+			_html.push(contextfn(),'&lt/div&gt');
+			return _html.join('');
+		}
+		
+		//创建基本页面基本HTML
+		cfg.tostring = function(){
+			return _buildLabel(cfg,function(){
+				var _html=['&ltinput name="',_cfg.name,'" id="'+_id+'" type="text"  maxLength=',_cfg.maxlength,' mutldata="1" class="inputbox"','/&gt'];
+				 _html.push(_morebtn);
+				 _html.push(_clearbtn);
+				return _html.join('');
+			});
+		}
+	 
+		  
+		cfg.reset = function(){
+			
+		}
+		
+		// 只读设置
+		cfg.setdisabled=function(status){
+			_input.disabled  = status;
+			var b2= _input.nextSibling;
+			b2.disabled = status;
+			if(b2.nextSibling)b2.nextSibling.disabled = status;
+		}
+		
+		cfg.focus =function(){
+			_input.focus();
+		   Ext.lt.fireEvent(_input,"onclick");
+		}
+		cfg.check = function(){
+			if(_cfg.isrequired&&(_input.value==null||_input.value=="")){
+				this.formpanel.showvalidate(false,cfg.name,'warning',_cfg.label+'是必填项，请填写！');
+				return false;
+			}
+			return true;
+		}
+		cfg.clear = function(){
+			_input.settext();
+				_selNode.text = "";
+				_selNode.value = ""; //当前选中节点 清空
+				 setvalue(null);
+				Ext.lt.fireEvent(_input,'onblur'); //modified
+			this._lastdata.text = "";
+			this._lastdata.value = "";
+			values=[];
+			texts=[];
+		}
+ 
+		cfg.draw = function(el){
+			var ins = this;
+			if(el!=null) _tagel=el;
+			Ext.lt.HTML.expand(_tagel);
+			_tagel.setInnerHTML(this.tostring());
+			
+			_input=_tagel.getElementsByTagName('INPUT').item(0);
+			_btn_ctrl=_input.nextSibling;
+			 _btn_clear=_btn_ctrl.nextSibling;
+			if(_btn_clear!=null){
+	 			_btn_clear.onclick=function(){
+	 				cfg.clear();
+				}
+			}
+			
+			_btn_ctrl.onclick=function(){
+					showPopTree();
+					initTreedata();
+				
+			}
+			Ext.lt.bindEvent(_input,'onblur',function(){
+				sysnvalue();
+			});
+			var _d1=null; 
+			function initTreedata(){
+				_datas = null; //重新获取数据
+			   _treedialog.data =  	 [{'itemid':1,'code':1,'superitemid':0,'name':'擎天柱'},
+						             {'itemid':101,'code':101,'superitemid':1,'name':'大黄蜂'},
+						             {'itemid':102,'code':102,'superitemid':1,'name':'补天士'},
+						             {'itemid':10101,'code':10101,'superitemid':101,'name':'大黄蜂之子'},
+						             {'itemid':2,'code':2,'superitemid':0,'name':'威震天'},
+						             {'itemid':201,'code':201,'superitemid':2,'name':'震荡波'}];;
+			}
+			//展示弹出树
+			function showPopTree(){
+				_dialog.draw();
+			}
+		    var values,texts; //editpanel的onchange事件里调clear方法会造成 lastdata不清空，所以变量外移
+			function sysnvalue(){  //原先的onafterbind
+				values=[];
+				texts=[];
+				var sels = null;
+					sels = _selNode;
+					if(sels!=null){
+						var textarry = sels.text.split(',');
+						for(var i=0,j=textarry.length;i&ltj;i++){
+							texts.push(textarry[i]);
+							
+						}
+						var valarry = sels.value.split(',');
+						for(var i=0,j=valarry.length;i&ltj;i++){
+							values.push(valarry[i]);
+						}
+					}
+					_input.settext(texts.join());
+					ins._value = {value:values.join(),text:texts.join()};
+					if(ins.ischange()){
+						if(_dialog){
+							_dialog.setdefaultvalue(values);
+						}
+						if(values.join()==""){
+							setvalue(null);
+						}else{
+							setvalue(values.join(),texts.join())
+						}
+						ins.fireEvent("onchange",ins);
+						ins._lastdata.text = texts.join();
+						ins._lastdata.value = values.join();
+					}
+				}
+			this._layout();
+		}
+		
+		// 值发生改变
+		cfg.ischange=function(){
+ 	    	var val = _input.value;
+	    	if(val==this._lastdata.text){
+	    		return false;
+	    	}
+	    	return true;
+	    }
+		
+		//计算HTML元素布局及位置.控制最小宽度，根据tagel计算大小.
+		cfg._layout = function(w,h){
+			 if(cfg.inputwidth) _input.style.width=(cfg.inputwidth)+'px';
+		}
+		cfg.resize = function(w,h){
+			if(_pop&&_pop.isShow())_pop.close();
+			this._layout(w,h);
+		}
+
+		cfg.bind=function(ds){
+			_input.settext();
+			
+			if(ds[_cfg.name]==null||ds[_cfg.name]=="") ds[_cfg.name]={value:'',text:''};
+			_dsbak = Ext.lt.cloneobj(ds[_cfg.name]);//每次绑定数据更新备份数据	
+			_input.settext(_dsbak.text);
+			
+			this._lastdata = {text:null,value:null};//Ext.lt.cloneobj(ds[_cfg.name]);
+			_selNode =[]; //有默认值 需要有默认显示  itemid
+
+			var val_arry = [];
+			if(_dsbak.value.toString().trim()!="")val_arry=_dsbak.value.toString().split(',');
+			var sval_arry = [];
+			if(_dsbak.value.toString().trim()!="")sval_arry=_dsbak.text.toString().split(',');
+			
+			_selNode.text = _dsbak.text.toString();
+			_selNode.value = _dsbak.value.toString();
+			
+			for(var i=0;i&ltval_arry.length;i++){
+				var tmpobj = {
+						itemid:val_arry[i],
+						value:sval_arry[i]
+				}
+				_selNode.push(tmpobj);
+			}
+			Ext.lt.fireEvent(_input,'onblur');// modified
+			if(_selNode.length>0){
+				var defs=[];
+				for(var i=0,j=_selNode.length;i&ltj;i++){
+					if(_selNode[i].value){
+						defs.push(_selNode[i].value);
+					}else{
+						defs.push(_selNode[i].code+"-"+_selNode[i].name);
+					}
+				}
+				_input.settext(defs.join(","));
+			}
+		};
+		 //判断对象是否为空对象
+	function isEmpty(obj){
+		if(obj==null)return true;
+		for(var i in obj){
+			if(obj[i])return false;
+		}
+		return true;
+	}
+		cfg.createComponet(this);
+	}
+				var cfg = {
+				configs:[{
+				name:"fundtype",
+				label:"资金性质",
+				type:"Ext.lt.demo_poptree",
+				isrequired:true,
+				isMulti:true
+				}]
+			}
+		 var _edpanel5 = new Ext.lt.editpanel2(cfg);
+		 _edpanel5.draw(document.getElementById("editform5"));  
+	     _edpanel5.resize(300)
+	     _edpanel5.bind(); 	 
+	<pre></div>
+			</td>
+	</tr>
+</table>
+
+
+
+
+</body>
+</html>

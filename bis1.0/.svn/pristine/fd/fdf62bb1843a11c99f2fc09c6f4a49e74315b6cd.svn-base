@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"     
+xmlns="http://java.sun.com/xml/ns/javaee"     
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"     
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee     
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>	
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/classes/context-common.xml</param-value>
+  </context-param>
+  
+  	<listener>  
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+    </listener> 
+    
+    <!-- 读取平台基础数据servlet -->
+	<servlet>
+		<servlet-name>eleDataTimmerServlet</servlet-name>
+		<servlet-class>gov.mof.fasp2.bis.elesynchro.EleDataTimmerServlet</servlet-class>
+		<load-on-startup>9</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>eleDataTimmerServlet</servlet-name>
+		<url-pattern>*.ajax</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>  
+        <servlet-name>burlapWs</servlet-name>  
+        <servlet-class>gov.mof.fasp2.bis.bustype.Fasp2PayBankService</servlet-class>  
+    </servlet>  
+    <servlet-mapping>  
+        <servlet-name>burlapWs</servlet-name>  
+        <url-pattern>/remoting/service/bankservice</url-pattern>  
+    </servlet-mapping> 
+    <servlet>
+    	<servlet-name>cacheloader</servlet-name>
+	    <servlet-class>gov.mof.fasp2.bis.servlet.CacheLoaderServlet</servlet-class>
+	    <load-on-startup>6</load-on-startup>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>timertask</servlet-name>
+	    <servlet-class>gov.mof.fasp2.bis.servlet.TimerTaskServlet</servlet-class>
+	    <load-on-startup>9</load-on-startup>
+  	</servlet>
+    <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>gov.mof.fasp2.bis.servlet.ActionServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.ajax</url-pattern>
+  </servlet-mapping>
+	  
+  <!-- 配置过滤器，拦截未登陆的用户，使其跳转到登陆页面 -->
+  <filter>
+  	<filter-name>FilterServlet</filter-name>
+  	<filter-class>gov.mof.fasp2.bis.filter.FilterServlet</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>FilterServlet</filter-name>
+  	<url-pattern>*.ajax</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>FilterServlet</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>FilterServlet</filter-name>
+  	<url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <welcome-file-list>
+    <welcome-file>/bis/login.do</welcome-file>
+  </welcome-file-list>
+  <session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>

@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.editpanel API</title>
+
+ 
+
+
+		<script type="text/javascript" src="../../../../frameworksupport.js"></script>
+		<script type="text/javascript" src="../../../../ltext_core.js"></script>
+		<script type="text/javascript" src="../../../../../js/fasp.js"></script>
+		<script type="text/javascript" src="../../../../../js/calendar.js"></script>
+		<script type="text/javascript" src="../../../../../common/ui/ui_editpanel.js"></script> 
+		<link rel="stylesheet" type="text/css" href="../../../../../style/default/ui_style.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../../style/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../datatabletheme.css" />
+
+</head>
+
+<body>
+<p>
+	<h2>数字输入区间组件：</h2>
+	<p>editpanel2提供标准数字输入区间组件类型，支持输入数字区间。</p>
+	<p></p>
+	<h3>属性</h3>
+	<table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr>
+      <th width="15%" bgcolor="#00FFFF">属性名</th>
+      <th width="5%" bgcolor="#00FFFF">数据类型</th>
+      <th width="45%" bgcolor="#00FFFF">赋值举例</th>
+      <th bgcolor="#00FFFF">说明</th>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">maxlength</td>
+      <td bgcolor="#EEEEEE">数字</td>
+      <td bgcolor="#EEEEEE">120</td>
+      <td bgcolor="#EEEEEE">最大输入长度</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">cal</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">是否使用计算器工具</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">calmode</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">是否开启计算器模式。使用该属性是cal必须为true。当属性值为on时，录入区自动进入计算器模式</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">qfw</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">是否显示千分位，默认为true</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">dot</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">小数点后的位数，默认2位</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC">redwordmode</td>
+      <td bgcolor="#EEEEEE">布尔值</td>
+      <td bgcolor="#EEEEEE">true</td>
+      <td bgcolor="#EEEEEE">红字模式，当录入数字为负数时改为红色</td>
+    </tr>
+  </table>
+</p>
+
+<table width="100%" border=1>
+	<tr>
+			<th colspan=2>数字输入区间组件</th>
+	<tr>
+			<td>
+					<table>
+					<tr>
+						<td width=700px>
+							<div style='width:350px;' id='editform' ></div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="width:40%">
+	<script>
+
+		 	
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"amt",
+				label:"金额区间",
+				type:"_amtinputi",
+				cal:true,
+				calmode:true,
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 
+		 window.setTimeout(function(){
+		 	 _edpanel.draw(el);  
+	     _edpanel.resize(350);	     
+	   },100);
+
+	</script>
+	<div style="width:800px;overflow-x:scroll"><pre>
+		 	
+		 var cfg = {
+			columnsize:1,
+			configs:[{
+				name:"amt",
+				label:"金额区间",
+				type:"_amtinputi",
+				cal:true,
+				calmode:true,
+				isrequired:true
+				}]
+			}
+		 var _edpanel = new Ext.lt.editpanel2(cfg);
+		 var el = document.getElementById("editform"); 
+		 	 _edpanel.draw(el);  
+	     _edpanel.resize(350);	     
+	<pre></div>
+			</td>
+	</tr>
+</table>
+
+
+
+
+</body>
+</html>

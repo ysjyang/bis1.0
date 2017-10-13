@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Ext.lt.HTML API</title>
+<script src="../../../../ltext_core.js"></script>
+</head>
+<body>
+<style type="text/css">
+.pos_left
+{
+position:absolute;
+
+}
+.pos_right
+{
+position:relative;
+
+}
+</style>
+
+	<h2>Elt.lt.HTML</h2>
+<h4>命名空间：Ext.lt.HTML.mark、center、style等</h4>
+<h4>说明：遮罩 </h4>
+<p>
+使用时需要在页面中引用以下文件<br>
+&lt;script src="../../../../ltext_core.js">&lt;/script>
+<h3>初始化参数说明</h3>
+  <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <tr><th width="15%" bgcolor="#00FFFF">参数名</th><th width="15%" bgcolor="#00FFFF">数据类型</th><th bgcolor="#00FFFF">说明</th></tr>
+    <tr><td bgcolor="#CCCCCC">el</td><td bgcolor="#EEEEEE">object</td><td bgcolor="#EEEEEE">遮罩对象</td></tr>
+    <tr><td bgcolor="#CCCCCC">flag</td><td bgcolor="#EEEEEE">boolean</td><td bgcolor="#EEEEEE">flag=true遮罩成功</td></tr>
+</table>	
+<h3>方法说明</h3>
+<h3>Ext.lt.HTML.mark()</h3>
+<p>采用IFRAME遮罩指定对象，flag 默认为true。当flag为true时遮罩指定对象，flase时恢复(1.屏幕大小被遮罩，不是整个页面2.某个divid有问题，body可以)<br/></p>
+<h3>Ext.lt.HTML.unmark()</h3>
+<p>取消遮罩指定HTML元素<br/></p>
+<h3>Ext.lt.HTML.hiddenAll()</h3>
+<p>隐藏所有不能被遮罩的HTML对象<br/></p>
+<h3>Ext.lt.HTML.showAll() </h3>
+<p>显示所有不能被遮罩的HTML对象<br/></p>
+<h3>Ext.lt.HTML.center()</h3>
+<p>让指定的HTML对象定位到屏幕中间(需已经有固定位置position:absolute;)<br/></p>
+<h3>Ext.lt.HTML.positionedOffset(el)</h3>
+<p>返回指定元素在页面中的位置。为方便使用，返回值结构为数组、对象混用模式。返回值基本类型为数组[左边距，上边距]。也可以从返回值对象中获取left、top属性<br/></p>
+<h3>Ext.lt.HTML.getBorderSet</h3>
+<p>获取指定HTML元素的四个边宽度<br/></p>
+<h3>Ext.lt.HTML.getStyle</h3>
+<p>获取对象样式<br/></p>     
+<h3>Ext.lt.HTML.setStyle</h3>
+<p>采用CSS格式设置对象样式。如 setStyle(divid,'width:100%;border:1px red solid')<br/></p>
+<h3>setRuntimeStyle</h3>
+<p>设置指定元素样式<br/></p>
+<h3>clearRuntimeStyle</h3>
+<p>清除指定元素样式<br/></p>
+<table width = "100%" border = 1>
+<tr><th colspan = 2>遮罩测试</th></tr><tr><td><div id = 'acd' name = 'acd' style ="display:block"><input id='mak' name='mak' type='text' tipstext="请录入"/><button>我是按钮</button></div></td>
+<td><div style = "display:block">
+	<pre>var el  = document.getElementById('acd');
+	Ext.lt.HTML.mark(el,true);                                                                                       <button onclick="ltmark();">遮罩</button>  </pre>
+	<pre>Ext.lt.HTML.unmark(el);                                                                                                  <button onclick="ltunmark();">取消遮罩</button></pre>
+  <pre>Ext.lt.HTML.hiddenAll(el.getElementsByTagName('BUTTON'));                                                                <button onclick="hall();">隐藏不被遮罩的元素</button> </pre>
+  <pre>Ext.lt.HTML.showAll(el.getElementsByTagName('BUTTON'));                                                                  <button onclick="sall()">显示不被遮罩的元素</button> </pre>
+<tr><td><input id='sty' name='sty' type='text' tipstext="请录入"/></td>
+<td><pre>&lt;input id='sty' name='sty' type='text' tipstext="请录入"/>&lt;/td>Ext.lt.HTML.setStyle(sty,'width:100%;border:1px red solid');                                                             <button onclick="Ext.lt.HTML.setStyle(sty,'width:100%;border:1px red solid');">setStyle()样式测试</button></pre>
+<pre>Ext.lt.HTML.setRuntimeStyle(el,'background:yellow');                                                                     <button onclick="Ext.lt.HTML.setRuntimeStyle(document.getElementById('sty'),'background:yellow')">设置指定元素样式</button> </pre>
+<pre>Ext.lt.HTML.clearRuntimeStyle(el,'background:yellow');                                                                   <button onclick="Ext.lt.HTML.clearRuntimeStyle(document.getElementById('sty'))">清除指定元素样式</button> </pre></div></td></tr>	
+<tr><th colspan = 2>居中测试</th></tr>
+<tr><td><div id = 'test1' name = 'test1' class="pos_left" style ="display:block;background:blue;"><input id='cet' name='cet' style ="display:block;background:blue;" type='text' tipstext="请录入"/></div></td>
+<td><div style = "display:block">
+<pre>Ext.lt.HTML.center(el);                                                                                                  <button onclick="dcent();">居中指定元素</button> </pre></div></td></tr>	
+<tr><th colspan = 2>获取指定HTML元素的四个边宽度</th>
+<tr><td><div id = 'test2' name = 'test2' style ="display:block"><input id='pst' name='pst' type='text' tipstext="请录入"/><button>我是按钮</button></div></td>
+<td><div style = "display:block">
+<pre>Ext.lt.HTML.getBorderSet(el,sty,attr);attr：'Left','Right','Top','Bottom' sty：'padding','margin','border'               <button onclick="alert(Ext.lt.HTML.getBorderSet(document.getElementById('pst'),null,null))">获取指定HTML元素的四个边宽度</button></pre></div></td></tr>		
+<tr><th colspan = 2>返回指定元素在页面中的位置</th><tr><td><div id = 'test2' name = 'test2' style ="display:block"><input id='pst' name='pst' type='text' tipstext="请录入"/><button>我是按钮</button></div></td>
+<td><div style = "display:block">
+<pre>Ext.lt.HTML.positionedOffset(el);                                                                                        <button onclick="alert(Ext.lt.HTML.positionedOffset(document.getElementById('pst'),document.getElementById('mak'),true))">获取指定元素坐标</button></pre></div></td></tr>		
+</table>
+</body>
+</html>
+<script>
+function ltmark(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.mark(el,true);
+}
+function ltunmark(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.unmark(el);
+}
+function hall(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.hiddenAll(el.getElementsByTagName('BUTTON'));
+}
+function sall(){
+	var el  = document.getElementById('acd');
+	Ext.lt.HTML.showAll(el.getElementsByTagName('BUTTON'));
+}
+function dcent(){
+	var el  = document.getElementById('test1');
+	Ext.lt.HTML.center(el);
+}
+</script>

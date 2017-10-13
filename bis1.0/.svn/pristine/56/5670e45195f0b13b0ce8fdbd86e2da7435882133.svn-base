@@ -1,0 +1,107 @@
+package gov.mof.fasp2.bis.test;
+
+import gov.mof.fasp2.bis.bustype.IFasp2PayBankService;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.caucho.burlap.client.BurlapProxyFactory;
+
+public class Test1101 {
+
+	/**
+	 * @param args
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static void main(String[] args) {
+		String url = "http://127.0.0.1:7001/remoting/service/bankservice";
+        BurlapProxyFactory factory = new BurlapProxyFactory();
+        try {
+            IFasp2PayBankService service = (IFasp2PayBankService) factory.create(IFasp2PayBankService.class, url);
+            
+            Map m = service.login("admin", "123456");
+            String verifycode = (String)m.get("verifycode");
+            List list = new ArrayList();
+            Map map = new HashMap();
+            map.put("cardno", "1113");
+            map.put("cardname", "1");
+            map.put("agencycode", "20160519");
+            map.put("agencyname", "1111");
+            map.put("gatheringbankacctname", "20160519111111");
+            map.put("gatheringbankname", "20160519");
+            map.put("gatheringbankacctcode", "20160519");
+            map.put("idnumber", "11111111111");
+            map.put("digest", "1");
+            map.put("bankcode", "003");
+            map.put("bankname", "1111");
+            map.put("createdate", "20160519111111");
+            map.put("startdate", "20160519");
+            map.put("enddate", "20160519");
+            list.add(map);
+            map = new HashMap();
+            map.put("cardno", "1112");
+            map.put("cardname", "11");
+            map.put("agencycode", "20160519");
+            map.put("agencyname", "1111");
+            map.put("gatheringbankacctname", "20160519111111");
+            map.put("gatheringbankname", "20160519");
+            map.put("gatheringbankacctcode", "20160519");
+            map.put("idnumber", "11111111111");
+            map.put("digest", "1");
+            map.put("bankcode", "003");
+            map.put("bankname", "1111");
+            map.put("createdate", "20160519111111");
+            map.put("startdate", "20160519");
+            map.put("enddate", "20160519");
+            
+            list.add(map);
+            
+            Map rt1 = service.sendVou("1101","003","150000","2017",verifycode,list);
+            System.out.println(rt1);
+            
+//            m = service.login("admin", "123456");
+//            String verifycode1 = (String)m.get("verifycode");
+//            Map rt = service.cancelSendVou("1102","bank","150100","2016",verifycode1,list);
+//            System.out.println("cancelSendVou:"+rt);
+            
+            
+            
+//            //发送和读取
+//            m = service.login("admin", "123456");
+//            verifycode = (String)m.get("verifycode");
+//            list= new ArrayList();
+////            public Map sendVou(String bustype,String bankcode,String province,String year,String verifycode,List listmap) throws AppException {
+//            list = new ArrayList();
+//            map = new HashMap();
+//            map.put("cardno", "2222");
+//            map.put("cardname", "1");
+//            map.put("agencycode", "20160519");
+//            map.put("agencyname", "1111");
+//            map.put("gatheringbankacctname", "20160519111111");
+//            map.put("gatheringbankname", "20160519");
+//            map.put("gatheringbankacctcode", "20160519");
+//            map.put("idnumber", "11111111111");
+//            map.put("digest", "1");
+//            map.put("bankcode", "20160519");
+//            map.put("bankname", "1111");
+//            map.put("createdate", "20160519111111");
+//            map.put("startdate", "20160519");
+//            map.put("enddate", "20160519");
+//            list.add(map);
+//            rt = service.sendVou("1101","bank","150100","2016",verifycode,list);
+//            System.out.println(rt);
+//            
+//            
+//            m = service.login("admin", "123456");
+//            verifycode = (String)m.get("verifycode");
+//            rt1 = service.readVou("2101","bank","150100","2016",verifycode);
+//            System.out.println(rt1);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+
+	}
+
+}

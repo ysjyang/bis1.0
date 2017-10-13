@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+命名空间：Ext.lt.dateutil<br />
+实现各种日期工具<br />
+方法说明：<br />
+YYMMDD(dateobj)    返回'YYYY年MM月DD日' 的中文格式<br />
+weekday(dateobj)   返回中文的星期几<br />
+solarDay(dateobj)  返回农历和节日<br />
+holiday(dateobj)   返回西方节日名称<br />
+chinaholiday(dateobj)  返回中国传统节日名称
+</body>
+</html>

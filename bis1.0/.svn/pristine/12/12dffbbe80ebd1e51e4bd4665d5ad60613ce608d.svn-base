@@ -1,0 +1,78 @@
+.menu{}
+.menu span{
+	padding-left:20px;	
+}
+.col_tab_div{
+	font-size:12px;
+}
+.editpanel{
+	padding-left:0px;
+	margin-left:0px;
+}
+.winfitmode{
+	font-size:12px;
+}
+.formula_area{
+	width:auto;
+	border:#000 solid 1px;
+	overflow:auto;
+}
+.formula_formulas{
+	width:auto;
+	border:#000 solid 1px;
+	float:left;
+}
+.formula_formulas_other{
+	width:auto;
+	float:right;
+	margin-right:5px;
+	border:#000 solid 1px;
+}
+.formula_formulas_other button{
+  font-size:12px;
+	margin:5px;
+}
+.formula_area div{
+	float:left;
+	border:#fff solid 1px;
+	margin:5px;
+	font-size:18px;
+	white-space:nowrap;
+	padding:2px;
+}
+.formula_area .divmouse{
+	border:#000 solid 1px;
+	cursor : hand;
+}
+.formula_area .divselect{
+	border:red solid 1px;
+}
+.formula_area span{
+	border:#FFF solid 1px;
+	background:url(../image/lclose.png) no-repeat left top;
+	background-position:2px 0;
+  width:12px;
+  height:13px;
+  font-size:12px;
+  position:relative;
+  top:-5px;
+
+}
+.formula_area div span{
+	visibility :hidden
+}
+.formula_area .divmouse span{
+	visibility :visible;
+}
+.formula_area .divselect span{
+	visibility :visible;
+}
+.formula_cells{
+	border:#000 solid 1px;
+	float:right;
+	width:180px;
+	height:375px;
+	margin-top:15px;
+}
+
+
